@@ -1,0 +1,29 @@
+:root {
+  --rouge: #b11226;
+  --blanc: #ffffff;
+  --noir: #111111;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--blanc);
+  color: var(--noir);
+}
+
+header {
+  background: var(--rouge);
+  color: var(--blanc);
+  padding: 20px;
+}
+
+nav a {
+  color: var(--blanc);
+  margin-right: 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.container {
+  padding: 20px;
+}
