@@ -48,14 +48,27 @@ body {
 }
 
 .header nav a {
+  position: relative;
   color: white;
   text-decoration: none;
-  margin-left: 20px;
+  margin-left: 24px;
   font-weight: bold;
+  padding-bottom: 4px;
 }
 
-.header nav a:hover {
-  text-decoration: underline;
+.header nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: white;
+  transition: width 0.25s ease;
+}
+
+.header nav a:hover::after {
+  width: 100%;
 }
 
 /* CONTENU */
