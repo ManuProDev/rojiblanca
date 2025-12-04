@@ -1,4 +1,4 @@
-/* RESET SIMPLE */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -6,19 +6,12 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* STRUCTURE GLOBALE */
-html, body {
-  height: 100%;
-}
-
 body {
-  display: flex;
-  flex-direction: column;
   background: #f4f4f4;
   color: #222;
 }
 
-/* HEADER FIXE */
+/* HEADER */
 .header {
   position: fixed;
   top: 0;
@@ -45,53 +38,56 @@ body {
   text-decoration: underline;
 }
 
-/* CONTENU CENTRAL */
+/* CONTENU */
 .main-content {
-  flex: 1;
-  margin-top: 70px; /* hauteur du header */
-  margin-bottom: 50px; /* hauteur du footer */
-  padding: 40px 20px;
+  padding-top: 120px;   /* espace sous le header */
+  padding-bottom: 120px; /* espace au-dessus du footer */
 }
 
 /* HERO */
 .hero {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
 .hero h2 {
   font-size: 32px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
-/* CARTES */
+/* CARTES (DESIGN AÉRÉ) */
 .cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  max-width: 1000px;
-  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .card {
+  width: 280px;
   background: white;
   padding: 30px;
-  border-radius: 10px;
+  border-radius: 12px;
   text-align: center;
   text-decoration: none;
   color: #222;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card h3 {
   margin-bottom: 15px;
-  font-size: 22px;
+  font-size: 24px;
+}
+
+.card p {
+  font-size: 15px;
+  line-height: 1.4;
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+  transform: translateY(-10px);
+  box-shadow: 0 16px 30px rgba(0,0,0,0.2);
 }
 
 /* FOOTER */
@@ -100,8 +96,8 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 50px;
-  background: #222;
+  height: 60px;
+  background: #111;
   color: white;
   display: flex;
   align-items: center;
