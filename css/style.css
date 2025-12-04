@@ -13,9 +13,7 @@ body {
   color: #222;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* ===== HEADER ===== */
 .header {
   position: fixed;
   top: 0;
@@ -23,53 +21,48 @@ body {
   right: 0;
   height: 72px;
 
-  background: white;               /* HEADER BLANC */
-  border-bottom: 1px solid #e5e5e5;
+  background: #ffffff;             /* ✅ HEADER BLANC */
+  border-bottom: 2px solid #9b1c1c; /* accent rouge */
 
   display: flex;
-  align-items: center;             /* ALIGNEMENT VERTICAL */
-  padding: 0 24px;
+  align-items: center;             /* ✅ centrage vertical */
+  padding: 0 32px;
   z-index: 1000;
 }
 
 /* Groupe logo + menu */
 .header-left {
   display: flex;
-  align-items: center;             /* ✅ force logo + menu sur la même ligne */
-  gap: 24px;
-  white-space: nowrap;
+  align-items: center;             /* ✅ SUR UNE SEULE LIGNE */
+  gap: 32px;
 }
 
-/* =========================
-   LOGO
-========================= */
+/* ===== LOGO ===== */
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .logo img {
-  height: 42px;                    /* taille maîtrisée */
+  height: 44px;                    /* taille maîtrisée */
   display: block;
 }
 
 .logo span {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 800;
-  color: #9b1c1c;                  /* ROUGE conservé */
+  color: #9b1c1c;
+  white-space: nowrap;
 }
 
-/* =========================
-   MENU
-========================= */
+/* ===== MENU ===== */
 .nav-left {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
 }
 
-/* Liens */
 .nav-left a {
   position: relative;
   text-decoration: none;
@@ -79,7 +72,7 @@ body {
   transition: color 0.2s ease;
 }
 
-/* Soulignage stylé */
+/* Soulignage animé */
 .nav-left a::after {
   content: "";
   position: absolute;
@@ -87,14 +80,13 @@ body {
   bottom: -6px;
   width: 100%;
   height: 3px;
-  background: #9b1c1c;             /* ROUGE CLUB */
+  background: #9b1c1c;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
-  border-radius: 3px;
+  border-radius: 2px;
 }
 
-/* Hover */
 .nav-left a:hover {
   color: #9b1c1c;
 }
@@ -103,20 +95,10 @@ body {
   transform: scaleX(1);
 }
 
-/* Lien actif */
-.nav-left a.active {
-  color: #9b1c1c;
-}
-.nav-left a.active::after {
-  transform: scaleX(1);
-}
-
-/* =========================
-   CONTENU (espace header)
-========================= */
+/* ===== ESPACES PAGE ===== */
 .main-content {
-  padding-top: 120px;
-  padding-bottom: 120px;
+  padding-top: 110px;
+  padding-bottom: 100px;
 }
 
 /* =========================
