@@ -11,6 +11,26 @@ body {
   color: #222;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.logo img {
+  height: 40px;
+  display: block;
+}
+
+.logo span {
+  color: #9b1c1c;
+  font-weight: bold;
+  font-size: 18px;
+}
+
 /* HEADER */
 .header {
   position: fixed;
