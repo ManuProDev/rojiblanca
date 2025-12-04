@@ -1,0 +1,164 @@
+[
+  {
+    "id": 1,
+    "team1": "Rojiblanca 7",
+    "team2": "Olympique Montmartre",
+    "type": "Friendly",
+    "result": "Win",
+    "goals1": 4,
+    "goals2": 3
+  },
+  {
+    "id": 2,
+    "team1": "Rojiblanca 11",
+    "team2": "Carrière sur Seine",
+    "type": "Friendly",
+    "result": "Loss",
+    "goals1": 4,
+    "goals2": 5
+  },
+  {
+    "id": 3,
+    "team1": "Rojiblanca 7",
+    "team2": "Rb Leibniz",
+    "type": "Friendly",
+    "result": "Draw",
+    "goals1": 4,
+    "goals2": 4
+  },
+  {
+    "id": 4,
+    "team1": "Rojiblanca 11",
+    "team2": "Paris Arc En Ciel A",
+    "type": "Cup",
+    "result": "Win",
+    "goals1": 4,
+    "goals2": 2
+  },
+  {
+    "id": 5,
+    "team1": "Rojiblanca 7",
+    "team2": "St Antony Paissayoor",
+    "type": "Cup",
+    "result": "Win",
+    "goals1": 9,
+    "goals2": 1
+  },
+  {
+    "id": 6,
+    "team1": "Rojiblanca 11",
+    "team2": "Cheminots Du Landy",
+    "type": "Cup",
+    "result": "Loss",
+    "goals1": 1,
+    "goals2": 2
+  },
+  {
+    "id": 7,
+    "team1": "Rojiblanca 7",
+    "team2": "OGC Nietzche",
+    "type": "Cup",
+    "result": "Loss",
+    "goals1": 2,
+    "goals2": 6
+  },
+  {
+    "id": 8,
+    "team1": "Rojiblanca 11",
+    "team2": "Club Defense Balard A",
+    "type": "Cup",
+    "result": "Draw",
+    "goals1": 1,
+    "goals2": 1
+  },
+  {
+    "id": 9,
+    "team1": "Rojiblanca 7",
+    "team2": "The Party FC",
+    "type": "Cup",
+    "result": "Win",
+    "goals1": 5,
+    "goals2": 2
+  },
+  {
+    "id": 10,
+    "team1": "Rojiblanca 11",
+    "team2": "Spartak Retrograd",
+    "type": "League",
+    "result": "Draw",
+    "goals1": 2,
+    "goals2": 2
+  },
+  {
+    "id": 11,
+    "team1": "Rojiblanca 7",
+    "team2": "TP Carthage",
+    "type": "Cup",
+    "result": "Loss",
+    "goals1": 3,
+    "goals2": 5
+  },
+  {
+    "id": 12,
+    "team1": "Rojiblanca 11",
+    "team2": "Hermines FC",
+    "type": "League",
+    "result": "Win",
+    "goals1": 4,
+    "goals2": 2
+  },
+  {
+    "id": 13,
+    "team1": "Rojiblanca 7",
+    "team2": "Deportivo Malakoff",
+    "type": "League",
+    "result": "Loss",
+    "goals1": 2,
+    "goals2": 8
+  },
+  {
+    "id": 14,
+    "team1": "Rojiblanca 11",
+    "team2": "Les Anciens ACVH",
+    "type": "League",
+    "result": "Win",
+    "goals1": 4,
+    "goals2": 2
+  },
+  {
+    "id": 15,
+    "team1": "Rojiblanca 11",
+    "team2": "Club Defense Balard A",
+    "type": "League",
+    "result": "Win",
+    "goals1": 3,
+    "goals2": 1
+  },
+  {
+    "id": 16,
+    "team1": "Rojiblanca 7",
+    "team2": "Red Bull Leipnig",
+    "type": "League",
+    "result": "Win",
+    "goals1": 4,
+    "goals2": 1
+  },
+  {
+    "id": 17,
+    "team1": "Rojiblanca 11",
+    "team2": "Cheminots Du Landy",
+    "type": "Cup",
+    "result": "Loss",
+    "goals1": 0,
+    "goals2": 3
+  },
+  {
+    "id": 18,
+    "team1": "Rojiblanca 7",
+    "team2": "The Party FC",
+    "type": "League",
+    "result": "Win",
+    "goals1": 11,
+    "goals2": 1
+  }
+]
