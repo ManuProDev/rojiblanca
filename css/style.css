@@ -9,8 +9,14 @@
 }
 
 body {
-  background: #f4f4f4;
+  background: linear-gradient(
+    180deg,
+    #b00000 0%,
+    #8a0000 40%,
+    #660000 100%
+  );
   color: #222;
+  min-height: 100vh;
 }
 
 /* ===============================
