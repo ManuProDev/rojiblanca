@@ -105,7 +105,6 @@ main.main-content {
   );
   padding-top: 120px;
   padding-bottom: 200px; /* augmente pour compenser le footer fixed */
-  min-height: 100vh; /* garantit qu'il n'y a pas de zone blanche */
   color: white; /* texte blanc partout dans le main */
 }
 
@@ -160,7 +159,7 @@ main.main-content {
 .card p {
   font-size: 15px;
   line-height: 1.5;
-  color: #555;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .card:hover {
