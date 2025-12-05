@@ -96,9 +96,15 @@ body {
 /* ===============================
    CONTENU CENTRAL
 ================================ */
-.main-content {
-  padding-top: 120px;    /* espace sous le header */
-  padding-bottom: 120px; /* espace au-dessus du footer */
+main.main-content {
+  background: linear-gradient(
+    180deg,
+    #b00000 0%,
+    #8a0000 40%,
+    #660000 100%
+  );
+  padding-top: 120px;
+  padding-bottom: 120px;
 }
 
 /* HERO */
