@@ -9,14 +9,15 @@
 }
 
 body {
+  /* Le body DOIT être rouge pour éviter les bandes blanches */
   background: linear-gradient(
     180deg,
     #b00000 0%,
     #8a0000 40%,
     #660000 100%
   );
-  color: #222;
   min-height: 100vh;
+  color: #222;
 }
 
 /* ===============================
@@ -103,15 +104,22 @@ body {
    CONTENU CENTRAL
 ================================ */
 main.main-content {
-  background: linear-gradient(
-    180deg,
-    #b00000 0%,
-    #8a0000 40%,
-    #660000 100%
-  );
+  /* IMPORTANT : le main doit être transparent sinon dégradé double */
+  background: transparent;
+
+  /* marge pour le header */
   padding-top: 120px;
-  padding-bottom: 200px; /* augmente pour compenser le footer fixed */
-  color: white; /* texte blanc partout dans le main */
+
+  /* marge pour le footer */
+  padding-bottom: 160px;
+
+  /* C'est ça qui supprime TOUTES les bandes blanches */
+  min-height: calc(100vh - 72px);
+
+  color: white;
+
+  display: flex;
+  flex-direction: column;
 }
 
 /* HERO */
@@ -124,7 +132,7 @@ main.main-content {
   font-size: 34px;
   margin-bottom: 16px;
   font-weight: 800;
-  color: white
+  color: white;
 }
 
 .hero p {
