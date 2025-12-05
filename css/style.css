@@ -104,7 +104,9 @@ main.main-content {
     #660000 100%
   );
   padding-top: 120px;
-  padding-bottom: 120px;
+  padding-bottom: 200px; /* augmente pour compenser le footer fixed */
+  min-height: 100vh; /* garantit qu'il n'y a pas de zone blanche */
+  color: white; /* texte blanc partout dans le main */
 }
 
 /* HERO */
@@ -117,11 +119,12 @@ main.main-content {
   font-size: 34px;
   margin-bottom: 16px;
   font-weight: 800;
+  color: white
 }
 
 .hero p {
   font-size: 18px;
-  color: #555;
+  color: white;
 }
 
 /* ===============================
@@ -136,7 +139,6 @@ main.main-content {
 
 .card {
   width: 300px;
-  background: #ffffff;
   padding: 32px;
   border-radius: 14px;
   text-align: center;
@@ -144,6 +146,9 @@ main.main-content {
   color: #222;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .card h3 {
