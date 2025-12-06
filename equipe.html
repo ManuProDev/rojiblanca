@@ -2,21 +2,68 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Équipe – Rojiblanca</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Équipe</title>
 </head>
+
 <body>
 
-<header>
-  <h1>Rojiblanca FC</h1>
-</header>
+  <!-- HEADER IDENTIQUE -->
+  <header class="header">
+      <div class="header-left">
+          <div class="logo">
+              <img src="ton-logo.png" alt="Logo">
+              <span>Ton Club</span>
+          </div>
 
-<div class="container">
-  <h2>Effectif du Rojiblanca</h2>
-  <div id="players" class="cards"></div>
-</div>
+          <nav class="nav-left">
+              <a href="index.html">Accueil</a>
+              <a href="equipe.html" class="active">Équipe</a>
+              <a href="contact.html">Contact</a>
+          </nav>
+      </div>
+  </header>
 
-<script src="js/players.js"></script>
+  <!-- CONTENU -->
+  <main class="main-content">
 
+      <section class="hero">
+          <h2>Notre Équipe</h2>
+          <p>Découvrez les joueurs poste par poste</p>
+      </section>
+
+      <!-- GARDIENS -->
+      <section class="player-section">
+          <h3>Gardiens</h3>
+          <div class="player-grid" id="gardiens"></div>
+      </section>
+
+      <!-- DÉFENSEURS -->
+      <section class="player-section">
+          <h3>Défenseurs</h3>
+          <div class="player-grid" id="defenseurs"></div>
+      </section>
+
+      <!-- MILIEUX -->
+      <section class="player-section">
+          <h3>Milieux</h3>
+          <div class="player-grid" id="milieux"></div>
+      </section>
+
+      <!-- ATTAQUANTS -->
+      <section class="player-section">
+          <h3>Attaquants</h3>
+          <div class="player-grid" id="attaquants"></div>
+      </section>
+
+  </main>
+
+  <!-- FOOTER IDENTIQUE -->
+  <footer class="footer">
+      <p>© 2025 - Ton Club</p>
+  </footer>
+
+  <script src="players.js"></script>
+  <script src="displayPlayers.js"></script>
 </body>
 </html>
