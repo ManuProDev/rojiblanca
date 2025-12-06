@@ -232,12 +232,19 @@ main.main-content {
   font-size: 26px;
   margin-bottom: 14px;
   font-weight: 800;
+  color: white
 }
 
 .card p {
   font-size: 15px;
   opacity: 0.85;
   line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85)
+}
+
+.card:link,
+.card:visited {
+  color: white
 }
 
 /* ===============================
@@ -278,6 +285,14 @@ main.main-content {
   }
 
   .cards {
+    flex-direction: column;
+    align-items: center;
     gap: 24px;
   }
+
+  .card {
+    width: 90%;
+    max-width: 340px;
+  }
+}
 }
