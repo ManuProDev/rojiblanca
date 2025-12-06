@@ -4,10 +4,10 @@ async function loadPlayers() {
         const data = await response.json();
 
         const groups = {
-            gardien: document.getElementById("gardiens"),
-            defenseur: document.getElementById("defenseurs"),
-            milieu: document.getElementById("milieux"),
-            attaquant: document.getElementById("attaquants")
+            goal: document.getElementById("goals"),
+            defender: document.getElementById("defenders"),
+            moidfielder: document.getElementById("midfielders"),
+            striker: document.getElementById("strikers")
         };
 
         data.players.forEach(player => {
