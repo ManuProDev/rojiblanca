@@ -19,11 +19,10 @@ async function loadPlayers() {
       striker: document.getElementById("strikers")
     };
 
-    // Vide les conteneurs au cas où (utile pour rechargements)
+    // Vide les conteneurs au cas où
     Object.values(groups).forEach(el => { if (el) el.innerHTML = ""; });
 
     playersArray.forEach(player => {
-      // sécurité : vérifier que les propriétés existent
       if (!player || !player.position || !player.name) return;
 
       const container = groups[player.position];
@@ -33,18 +32,19 @@ async function loadPlayers() {
       }
 
       const card = document.createElement("div");
-      card.className = "player-card"; // utilise la classe CSS existante
+      card.className = "player-card";
+
+      // version finale, propre
       card.innerHTML = `
         <h4>${escapeHtml(player.name)}</h4>
         <p>N° ${escapeHtml(String(player.number))}</p>
       `;
-      card.classList.add("player-card");
-      card.innerHTML = `<h4>${player.name}</h4><p>N° ${player.number}</p>`;
 
       // redirection future vers une page stats
       card.onclick = () => {
         window.location.href = `player.html?id=${player.id}`;
       };
+
       container.appendChild(card);
     });
 
