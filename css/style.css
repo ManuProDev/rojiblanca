@@ -144,7 +144,7 @@ transform: scaleX(1);
 MAIN
 ========================================================= */
 main.main-content {
-padding-top: 160px;
+padding-top: 40px;
 padding-bottom: 200px;
 display: flex;
 flex-direction: column;
@@ -272,48 +272,43 @@ color: white !important;
 }
 
 /* ===== GRID ===== */
-.player-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 35px;
-    padding: 10px;
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 50px auto;
+  padding: 0 20px;
 }
 
 /* ===== PLAYER CARD ===== */
 .player-card {
-    background: linear-gradient(145deg, #ffffff, #f1f1f1);
-    border-radius: 20px;
-    padding: 25px;
-    height: 180px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-
-    cursor: pointer;
-    text-decoration: none; /* si c'est un <a> plus tard */
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
 }
 
 .player-card:hover {
-    transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 18px 35px rgba(0,0,0,0.22);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
 }
 
 .player-card h4 {
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin-bottom: 5px;
-    color: #990000;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  font-weight: 600;
 }
 
 .player-card p {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #444;
+  font-size: 2.2rem; /* numéro bien plus gros */
+  font-weight: 700;
+  color: #e50000;    /* rouge identitaire */
+  margin: 0;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -322,6 +317,24 @@ color: white !important;
         height: auto;
         padding: 20px;
     }
+}
+
+.team-section h2 {
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  position: relative;
+}
+
+.team-section h2::before {
+  content: "";
+  width: 60px;
+  height: 4px;
+  background: #e50000;
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  border-radius: 2px;
 }
 
 /* =========================================================
