@@ -38,6 +38,13 @@ async function loadPlayers() {
         <h4>${escapeHtml(player.name)}</h4>
         <p>N° ${escapeHtml(String(player.number))}</p>
       `;
+      card.classList.add("player-card");
+      card.innerHTML = `<h4>${player.name}</h4><p>N° ${player.number}</p>`;
+
+      // redirection future vers une page stats
+      card.onclick = () => {
+        window.location.href = `player.html?id=${player.id}`;
+      };
       container.appendChild(card);
     });
 
