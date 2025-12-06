@@ -255,6 +255,19 @@ main.main-content {
     color: #fff;
     letter-spacing: 1px;
     text-transform: uppercase;
+    position: relative;
+}
+
+.player-section h3::after {
+    content: "";
+    width: 70px;
+    height: 4px;
+    background: #fff;  /* blanc demandé */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -12px;
+    border-radius: 4px;
 }
 
 /* ===== GRID ===== */
@@ -302,7 +315,7 @@ main.main-content {
     font-size: 2.6rem;
     /* numéro très visible */
     font-weight: 900;
-    color: #e50000;
+    color: #fff;
     margin: 0;
 }
 
