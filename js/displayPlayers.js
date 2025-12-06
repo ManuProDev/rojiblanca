@@ -1,6 +1,6 @@
 async function loadPlayers() {
     try {
-        const response = await fetch("players.json");
+        const response = await fetch("data/players.json");
         const data = await response.json();
 
         const groups = {
