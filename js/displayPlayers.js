@@ -6,7 +6,7 @@ async function loadPlayers() {
         const groups = {
             goal: document.getElementById("goals"),
             defender: document.getElementById("defenders"),
-            moidfielder: document.getElementById("midfielders"),
+            midfielder: document.getElementById("midfielders"),
             striker: document.getElementById("strikers")
         };
 
