@@ -34,6 +34,10 @@ body.team-page h3.section-title {
     margin-bottom: 40px;
 }
 
+body.team-page .player-section:first-of-type h3 {
+    margin-top: 10px;
+}
+
 /* ========================================================= SCROLL PROGRESS BAR ========================================================= */
 .scroll-progress {
     position: fixed;
@@ -322,7 +326,7 @@ main.main-content {
 .player-card p {
     font-size: 2.6rem;
     font-weight: 900;
-    color: #e50000; /* rouge premium */
+    color: #ffffff;
 }
 
 /* ===== RESPONSIVE ===== */
