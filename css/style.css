@@ -53,15 +53,17 @@ right: 0;
 height: 80px;
 
 display: flex;
+justify-content: space-between;
 align-items: center;
-padding: 0 40px;
+position: sticky;
+padding: 15px 40px;
 z-index: 1000;
 
-background: rgba(255, 255, 255, 0.9);
+background: #fff;
 backdrop-filter: blur(12px);
 
-border-bottom: 1px solid rgba(155, 28, 28, 0.35);
-box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+border-bottom: 1px solid #eee;
+box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
 
 .header-left {
@@ -255,69 +257,70 @@ color: white !important;
 /* ===== SECTIONS ===== */
 .player-section {
     margin: 60px auto;
-    max-width: 1100px;
+    max-width: 1300px;
     padding: 20px;
-    text-align: center;
 }
 
 .player-section h3 {
     font-size: 2rem;
-    margin-bottom: 25px;
-    font-weight: 700;
+    font-weight: 800;
+    margin-bottom: 35px;
+    text-align: center;
     color: #fff;
-    text-transform: uppercase;
     letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 /* ===== GRID ===== */
 .player-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 25px;
-    justify-items: center;
-    align-items: stretch;
-    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 35px;
+    padding: 10px;
 }
 
 /* ===== PLAYER CARD ===== */
 .player-card {
-    background: #fff;
-    border-radius: 15px;
-    padding: 20px;
-    width: 220px;
-
-    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
-    transition: transform .2s ease, box-shadow .2s ease;
+    background: linear-gradient(145deg, #ffffff, #f1f1f1);
+    border-radius: 20px;
+    padding: 25px;
+    height: 180px;
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    text-align: center;
+
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    cursor: pointer;
+    text-decoration: none; /* si c'est un <a> plus tard */
 }
 
 .player-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 18px 35px rgba(0,0,0,0.22);
 }
 
 .player-card h4 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: 700;
-    margin-bottom: 8px;
-    color: #900;
+    margin-bottom: 5px;
+    color: #990000;
 }
 
 .player-card p {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    color: #333;
-    margin: 0;
+    color: #444;
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 600px) {
     .player-card {
-        width: 80%;
+        height: auto;
+        padding: 20px;
     }
 }
 
