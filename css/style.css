@@ -35,7 +35,7 @@ body.team-page h3.section-title {
 }
 
 body.team-page .player-section:first-of-type h3 {
-    margin-top: -60px;
+    margin-top: 0px;
 }
 
 /* ========================================================= SCROLL PROGRESS BAR ========================================================= */
