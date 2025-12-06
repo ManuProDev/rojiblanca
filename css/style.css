@@ -36,14 +36,14 @@ SCROLL PROGRESS BAR
   top: 80px;
   left: 0;
   height: 4px;
-  background: #ffffff;
+  background: #d30000;
   width: 0%;
   z-index: 1500;
   transition: width 0.1s ease-out;
 }
 
 /* =========================================================
-HEADER
+HEADER (remis EXACTEMENT comme avant)
 ========================================================= */
 .header {
   position: fixed;
@@ -55,15 +55,15 @@ HEADER
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  position: sticky;
   padding: 15px 40px;
   z-index: 1000;
 
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background: #fff;
+  backdrop-filter: blur(12px);
 
-  border-bottom: 1px solid #ddd;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
 
 .header-left {
@@ -86,7 +86,7 @@ HEADER
 .logo span {
   font-size: 22px;
   font-weight: 800;
-  color: #7a0000;
+  color: #9b1c1c;
   letter-spacing: 0.5px;
 }
 
@@ -100,22 +100,22 @@ HEADER
   position: relative;
   text-decoration: none;
   font-weight: 700;
-  color: #333;
+  color: #222;
   padding: 6px 0;
   transition: 0.25s ease;
 }
 
-/* Page active */
 .nav-left a.active {
-  color: #fff;
+  color: #9b1c1c;
 }
 
 .nav-left a.active::after {
   transform: scaleX(1);
-  background: #fff;
+  background: #9b1c1c;
+  box-shadow: 0 0 6px rgba(155, 28, 28, 0.6);
 }
 
-/* Soulignage animé blanc */
+/* Soulignage animé ROUGE inchangé */
 .nav-left a::after {
   content: "";
   position: absolute;
@@ -123,7 +123,7 @@ HEADER
   left: 0;
   width: 100%;
   height: 3px;
-  background: white;
+  background: #9b1c1c;
   border-radius: 2px;
 
   transform: scaleX(0);
@@ -132,7 +132,7 @@ HEADER
 }
 
 .nav-left a:hover {
-  color: #fff;
+  color: #9b1c1c;
 }
 
 .nav-left a:hover::after {
@@ -143,7 +143,7 @@ HEADER
 MAIN
 ========================================================= */
 main.main-content {
-  padding-top: 110px;   /* réduit espace sous header */
+  padding-top: 120px; /* espace corrigé sous le header */
   padding-bottom: 200px;
   display: flex;
   flex-direction: column;
@@ -162,92 +162,134 @@ main.main-content {
 }
 
 /* =========================================================
-PLAYER SECTIONS
+HERO (inchangé)
 ========================================================= */
-.player-section {
-    margin: 40px auto;
-    max-width: 1300px;
-    padding: 10px;
-}
-
-.player-section h3 {
-    font-size: 2rem;
-    font-weight: 800;
-    margin-bottom: 25px;
-    text-align: center;
-    color: #fff;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    position: relative;
-}
-
-.player-section h3::after {
-    content: "";
-    display: block;
-    width: 60px;
-    height: 3px;
-    background: white;
-    margin: 10px auto 0 auto;
-    border-radius: 3px;
+.hero {
+  text-align: center;
+  margin-bottom: 80px;
 }
 
 /* =========================================================
-GRID PREMIUM (symétrie parfaite)
+CARDS (Accueil — INCHANGÉ)
 ========================================================= */
-.players-grid {
+.cards {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 28px;
-  padding: 10px;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
 }
 
-/* =========================================================
-PLAYER CARD — VERSION PREMIUM IDENTIQUE PAGE D’ACCUEIL
-========================================================= */
-.player-card {
-  width: 260px;
-  height: 190px;
+.card {
+  width: 90%;
+  max-width: 350px;
+  padding: 34px;
+  border-radius: 18px;
+  text-align: center;
 
   background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.25);
 
-  border-radius: 18px;
-  padding: 25px;
+  text-decoration: none;
+  color: white !important;
+
+  transition: 0.35s ease;
+  cursor: pointer;
+
+  opacity: 0;
+  transform: translateY(20px);
+  animation: cardFade 0.7s forwards;
+
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+/* =========================================================
+SECTIONS — PAGE ÉQUIPE
+========================================================= */
+
+.player-section {
+  margin: 60px auto;
+  max-width: 1100px;
+  padding: 20px;
   text-align: center;
+}
+
+.player-section h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 35px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.player-section h3::after {
+  content: "";
+  width: 80px;
+  height: 4px;
+  background: white;      /* 🔥 soulignage blanc */
+  border-radius: 4px;
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* GRID — compact comme avant */
+.players-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 22px;
+}
+
+/* Player Cards — version premium, même design que l’accueil */
+.player-card {
+  width: 230px;
+  height: 180px;
+  padding: 22px;
+
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
 
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 6px;
 
   cursor: pointer;
-  transition: 0.25s ease;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+  transition: 0.3s ease;
 }
 
 .player-card:hover {
-  transform: translateY(-10px) scale(1.03);
+  transform: translateY(-8px) scale(1.03);
   background: rgba(255, 255, 255, 0.18);
   border-color: rgba(255, 255, 255, 0.45);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.28);
 }
 
 .player-card h4 {
-  font-size: 1.4rem;
-  font-weight: 800;
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #fff;
 }
 
 .player-card p {
-  font-size: 3rem;
+  font-size: 2.7rem;
   font-weight: 900;
-  color: white;      /* numéros en blanc */
+  color: #fff;     /* 🔥 numéro en blanc */
   margin: 0;
 }
 
 /* =========================================================
-FOOTER
+FOOTER (inchangé)
 ========================================================= */
 .footer {
   position: fixed;
@@ -262,29 +304,7 @@ FOOTER
 
   background: #0e0e0e;
   color: #fff;
+
   font-size: 14px;
-
   border-top: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-/* =========================================================
-RESPONSIVE
-========================================================= */
-@media (max-width: 600px) {
-  .player-card {
-    width: 90%;
-    height: auto;
-  }
-}
-
-@media (min-width: 768px) {
-  .cards {
-    flex-direction: row;
-    justify-content: center;
-    gap: 40px;
-  }
-
-  .card {
-    width: 300px;
-  }
 }
