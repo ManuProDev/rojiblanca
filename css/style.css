@@ -25,6 +25,10 @@ body::before {
     opacity: 0.95;
 }
 
+body.team-page main.main-content {
+    padding-top: 120px;
+}
+
 /* ========================================================= SCROLL PROGRESS BAR ========================================================= */
 .scroll-progress {
     position: fixed;
@@ -284,25 +288,24 @@ main.main-content {
 .player-card {
     width: 230px;
     height: 180px;
-    /* tailles toujours identiques */
     backdrop-filter: blur(12px);
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.12); /* même niveau que accueil */
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     padding: 20px;
     text-align: center;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
     display: flex;
     flex-direction: column;
     justify-content: center;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    transition: 0.35s ease;
 }
 
 .player-card:hover {
-    transform: translateY(-6px);
-    background: rgba(255, 255, 255, 0.35);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+    transform: translateY(-10px) scale(1.03);
+    background: rgba(255,255,255,0.20);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
 }
 
 .player-card h4 {
@@ -313,10 +316,8 @@ main.main-content {
 
 .player-card p {
     font-size: 2.6rem;
-    /* numéro très visible */
     font-weight: 900;
-    color: #fff;
-    margin: 0;
+    color: #e50000; /* rouge premium */
 }
 
 /* ===== RESPONSIVE ===== */
@@ -349,6 +350,28 @@ main.main-content {
     left: 50%;
     transform: translateX(-50%);
     bottom: -10px;
+    border-radius: 4px;
+}
+
+.team-section h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 35px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    position: relative;
+}
+
+.team-section h3::after {
+    content: "";
+    width: 70px;
+    height: 4px;
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -12px;
     border-radius: 4px;
 }
 
