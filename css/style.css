@@ -29,6 +29,11 @@ body.team-page main.main-content {
     padding-top: 60px;
 }
 
+body.team-page h3.section-title {
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+
 /* ========================================================= SCROLL PROGRESS BAR ========================================================= */
 .scroll-progress {
     position: fixed;
