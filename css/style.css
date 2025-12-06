@@ -12,7 +12,6 @@ body {
     color: #fff;
     overflow-x: hidden;
     scroll-behavior: smooth;
-    padding-top: 120px;
 }
 
 /* Parallaxe léger */
@@ -27,7 +26,7 @@ body::before {
 }
 
 body.team-page main.main-content {
-    padding-top: 40px;
+    padding-top: 60px;
 }
 
 /* ========================================================= SCROLL PROGRESS BAR ========================================================= */
@@ -136,7 +135,7 @@ body.team-page main.main-content {
 
 /* ========================================================= MAIN ========================================================= */
 main.main-content {
-    padding-top: 40px;
+    padding-top: 120px;
     padding-bottom: 200px;
     display: flex;
     flex-direction: column;
