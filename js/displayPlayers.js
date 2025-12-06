@@ -1,8 +1,11 @@
 async function loadPlayers() {
   try {
     const response = await fetch("data/players.json");
+    if (!response.ok) throw new Error("HTTP " + response.status);
     const data = await response.json();
-    const players = Array.isArray(data) ? data : data.players;
+
+    const playersArray = Array.isArray(data) ? data :
+                         (Array.isArray(data.players) ? data.players : []);
 
     const groups = {
       goal: document.getElementById("goals"),
@@ -11,7 +14,11 @@ async function loadPlayers() {
       striker: document.getElementById("strikers")
     };
 
-    players.forEach(player => {
+    playersArray.forEach(player => {
+      if (!player || !player.position || !player.name) return;
+      const container = groups[player.position];
+      if (!container) return;
+
       const card = document.createElement("div");
       card.className = "player-card";
 
@@ -24,11 +31,11 @@ async function loadPlayers() {
         window.location.href = `player.html?id=${player.id}`;
       };
 
-      groups[player.position].appendChild(card);
+      container.appendChild(card);
     });
-  }
-  catch(err) {
-    console.error("Erreur chargement joueurs :", err);
+
+  } catch (error) {
+    console.error("Erreur :", error);
   }
 }
 
