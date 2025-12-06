@@ -8,7 +8,7 @@
   { "id": 7, "name": "Hugo Frq", "number": 31, "position": "defender" },
   { "id": 8, "name": "Augustin Gsm", "number": 8, "position": "defender" },
   { "id": 9, "name": "François Drr", "number": 88, "position": "defender" },
-  { "id": 10, "name": "Pierre Hnr", "number": 69, "position": "striker" },
+  { "id": 10, "name": "Pierre Hnr", "number": 69, "position": "defender" },
   { "id": 11, "name": "Marcus Drg", "number": 92, "position": "defender" },
   { "id": 12, "name": "Sophiane Mlh", "number": 7, "position": "midfielder" },
   { "id": 13, "name": "Alexis Mcl", "number": 13, "position": "midfielder" },
@@ -20,11 +20,11 @@
   { "id": 19, "name": "Alix Rmd", "number": 93, "position": "midfielder" },
   { "id": 20, "name": "Léo Csg", "number": 27, "position": "striker" },
   { "id": 21, "name": "Naël Lts", "number": 66, "position": "midfielder" },
-  { "id": 22, "name": "Paul Vcn", "number": 22, "position": "midfielder" },
+  { "id": 22, "name": "Paul Vcn", "number": 22, "position": "striker" },
   { "id": 23, "name": "Yacine Imn", "number": 98, "position": "striker" },
   { "id": 24, "name": "François-Xavier Nre", "number": 99, "position": "midfielder" },
   { "id": 25, "name": "Fransisco Bmd", "number": 97, "position": "striker" },
   { "id": 26, "name": "Matteo Knt", "number": 6, "position": "midfielder" },
   { "id": 27, "name": "Dani Grc", "number": 3, "position": "defender" },
-  { "id": 28, "name": "Amir Blg", "number": 96, "position": "midfielder" }
+  { "id": 28, "name": "Amir Blg", "number": 96, "position": "striker" }
 ]
