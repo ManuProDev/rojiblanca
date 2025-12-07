@@ -142,23 +142,42 @@ function updateCharts(w, d, l, gf, ga) {
 
 
   barChart = new Chart(barCtx, {
-    type: "bar",
-    data: {
-      labels: ["Buts"],
-      datasets: [
-        { label: "Marqués", data: [gf], backgroundColor: "#fff", borderRadius: 6 },
-        { label: "Encaissés", data: [ga], backgroundColor: "#ff6b6b", borderRadius: 6 }
-      ]
-    },
-    options: {
-      scales: {
-        x: { ticks: { color: "#fff" } },
-        y: { ticks: { color: "#fff" } }
+  type: "bar",
+  data: {
+    labels: ["Buts"],
+    datasets: [
+      { 
+        label: "Marqués",
+        data: [gf],
+        backgroundColor: "#fff",
+        borderRadius: 6
       },
-      plugins: { legend: { labels: { color: "#fff" } } }
+      { 
+        label: "Encaissés",
+        data: [ga],
+        backgroundColor: "#00ff8c", /* VERT ✔ */
+        borderRadius: 6
+      }
+    ]
+  },
+  options: {
+    scales: {
+      x: { ticks: { color: "#fff" } },
+      y: { ticks: { color: "#fff" } }
+    },
+    plugins: {
+      legend: { labels: { color: "#fff" } },
+      datalabels: {
+        color: "#000",
+        anchor: "end",
+        align: "top",
+        font: { weight: "bold", size: 16 }
+      }
     }
-  });
-}
+  },
+  plugins: [ChartDataLabels]
+});
+
 
 function updatePodium() {
   const stats = {};
