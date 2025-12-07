@@ -623,6 +623,45 @@ body.stats-page main.main-content{
   padding-top: 80px;
 }
 
+/* === FILTERS === */
+
+.stats-filters {
+  width:100%;
+  max-width:1200px;
+  margin:10px auto 20px;
+  padding:0 20px;
+  display:flex;
+  gap:24px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.filter-group {
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.filter-group label {
+  font-size:14px;
+  font-weight:700;
+  color:#fff;
+}
+
+.stats-filters select {
+  padding:8px 12px;
+  border-radius:8px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.15);
+  color:#fff;
+  font-size:14px;
+  cursor:pointer;
+}
+.stats-filters select:hover {
+  background:rgba(255,255,255,0.12);
+}
+
+
 /* ========================================================= FOOTER ========================================================= */
 .footer {
     position: fixed;
