@@ -3,11 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <title>Statistiques — Rojiblanca FC</title>
+
+  <!-- style principal -->
   <link rel="stylesheet" href="css/style.css">
-  <!-- Chart.js CDN -->
+
+  <!-- Chart.js + datalabels (une seule fois chacun) -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
 </head>
 <body class="stats-page">
 
@@ -29,63 +31,65 @@
 
 <main class="main-content">
 
-  <!-- HEADER/TITLE -->
-  <section style="width:100%;max-width:1200px;margin:0 auto;padding:10px 20px;">
-    <h2 class="results-title">Statistiques</h2>
-    <!-- FILTERS -->
-    <div class="stats-filters">
+  <!-- TITRE + FILTRES -->
+  <section style="width:100%;max-width:1200px;margin:0 auto;padding:18px 20px 6px;">
+    <h2 class="results-title" style="margin-bottom:12px;">Statistiques</h2>
+
+    <!-- FILTERS (IDs utilisés par le JS) -->
+    <div class="stats-filters" style="margin-top:6px;">
       <div class="filter-group">
         <label>Équipe :</label>
         <select id="teamFilter">
-          <option value="all">Total</option>
+          <option value="total">Total</option>
           <option value="Rojiblanca 7">Rojiblanca 7</option>
           <option value="Rojiblanca 11">Rojiblanca 11</option>
         </select>
       </div>
-    
+
       <div class="filter-group">
         <label>Matchs :</label>
-        <select id="matchTypeFilter">
-          <option value="all">Total</option>
+        <select id="typeFilter">
+          <option value="total">Total</option>
           <option value="official">Officiels (League + Cup)</option>
-          <option value="league">Championnat (League)</option>
-          <option value="cup">Coupe (Cup)</option>
-          <option value="friendly">Amicaux (Friendly)</option>
+          <option value="League">Championnat (League)</option>
+          <option value="Cup">Coupe (Cup)</option>
+          <option value="Friendly">Amicaux (Friendly)</option>
         </select>
       </div>
     </div>
   </section>
 
-  <!-- SUMMARY CARDS -->
-  <section class="stats-summary" style="width:100%;max-width:1200px;margin:18px auto 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;padding:0 20px;">
-    <!-- JS injecte les cartes ici -->
+  <!-- SUMMARY CARDS (injection JS dans #stats-boxes) -->
+  <section style="width:100%;max-width:1200px;margin:12px auto 20px;padding:0 20px;">
+    <div id="stats-boxes" class="stats-summary" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;"></div>
   </section>
 
-  <!-- CHARTS + PODIUM -->
-  <section style="width:100%;max-width:1200px;margin:10px auto 40px;padding:0 20px;display:grid;grid-template-columns: 1fr 420px; gap:24px; align-items:start;">
-    <div class="charts-panel" style="background:transparent;">
-      <div style="display:flex;gap:18px;flex-wrap:wrap;">
-        <div style="flex:1;min-width:320px;background:transparent;padding:12px;">
-          <canvas id="pieWDL" height="260"></canvas>
-        </div>
-        <div style="flex:1;min-width:320px;background:transparent;padding:12px;">
-          <canvas id="barGoals" height="260"></canvas>
-        </div>
+  <!-- GRAPHIQUES + PODIUM -->
+  <section style="width:100%;max-width:1200px;margin:6px auto 30px;padding:0 20px;display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start;">
+
+    <div style="display:flex;flex-direction:column;gap:18px;">
+      <div style="background:transparent;padding:12px;">
+        <canvas id="resultsChart" height="220"></canvas>
+      </div>
+
+      <div style="background:transparent;padding:12px;">
+        <canvas id="goalsChart" height="220"></canvas>
       </div>
     </div>
 
-    <aside class="podium-panel" style="padding:12px;">
+    <aside style="padding:12px;">
       <div style="background:rgba(255,255,255,0.06);backdrop-filter:blur(8px);border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,0.08);">
         <h3 style="margin-bottom:8px;text-align:center;font-weight:800;">Podium (Buts + Passes)</h3>
         <div id="podium" style="display:flex;flex-direction:column;gap:12px;"></div>
       </div>
     </aside>
+
   </section>
 
-  <!-- PERSONAL STATS GRID -->
-  <section style="width:100%;max-width:1200px;margin:10px auto 120px;padding:0 20px;">
-    <h3 style="font-size:20px;margin-bottom:18px;text-transform:uppercase;">Statistiques personnelles</h3>
-    <div id="players-stats-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;"></div>
+  <!-- STATISTIQUES PERSONNELLES (cartes cliquables) -->
+  <section style="width:100%;max-width:1200px;margin:6px auto 140px;padding:0 20px;">
+    <h3 style="font-size:18px;margin-bottom:12px;text-transform:uppercase;">Statistiques personnelles</h3>
+    <div id="players-cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;"></div>
   </section>
 
 </main>
@@ -94,6 +98,7 @@
   <p>© Rojiblanca FC</p>
 </footer>
 
+<!-- ton JS de stats (doit correspondre aux IDs ci-dessus) -->
 <script src="js/stats.js"></script>
 </body>
 </html>
