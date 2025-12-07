@@ -631,10 +631,9 @@ body.stats-page main.main-content{
   margin:10px auto 20px;
   padding:0 20px;
   display:flex;
-  gap:20px;
+  gap:24px;
   align-items:center;
   flex-wrap:wrap;
-  margin-top: 20px;
 }
 
 .filter-group {
@@ -644,8 +643,8 @@ body.stats-page main.main-content{
 }
 
 .filter-group label {
-  font-size:16px;
-  font-weight:600;
+  font-size:14px;
+  font-weight:700;
   color:#fff;
 }
 
@@ -662,18 +661,6 @@ body.stats-page main.main-content{
   background:rgba(255,255,255,0.12);
 }
 
-.nice-select {
-  background: rgba(255,255,255,0.1);
-  color: white;
-  border: 1px solid rgba(255,255,255,0.25);
-  padding: 12px 14px;
-  font-size: 18px;
-  border-radius: 12px;
-  outline: none;
-  margin-top: 4px;
-  width: 100%;
-  backdrop-filter: blur(4px);
-}
 
 /* ========================================================= FOOTER ========================================================= */
 .footer {
