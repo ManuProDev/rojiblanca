@@ -1,49 +1,75 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Stats – Rojiblanca</title>
+  <meta charset="utf-8" />
+  <title>Statistiques — Rojiblanca FC</title>
   <link rel="stylesheet" href="css/style.css">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
-<body>
+<body class="stats-page">
 
-<header>
-  <h1>Rojiblanca FC</h1>
+<header class="header">
+  <div class="header-left">
+    <div class="logo">
+      <img src="images/logo.png" alt="Rojiblanca FC">
+      <span>Rojiblanca FC</span>
+    </div>
+
+    <nav class="nav-left">
+      <a href="index.html">Accueil</a>
+      <a href="team.html">Équipe</a>
+      <a href="results.html">Résultats</a>
+      <a href="stats.html" class="active">Statistiques</a>
+    </nav>
+  </div>
 </header>
 
-<div class="container">
-  <h2>Statistiques – Rojiblanca</h2>
+<main class="main-content">
 
-  <ul class="stats">
-    <li>Matchs joués : <strong id="played"></strong></li>
-    <li>Victoires : <strong id="wins"></strong></li>
-    <li>Nuls : <strong id="draws"></strong></li>
-    <li>Défaites : <strong id="losses"></strong></li>
-    <li>Buts marqués : <strong id="gf"></strong></li>
-    <li>Buts encaissés : <strong id="ga"></strong></li>
-  </ul>
-</div>
+  <!-- HEADER/TITLE -->
+  <section style="width:100%;max-width:1200px;margin:0 auto;padding:10px 20px;">
+    <h2 class="results-title">Statistiques</h2>
+  </section>
+
+  <!-- SUMMARY CARDS -->
+  <section class="stats-summary" style="width:100%;max-width:1200px;margin:18px auto 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;padding:0 20px;">
+    <!-- JS injecte les cartes ici -->
+  </section>
+
+  <!-- CHARTS + PODIUM -->
+  <section style="width:100%;max-width:1200px;margin:10px auto 40px;padding:0 20px;display:grid;grid-template-columns: 1fr 420px; gap:24px; align-items:start;">
+    <div class="charts-panel" style="background:transparent;">
+      <div style="display:flex;gap:18px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:320px;background:transparent;padding:12px;">
+          <canvas id="pieWDL" height="260"></canvas>
+        </div>
+        <div style="flex:1;min-width:320px;background:transparent;padding:12px;">
+          <canvas id="barGoals" height="260"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <aside class="podium-panel" style="padding:12px;">
+      <div style="background:rgba(255,255,255,0.06);backdrop-filter:blur(8px);border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,0.08);">
+        <h3 style="margin-bottom:8px;text-align:center;font-weight:800;">Podium (Buts + Passes)</h3>
+        <div id="podium" style="display:flex;flex-direction:column;gap:12px;"></div>
+      </div>
+    </aside>
+  </section>
+
+  <!-- PERSONAL STATS GRID -->
+  <section style="width:100%;max-width:1200px;margin:10px auto 120px;padding:0 20px;">
+    <h3 style="font-size:20px;margin-bottom:18px;text-transform:uppercase;">Statistiques personnelles</h3>
+    <div id="players-stats-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;"></div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>© Rojiblanca FC</p>
+</footer>
 
 <script src="js/stats.js"></script>
-
-<div class="container">
-  <h2>Présence des joueurs</h2>
-  <div id="attendance" class="cards"></div>
-</div>
-
-<script src="js/attendance.js"></script>
-
-<div class="container">
-  <h2>Classement offensif</h2>
-
-  <h3>⚽ Buteurs</h3>
-  <ul id="top-scorers"></ul>
-
-  <h3>🎯 Passeurs</h3>
-  <ul id="top-assists"></ul>
-</div>
-
-<script src="js/goals.js"></script>
-
 </body>
 </html>
