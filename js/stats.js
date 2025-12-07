@@ -1,242 +1,192 @@
-/* stats.js — version améliorée avec filtres dynamiques */
+// ----------------------------
+// GET DATA
+// ----------------------------
+async function loadData() {
+    const [matchs, goals, players] = await Promise.all([
+        fetch("data/matchs.json").then(r => r.json()),
+        fetch("data/goals.json").then(r => r.json()),
+        fetch("data/players.json").then(r => r.json())
+    ]);
 
-async function loadJsonRobust(path) {
-  const res = await fetch(path);
-  const text = await res.text();
-  try {
-    const parsed = JSON.parse(text);
-    if (Array.isArray(parsed)) return parsed;
-    if (typeof parsed === "object") return Object.values(parsed);
-  } catch {}
-  const lines = text.split(/\r?\n/).filter(Boolean);
-  const out = [];
-  for (const l of lines) try { out.push(JSON.parse(l)); } catch {}
-  return out;
+    return { matchs, goals, players };
 }
 
-function computeOutcome(match, clubPrefix) {
-  const isTeam1 = match.team1.includes(clubPrefix);
-  const res = (match.result || "").toLowerCase();
-  if (res === "draw") return "draw";
-  if (res === "win") return isTeam1 ? "win" : "loss";
-  if (res === "loss") return isTeam1 ? "loss" : "win";
-  return "draw";
+// ----------------------------
+// FILTERING
+// ----------------------------
+function filterMatchs(matchs, team, type) {
+    return matchs.filter(m => {
+        let teamOK = (team === "total") ||
+                     m.team1 === team || m.team2 === team;
+
+        let typeOK = true;
+
+        if (type === "official")  typeOK = m.type === "League" || m.type === "Cup";
+        if (type === "championship") typeOK = m.type === "League";
+        if (type === "cup") typeOK = m.type === "Cup";
+        if (type === "friendly") typeOK = m.type === "Friendly";
+
+        return teamOK && typeOK;
+    });
 }
 
-function computeGoals(match, clubPrefix) {
-  const isTeam1 = match.team1.includes(clubPrefix);
-  const gf = isTeam1 ? match.goals1 : match.goals2;
-  const ga = isTeam1 ? match.goals2 : match.goals1;
-  return { gf, ga };
+// ----------------------------
+// COMPUTE GLOBAL STATS
+// ----------------------------
+function computeStats(matchs, goals) {
+    const played = matchs.length;
+
+    const wins = matchs.filter(m => m.result === "Win").length;
+    const draws = matchs.filter(m => m.result === "Draw").length;
+    const losses = matchs.filter(m => m.result === "Loss").length;
+
+    const goalsFor = matchs.reduce((t, m) => t + m.goals1, 0);
+    const goalsAgainst = matchs.reduce((t, m) => t + m.goals2, 0);
+
+    const diff = goalsFor - goalsAgainst;
+
+    return {
+        played,
+        wins,
+        draws,
+        losses,
+        winRate: played ? Math.round((wins / played) * 100) : 0,
+        goalsFor,
+        goalsAgainst,
+        diff,
+        avgFor: played ? (goalsFor / played).toFixed(2) : 0,
+        avgAgainst: played ? (goalsAgainst / played).toFixed(2) : 0
+    };
 }
 
-let matches, goals, players;
-let pieChart, barChart;
-
-async function initStats() {
-  matches = await loadJsonRobust("data/matchs.json");
-  goals = await loadJsonRobust("data/goals.json");
-  players = await loadJsonRobust("data/players.json");
-
-  document.getElementById("teamFilter").addEventListener("change", updateStats);
-  document.getElementById("matchTypeFilter").addEventListener("change", updateStats);
-
-  updateStats();
+// ----------------------------
+// DISPLAY STAT CARDS
+// ----------------------------
+function displayCards(stats) {
+    const container = document.getElementById("statsCards");
+    container.innerHTML = `
+        <div class="stat-card"><h3>Matchs joués</h3><p>${stats.played}</p></div>
+        <div class="stat-card"><h3>Victoires</h3><p>${stats.wins} (${stats.winRate}%)</p></div>
+        <div class="stat-card"><h3>Nuls</h3><p>${stats.draws}</p></div>
+        <div class="stat-card"><h3>Défaites</h3><p>${stats.losses}</p></div>
+        <div class="stat-card"><h3>Buts marqués</h3><p>${stats.goalsFor} (moy. ${stats.avgFor})</p></div>
+        <div class="stat-card"><h3>Buts concédés</h3><p>${stats.goalsAgainst} (moy. ${stats.avgAgainst})</p></div>
+        <div class="stat-card"><h3>Différence</h3><p>${stats.diff}</p></div>
+        <div class="stat-card"><h3>Efficacité offensive</h3><p>${(stats.goalsFor / (stats.wins || 1)).toFixed(2)}</p></div>
+    `;
 }
 
-function filterMatches() {
-  const team = document.getElementById("teamFilter").value;
-  const type = document.getElementById("matchTypeFilter").value;
+// ----------------------------
+// CHARTS
+// ----------------------------
+let resultsChart;
+let goalsChart;
 
-  return matches.filter(m => {
-    const isR7 = m.team1 === "Rojiblanca 7" || m.team2 === "Rojiblanca 7";
-    const isR11 = m.team1 === "Rojiblanca 11" || m.team2 === "Rojiblanca 11";
+function displayCharts(stats) {
+    // Résultats
+    const ctx1 = document.getElementById("resultsChart").getContext("2d");
+    if (resultsChart) resultsChart.destroy();
 
-    if (team === "Rojiblanca 7" && !isR7) return false;
-    if (team === "Rojiblanca 11" && !isR11) return false;
-
-    if (type === "official" && !(m.type === "League" || m.type === "Cup")) return false;
-    if (type === "league" && m.type !== "League") return false;
-    if (type === "cup" && m.type !== "Cup") return false;
-    if (type === "friendly" && m.type !== "Friendly") return false;
-
-    return true;
-  });
-}
-
-function updateStats() {
-  const teamChoice = document.getElementById("teamFilter").value;
-  const clubPrefix = teamChoice === "all" ? "Rojiblanca" : teamChoice;
-
-  const ms = filterMatches().filter(m =>
-    m.team1.includes("Rojiblanca") || m.team2.includes("Rojiblanca")
-  );
-
-  ms.sort((a, b) => b.id - a.id);
-
-  const played = ms.length;
-  let wins = 0, draws = 0, losses = 0;
-  let gf = 0, ga = 0;
-
-  for (const m of ms) {
-    const o = computeOutcome(m, clubPrefix);
-    if (o === "win") wins++;
-    else if (o === "loss") losses++;
-    else draws++;
-
-    const g = computeGoals(m, clubPrefix);
-    gf += g.gf;
-    ga += g.ga;
-  }
-
-  const diff = gf - ga;
-
-  const summary = document.querySelector(".stats-summary");
-  summary.innerHTML = `
-    <div class="stat-card"><div class="kpi">${played}</div><div class="label">Matchs joués</div></div>
-    <div class="stat-card"><div class="kpi">${wins} (${played ? Math.round(wins/played*100) : 0}%)</div><div class="label">Victoires</div></div>
-    <div class="stat-card"><div class="kpi">${draws} (${played ? Math.round(draws/played*100) : 0}%)</div><div class="label">Nuls</div></div>
-    <div class="stat-card"><div class="kpi">${losses} (${played ? Math.round(losses/played*100) : 0}%)</div><div class="label">Défaites</div></div>
-    <div class="stat-card"><div class="kpi">${gf}</div><div class="label">Buts marqués</div></div>
-    <div class="stat-card"><div class="kpi">${ga}</div><div class="label">Buts encaissés</div></div>
-    <div class="stat-card"><div class="kpi">${diff}</div><div class="label">Différence</div></div>
-  `;
-
-  updateCharts(wins, draws, losses, gf, ga);
-  updatePodium();
-  updatePlayers();
-}
-
-function updateCharts(w, d, l, gf, ga) {
-  const pieCtx = document.getElementById("pieWDL").getContext("2d");
-  const barCtx = document.getElementById("barGoals").getContext("2d");
-
-  if (pieChart) pieChart.destroy();
-  if (barChart) barChart.destroy();
-
-  pieChart = new Chart(pieCtx, {
-  type: "doughnut",
-  data: {
-    labels: ["Victoires", "Nuls", "Défaites"],
-    datasets: [{
-      data: [w, d, l],
-      backgroundColor: ["#00ff8c", "#ffd966", "#ff6b6b"]
-    }]
-  },
-  options: {
-    plugins: {
-      legend: { labels: { color: "#fff" } },
-      datalabels: {
-        color: "#000",
-        font: { weight: "bold", size: 14 },
-        formatter: (value, ctx) => {
-          const total = w + d + l;
-          if (!total) return "0%";
-          return Math.round((value / total) * 100) + "%";
+    resultsChart = new Chart(ctx1, {
+        type: "doughnut",
+        data: {
+            labels: ["Victoires", "Nuls", "Défaites"],
+            datasets: [{
+                data: [stats.wins, stats.draws, stats.losses]
+            }]
         }
-      }
-    }
-  },
-  plugins: [ChartDataLabels]
-});
+    });
 
+    // Buts
+    const ctx2 = document.getElementById("goalsChart").getContext("2d");
+    if (goalsChart) goalsChart.destroy();
 
-  barChart = new Chart(barCtx, {
-  type: "bar",
-  data: {
-    labels: ["Buts"],
-    datasets: [
-      { 
-        label: "Marqués",
-        data: [gf],
-        backgroundColor: "#fff",
-        borderRadius: 6
-      },
-      { 
-        label: "Encaissés",
-        data: [ga],
-        backgroundColor: "#00ff8c", /* VERT ✔ */
-        borderRadius: 6
-      }
-    ]
-  },
-  options: {
-    scales: {
-      x: { ticks: { color: "#fff" } },
-      y: { ticks: { color: "#fff" } }
-    },
-    plugins: {
-      legend: { labels: { color: "#fff" } },
-      datalabels: {
-        color: "#000",
-        anchor: "end",
-        align: "top",
-        font: { weight: "bold", size: 16 }
-      }
-    }
-  },
-  plugins: [ChartDataLabels]
-});
-
-
-function updatePodium() {
-  const stats = {};
-
-  for (const p of players) {
-    stats[p.name] = { name: p.name, number: p.number, goals: 0, assists: 0 };
-  }
-
-  for (const g of goals) {
-    if (g.goal && stats[g.goal]) stats[g.goal].goals++;
-    if (g.assist && stats[g.assist]) stats[g.assist].assists++;
-  }
-
-  const arr = Object.values(stats).sort((a, b) =>
-    (b.goals + b.assists) - (a.goals + a.assists)
-  ).slice(0, 3);
-
-  const pod = document.getElementById("podium");
-  pod.innerHTML = "";
-
-  const medals = ["podium-1", "podium-2", "podium-3"];
-
-  arr.forEach((p, i) => {
-    pod.innerHTML += `
-      <div class="podium-item">
-        <div class="place ${medals[i]}">${i + 1}</div>
-        <div class="meta">${p.name} <div style="font-size:13px;opacity:0.8">#${p.number}</div></div>
-        <div class="score">${p.goals + p.assists}</div>
-      </div>`;
-  });
+    goalsChart = new Chart(ctx2, {
+        type: "bar",
+        data: {
+            labels: ["Marqués", "Concédés"],
+            datasets: [{
+                data: [stats.goalsFor, stats.goalsAgainst]
+            }]
+        }
+    });
 }
 
-function updatePlayers() {
-  const grid = document.getElementById("players-stats-grid");
-  const stats = {};
+// ----------------------------
+// PODIUM
+// ----------------------------
+function computePodium(goalsData) {
+    const map = new Map();
 
-  for (const p of players) {
-    stats[p.name] = { name: p.name, id: p.id, number: p.number, goals: 0, assists: 0 };
-  }
+    goalsData.forEach(g => {
+        const scorer = g.goal;
+        const assist = g.assist;
 
-  for (const g of goals) {
-    if (g.goal && stats[g.goal]) stats[g.goal].goals++;
-    if (g.assist && stats[g.assist]) stats[g.assist].assists++;
-  }
+        if (scorer) map.set(scorer, (map.get(scorer) || 0) + 1);
+        if (assist) map.set(assist, (map.get(assist) || 0) + 1);
+    });
 
-  grid.innerHTML = "";
-
-  Object.values(stats).forEach(p => {
-    const initials = p.name.split(" ").map(x => x[0]).join("").slice(0, 2).toUpperCase();
-    grid.innerHTML += `
-      <div class="player-stat-card" onclick="window.location='player.html?id=${p.id}'">
-        <div class="player-avatar">${initials}</div>
-        <div style="flex:1">
-          <div class="meta-small">${p.name} <span>#${p.number}</span></div>
-          <div class="meta-sub">Buts : ${p.goals} • Passes : ${p.assists}</div>
-        </div>
-        <div style="font-weight:900;color:#fff">${p.goals + p.assists}</div>
-      </div>`;
-  });
+    return [...map.entries()]
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 3);
 }
 
-initStats();
+function displayPodium(podium) {
+    const container = document.getElementById("podium");
+    container.innerHTML = "";
+
+    podium.forEach(([name, value], i) => {
+        container.innerHTML += `
+          <div class="podium-item place-${i + 1}">
+              <h3>${i + 1}.</h3>
+              <p>${name}</p>
+              <span>${value} pts</span>
+          </div>
+        `;
+    });
+}
+
+// ----------------------------
+// PLAYERS CARDS
+// ----------------------------
+function displayPlayers(players) {
+    const container = document.getElementById("playersList");
+    container.innerHTML = players
+        .map(p => `
+            <a href="player.html?id=${p.id}" class="player-card">
+                <h3>${p.name}</h3>
+                <p>#${p.number} – ${p.position}</p>
+            </a>
+        `)
+        .join("");
+}
+
+// ----------------------------
+// MAIN
+// ----------------------------
+async function main() {
+    const { matchs, goals, players } = await loadData();
+
+    function refresh() {
+        const team = document.getElementById("teamFilter").value;
+        const type = document.getElementById("typeFilter").value;
+
+        const filtered = filterMatchs(matchs, team, type);
+        const stats = computeStats(filtered, goals);
+
+        displayCards(stats);
+        displayCharts(stats);
+
+        const podium = computePodium(goals);
+        displayPodium(podium);
+
+        displayPlayers(players);
+    }
+
+    document.getElementById("teamFilter").addEventListener("change", refresh);
+    document.getElementById("typeFilter").addEventListener("change", refresh);
+
+    refresh();
+}
+
+main();
