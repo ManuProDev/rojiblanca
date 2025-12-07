@@ -38,6 +38,10 @@ body.team-page .player-section:first-of-type h3 {
     margin-top: 0px;
 }
 
+body.results-page main.main-content {
+    padding-top: 10px;
+}
+
 /* ========================================================= SCROLL PROGRESS BAR ========================================================= */
 .scroll-progress {
     position: fixed;
