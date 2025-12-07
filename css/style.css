@@ -528,6 +528,101 @@ main.main-content {
     }
 }
 
+/* ===== STATS PAGE ADDITIONS ===== */
+.stats-summary .stat-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 18px;
+  border-radius: 12px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  min-height:110px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+}
+
+.stat-card .kpi {
+  font-size:28px;
+  font-weight:800;
+  color:#fff;
+}
+
+.stat-card .label {
+  font-size:13px;
+  color: rgba(255,255,255,0.85);
+}
+
+/* podium */
+.podium-item {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:10px;
+  border-radius:10px;
+  background: rgba(0,0,0,0.25);
+  border:1px solid rgba(255,255,255,0.05);
+}
+.podium-item .place {
+  width:56px;
+  height:56px;
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  font-size:18px;
+  color:#111;
+}
+.podium-1 { background: linear-gradient(180deg,#ffd86b,#ffb84d); }
+.podium-2 { background: linear-gradient(180deg,#e6e6e6,#cfcfcf); }
+.podium-3 { background: linear-gradient(180deg,#d6a17a,#c58656); }
+
+.podium-item .meta { flex:1; color:#fff; font-weight:700; }
+.podium-item .score { font-size:18px; font-weight:900; color:#fff; }
+
+/* player stat cards (clickable) */
+.player-stat-card {
+  background: rgba(255,255,255,0.06);
+  border-radius:12px;
+  padding:12px;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  cursor:pointer;
+  border:1px solid rgba(255,255,255,0.06);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.player-stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 36px rgba(0,0,0,0.28);
+}
+
+/* avatar circle (initials) */
+.player-avatar {
+  width:64px;
+  height:64px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  color:#fff;
+  flex-shrink:0;
+  border:1px solid rgba(255,255,255,0.06);
+}
+
+/* small meta */
+.player-stat-card .meta-small { color: rgba(255,255,255,0.9); font-weight:700; }
+.player-stat-card .meta-sub { color: rgba(255,255,255,0.7); font-size:13px; }
+
+/* ensure main content has enough bottom padding on stats page */
+body.results-page main.main-content,
+body.stats-page main.main-content{
+  padding-bottom: 160px;
+  padding-top: 80px;
+}
+
 /* ========================================================= FOOTER ========================================================= */
 .footer {
     position: fixed;
