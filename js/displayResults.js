@@ -1,6 +1,7 @@
 async function loadResults() {
     const response = await fetch("data/matchs.json");
     const matches = await response.json();
+    matches.reverse();
 
     const categories = ["League", "Cup", "Friendly"];
 
