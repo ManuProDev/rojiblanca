@@ -426,6 +426,11 @@ main.main-content {
     font-weight: 800;
 }
 
+.results-row {
+    margin-bottom: 60px;
+    text-align: center;
+}
+
 .results-category {
     margin-bottom: 40px;
 }
@@ -436,6 +441,30 @@ main.main-content {
     margin-bottom: 18px;
     text-align: center;
     opacity: 0.9;
+}
+
+.category-title {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.results-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.results-list {
+    display: flex;
+    flex-direction: column;
+}
+.empty-card {
+    opacity: 0;
+    pointer-events: none;
 }
 
 /* ===== MATCH CARD ===== */
