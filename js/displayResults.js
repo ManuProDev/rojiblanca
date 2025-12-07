@@ -54,7 +54,7 @@ function createMatchCard(match) {
     if (match.result === "Draw") card.classList.add("draw");
 
     card.innerHTML = `
-        <div class="match-teams">${match.team1} vs ${match.team2}</div>
+        <div class="match-teams">${match.team1} - ${match.team2}</div>
         <div class="match-score">${match.goals1} - ${match.goals2}</div>
     `;
     return card;
