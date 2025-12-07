@@ -475,7 +475,7 @@ main.main-content {
 /* ===== MATCH CARD ===== */
 .match-card {
     background: rgba(255, 255, 255, 0.15);
-    padding: 24px;
+    padding: 26px 24px;
     border-radius: 16px;
     margin-bottom: 14px;
     backdrop-filter: blur(10px);
@@ -494,6 +494,9 @@ main.main-content {
 
 .match-teams {
     font-weight: 700;
+    flex: 1;
+    margin-right: 20px;
+    white-space: normal;
 }
 
 .match-score {
