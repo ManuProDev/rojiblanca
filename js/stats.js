@@ -1,245 +1,210 @@
-// ======================================================
-//         FICHIER STATS.JS — VERSION COMPLÈTE
-// ======================================================
+/* stats.js — version améliorée avec filtres dynamiques */
 
-// Plugins Chart.js
-Chart.register(ChartDataLabels);
-
-// Sélecteurs filtres
-const teamFilter = document.getElementById("teamFilter");
-const typeFilter = document.getElementById("typeFilter");
-
-// Conteneurs statistiques
-const statsBoxes = document.getElementById("stats-boxes");
-const podiumContainer = document.getElementById("podium");
-const playersCardsContainer = document.getElementById("players-cards");
-
-// Graphiques
-let resultsChart;
-let goalsChart;
-
-// ======================================================
-//            CHARGEMENT DES DONNÉES JSON
-// ======================================================
-
-async function loadData() {
-    const [players, teams, matches, attendance, goals] = await Promise.all([
-        fetch("data/players.json").then(r => r.json()),
-        fetch("data/teams.json").then(r => r.json()),
-        fetch("data/matchs.json").then(r => r.json()),
-        fetch("data/attendance.json").then(r => r.json()),
-        fetch("data/goals.json").then(r => r.json())
-    ]);
-
-    return { players, teams, matches, attendance, goals };
+async function loadJsonRobust(path) {
+  const res = await fetch(path);
+  const text = await res.text();
+  try {
+    const parsed = JSON.parse(text);
+    if (Array.isArray(parsed)) return parsed;
+    if (typeof parsed === "object") return Object.values(parsed);
+  } catch {}
+  const lines = text.split(/\r?\n/).filter(Boolean);
+  const out = [];
+  for (const l of lines) try { out.push(JSON.parse(l)); } catch {}
+  return out;
 }
 
-// ======================================================
-//              FILTRAGE DES MATCHS
-// ======================================================
-
-function filterMatches(matches, selectedTeam, selectedType) {
-    return matches.filter(m => {
-        const isTeamOK =
-            selectedTeam === "total" ||
-            m.team1.includes(selectedTeam.toString());
-
-        const isTypeOK =
-            selectedType === "total" ||
-            (selectedType === "official" && (m.type === "League" || m.type === "Cup")) ||
-            selectedType === m.type.toLowerCase();
-
-        return isTeamOK && isTypeOK;
-    });
+function computeOutcome(match, clubPrefix) {
+  const isTeam1 = match.team1.includes(clubPrefix);
+  const res = (match.result || "").toLowerCase();
+  if (res === "draw") return "draw";
+  if (res === "win") return isTeam1 ? "win" : "loss";
+  if (res === "loss") return isTeam1 ? "loss" : "win";
+  return "draw";
 }
 
-// ======================================================
-//       CALCUL DES STATISTIQUES GLOBALES
-// ======================================================
-
-function computeStats(matches, goals) {
-    const matchCount = matches.length;
-
-    const wins = matches.filter(m => m.result === "Win").length;
-    const draws = matches.filter(m => m.result === "Draw").length;
-    const losses = matches.filter(m => m.result === "Loss").length;
-
-    const goalsFor = matches.reduce((sum, m) => sum + m.goals1, 0);
-    const goalsAgainst = matches.reduce((sum, m) => sum + m.goals2, 0);
-    const goalDiff = goalsFor - goalsAgainst;
-
-    const avgGoalsFor = matchCount ? (goalsFor / matchCount).toFixed(1) : 0;
-    const avgGoalsAgainst = matchCount ? (goalsAgainst / matchCount).toFixed(1) : 0;
-
-    // Stat avancée : Performance globale
-    const totalGoals = goals.filter(g => !g.ag).length;
-    const totalAssists = goals.filter(g => g.assist && g.assist !== "").length;
-    const performanceRate = matchCount ? (((totalGoals + totalAssists) / matchCount) * 100).toFixed(1) : 0;
-
-    return {
-        matchCount,
-        wins, draws, losses,
-        goalsFor, goalsAgainst, goalDiff,
-        avgGoalsFor, avgGoalsAgainst,
-        performanceRate,
-        totalGoals, totalAssists
-    };
+function computeGoals(match, clubPrefix) {
+  const isTeam1 = match.team1.includes(clubPrefix);
+  const gf = isTeam1 ? match.goals1 : match.goals2;
+  const ga = isTeam1 ? match.goals2 : match.goals1;
+  return { gf, ga };
 }
 
-// ======================================================
-//       AFFICHAGE DES 8 STATISTIQUES
-// ======================================================
+let matches, goals, players;
+let pieChart, barChart;
 
-function renderStats(stats) {
-    statsBoxes.innerHTML = `
-        <div class="stat-box"><h3>Matchs joués</h3><p>${stats.matchCount}</p></div>
-        <div class="stat-box"><h3>Victoires</h3><p>${stats.wins} (${((stats.wins / stats.matchCount) * 100 || 0).toFixed(1)}%)</p></div>
-        <div class="stat-box"><h3>Nuls</h3><p>${stats.draws} (${((stats.draws / stats.matchCount) * 100 || 0).toFixed(1)}%)</p></div>
-        <div class="stat-box"><h3>Défaites</h3><p>${stats.losses} (${((stats.losses / stats.matchCount) * 100 || 0).toFixed(1)}%)</p></div>
+async function initStats() {
+  matches = await loadJsonRobust("data/matchs.json");
+  goals = await loadJsonRobust("data/goals.json");
+  players = await loadJsonRobust("data/players.json");
 
-        <div class="stat-box"><h3>Buts marqués</h3><p>${stats.goalsFor} (moy. ${stats.avgGoalsFor})</p></div>
-        <div class="stat-box"><h3>Buts concédés</h3><p>${stats.goalsAgainst} (moy. ${stats.avgGoalsAgainst})</p></div>
-        <div class="stat-box"><h3>Différence</h3><p>${stats.goalDiff}</p></div>
+  document.getElementById("teamFilter").addEventListener("change", updateStats);
+  document.getElementById("matchTypeFilter").addEventListener("change", updateStats);
 
-        <div class="stat-box premium"><h3>Performance globale</h3><p>${stats.performanceRate}%</p></div>
-    `;
+  updateStats();
 }
 
-// ======================================================
-//          GRAPHIQUES CHART.JS
-// ======================================================
+function filterMatches() {
+  const team = document.getElementById("teamFilter").value;
+  const type = document.getElementById("matchTypeFilter").value;
 
-function renderCharts(stats) {
+  return matches.filter(m => {
+    const isR7 = m.team1 === "Rojiblanca 7" || m.team2 === "Rojiblanca 7";
+    const isR11 = m.team1 === "Rojiblanca 11" || m.team2 === "Rojiblanca 11";
 
-    // —————————————— Résultats ——————————————
-    const ctx1 = document.getElementById("resultsChart");
+    if (team === "Rojiblanca 7" && !isR7) return false;
+    if (team === "Rojiblanca 11" && !isR11) return false;
 
-    if (resultsChart) resultsChart.destroy();
+    if (type === "official" && !(m.type === "League" || m.type === "Cup")) return false;
+    if (type === "league" && m.type !== "League") return false;
+    if (type === "cup" && m.type !== "Cup") return false;
+    if (type === "friendly" && m.type !== "Friendly") return false;
 
-    resultsChart = new Chart(ctx1, {
-        type: "bar",
-        data: {
-            labels: ["Victoires", "Nuls", "Défaites"],
-            datasets: [{
-                data: [stats.wins, stats.draws, stats.losses],
-                backgroundColor: ["#00ff00", "#ffffff", "#ff0000"]
-            }]
-        },
-        options: {
-            plugins: {
-                datalabels: {
-                    color: "#fff",
-                    font: { weight: "bold", size: 14 },
-                    anchor: "end",
-                    align: "top"
-                }
-            },
-            scales: { y: { ticks: { color: "#fff" } }, x: { ticks: { color: "#fff" } } }
-        }
-    });
-
-    // —————————————— Buts ——————————————
-    const ctx2 = document.getElementById("goalsChart");
-
-    if (goalsChart) goalsChart.destroy();
-
-    goalsChart = new Chart(ctx2, {
-        type: "bar",
-        data: {
-            labels: ["Marqués", "Concédés"],
-            datasets: [{
-                data: [stats.goalsFor, stats.goalsAgainst],
-                backgroundColor: ["#00dd00", "#dd0000"]
-            }]
-        },
-        options: {
-            plugins: {
-                datalabels: {
-                    color: "#fff",
-                    font: { weight: "bold", size: 14 },
-                    anchor: "end",
-                    align: "top"
-                }
-            },
-            scales: { y: { ticks: { color: "#fff" } }, x: { ticks: { color: "#fff" } } }
-        }
-    });
+    return true;
+  });
 }
 
-// ======================================================
-//        PODIUM (top 3 buts + passes)
-// ======================================================
+function updateStats() {
+  const teamChoice = document.getElementById("teamFilter").value;
+  const clubPrefix = teamChoice === "all" ? "Rojiblanca" : teamChoice;
 
-function renderPodium(players, goals) {
-    const contributions = {};
+  const ms = filterMatches().filter(m =>
+    m.team1.includes("Rojiblanca") || m.team2.includes("Rojiblanca")
+  );
 
-    players.forEach(p => {
-        contributions[p.name] = 0;
-    });
+  ms.sort((a, b) => b.id - a.id);
 
-    goals.forEach(g => {
-        if (!g.ag) contributions[g.goal] = (contributions[g.goal] || 0) + 1;
-        if (g.assist) contributions[g.assist] = (contributions[g.assist] || 0) + 1;
-    });
+  const played = ms.length;
+  let wins = 0, draws = 0, losses = 0;
+  let gf = 0, ga = 0;
 
-    const ranking = Object.entries(contributions)
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 3);
+  for (const m of ms) {
+    const o = computeOutcome(m, clubPrefix);
+    if (o === "win") wins++;
+    else if (o === "loss") losses++;
+    else draws++;
 
-    podiumContainer.innerHTML = "";
+    const g = computeGoals(m, clubPrefix);
+    gf += g.gf;
+    ga += g.ga;
+  }
 
-    ranking.forEach((entry, index) => {
-        podiumContainer.innerHTML += `
-            <div class="podium-item place-${index + 1}">
-                <h3>${entry[0]}</h3>
-                <p>${entry[1]} contributions</p>
-            </div>
-        `;
-    });
+  const diff = gf - ga;
+
+  const summary = document.querySelector(".stats-summary");
+  summary.innerHTML = `
+    <div class="stat-card"><div class="kpi">${played}</div><div class="label">Matchs joués</div></div>
+    <div class="stat-card"><div class="kpi">${wins} (${played ? Math.round(wins/played*100) : 0}%)</div><div class="label">Victoires</div></div>
+    <div class="stat-card"><div class="kpi">${draws} (${played ? Math.round(draws/played*100) : 0}%)</div><div class="label">Nuls</div></div>
+    <div class="stat-card"><div class="kpi">${losses} (${played ? Math.round(losses/played*100) : 0}%)</div><div class="label">Défaites</div></div>
+    <div class="stat-card"><div class="kpi">${gf}</div><div class="label">Buts marqués</div></div>
+    <div class="stat-card"><div class="kpi">${ga}</div><div class="label">Buts encaissés</div></div>
+    <div class="stat-card"><div class="kpi">${diff}</div><div class="label">Différence</div></div>
+  `;
+
+  updateCharts(wins, draws, losses, gf, ga);
+  updatePodium();
+  updatePlayers();
 }
 
-// ======================================================
-//   AFFICHAGE DES CARTES DE JOUEURS POUR REDIRECTION
-// ======================================================
+function updateCharts(w, d, l, gf, ga) {
+  const pieCtx = document.getElementById("pieWDL").getContext("2d");
+  const barCtx = document.getElementById("barGoals").getContext("2d");
 
-function renderPlayerCards(players) {
-    playersCardsContainer.innerHTML = "";
+  if (pieChart) pieChart.destroy();
+  if (barChart) barChart.destroy();
 
-    players.forEach(p => {
-        playersCardsContainer.innerHTML += `
-            <div class="player-card" onclick="window.location='player.html?id=${p.id}'">
-                <h3>${p.name}</h3>
-                <p>#${p.number}</p>
-            </div>
-        `;
-    });
-}
-
-// ======================================================
-//              LANCEMENT PRINCIPAL
-// ======================================================
-
-async function init() {
-    const data = await loadData();
-
-    // Tri des matchs : du plus récent au plus ancien
-    data.matches.sort((a, b) => b.id - a.id);
-
-    function refresh() {
-        const filtered = filterMatches(data.matches, teamFilter.value, typeFilter.value);
-
-        const stats = computeStats(filtered, data.goals);
-
-        renderStats(stats);
-        renderCharts(stats);
-        renderPodium(data.players, data.goals);
-        renderPlayerCards(data.players);
+  pieChart = new Chart(pieCtx, {
+    type: "doughnut",
+    data: {
+      labels: ["Victoires", "Nuls", "Défaites"],
+      datasets: [{
+        data: [w, d, l],
+        backgroundColor: ["#00ff8c", "#ffd966", "#ff6b6b"]
+      }]
+    },
+    options: {
+      plugins: { legend: { labels: { color: "#fff" } } }
     }
+  });
 
-    refresh();
-
-    teamFilter.addEventListener("change", refresh);
-    typeFilter.addEventListener("change", refresh);
+  barChart = new Chart(barCtx, {
+    type: "bar",
+    data: {
+      labels: ["Buts"],
+      datasets: [
+        { label: "Marqués", data: [gf], backgroundColor: "#fff", borderRadius: 6 },
+        { label: "Encaissés", data: [ga], backgroundColor: "#ff6b6b", borderRadius: 6 }
+      ]
+    },
+    options: {
+      scales: {
+        x: { ticks: { color: "#fff" } },
+        y: { ticks: { color: "#fff" } }
+      },
+      plugins: { legend: { labels: { color: "#fff" } } }
+    }
+  });
 }
 
-init();
+function updatePodium() {
+  const stats = {};
+
+  for (const p of players) {
+    stats[p.name] = { name: p.name, number: p.number, goals: 0, assists: 0 };
+  }
+
+  for (const g of goals) {
+    if (g.goal && stats[g.goal]) stats[g.goal].goals++;
+    if (g.assist && stats[g.assist]) stats[g.assist].assists++;
+  }
+
+  const arr = Object.values(stats).sort((a, b) =>
+    (b.goals + b.assists) - (a.goals + a.assists)
+  ).slice(0, 3);
+
+  const pod = document.getElementById("podium");
+  pod.innerHTML = "";
+
+  const medals = ["podium-1", "podium-2", "podium-3"];
+
+  arr.forEach((p, i) => {
+    pod.innerHTML += `
+      <div class="podium-item">
+        <div class="place ${medals[i]}">${i + 1}</div>
+        <div class="meta">${p.name} <div style="font-size:13px;opacity:0.8">#${p.number}</div></div>
+        <div class="score">${p.goals + p.assists}</div>
+      </div>`;
+  });
+}
+
+function updatePlayers() {
+  const grid = document.getElementById("players-stats-grid");
+  const stats = {};
+
+  for (const p of players) {
+    stats[p.name] = { name: p.name, id: p.id, number: p.number, goals: 0, assists: 0 };
+  }
+
+  for (const g of goals) {
+    if (g.goal && stats[g.goal]) stats[g.goal].goals++;
+    if (g.assist && stats[g.assist]) stats[g.assist].assists++;
+  }
+
+  grid.innerHTML = "";
+
+  Object.values(stats).forEach(p => {
+    const initials = p.name.split(" ").map(x => x[0]).join("").slice(0, 2).toUpperCase();
+    grid.innerHTML += `
+      <div class="player-stat-card" onclick="window.location='player.html?id=${p.id}'">
+        <div class="player-avatar">${initials}</div>
+        <div style="flex:1">
+          <div class="meta-small">${p.name} <span>#${p.number}</span></div>
+          <div class="meta-sub">Buts : ${p.goals} • Passes : ${p.assists}</div>
+        </div>
+        <div style="font-weight:900;color:#fff">${p.goals + p.assists}</div>
+      </div>`;
+  });
+}
+
+initStats();
