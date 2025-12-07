@@ -30,6 +30,28 @@
   <!-- HEADER/TITLE -->
   <section style="width:100%;max-width:1200px;margin:0 auto;padding:10px 20px;">
     <h2 class="results-title">Statistiques</h2>
+    <!-- FILTERS -->
+    <div class="stats-filters">
+      <div class="filter-group">
+        <label>Équipe :</label>
+        <select id="teamFilter">
+          <option value="all">Total</option>
+          <option value="Rojiblanca 7">Rojiblanca 7</option>
+          <option value="Rojiblanca 11">Rojiblanca 11</option>
+        </select>
+      </div>
+    
+      <div class="filter-group">
+        <label>Matchs :</label>
+        <select id="matchTypeFilter">
+          <option value="all">Total</option>
+          <option value="official">Officiels (League + Cup)</option>
+          <option value="league">Championnat (League)</option>
+          <option value="cup">Coupe (Cup)</option>
+          <option value="friendly">Amicaux (Friendly)</option>
+        </select>
+      </div>
+    </div>
   </section>
 
   <!-- SUMMARY CARDS -->
