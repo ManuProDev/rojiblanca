@@ -115,18 +115,31 @@ function updateCharts(w, d, l, gf, ga) {
   if (barChart) barChart.destroy();
 
   pieChart = new Chart(pieCtx, {
-    type: "doughnut",
-    data: {
-      labels: ["Victoires", "Nuls", "Défaites"],
-      datasets: [{
-        data: [w, d, l],
-        backgroundColor: ["#00ff8c", "#ffd966", "#ff6b6b"]
-      }]
-    },
-    options: {
-      plugins: { legend: { labels: { color: "#fff" } } }
+  type: "doughnut",
+  data: {
+    labels: ["Victoires", "Nuls", "Défaites"],
+    datasets: [{
+      data: [w, d, l],
+      backgroundColor: ["#00ff8c", "#ffd966", "#ff6b6b"]
+    }]
+  },
+  options: {
+    plugins: {
+      legend: { labels: { color: "#fff" } },
+      datalabels: {
+        color: "#000",
+        font: { weight: "bold", size: 14 },
+        formatter: (value, ctx) => {
+          const total = w + d + l;
+          if (!total) return "0%";
+          return Math.round((value / total) * 100) + "%";
+        }
+      }
     }
-  });
+  },
+  plugins: [ChartDataLabels]
+});
+
 
   barChart = new Chart(barCtx, {
     type: "bar",
