@@ -475,7 +475,7 @@ main.main-content {
 /* ===== MATCH CARD ===== */
 .match-card {
     background: rgba(255, 255, 255, 0.15);
-    padding: 20px;
+    padding: 24px;
     border-radius: 16px;
     margin-bottom: 14px;
     backdrop-filter: blur(10px);
