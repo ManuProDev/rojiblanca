@@ -1,41 +1,69 @@
 async function loadResults() {
-    const response = await fetch("data/matchs.json");
-    const matchs = await response.json();
+    const response = await fetch("/data/matchs.json");
+    const matches = await response.json();
 
-    const columns = {
-        "Rojiblanca 7": {
-            League: document.querySelector("#seven-league .results-list"),
-            Cup: document.querySelector("#seven-cup .results-list"),
-            Friendly: document.querySelector("#seven-friendly .results-list")
+    const categories = ["League", "Cup", "Friendly"];
+
+    const pairs = {
+        League: {
+            seven: document.querySelector("#league-pair .seven-list"),
+            eleven: document.querySelector("#league-pair .eleven-list")
         },
-        "Rojiblanca 11": {
-            League: document.querySelector("#eleven-league .results-list"),
-            Cup: document.querySelector("#eleven-cup .results-list"),
-            Friendly: document.querySelector("#eleven-friendly .results-list")
+        Cup: {
+            seven: document.querySelector("#cup-pair .seven-list"),
+            eleven: document.querySelector("#cup-pair .eleven-list")
+        },
+        Friendly: {
+            seven: document.querySelector("#friendly-pair .seven-list"),
+            eleven: document.querySelector("#friendly-pair .eleven-list")
         }
     };
 
-    matchs.forEach(match => {
-        const team = match.team1.includes("7") ? "Rojiblanca 7" : "Rojiblanca 11";
-        const category = match.type; // League / Cup / Friendly
+    categories.forEach(cat => {
+        const sevenMatches = matches.filter(m => m.team1.includes("7") && m.type === cat);
+        const elevenMatches = matches.filter(m => m.team1.includes("11") && m.type === cat);
 
-        const container = columns[team][category];
-        if (!container) return;
+        const max = Math.max(sevenMatches.length, elevenMatches.length);
 
-        const card = document.createElement("div");
-        card.classList.add("match-card");
+        for (let i = 0; i < max; i++) {
 
-        if (match.result === "Win") card.classList.add("win");
-        if (match.result === "Loss") card.classList.add("loss");
-        if (match.result === "Draw") card.classList.add("draw");
+            // Colonne 7
+            if (sevenMatches[i]) {
+                pairs[cat].seven.appendChild(createMatchCard(sevenMatches[i]));
+            } else {
+                pairs[cat].seven.appendChild(createEmptyCard());
+            }
 
-        card.innerHTML = `
-            <div class="match-teams">${match.team1} vs ${match.team2}</div>
-            <div class="match-score">${match.goals1} - ${match.goals2}</div>
-        `;
-
-        container.appendChild(card);
+            // Colonne 11
+            if (elevenMatches[i]) {
+                pairs[cat].eleven.appendChild(createMatchCard(elevenMatches[i]));
+            } else {
+                pairs[cat].eleven.appendChild(createEmptyCard());
+            }
+        }
     });
+}
+
+function createMatchCard(match) {
+    const card = document.createElement("div");
+    card.classList.add("match-card");
+
+    if (match.result === "Win") card.classList.add("win");
+    if (match.result === "Loss") card.classList.add("loss");
+    if (match.result === "Draw") card.classList.add("draw");
+
+    card.innerHTML = `
+        <div class="match-teams">${match.team1} vs ${match.team2}</div>
+        <div class="match-score">${match.goals1} - ${match.goals2}</div>
+    `;
+    return card;
+}
+
+function createEmptyCard() {
+    const card = document.createElement("div");
+    card.classList.add("match-card", "empty-card");
+    card.innerHTML = "&nbsp;";
+    return card;
 }
 
 loadResults();
