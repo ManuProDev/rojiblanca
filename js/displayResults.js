@@ -1,5 +1,5 @@
 async function loadResults() {
-    const response = await fetch("../data/matchs.json");
+    const response = await fetch("/data/matchs.json");
     const matchs = await response.json();
 
     const columns = {
