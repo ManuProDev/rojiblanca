@@ -1,3 +1,4 @@
+Chart.register(ChartDataLabels);
 /* stats.js — version améliorée avec filtres dynamiques */
 
 async function loadJsonRobust(path) {
@@ -115,6 +116,18 @@ function updateCharts(w, d, l, gf, ga) {
   if (barChart) barChart.destroy();
 
   pieChart = new Chart(pieCtx, {
+    plugins: {
+    datalabels: {
+        color: "#fff",
+        anchor: "end",
+        align: "top",
+        font: {
+            weight: "bold",
+            size: 14
+        },
+        formatter: (value) => value
+    }
+}
     type: "doughnut",
     data: {
       labels: ["Victoires", "Nuls", "Défaites"],
@@ -129,6 +142,18 @@ function updateCharts(w, d, l, gf, ga) {
   });
 
   barChart = new Chart(barCtx, {
+    plugins: {
+    datalabels: {
+        color: "#fff",
+        anchor: "end",
+        align: "top",
+        font: {
+            weight: "bold",
+            size: 14
+        },
+        formatter: (value) => value
+    }
+}
     type: "bar",
     data: {
       labels: ["Buts"],
