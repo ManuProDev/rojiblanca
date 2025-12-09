@@ -1,0 +1,88 @@
+/* 
+    --- EXTENSION MOBILE-ONLY ---
+    Améliore l'affichage mobile
+*/
+
+@media (max-width: 600px) {
+
+    /* ----- Layout global ----- */
+    body {
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    .title {
+        font-size: 1.4rem !important;
+        margin: 15px 0 !important;
+        text-align: center;
+    }
+
+    /* ----- Header / Navigation ----- */
+    header {
+        padding: 12px !important;
+        text-align: center;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 8px !important;
+        margin-top: 10px;
+    }
+
+    nav a {
+        padding: 6px 10px !important;
+        font-size: 0.9rem !important;
+    }
+
+    /* ----- Cartes (sans casser ton design existant) ----- */
+    .cards {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 12px !important;
+    }
+
+    .card {
+        padding: 12px !important;
+        border-radius: 12px !important;
+    }
+
+    .card img {
+        max-width: 110px !important;
+        margin: auto;
+    }
+
+    /* ----- Textes dans les cartes ----- */
+    .card h3, 
+    .card h4 {
+        font-size: 1rem !important;
+        margin: 8px 0 !important;
+    }
+
+    .card p {
+        font-size: 0.9rem !important;
+    }
+
+    /* ----- Tables (stats/resultats) ----- */
+    table {
+        font-size: 0.85rem !important;
+    }
+
+    table td, 
+    table th {
+        padding: 6px !important;
+    }
+
+    /* ----- Images joueurs ----- */
+    .player-photo,
+    .team-logo {
+        max-width: 120px !important;
+        width: 70% !important;
+        margin: 0 auto 15px !important;
+        display: block !important;
+    }
+
+    /* ----- Sections ----- */
+    section {
+        padding: 10px !important;
+    }
+}
