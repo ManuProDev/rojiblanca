@@ -1,4 +1,4 @@
-/* player.js — fiche joueur individuelle */
+/* player.js — fiche joueur basée sur stats.js */
 
 async function loadJsonRobust(path) {
   const res = await fetch(path);
@@ -28,14 +28,7 @@ function computeOutcome(match, clubPrefix) {
   return "draw";
 }
 
-function computeGoals(match, clubPrefix) {
-  const isTeam1 = match.team1.includes(clubPrefix);
-  const gf = isTeam1 ? match.goals1 : match.goals2;
-  const ga = isTeam1 ? match.goals2 : match.goals1;
-  return { gf, ga };
-}
-
-let matches = [], goals = [], players = [], attendance = [];
+let players = [], matches = [], goals = [], attendance = [];
 let pieChart = null;
 let currentPlayer = null;
 
@@ -96,10 +89,9 @@ function gatherPlayerMatches(teamFilter, matchTypeFilter) {
 function countWDLForMatches(ms) {
   let w = 0, d = 0, l = 0;
   for (const m of ms) {
-    let clubPrefix = null;
-    if (m.team1 && m.team1.includes("Rojiblanca")) clubPrefix = m.team1;
-    else if (m.team2 && m.team2.includes("Rojiblanca")) clubPrefix = m.team2;
-    const o = computeOutcome(m, clubPrefix || "Rojiblanca");
+    let clubPrefix = m.team1.includes("Rojiblanca") ? m.team1 :
+                     m.team2.includes("Rojiblanca") ? m.team2 : "Rojiblanca";
+    const o = computeOutcome(m, clubPrefix);
     if (o === "win") w++;
     else if (o === "loss") l++;
     else d++;
@@ -118,7 +110,6 @@ function countGoalsAssists(ms) {
   return { goalsCount, assistsCount };
 }
 
-// Calcule des rangs correctement
 function computeRanks(ms) {
   const matchIds = new Set(ms.map(m => m.id));
   const stats = {};
@@ -221,5 +212,4 @@ function updateAll() {
   updateChart(wdl.w, wdl.d, wdl.l);
 }
 
-// boot
 initPlayerPage();
