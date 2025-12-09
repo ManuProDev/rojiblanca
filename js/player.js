@@ -1,4 +1,4 @@
-/* player.js — calcul correct avec présence et filtres */
+/* player.js — version complète et cohérente avec stats.js */
 
 async function loadJsonRobust(path) {
   const res = await fetch(path);
@@ -14,6 +14,7 @@ async function loadJsonRobust(path) {
   return out;
 }
 
+// Récupérer l'id du joueur dans l'URL
 function getPlayerId() {
   return Number(new URLSearchParams(window.location.search).get("id"));
 }
@@ -30,10 +31,11 @@ async function initPlayerPage() {
   const player = players.find(p => p.id === id);
   if (!player) return;
 
-  const teamFilter = document.getElementById("teamFilter").value;
-  const typeFilter = document.getElementById("matchTypeFilter").value;
+  // Valeurs par défaut pour filtrer équipe et type de match
+  const teamFilter = document.getElementById("teamFilter")?.value || "all";
+  const typeFilter = document.getElementById("matchTypeFilter")?.value || "all";
 
-  // Filtrer les matchs par équipe et type
+  // Filtrer les matchs selon équipe et type
   let filteredMatches = matches.filter(m => {
     const teamMatch = teamFilter === "all" || m.team1 === teamFilter || m.team2 === teamFilter;
     const typeMatch =
@@ -50,7 +52,7 @@ async function initPlayerPage() {
   const playerMatchIds = new Set(playerAttendance.map(a => a.matchId));
   filteredMatches = filteredMatches.filter(m => playerMatchIds.has(m.id));
 
-  // Compter buts et passes
+  // Calculer buts, passes et total pour ce joueur
   let goalsCount = 0;
   let assistsCount = 0;
   for (const g of goals) {
@@ -59,7 +61,7 @@ async function initPlayerPage() {
     if (g.assist === player.name) assistsCount++;
   }
 
-  // Calcul des rangs sur le même ensemble de matchs
+  // Calculer les stats de tous les joueurs pour déterminer les rangs
   const stats = {};
   for (const p of players) stats[p.name] = { goals: 0, assists: 0, total: 0 };
   for (const g of goals) {
@@ -69,6 +71,7 @@ async function initPlayerPage() {
   }
   for (const name in stats) stats[name].total = stats[name].goals + stats[name].assists;
 
+  // Fonction pour calculer le rang (ordre décroissant)
   function computeRank(array, key1, key2) {
     const sorted = [...array].sort((a,b) => b[key1]-a[key1] || b[key2]-a[key2]);
     const ranks = {};
@@ -95,4 +98,5 @@ async function initPlayerPage() {
   document.getElementById("rankTotal").textContent = tRank;
 }
 
+// Initialisation de la page
 initPlayerPage();
