@@ -1,10 +1,4 @@
-/* player.js — fiche joueur
-   - Récupère id via ?id=NN
-   - Charge players, matchs, goals, attendance
-   - Applique filtres (teamFilter, matchTypeFilter)
-   - Calcule : matchs joués, W/D/L, buts, passes, moyennes, rangs
-   - Met à jour DOM et Chart.js (doughnut)
-*/
+/* player.js — fiche joueur */
 
 async function loadJsonRobust(path) {
   const res = await fetch(path);
@@ -117,45 +111,43 @@ function countGoalsAssists(ms) {
   return {goalsCount, assistsCount};
 }
 
-// --- nouveau calcul des rangs corrigé ---
+// --- calcul correct des rangs ---
 function computeRanksWithinFiltered(ms) {
   const matchIds = new Set(ms.map(m => m.id));
   const stats = {};
-  for (const p of players) stats[p.name] = {goals:0, assists:0};
+  for (const p of players) stats[p.name] = {goals:0, assists:0, total:0};
+
   for (const g of goals) {
     if (!matchIds.has(g.matchId)) continue;
     if (g.goal && stats[g.goal] !== undefined) stats[g.goal].goals++;
     if (g.assist && stats[g.assist] !== undefined) stats[g.assist].assists++;
   }
-  const named = players.map(p => ({
-    name: p.name,
-    goals: stats[p.name].goals,
-    assists: stats[p.name].assists,
-    total: stats[p.name].goals + stats[p.name].assists
-  }));
 
-  function rankBy(array, key1, key2) {
+  for (const name in stats) {
+    stats[name].total = stats[name].goals + stats[name].assists;
+  }
+
+  function rank(array, key1, key2) {
     const sorted = [...array].sort((a,b)=> b[key1]-a[key1] || b[key2]-a[key2]);
     const ranks = {};
-    let rank = 1;
+    let rankValue = 1;
     for (let i=0;i<sorted.length;i++) {
-      if(i>0 && (sorted[i][key1]!==sorted[i-1][key1] || sorted[i][key2]!==sorted[i-1][key2])) rank=i+1;
-      ranks[sorted[i].name]=rank;
+      if(i>0 && (sorted[i][key1]!==sorted[i-1][key1] || sorted[i][key2]!==sorted[i-1][key2])) rankValue=i+1;
+      ranks[sorted[i].name] = rankValue;
     }
     return ranks;
   }
 
-  const goalsRanks = rankBy(named,'goals','assists');
-  const assistsRanks = rankBy(named,'assists','goals');
-  const totalRanks = rankBy(named,'total','goals');
+  const named = Object.keys(stats).map(name=>({name, ...stats[name]}));
+
+  const goalsRanks = rank(named,'goals','assists');
+  const assistsRanks = rank(named,'assists','goals');
+  const totalRanks = rank(named,'total','goals');
 
   return {
     gRank: goalsRanks[currentPlayer.name] || '-',
     aRank: assistsRanks[currentPlayer.name] || '-',
-    tRank: totalRanks[currentPlayer.name] || '-',
-    byGoals: named.sort((a,b)=> b.goals-a.goals || b.assists-a.assists),
-    byAssists: named.sort((a,b)=> b.assists-a.assists || b.goals-a.goals),
-    byTotal: named.sort((a,b)=> b.total-a.total || b.goals-a.goals)
+    tRank: totalRanks[currentPlayer.name] || '-'
   };
 }
 
