@@ -55,8 +55,8 @@
 
     /* ---- CARTES DE L'ACCUEIL ---- */
     .home-cards {
-        display: grid !important;
-        grid-template-columns: 1fr !important;   /* 1 carte par ligne */
+        display: flex !important;
+        flex-direction: column !important;   /* 1 carte par ligne */
         gap: 15px !important;
         margin-top: 20px;
     }
