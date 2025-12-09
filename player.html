@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fiche Joueur</title>
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+    <header>
+        <h1 id="playerName">Joueur</h1>
+    </header>
+
+    <main class="stats-container">
+        <!-- Filtres -->
+        <section class="filters">
+            <div class="filter">
+                <label for="teamFilter">Équipe :</label>
+                <select id="teamFilter">
+                    <option value="all">Total</option>
+                    <option value="7">Équipe à 7</option>
+                    <option value="11">Équipe à 11</option>
+                </select>
+            </div>
+
+            <div class="filter">
+                <label for="matchFilter">Matchs :</label>
+                <select id="matchFilter">
+                    <option value="all">Total</option>
+                    <option value="official">Officiels</option>
+                    <option value="league">Championnat</option>
+                    <option value="cup">Coupe</option>
+                    <option value="friendly">Amicaux</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Cartes principales -->
+        <section class="cards-grid">
+            <div class="card">
+                <h3>Matchs joués</h3>
+                <p id="gamesPlayed">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Résultats</h3>
+                <p><strong>Victoires :</strong> <span id="wins">0</span></p>
+                <p><strong>Nuls :</strong> <span id="draws">0</span></p>
+                <p><strong>Défaites :</strong> <span id="losses">0</span></p>
+            </div>
+
+            <div class="card">
+                <h3>Buts</h3>
+                <p><strong>Total :</strong> <span id="goals">0</span></p>
+                <p><strong>Moyenne :</strong> <span id="goalsAvg">0</span></p>
+                <p><strong>Rang buteurs :</strong> <span id="goalsRank">-</span></p>
+            </div>
+
+            <div class="card">
+                <h3>Passes Décisives</h3>
+                <p><strong>Total :</strong> <span id="assists">0</span></p>
+                <p><strong>Moyenne :</strong> <span id="assistsAvg">0</span></p>
+                <p><strong>Rang passeurs :</strong> <span id="assistsRank">-</span></p>
+            </div>
+
+            <div class="card">
+                <h3>Classement combiné</h3>
+                <p><strong>Buts + Passes :</strong> <span id="gaTotal">0</span></p>
+                <p><strong>Rang :</strong> <span id="gaRank">-</span></p>
+            </div>
+        </section>
+
+        <!-- Graphique Résultats -->
+        <section class="chart-section">
+            <h2>Statistiques de Résultats</h2>
+            <canvas id="resultsChart"></canvas>
+        </section>
+    </main>
+
+    <script src="../js/player.js"></script>
+</body>
+</html>
