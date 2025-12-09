@@ -151,6 +151,17 @@ function computeRanksWithinFiltered(ms) {
   };
 }
 
+function renderSummaryCards(ms, wdl) {
+  const played = ms.length;
+  const container = document.getElementById('player-summary');
+  container.innerHTML = `
+    <div class="stat-card"><div class="kpi">${played}</div><div class="label">Matchs joués</div></div>
+    <div class="stat-card"><div class="kpi">${wdl.w} (${played?Math.round(wdl.w/played*100):0}%)</div><div class="label">Victoires</div></div>
+    <div class="stat-card"><div class="kpi">${wdl.d} (${played?Math.round(wdl.d/played*100):0}%)</div><div class="label">Nuls</div></div>
+    <div class="stat-card"><div class="kpi">${wdl.l} (${played?Math.round(wdl.l/played*100):0}%)</div><div class="label">Défaites</div></div>
+  `;
+}
+
 function renderRanks(ranks) {
   const el = document.getElementById('ranks');
   el.innerHTML = `
@@ -203,9 +214,7 @@ function updateAll() {
   const {goalsCount, assistsCount} = countGoalsAssists(ms);
   const ranks = computeRanksWithinFiltered(ms);
 
-  // On ne remplit plus les cartes du haut
-  document.getElementById('player-summary').innerHTML = '';
-
+  renderSummaryCards(ms, wdl); // seules les 4 cartes W/D/L/Joués
   renderRanks(ranks);
   renderPlayerGrid(goalsCount, assistsCount, ms.length);
   updateChart(wdl.w, wdl.d, wdl.l);
