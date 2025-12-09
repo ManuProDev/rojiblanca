@@ -16,7 +16,10 @@ async function loadJsonRobust(path) {
   } catch (e) {
     // ignore
   }
-  const lines = text.split(/\r?\n/).filter(Boolean);
+  const lines = text.split(/
+?
+/
+/).filter(Boolean);
   const out = [];
   for (const l of lines) try { out.push(JSON.parse(l)); } catch(e){}
   return out;
