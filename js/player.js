@@ -13,12 +13,10 @@ async function loadJsonRobust(path) {
     const parsed = JSON.parse(text);
     if (Array.isArray(parsed)) return parsed;
     if (typeof parsed === "object") return Object.values(parsed);
-  } catch (e) {
-    // ignore
-  }
+  } catch {}
   const lines = text.split(/\r?\n/).filter(Boolean);
   const out = [];
-  for (const l of lines) try { out.push(JSON.parse(l)); } catch(e){}
+  for (const l of lines) try { out.push(JSON.parse(l)); } catch {}
   return out;
 }
 
@@ -119,14 +117,15 @@ function countGoalsAssists(ms) {
   return {goalsCount, assistsCount};
 }
 
+// --- nouveau calcul des rangs corrigé ---
 function computeRanksWithinFiltered(ms) {
   const matchIds = new Set(ms.map(m => m.id));
   const stats = {};
   for (const p of players) stats[p.name] = {goals:0, assists:0};
   for (const g of goals) {
     if (!matchIds.has(g.matchId)) continue;
-    if (g.goal && stats[g.goal]) stats[g.goal].goals++;
-    if (g.assist && stats[g.assist]) stats[g.assist].assists++;
+    if (g.goal && stats[g.goal] !== undefined) stats[g.goal].goals++;
+    if (g.assist && stats[g.assist] !== undefined) stats[g.assist].assists++;
   }
   const named = players.map(p => ({
     name: p.name,
@@ -135,19 +134,28 @@ function computeRanksWithinFiltered(ms) {
     total: stats[p.name].goals + stats[p.name].assists
   }));
 
-  const byGoals = [...named].sort((a,b)=> b.goals - a.goals || b.assists - a.assists);
-  const byAssists = [...named].sort((a,b)=> b.assists - a.assists || b.goals - a.goals);
-  const byTotal = [...named].sort((a,b)=> b.total - a.total || b.goals - a.goals);
+  function rankBy(array, key1, key2) {
+    const sorted = [...array].sort((a,b)=> b[key1]-a[key1] || b[key2]-a[key2]);
+    const ranks = {};
+    let rank = 1;
+    for (let i=0;i<sorted.length;i++) {
+      if(i>0 && (sorted[i][key1]!==sorted[i-1][key1] || sorted[i][key2]!==sorted[i-1][key2])) rank=i+1;
+      ranks[sorted[i].name]=rank;
+    }
+    return ranks;
+  }
 
-  const gRank = byGoals.findIndex(x => x.name === currentPlayer.name);
-  const aRank = byAssists.findIndex(x => x.name === currentPlayer.name);
-  const tRank = byTotal.findIndex(x => x.name === currentPlayer.name);
+  const goalsRanks = rankBy(named,'goals','assists');
+  const assistsRanks = rankBy(named,'assists','goals');
+  const totalRanks = rankBy(named,'total','goals');
 
   return {
-    gRank: gRank >= 0 ? gRank + 1 : '-',
-    aRank: aRank >= 0 ? aRank + 1 : '-',
-    tRank: tRank >= 0 ? tRank + 1 : '-',
-    byGoals, byAssists, byTotal
+    gRank: goalsRanks[currentPlayer.name] || '-',
+    aRank: assistsRanks[currentPlayer.name] || '-',
+    tRank: totalRanks[currentPlayer.name] || '-',
+    byGoals: named.sort((a,b)=> b.goals-a.goals || b.assists-a.assists),
+    byAssists: named.sort((a,b)=> b.assists-a.assists || b.goals-a.goals),
+    byTotal: named.sort((a,b)=> b.total-a.total || b.goals-a.goals)
   };
 }
 
@@ -180,12 +188,12 @@ function renderPlayerGrid(goalsCount, assistsCount, played) {
       <div style="opacity:0.8">Moyenne par match: ${played? (goalsCount/played).toFixed(2) : '0.00'}</div>
     </div>
     <div class="player-stat-card">
-      <div style="font-weight:800">Passes décisives</div>
+      <div style="font-weight:800">Passes</div>
       <div style="font-size:28px;font-weight:900">${assistsCount}</div>
       <div style="opacity:0.8">Moyenne par match: ${played? (assistsCount/played).toFixed(2) : '0.00'}</div>
     </div>
     <div class="player-stat-card">
-      <div style="font-weight:800">Total (Buts + Passes)</div>
+      <div style="font-weight:800">Buts + Passes</div>
       <div style="font-size:28px;font-weight:900">${goalsCount + assistsCount}</div>
       <div style="opacity:0.8">Total combiné</div>
     </div>
@@ -197,11 +205,8 @@ function updateChart(w,d,l) {
   if (pieChart) pieChart.destroy();
   pieChart = new Chart(ctx, {
     type: 'doughnut',
-    data: {
-      labels: ['Victoires','Nuls','Défaites'],
-      datasets: [{ data: [w,d,l], backgroundColor: ['#00ff8c','#ffd966','#ff6b6b'] }]
-    },
-    options: {plugins:{legend:{labels:{color:'#fff'}}}}
+    data: { labels: ['Victoires','Nuls','Défaites'], datasets: [{ data:[w,d,l], backgroundColor:['#00ff8c','#ffd966','#ff6b6b'] }] },
+    options: { plugins: { legend: { labels: { color:'#fff' } } } }
   });
 }
 
@@ -214,7 +219,7 @@ function updateAll() {
   const {goalsCount, assistsCount} = countGoalsAssists(ms);
   const ranks = computeRanksWithinFiltered(ms);
 
-  renderSummaryCards(ms, wdl); // seules les 4 cartes W/D/L/Joués
+  renderSummaryCards(ms, wdl);
   renderRanks(ranks);
   renderPlayerGrid(goalsCount, assistsCount, ms.length);
   updateChart(wdl.w, wdl.d, wdl.l);
