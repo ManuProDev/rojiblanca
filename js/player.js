@@ -1,10 +1,4 @@
-/* player.js — fiche joueur
-   - Récupère id via ?id=NN
-   - Charge players, matchs, goals, attendance
-   - Applique filtres (teamFilter, matchTypeFilter)
-   - Calcule : matchs joués, W/D/L, buts, passes, moyennes, rangs
-   - Met à jour DOM et Chart.js (doughnut)
-*/
+/* player.js — fiche joueur complète */
 
 async function loadJsonRobust(path) {
   const res = await fetch(path);
@@ -16,12 +10,12 @@ async function loadJsonRobust(path) {
   } catch (e) {
     // ignore
   }
-  const lines = text.split(/
-?
-/
-/).filter(Boolean);
+  // Split lines safely
+  const lines = text.split(/\r?\n/).filter(Boolean);
   const out = [];
-  for (const l of lines) try { out.push(JSON.parse(l)); } catch(e){}
+  for (const l of lines) {
+    try { out.push(JSON.parse(l)); } catch(e) {}
+  }
   return out;
 }
 
@@ -43,6 +37,7 @@ let players = [], matches = [], goals = [], attendance = [];
 let pieChart = null;
 let currentPlayer = null;
 
+// ---------------- INIT ----------------
 async function initPlayerPage() {
   const id = getPlayerIdFromUrl();
   if (!id) {
@@ -71,6 +66,7 @@ async function initPlayerPage() {
   updateAll();
 }
 
+// ---------------- FILTRES ----------------
 function matchPassesTypeFilter(m, typeFilter) {
   if (typeFilter === 'all') return true;
   if (typeFilter === 'official') return m.type === 'League' || m.type === 'Cup';
@@ -90,7 +86,6 @@ function playerPresentInMatch(playerName, matchId) {
 }
 
 function gatherPlayerMatches(teamFilter, matchTypeFilter) {
-  // Return matches where player was present AND match satisfies filters
   return matches.filter(m => {
     if (!matchPassesTypeFilter(m, matchTypeFilter)) return false;
     if (!matchPassesTeamFilter(m, teamFilter)) return false;
@@ -98,10 +93,10 @@ function gatherPlayerMatches(teamFilter, matchTypeFilter) {
   });
 }
 
+// ---------------- CALCULS ----------------
 function countWDLForMatches(ms) {
   let w=0,d=0,l=0;
   for (const m of ms) {
-    // determine which Rojiblanca side (if any) is in match
     let clubPrefix = null;
     if (m.team1 && m.team1.includes('Rojiblanca')) clubPrefix = m.team1;
     else if (m.team2 && m.team2.includes('Rojiblanca')) clubPrefix = m.team2;
@@ -125,7 +120,6 @@ function countGoalsAssists(ms) {
 }
 
 function computeRanksWithinFiltered(ms) {
-  // Compute per-player totals (goals, assists, ga) within same filtered match set
   const matchIds = new Set(ms.map(m => m.id));
   const stats = {};
   for (const p of players) stats[p.name] = {goals:0, assists:0};
@@ -134,8 +128,12 @@ function computeRanksWithinFiltered(ms) {
     if (g.goal && stats[g.goal]) stats[g.goal].goals++;
     if (g.assist && stats[g.assist]) stats[g.assist].assists++;
   }
-  // construct named array
-  const named = players.map(p => ({name: p.name, goals: stats[p.name].goals, assists: stats[p.name].assists, total: stats[p.name].goals + stats[p.name].assists}));
+  const named = players.map(p => ({
+    name: p.name,
+    goals: stats[p.name].goals,
+    assists: stats[p.name].assists,
+    total: stats[p.name].goals + stats[p.name].assists
+  }));
 
   const byGoals = [...named].sort((a,b)=> b.goals - a.goals || b.assists - a.assists);
   const byAssists = [...named].sort((a,b)=> b.assists - a.assists || b.goals - a.goals);
@@ -148,12 +146,11 @@ function computeRanksWithinFiltered(ms) {
   return {gRank, aRank, tRank, byGoals, byAssists, byTotal};
 }
 
+// ---------------- RENDER ----------------
 function renderSummaryCards(ms, wdl, goalsCount, assistsCount) {
   const played = ms.length;
   const goalsAvg = played ? (goalsCount / played).toFixed(2) : '0.00';
   const assistsAvg = played ? (assistsCount / played).toFixed(2) : '0.00';
-  const gaTotal = goalsCount + assistsCount;
-
   const container = document.getElementById('player-summary');
   container.innerHTML = `
     <div class="stat-card"><div class="kpi">${played}</div><div class="label">Matchs joués</div></div>
@@ -162,7 +159,7 @@ function renderSummaryCards(ms, wdl, goalsCount, assistsCount) {
     <div class="stat-card"><div class="kpi">${wdl.l} (${played?Math.round(wdl.l/played*100):0}%)</div><div class="label">Défaites</div></div>
     <div class="stat-card"><div class="kpi">${goalsCount}</div><div class="label">Buts (moy: ${goalsAvg})</div></div>
     <div class="stat-card"><div class="kpi">${assistsCount}</div><div class="label">Passes (moy: ${assistsAvg})</div></div>
-    <div class="stat-card"><div class="kpi">${gaTotal}</div><div class="label">Buts + Passes</div></div>
+    <div class="stat-card"><div class="kpi">${goalsCount + assistsCount}</div><div class="label">Buts + Passes</div></div>
   `;
 }
 
@@ -196,6 +193,7 @@ function renderPlayerGrid(goalsCount, assistsCount, played) {
   `;
 }
 
+// ---------------- CHART ----------------
 function updateChart(w,d,l) {
   const ctx = document.getElementById('pieWDL').getContext('2d');
   if (pieChart) pieChart.destroy();
@@ -209,10 +207,7 @@ function updateChart(w,d,l) {
   });
 }
 
-function makeRanksObject(ms) {
-  return computeRanksWithinFiltered(ms);
-}
-
+// ---------------- UPDATE ALL ----------------
 function updateAll() {
   const teamFilter = document.getElementById('teamFilter').value;
   const matchType = document.getElementById('matchTypeFilter').value;
@@ -220,7 +215,7 @@ function updateAll() {
   const ms = gatherPlayerMatches(teamFilter, matchType);
   const wdl = countWDLForMatches(ms);
   const {goalsCount, assistsCount} = countGoalsAssists(ms);
-  const ranks = makeRanksObject(ms);
+  const ranks = computeRanksWithinFiltered(ms);
 
   renderSummaryCards(ms, wdl, goalsCount, assistsCount);
   renderRanks(ranks);
@@ -228,5 +223,5 @@ function updateAll() {
   updateChart(wdl.w, wdl.d, wdl.l);
 }
 
-// boot
+// ---------------- BOOT ----------------
 initPlayerPage();
