@@ -1,4 +1,10 @@
-/* player.js — fiche joueur complète */
+/* player.js — fiche joueur
+   - Récupère id via ?id=NN
+   - Charge players, matchs, goals, attendance
+   - Applique filtres (teamFilter, matchTypeFilter)
+   - Calcule : matchs joués, W/D/L, buts, passes, moyennes, rangs
+   - Met à jour DOM et Chart.js (doughnut)
+*/
 
 async function loadJsonRobust(path) {
   const res = await fetch(path);
@@ -10,12 +16,9 @@ async function loadJsonRobust(path) {
   } catch (e) {
     // ignore
   }
-  // Split lines safely
   const lines = text.split(/\r?\n/).filter(Boolean);
   const out = [];
-  for (const l of lines) {
-    try { out.push(JSON.parse(l)); } catch(e) {}
-  }
+  for (const l of lines) try { out.push(JSON.parse(l)); } catch(e){}
   return out;
 }
 
@@ -37,7 +40,6 @@ let players = [], matches = [], goals = [], attendance = [];
 let pieChart = null;
 let currentPlayer = null;
 
-// ---------------- INIT ----------------
 async function initPlayerPage() {
   const id = getPlayerIdFromUrl();
   if (!id) {
@@ -66,7 +68,6 @@ async function initPlayerPage() {
   updateAll();
 }
 
-// ---------------- FILTRES ----------------
 function matchPassesTypeFilter(m, typeFilter) {
   if (typeFilter === 'all') return true;
   if (typeFilter === 'official') return m.type === 'League' || m.type === 'Cup';
@@ -93,7 +94,6 @@ function gatherPlayerMatches(teamFilter, matchTypeFilter) {
   });
 }
 
-// ---------------- CALCULS ----------------
 function countWDLForMatches(ms) {
   let w=0,d=0,l=0;
   for (const m of ms) {
@@ -139,28 +139,16 @@ function computeRanksWithinFiltered(ms) {
   const byAssists = [...named].sort((a,b)=> b.assists - a.assists || b.goals - a.goals);
   const byTotal = [...named].sort((a,b)=> b.total - a.total || b.goals - a.goals);
 
-  const gRank = byGoals.findIndex(x => x.name === currentPlayer.name) + 1 || '-';
-  const aRank = byAssists.findIndex(x => x.name === currentPlayer.name) + 1 || '-';
-  const tRank = byTotal.findIndex(x => x.name === currentPlayer.name) + 1 || '-';
+  const gRank = byGoals.findIndex(x => x.name === currentPlayer.name);
+  const aRank = byAssists.findIndex(x => x.name === currentPlayer.name);
+  const tRank = byTotal.findIndex(x => x.name === currentPlayer.name);
 
-  return {gRank, aRank, tRank, byGoals, byAssists, byTotal};
-}
-
-// ---------------- RENDER ----------------
-function renderSummaryCards(ms, wdl, goalsCount, assistsCount) {
-  const played = ms.length;
-  const goalsAvg = played ? (goalsCount / played).toFixed(2) : '0.00';
-  const assistsAvg = played ? (assistsCount / played).toFixed(2) : '0.00';
-  const container = document.getElementById('player-summary');
-  container.innerHTML = `
-    <div class="stat-card"><div class="kpi">${played}</div><div class="label">Matchs joués</div></div>
-    <div class="stat-card"><div class="kpi">${wdl.w} (${played?Math.round(wdl.w/played*100):0}%)</div><div class="label">Victoires</div></div>
-    <div class="stat-card"><div class="kpi">${wdl.d} (${played?Math.round(wdl.d/played*100):0}%)</div><div class="label">Nuls</div></div>
-    <div class="stat-card"><div class="kpi">${wdl.l} (${played?Math.round(wdl.l/played*100):0}%)</div><div class="label">Défaites</div></div>
-    <div class="stat-card"><div class="kpi">${goalsCount}</div><div class="label">Buts (moy: ${goalsAvg})</div></div>
-    <div class="stat-card"><div class="kpi">${assistsCount}</div><div class="label">Passes (moy: ${assistsAvg})</div></div>
-    <div class="stat-card"><div class="kpi">${goalsCount + assistsCount}</div><div class="label">Buts + Passes</div></div>
-  `;
+  return {
+    gRank: gRank >= 0 ? gRank + 1 : '-',
+    aRank: aRank >= 0 ? aRank + 1 : '-',
+    tRank: tRank >= 0 ? tRank + 1 : '-',
+    byGoals, byAssists, byTotal
+  };
 }
 
 function renderRanks(ranks) {
@@ -181,19 +169,18 @@ function renderPlayerGrid(goalsCount, assistsCount, played) {
       <div style="opacity:0.8">Moyenne par match: ${played? (goalsCount/played).toFixed(2) : '0.00'}</div>
     </div>
     <div class="player-stat-card">
-      <div style="font-weight:800">Passes</div>
+      <div style="font-weight:800">Passes décisives</div>
       <div style="font-size:28px;font-weight:900">${assistsCount}</div>
       <div style="opacity:0.8">Moyenne par match: ${played? (assistsCount/played).toFixed(2) : '0.00'}</div>
     </div>
     <div class="player-stat-card">
-      <div style="font-weight:800">Buts + Passes</div>
+      <div style="font-weight:800">Total (Buts + Passes)</div>
       <div style="font-size:28px;font-weight:900">${goalsCount + assistsCount}</div>
       <div style="opacity:0.8">Total combiné</div>
     </div>
   `;
 }
 
-// ---------------- CHART ----------------
 function updateChart(w,d,l) {
   const ctx = document.getElementById('pieWDL').getContext('2d');
   if (pieChart) pieChart.destroy();
@@ -207,7 +194,6 @@ function updateChart(w,d,l) {
   });
 }
 
-// ---------------- UPDATE ALL ----------------
 function updateAll() {
   const teamFilter = document.getElementById('teamFilter').value;
   const matchType = document.getElementById('matchTypeFilter').value;
@@ -217,11 +203,13 @@ function updateAll() {
   const {goalsCount, assistsCount} = countGoalsAssists(ms);
   const ranks = computeRanksWithinFiltered(ms);
 
-  renderSummaryCards(ms, wdl, goalsCount, assistsCount);
+  // On ne remplit plus les cartes du haut
+  document.getElementById('player-summary').innerHTML = '';
+
   renderRanks(ranks);
   renderPlayerGrid(goalsCount, assistsCount, ms.length);
   updateChart(wdl.w, wdl.d, wdl.l);
 }
 
-// ---------------- BOOT ----------------
+// boot
 initPlayerPage();
