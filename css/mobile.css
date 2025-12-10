@@ -1,75 +1,72 @@
 /* ============================ */
-/*  CSS MOBILE UNIQUEMENT      */
+/*     HAMBURGER MENU MOBILE    */
 /* ============================ */
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
 
   /* Cache le menu desktop */
   .desktop-menu {
     display: none !important;
   }
 
-  /* Le bouton hamburger n’existe qu’en mobile */
+  /* Header compact en mobile */
+  .header {
+    padding: 12px 20px;
+  }
+
+  /* Bouton hamburger */
   .hamburger {
-    display: block !important;
+    display: block;
     background: none;
     border: none;
-    font-size: 2.2rem;
+    font-size: 2rem;
     cursor: pointer;
-    color: #9b1c1c;
-    padding: 5px 12px;
-    z-index: 1200;
-  }
-
-  /* Le header est simplifié mais ne casse pas la version desktop */
-  .header {
-    padding: 15px 20px !important;
-    height: 70px !important;
-  }
-
-  /* MENU MOBILE */
-  .mobile-menu {
-    display: none;
-    position: absolute;
-    top: 70px;
-    right: 15px;
-    background: #fff;
-    color: #222;
-    border-radius: 14px;
-    padding: 15px 0;
-    width: 180px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-    flex-direction: column;
+    color: #700;
+    padding: 5px 10px;
     z-index: 2000;
   }
 
+  /* Menu mobile caché */
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    right: 20px;
+    top: 80px;
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    width: 180px;
+    z-index: 1500;
+  }
+
+  /* Menu mobile visible */
   .mobile-menu.active {
     display: flex;
   }
 
   .mobile-menu a {
-    padding: 12px 20px;
-    color: #9b1c1c !important;
-    font-weight: 700;
+    padding: 10px 0;
     text-decoration: none;
-    border-bottom: 1px solid #eee;
+    color: #700;
+    font-weight: 700;
+    border-bottom: 1px solid #ddd;
   }
 
   .mobile-menu a:last-child {
     border-bottom: none;
   }
-}
 
-/* ============================ */
-/*  EN DEHORS DU MEDIA QUERY   */
-/* ============================ */
+  /* --- Cards : 1 par ligne en mobile --- */
+  .cards {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 22px !important;
+  }
 
-/* Par défaut (desktop) → on cache le hamburger */
-.hamburger {
-  display: none;
-}
-
-/* Par défaut → on cache le menu mobile */
-.mobile-menu {
-  display: none;
+  .card {
+    width: 88% !important;
+    max-width: 340px !important;
+  }
 }
