@@ -11,12 +11,34 @@
 
 <body>
     <header class="header">
-        <div class="header-left">
-            <div class="logo"> <img src="images/logo.png" alt="Rojiblanca FC"> <span>Rojiblanca FC</span> </div>
-            <nav class="nav-left"> <a href="index.html" class="active">Accueil</a> <a href="team.html">Équipe</a> <a
-                    href="results.html">Résultats</a> <a href="stats.html">Statistiques</a> </nav>
-        </div>
-    </header>
+
+  <div class="header-left">
+    <div class="logo">
+      <img src="images/logo.png" alt="Rojiblanca FC">
+      <span>Rojiblanca FC</span>
+    </div>
+
+    <!-- MENU DESKTOP (inchangé) -->
+    <nav class="nav-left desktop-menu">
+      <a href="index.html">Accueil</a>
+      <a href="team.html">Équipe</a>
+      <a href="results.html">Résultats</a>
+      <a href="stats.html">Statistiques</a>
+    </nav>
+  </div>
+
+  <!-- BOUTON HAMBURGER – visible uniquement sur mobile -->
+  <button class="hamburger" id="hamburger-btn">☰</button>
+
+  <!-- MENU MOBILE (masqué par défaut) -->
+  <nav class="mobile-menu" id="mobile-menu">
+    <a href="index.html">Accueil</a>
+    <a href="team.html">Équipe</a>
+    <a href="results.html">Résultats</a>
+    <a href="stats.html">Statistiques</a>
+  </nav>
+
+</header>
     <main class="main-content">
         <section class="hero">
             <h2>Bienvenue à la Rojiblanca</h2>
@@ -36,6 +58,14 @@
     <footer class="footer">
         <p>© Rojiblanca FC</p>
     </footer>
+    <script>
+      const burger = document.getElementById("hamburger-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+    
+      burger.addEventListener("click", () => {
+        mobileMenu.classList.toggle("active");
+      });
+    </script>
 </body>
 
 </html>
