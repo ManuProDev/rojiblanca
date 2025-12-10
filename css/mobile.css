@@ -1,0 +1,62 @@
+/* ============================ */
+/*     MENU HAMBURGER MOBILE   */
+/* ============================ */
+
+@media (max-width: 600px) {
+
+  /* On cache le menu desktop */
+  .desktop-menu {
+    display: none !important;
+  }
+
+  /* Le header devient simple */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+  }
+
+  /* Bouton hamburger */
+  .hamburger {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #700;
+    padding: 5px 10px;
+  }
+
+  /* Menu mobile masqué par défaut */
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    right: 10px;
+    top: 70px;
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    width: 170px;
+    z-index: 1000;
+  }
+
+  /* Quand ouvert */
+  .mobile-menu.active {
+    display: flex;
+  }
+
+  .mobile-menu a {
+    padding: 10px 0;
+    text-decoration: none;
+    color: #700;
+    font-weight: 600;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .mobile-menu a:last-child {
+    border-bottom: none;
+  }
+}
