@@ -1,62 +1,75 @@
 /* ============================ */
-/*     MENU HAMBURGER MOBILE   */
+/*  CSS MOBILE UNIQUEMENT      */
 /* ============================ */
 
 @media (max-width: 600px) {
 
-  /* On cache le menu desktop */
+  /* Cache le menu desktop */
   .desktop-menu {
     display: none !important;
   }
 
-  /* Le header devient simple */
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px;
-  }
-
-  /* Bouton hamburger */
+  /* Le bouton hamburger n’existe qu’en mobile */
   .hamburger {
-    display: block;
+    display: block !important;
     background: none;
     border: none;
-    font-size: 2rem;
+    font-size: 2.2rem;
     cursor: pointer;
-    color: #700;
-    padding: 5px 10px;
+    color: #9b1c1c;
+    padding: 5px 12px;
+    z-index: 1200;
   }
 
-  /* Menu mobile masqué par défaut */
+  /* Le header est simplifié mais ne casse pas la version desktop */
+  .header {
+    padding: 15px 20px !important;
+    height: 70px !important;
+  }
+
+  /* MENU MOBILE */
   .mobile-menu {
     display: none;
-    flex-direction: column;
     position: absolute;
-    right: 10px;
     top: 70px;
-    background: white;
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-    width: 170px;
-    z-index: 1000;
+    right: 15px;
+    background: #fff;
+    color: #222;
+    border-radius: 14px;
+    padding: 15px 0;
+    width: 180px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    flex-direction: column;
+    z-index: 2000;
   }
 
-  /* Quand ouvert */
   .mobile-menu.active {
     display: flex;
   }
 
   .mobile-menu a {
-    padding: 10px 0;
+    padding: 12px 20px;
+    color: #9b1c1c !important;
+    font-weight: 700;
     text-decoration: none;
-    color: #700;
-    font-weight: 600;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #eee;
   }
 
   .mobile-menu a:last-child {
     border-bottom: none;
   }
+}
+
+/* ============================ */
+/*  EN DEHORS DU MEDIA QUERY   */
+/* ============================ */
+
+/* Par défaut (desktop) → on cache le hamburger */
+.hamburger {
+  display: none;
+}
+
+/* Par défaut → on cache le menu mobile */
+.mobile-menu {
+  display: none;
 }
