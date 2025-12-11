@@ -1,99 +1,87 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <script>
-      function toggleMenu() {
-          document.querySelector(".nav-left").classList.toggle("open");
-      }
+    function toggleMenu() {
+      document.querySelector(".nav-left").classList.toggle("open");
+    }
   </script>
   <title>Rojiblanca FC - Accueil</title>
-
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/mobile.css">
-
 </head>
-<body>
+<body class="home-page">
 
-  <header class="header">
-    <div class="header-left">
-  
-      <div class="logo">
-        <img src="images/logo.png" alt="Rojiblanca FC">
-        <span>Rojiblanca FC</span>
-      </div>
-  
-      <!-- HAMBURGER -->
-      <div class="hamburger" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-      </div>
-  
-      <!-- MENU DESKTOP / MOBILE -->
-      <nav class="nav-left">
-        <a href="index.html" class="active">Accueil</a>
-        <a href="team.html">Équipe</a>
-        <a href="results.html">Résultats</a>
-        <a href="stats.html">Statistiques</a>
-      </nav>
-  
+<header class="header">
+  <div class="header-left">
+    <div class="logo">
+      <img src="images/logo.png" alt="Rojiblanca FC">
+      <span>Rojiblanca FC</span>
     </div>
-  </header>
 
-  <main class="main-content">
-    <section class="hero">
-      <h2>Bienvenue à la Rojiblanca</h2>
-      <p>Club amateur – passion, collectif, compétition.</p>
-    </section>
+    <div id="hamburger-btn" class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
-    <section class="cards">
-      <a href="team.html" class="card">
-        <h3>👥 L’équipe</h3>
-        <p>Effectif, postes, joueurs et présences</p>
-      </a>
+    <nav id="main-nav" class="nav-left">
+      <a href="index.html" class="active">Accueil</a>
+      <a href="team.html">Équipe</a>
+      <a href="results.html">Résultats</a>
+      <a href="stats.html">Statistiques</a>
+    </nav>
+  </div>
+</header>
 
-      <a href="results.html" class="card">
-        <h3>🏆 Résultats</h3>
-        <p>Matchs joués, scores et adversaires</p>
-      </a>
+<main class="main-content">
+  <section class="hero">
+    <h2>Bienvenue à la Rojiblanca</h2>
+    <p>Club amateur – passion, collectif, compétition.</p>
+  </section>
 
-      <a href="stats.html" class="card">
-        <h3>📊 Statistiques</h3>
-        <p>Buteurs, passeurs, stats individuelles</p>
-      </a>
-    </section>
-  </main>
+  <section class="cards">
+    <a href="team.html" class="card">
+      <h3>👥 L’équipe</h3>
+      <p>Effectif, postes, joueurs et présences</p>
+    </a>
 
-  <footer class="footer">
-    <p>© Rojiblanca FC</p>
-  </footer>
+    <a href="results.html" class="card">
+      <h3>🏆 Résultats</h3>
+      <p>Matchs joués, scores et adversaires</p>
+    </a>
 
-  <!-- petit script pour ouvrir/fermer le menu mobile -->
-  <script>
-    (function () {
-      const btn = document.getElementById('hamburger-btn');
-      const nav = document.getElementById('main-nav');
+    <a href="stats.html" class="card">
+      <h3>📊 Statistiques</h3>
+      <p>Buteurs, passeurs, stats individuelles</p>
+    </a>
+  </section>
+</main>
 
-      // sécurité : si éléments manquent, on ne fait rien
-      if (!btn || !nav) return;
+<footer class="footer">
+  <p>© Rojiblanca FC</p>
+</footer>
 
-      btn.addEventListener('click', () => {
-        nav.classList.toggle('open-mobile');   // pour afficher le menu vertical
-        btn.classList.toggle('open');          // animation du bouton
+<script>
+  (function () {
+    const btn = document.getElementById('hamburger-btn');
+    const nav = document.getElementById('main-nav');
+    if (!btn || !nav) return;
+
+    btn.addEventListener('click', () => {
+      nav.classList.toggle('open-mobile');
+      btn.classList.toggle('open');
+    });
+
+    nav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        nav.classList.remove('open-mobile');
+        btn.classList.remove('open');
       });
-
-      // fermer le menu quand on clique sur un lien (pratique mobile)
-      nav.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-          if (nav.classList.contains('open-mobile')) {
-            nav.classList.remove('open-mobile');
-            btn.classList.remove('open');
-          }
-        });
-      });
-    })();
-  </script>
+    });
+  })();
+</script>
 </body>
 </html>
