@@ -1,97 +1,39 @@
-/* ========================================================= MOBILE ONLY ========================================================= */
+/* --- RESULTS PAGE FIX : espacement spécifique par catégorie --- */
 @media (max-width: 768px) {
-
-  /* --- HEADER / HAMBURGER --- */
-  .hamburger {
-    display: flex !important;
-    flex-direction: column;
-    gap: 5px;
-    width: 32px;
-    cursor: pointer;
-    z-index: 2000;
-  }
-
-  .hamburger span {
-    height: 3px;
-    width: 100%;
-    background: #9b1c1c;
-    border-radius: 3px;
-  }
-
-  /* --- MENU --- */
-  .nav-left {
-    display: none !important;
-  }
-
-  .nav-left.open,
-  .nav-left.open-mobile {
-    display: flex !important;
-    flex-direction: column;
-    gap: 10px;
-    background: #fff;
-    padding: 14px;
-    border-radius: 12px;
-    position: absolute;
-    top: 80px;
-    left: 12px;
-    right: 12px;
-    z-index: 1500;
-  }
-
-  /* --- CARDS --- */
-  .cards {
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 24px !important;
-  }
-
-  /* --- RESULTS PAGE FIX : espacement uniforme --- */
+  /* Empilement vertical des listes */
   .results-pair {
       display: flex !important;
-      flex-direction: column !important; /* empilement vertical */
-      gap: 12px !important; /* espace uniforme entre seven-list et eleven-list */
+      flex-direction: column !important;
+      margin: 0 !important;
   }
 
+  /* Espacement entre listes à 7 et 11 selon la catégorie */
+  #league-pair { /* Championnat */
+      gap: 24px !important; /* plus grand espace */
+  }
+
+  #cup-pair, #friendly-pair { /* Coupe & Amicaux */
+      gap: 12px !important; /* espace plus petit */
+  }
+
+  /* Espacement uniforme entre chaque match */
   .results-list {
       display: flex;
       flex-direction: column;
-      gap: 12px !important; /* espace uniforme entre chaque match */
+      gap: 12px !important;
       width: 100% !important;
-      margin: 0 !important; 
+      margin: 0 !important;
       padding: 0 !important;
   }
 
+  /* Chaque match prend toute la largeur */
   .match-card {
       width: 100% !important;
-      margin-bottom: 12px !important; /* uniformiser l’espace entre les matchs */
+      margin: 0 !important;
   }
 
+  /* Espacement entre catégories */
   .results-row {
-      margin-bottom: 30px !important; /* espace uniforme entre Championnat / Coupe / Amicaux */
+      margin-bottom: 30px !important;
   }
-
-  /* --- STATS / PLAYER PAGE FIX : graphiques et podium en colonne --- */
-  .charts-podium-container,
-  .charts-panel,
-  .podium-panel {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  .charts-podium-container {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 20px !important;
-  }
-
-  canvas {
-    width: 100% !important;
-    height: auto !important;
-  }
-}
-
-/* ========================================================= DESKTOP FIX ========================================================= */
-@media (min-width: 769px) {
-  .hamburger { display: none !important; }
-  .cards { flex-direction: row !important; }
 }
