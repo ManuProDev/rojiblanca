@@ -45,11 +45,11 @@
     gap: 24px !important;
   }
 
-  /* --- RESULTS PAGE FIX : uniquement espaces --- */
+  /* --- RESULTS PAGE FIX : espacement uniforme --- */
   .results-pair {
       display: flex !important;
-      flex-direction: column !important; /* empilement vertical sur mobile */
-      gap: 16px !important; /* espace uniforme entre les listes à 7 et 11 */
+      flex-direction: column !important; /* empilement vertical */
+      gap: 12px !important; /* espace uniforme entre seven-list et eleven-list */
   }
 
   .results-list {
@@ -57,18 +57,20 @@
       flex-direction: column;
       gap: 12px !important; /* espace uniforme entre chaque match */
       width: 100% !important;
+      margin: 0 !important; /* supprimer toute marge résiduelle */
+      padding: 0 !important;
   }
 
   .match-card {
       width: 100% !important;
-      margin-bottom: 0 !important; /* espacement géré par gap */
+      margin: 0 !important; /* ne plus ajouter de marge en bas */
   }
 
   .results-row {
       margin-bottom: 30px !important; /* espace uniforme entre Championnat / Coupe / Amicaux */
   }
 
-  /* --- STATS / PLAYER PAGE FIX --- */
+  /* --- STATS / PLAYER PAGE FIX : graphiques et podium en colonne --- */
   .charts-podium-container,
   .charts-panel,
   .podium-panel {
