@@ -1,42 +1,41 @@
-/* --- MOBILE ONLY --- */
+/* ========================================================= MOBILE ONLY ========================================================= */
 @media (max-width: 768px) {
 
-  /* Header desktop caché, menu hamburger visible */
+  /* --- HEADER / HAMBURGER --- */
   .hamburger {
-        display: flex !important;
-        flex-direction: column;
-        gap: 5px;
-        width: 32px;
-        cursor: pointer;
-        z-index: 2000;
-    }
+    display: flex !important;
+    flex-direction: column;
+    gap: 5px;
+    width: 32px;
+    cursor: pointer;
+    z-index: 2000;
+  }
 
   .hamburger span {
-        height: 3px;
-        width: 100%;
-        background: #9b1c1c;
-        border-radius: 3px;
-    }
+    height: 3px;
+    width: 100%;
+    background: #9b1c1c;
+    border-radius: 3px;
+  }
 
-  /* Menu desktop caché */
+  /* --- MENU --- */
   .nav-left {
-        display: none !important;
-    }
+    display: none !important;
+  }
 
   .nav-left.open {
-        display: flex !important;
-        flex-direction: column;
-        position: absolute;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        padding: 20px 0;
-        background: #ffffffee;
-        text-align: center;
-        gap: 16px;
-    }
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    background: #ffffffee;
+    text-align: center;
+    gap: 16px;
+  }
 
-  /* Menu mobile visible */
   .nav-left.open-mobile {
     display: flex !important;
     flex-direction: column;
@@ -51,14 +50,57 @@
     z-index: 1500;
   }
 
-  /* Cartes en colonne */
+  /* --- CARDS --- */
   .cards {
     flex-direction: column !important;
     align-items: center !important;
+    gap: 24px !important;
+  }
+
+  /* --- RESULTS PAGE FIX --- */
+  .results-pair {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  .results-list {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    gap: 14px; /* espace uniforme entre les cartes */
+  }
+
+  .match-card {
+    width: 100% !important;
+    margin-bottom: 0 !important; /* géré par gap de la liste */
+  }
+
+  /* --- STATS / PLAYER PAGE FIX --- */
+  .charts-podium-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  .charts-panel,
+  .podium-panel {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .charts-panel > div {
+    flex-direction: column !important;
+  }
+
+  canvas {
+    width: 100% !important;
+    height: auto !important;
   }
 }
 
-/* --- DESKTOP FIX (réparation cartes + hamburger) --- */
+/* ========================================================= DESKTOP FIX ========================================================= */
 @media (min-width: 769px) {
   .hamburger { display: none !important; }
   .cards { flex-direction: row !important; }
