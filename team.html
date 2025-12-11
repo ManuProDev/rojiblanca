@@ -71,6 +71,31 @@
       <p>© Rojiblanca FC</p>
   </footer>
 
+  <script>
+  (function () {
+    const btn = document.getElementById('hamburger-btn');
+    const nav = document.getElementById('main-nav');
+
+    // sécurité : si éléments manquent, on ne fait rien
+    if (!btn || !nav) return;
+
+    btn.addEventListener('click', () => {
+      nav.classList.toggle('open-mobile');   // pour afficher le menu vertical
+      btn.classList.toggle('open');          // animation du bouton
+    });
+
+    // fermer le menu quand on clique sur un lien (pratique mobile)
+    nav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        if (nav.classList.contains('open-mobile')) {
+          nav.classList.remove('open-mobile');
+          btn.classList.remove('open');
+        }
+      });
+    });
+  })();
+</script>
+
   <script src="js/displayPlayers.js"></script>
 </body>
 </html>
