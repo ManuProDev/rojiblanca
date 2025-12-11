@@ -60,6 +60,22 @@
   .empty-card {
         display: none !important;
     }
+
+  /* --- Réduction espaces du hero (mobile seulement) --- */
+  .hero-section {
+      padding-top: 40px !important;
+      padding-bottom: 40px !important;
+  }
+
+  .hero-section h1 {
+      margin-top: 0 !important;
+      margin-bottom: 10px !important;
+  }
+
+  .hero-section p {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+  }
 }
 
 /* --- DESKTOP FIX (réparation cartes + hamburger) --- */
