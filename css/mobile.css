@@ -1,39 +1,65 @@
-/* --- RESULTS PAGE FIX : espacement spécifique par catégorie --- */
+/* --- MOBILE ONLY --- */
 @media (max-width: 768px) {
-  /* Empilement vertical des listes */
-  .results-pair {
-      display: flex !important;
-      flex-direction: column !important;
-      margin: 0 !important;
+
+  /* Header desktop caché, menu hamburger visible */
+  .hamburger {
+        display: flex !important;
+        flex-direction: column;
+        gap: 5px;
+        width: 32px;
+        cursor: pointer;
+        z-index: 2000;
+    }
+
+  .hamburger span {
+        height: 3px;
+        width: 100%;
+        background: #9b1c1c;
+        border-radius: 3px;
+    }
+
+  /* Menu desktop caché */
+  .nav-left {
+        display: none !important;
+    }
+
+  .nav-left.open {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        padding: 20px 0;
+        background: #ffffffee;
+        text-align: center;
+        gap: 16px;
+    }
+
+  /* Menu mobile visible */
+  .nav-left.open-mobile {
+    display: flex !important;
+    flex-direction: column;
+    gap: 10px;
+    background: #fff;
+    padding: 14px;
+    border-radius: 12px;
+    position: absolute;
+    top: 80px;
+    left: 12px;
+    right: 12px;
+    z-index: 1500;
   }
 
-  /* Espacement entre listes à 7 et 11 selon la catégorie */
-  #league-pair { /* Championnat */
-      gap: 24px !important; /* plus grand espace */
+  /* Cartes en colonne */
+  .cards {
+    flex-direction: column !important;
+    align-items: center !important;
   }
+}
 
-  #cup-pair, #friendly-pair { /* Coupe & Amicaux */
-      gap: 12px !important; /* espace plus petit */
-  }
-
-  /* Espacement uniforme entre chaque match */
-  .results-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px !important;
-      width: 100% !important;
-      margin: 0 !important;
-      padding: 0 !important;
-  }
-
-  /* Chaque match prend toute la largeur */
-  .match-card {
-      width: 100% !important;
-      margin: 0 !important;
-  }
-
-  /* Espacement entre catégories */
-  .results-row {
-      margin-bottom: 30px !important;
-  }
+/* --- DESKTOP FIX (réparation cartes + hamburger) --- */
+@media (min-width: 769px) {
+  .hamburger { display: none !important; }
+  .cards { flex-direction: row !important; }
 }
