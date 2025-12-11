@@ -14,19 +14,21 @@
         }
     </script>
     <style>
-        /* MOBILE FIX : classement joueur sous graphique */
         @media (max-width: 768px) {
             .charts-podium-container {
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
             }
-            .charts-panel, .podium-panel {
+
+            .charts-panel,
+            .podium-panel {
                 width: 100% !important;
                 max-width: 100% !important;
             }
+
             canvas {
-                max-width: 100% !important;
+                width: 100% !important;
                 height: auto !important;
             }
         }
@@ -84,13 +86,11 @@
         </section>
 
         <section class="charts-podium-container"
-            style="width:100%;max-width:1200px;margin:10px auto 40px;padding:0 20px;display:grid;grid-template-columns: 1fr 420px; gap:24px; align-items:start;">
-            <div class="charts-panel" style="background:transparent;">
-                <div style="flex:1;min-width:320px;background:transparent;padding:12px;">
-                    <canvas id="pieWDL" height="260"></canvas>
-                </div>
+            style="width:100%;max-width:1200px;margin:10px auto 40px;padding:0 20px; display:flex; flex-wrap:wrap; gap:24px;">
+            <div class="charts-panel" style="flex:1; min-width:320px;">
+                <canvas id="pieWDL" height="260"></canvas>
             </div>
-            <aside class="podium-panel" style="padding:12px;">
+            <aside class="podium-panel" style="flex:1; min-width:320px;">
                 <div style="background:rgba(255,255,255,0.06);backdrop-filter:blur(8px);border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,0.08);">
                     <h3 style="margin-bottom:8px;text-align:center;font-weight:800;">Classements du joueur</h3>
                     <div id="ranks" style="display:flex;flex-direction:column;gap:12px;"></div>
@@ -100,8 +100,7 @@
 
         <section style="width:100%;max-width:1200px;margin:10px auto 120px;padding:0 20px;">
             <h3 style="font-size:20px;margin-bottom:18px;text-transform:uppercase;">Détails des performances</h3>
-            <div id="player-stats-grid"
-                style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;"></div>
+            <div id="player-stats-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;"></div>
         </section>
     </main>
 
