@@ -1,98 +1,42 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <script>
-    function toggleMenu() {
-      document.querySelector(".nav-left").classList.toggle("open");
-    }
-  </script>
-  <title>Équipe — Rojiblanca FC</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Équipe</title>
 </head>
-<body class="team-page">
 
-<header class="header">
-  <div class="header-left">
-
-    <!-- LOGO -->
-    <div class="logo">
-      <img src="images/logo.png" alt="Rojiblanca FC">
-      <span>Rojiblanca FC</span>
-    </div>
-
-    <!-- HAMBURGER -->
-    <div id="hamburger-btn" class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-
-    <!-- MENU DESKTOP / MOBILE -->
-    <nav id="main-nav" class="nav-left">
-      <a href="index.html">Accueil</a>
-      <a href="team.html">Équipe</a>
-      <a href="results.html">Résultats</a>
-      <a href="stats.html">Statistiques</a>
-    </nav>
-
-  </div>
-</header>
-
-
-<main class="main-content">
-  <section class="team-section">
-    <h3>Gardiens</h3>
-    <div id="goals" class="players-grid"></div>
-  </section>
-
-  <section class="team-section">
-    <h3>Défenseurs</h3>
-    <div id="defenders" class="players-grid"></div>
-  </section>
-
-  <section class="team-section">
-    <h3>Milieux</h3>
-    <div id="midfielders" class="players-grid"></div>
-  </section>
-
-  <section class="team-section">
-    <h3>Attaquants</h3>
-    <div id="strikers" class="players-grid"></div>
-  </section>
-</main>
-
-<footer class="footer">
-  <p>© Rojiblanca FC</p>
-</footer>
-
-<script>
-(function() {
-  const btn = document.getElementById('hamburger-btn');
-  const nav = document.getElementById('main-nav');
-
-  if (!btn || !nav) return; // sécurité si jamais le header n'existe pas
-
-  // ouvrir/fermer le menu mobile
-  btn.addEventListener('click', () => {
-    nav.classList.toggle('open-mobile');
-    btn.classList.toggle('open');
-  });
-
-  // fermer le menu quand on clique sur un lien
-  nav.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      if (nav.classList.contains('open-mobile')) {
-        nav.classList.remove('open-mobile');
-        btn.classList.remove('open');
-      }
-    });
-  });
-})();
-</script>
-
-
-<script src="js/displayPlayers.js"></script>
+<body class="team-page"> <!-- HEADER IDENTIQUE -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo"> <img src="images/logo.png" alt="Rojiblanca FC"> <span>Rojiblanca FC</span> </div>
+            <nav class="nav-left"> <a href="index.html">Accueil</a> <a href="team.html" class="active">Équipe</a> <a
+                    href="results.html">Résultats</a> <a href="stats.html">Statistiques</a> </nav>
+        </div>
+    </header>
+    <main class="main-content"> <!-- GARDIENS -->
+        <section class="team-section">
+            <h3>Gardiens</h3>
+            <div id="goals" class="players-grid"></div>
+        </section>
+        <section class="team-section">
+            <h3>Défenseurs</h3>
+            <div id="defenders" class="players-grid"></div>
+        </section>
+        <section class="team-section">
+            <h3>Milieux</h3>
+            <div id="midfielders" class="players-grid"></div>
+        </section>
+        <section class="team-section">
+            <h3>Attaquants</h3>
+            <div id="strikers" class="players-grid"></div>
+        </section>
+    </main> <!-- FOOTER IDENTIQUE -->
+    <footer class="footer">
+        <p>© Rojiblanca FC</p>
+    </footer>
+    <script src="js/displayPlayers.js"></script>
 </body>
+
 </html>
