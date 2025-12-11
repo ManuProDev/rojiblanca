@@ -61,25 +61,30 @@
         display: none !important;
     }
 
-  /* --- Réduction espaces du hero (mobile seulement) --- */
-  .hero {
-      padding-top: 20px !important;
-      padding-bottom: 20px !important;
+  /* === Compactage du hero sur MOBILE, uniquement pour la page d'accueil ===
+     On cible les pages qui n'ont PAS de classes "team-page", "results-page", "stats-page", "player-page"
+     (ta page d'accueil n'a pas de classe sur <body>, donc ce sélecteur est sûr). */
+  body:not(.team-page):not(.results-page):not(.stats-page):not(.player-page) main.main-content {
+      padding-top: 48px !important;    /* réduit l'espace au dessus du hero */
+      padding-bottom: 60px !important; /* réduit l'espace global bas sur mobile */
   }
 
-  .hero h1 {
-      margin-top: 0 !important;
-      margin-bottom: 10px !important;
+  /* compacte la section hero elle-même */
+  body:not(.team-page):not(.results-page):not(.stats-page):not(.player-page) .hero {
+      margin-bottom: 18px !important; /* moins d'espace sous le hero */
+      padding-top: 6px !important;
+      padding-bottom: 6px !important;
   }
 
-  .hero p {
-      margin-top: 0 !important;
-      margin-bottom: 0 !important;
+  /* correct selector: on a un h2 dans index.html */
+  body:not(.team-page):not(.results-page):not(.stats-page):not(.player-page) .hero h2 {
+      margin: 0 0 8px 0 !important;
+      font-size: 28px !important;      /* optionnel : texte légèrement plus petit sur mobile */
+      line-height: 1.08 !important;
   }
-}
 
-/* --- DESKTOP FIX (réparation cartes + hamburger) --- */
-@media (min-width: 769px) {
-  .hamburger { display: none !important; }
-  .cards { flex-direction: row !important; }
+  body:not(.team-page):not(.results-page):not(.stats-page):not(.player-page) .hero p {
+      margin: 0 !important;
+      font-size: 15px !important;
+  }
 }
