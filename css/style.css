@@ -39,8 +39,8 @@ body.team-page .player-section:first-of-type h3 {
 }
 
 body.results-page main.main-content {
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 /* ========================================================= SCROLL PROGRESS BAR ========================================================= */
