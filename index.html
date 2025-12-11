@@ -70,23 +70,29 @@
 </footer>
 
 <script>
-  (function () {
-    const btn = document.getElementById('hamburger-btn');
-    const nav = document.getElementById('main-nav');
-    if (!btn || !nav) return;
+(function() {
+  const btn = document.getElementById('hamburger-btn');
+  const nav = document.getElementById('main-nav');
 
-    btn.addEventListener('click', () => {
-      nav.classList.toggle('open-mobile');
-      btn.classList.toggle('open');
-    });
+  if (!btn || !nav) return; // sécurité si jamais le header n'existe pas
 
-    nav.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
+  // ouvrir/fermer le menu mobile
+  btn.addEventListener('click', () => {
+    nav.classList.toggle('open-mobile');
+    btn.classList.toggle('open');
+  });
+
+  // fermer le menu quand on clique sur un lien
+  nav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      if (nav.classList.contains('open-mobile')) {
         nav.classList.remove('open-mobile');
         btn.classList.remove('open');
-      });
+      }
     });
-  })();
+  });
+})();
 </script>
+
 </body>
 </html>
