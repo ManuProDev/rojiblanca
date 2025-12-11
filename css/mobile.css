@@ -1,7 +1,6 @@
-/* ========================================================= MOBILE ONLY ========================================================= */
 @media (max-width: 768px) {
 
-  /* --- HEADER / HAMBURGER --- */
+  /* Header mobile */
   .hamburger {
     display: flex !important;
     flex-direction: column;
@@ -18,24 +17,11 @@
     border-radius: 3px;
   }
 
-  /* --- MENU --- */
   .nav-left {
     display: none !important;
   }
 
-  .nav-left.open {
-    display: flex !important;
-    flex-direction: column;
-    position: absolute;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    padding: 20px 0;
-    background: #ffffffee;
-    text-align: center;
-    gap: 16px;
-  }
-
+  .nav-left.open,
   .nav-left.open-mobile {
     display: flex !important;
     flex-direction: column;
@@ -50,48 +36,46 @@
     z-index: 1500;
   }
 
-  /* --- CARDS --- */
+  /* Cartes accueil */
   .cards {
     flex-direction: column !important;
     align-items: center !important;
-    gap: 24px !important;
   }
 
-  /* --- RESULTS PAGE FIX --- */
+  /* Résultats : garder les deux colonnes mais réduire largeur pour mobile */
   .results-pair {
     display: flex !important;
-    flex-direction: column !important;
-    gap: 16px !important;
+    flex-direction: row !important; /* garder les deux colonnes séparées */
+    justify-content: space-between !important;
+    gap: 12px !important;
+    width: 100%;
   }
 
-  .results-list {
-    width: 100% !important;
-    max-width: 100% !important;
+  .results-list.seven-list,
+  .results-list.eleven-list {
+    width: 48% !important; /* deux colonnes équilibrées sur mobile */
     display: flex;
     flex-direction: column;
-    gap: 14px; /* espace uniforme entre les cartes */
+    gap: 12px;
   }
 
   .match-card {
     width: 100% !important;
-    margin-bottom: 0 !important; /* géré par gap de la liste */
+    margin-bottom: 0 !important; /* espacement géré par gap */
   }
 
-  /* --- STATS / PLAYER PAGE FIX --- */
-  .charts-podium-container {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 20px !important;
-  }
-
+  /* Stats / Player : graphiques et podium en colonne */
+  .charts-podium-container,
   .charts-panel,
   .podium-panel {
     width: 100% !important;
     max-width: 100% !important;
   }
 
-  .charts-panel > div {
+  .charts-podium-container {
+    display: flex !important;
     flex-direction: column !important;
+    gap: 20px !important;
   }
 
   canvas {
@@ -100,7 +84,7 @@
   }
 }
 
-/* ========================================================= DESKTOP FIX ========================================================= */
+/* Desktop fix */
 @media (min-width: 769px) {
   .hamburger { display: none !important; }
   .cards { flex-direction: row !important; }
