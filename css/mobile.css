@@ -1,6 +1,7 @@
+/* ========================================================= MOBILE ONLY ========================================================= */
 @media (max-width: 768px) {
 
-  /* Header mobile */
+  /* --- HEADER / HAMBURGER --- */
   .hamburger {
     display: flex !important;
     flex-direction: column;
@@ -17,6 +18,7 @@
     border-radius: 3px;
   }
 
+  /* --- MENU --- */
   .nav-left {
     display: none !important;
   }
@@ -36,35 +38,37 @@
     z-index: 1500;
   }
 
-  /* Cartes accueil */
+  /* --- CARDS --- */
   .cards {
     flex-direction: column !important;
     align-items: center !important;
+    gap: 24px !important;
   }
 
-  /* Résultats : garder les deux colonnes mais réduire largeur pour mobile */
+  /* --- RESULTS PAGE FIX : uniquement espaces --- */
   .results-pair {
-    display: flex !important;
-    flex-direction: row !important; /* garder les deux colonnes séparées */
-    justify-content: space-between !important;
-    gap: 12px !important;
-    width: 100%;
+      display: flex !important;
+      flex-direction: column !important; /* empilement vertical sur mobile */
+      gap: 16px !important; /* espace uniforme entre les listes à 7 et 11 */
   }
 
-  .results-list.seven-list,
-  .results-list.eleven-list {
-    width: 48% !important; /* deux colonnes équilibrées sur mobile */
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  .results-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px !important; /* espace uniforme entre chaque match */
+      width: 100% !important;
   }
 
   .match-card {
-    width: 100% !important;
-    margin-bottom: 0 !important; /* espacement géré par gap */
+      width: 100% !important;
+      margin-bottom: 0 !important; /* espacement géré par gap */
   }
 
-  /* Stats / Player : graphiques et podium en colonne */
+  .results-row {
+      margin-bottom: 30px !important; /* espace uniforme entre Championnat / Coupe / Amicaux */
+  }
+
+  /* --- STATS / PLAYER PAGE FIX --- */
   .charts-podium-container,
   .charts-panel,
   .podium-panel {
@@ -84,7 +88,7 @@
   }
 }
 
-/* Desktop fix */
+/* ========================================================= DESKTOP FIX ========================================================= */
 @media (min-width: 769px) {
   .hamburger { display: none !important; }
   .cards { flex-direction: row !important; }
