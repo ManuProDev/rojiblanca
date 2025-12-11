@@ -90,8 +90,8 @@
 
     /* --- Réduction taille des cartes sur mobile (page d'accueil) --- */
   body:not(.team-page):not(.results-page):not(.stats-page):not(.player-page) .card {
-      transform: scale(0.92);
-      width: 90% !important;
+      transform: scale(0.85);
+      width: 88% !important;
       max-width: 330px !important;
   }
 
