@@ -1,114 +1,45 @@
-/* ⚠️ Mobile only */
-@media (max-width: 768px) {
+/* ======= MOBILE ONLY (max-width: 768px) ======= */
 
-    /* --- Header --- */
-    header {
-        padding: 15px 0;
-    }
+body {
+    overflow-x: hidden;
+}
 
-    .header-container {
-        width: 92%;
-        margin: auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+/* Header mobile */
+.header-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
 
-    .logo-area {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
+.nav-links {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+}
 
-    .logo {
-        width: 55px;
-        height: auto;
-    }
+.logo-area {
+    justify-content: center;
+}
 
-    .club-name span {
-        display: block;
-        font-size: 1.3rem;
-        font-weight: 700;
-        line-height: 1.1;
-    }
+.hero h1 {
+    font-size: 2rem;
+    text-align: center;
+}
 
-    /* --- Hamburger button --- */
-    .hamburger {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        cursor: pointer;
-    }
+.hero p {
+    font-size: 1rem;
+    text-align: center;
+}
 
-    .hamburger span {
-        width: 28px;
-        height: 3px;
-        background: #8b0000;
-        border-radius: 3px;
-        transition: 0.3s;
-    }
+/* Cartes en colonne */
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px;
+}
 
-    /* --- Nav links hidden on mobile --- */
-    nav {
-        position: absolute;
-        top: 85px;
-        left: 0;
-        width: 100%;
-    }
-
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        background: white;
-        padding: 15px 0;
-        gap: 10px;
-        text-align: center;
-        border-bottom: 1px solid #ddd;
-    }
-
-    .nav-links.open {
-        display: flex;
-    }
-
-    .nav-links a {
-        font-size: 1.2rem;
-        padding: 10px 0;
-    }
-
-    /* --- Hero --- */
-    .hero h1 {
-        font-size: 2.4rem;
-        line-height: 1.2;
-        margin-top: 20px;
-        padding: 0 10px;
-    }
-
-    .hero p {
-        font-size: 1.2rem;
-        margin-bottom: 40px;
-    }
-
-    /* --- Cards in column --- */
-    .cards {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        width: 92%;
-        margin: auto;
-    }
-
-    .card {
-        width: 100%;
-        padding: 25px;
-        border-radius: 15px;
-    }
-
-    .card h3 {
-        font-size: 1.6rem;
-    }
-
-    footer {
-        margin-top: 40px;
-        padding: 25px 0;
-    }
+.card {
+    width: 100%;
+    box-sizing: border-box;
 }
