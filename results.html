@@ -3,20 +3,41 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Résultats</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Résultats — Rojiblanca FC</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <script>
+        function toggleMenu() {
+            document.querySelector(".nav-left").classList.toggle("open");
+        }
+    </script>
 </head>
 
 <body class="results-page">
     <header class="header">
         <div class="header-left">
-            <div class="logo"> <img src="images/logo.png" alt="Rojiblanca FC"> <span>Rojiblanca FC</span> </div>
-            <nav class="nav-left"> <a href="index.html">Accueil</a> <a href="team.html">Équipe</a> <a
-                    href="results.html" class="active">Résultats</a> <a href="stats.html">Statistiques</a> </nav>
+            <div class="logo">
+                <img src="images/logo.png" alt="Rojiblanca FC">
+                <span>Rojiblanca FC</span>
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="nav-left">
+                <a href="index.html">Accueil</a>
+                <a href="team.html">Équipe</a>
+                <a href="results.html" class="active">Résultats</a>
+                <a href="stats.html">Statistiques</a>
+            </nav>
         </div>
     </header>
+
     <main class="main-content results-container">
         <h2 class="results-title">Résultats</h2>
+
         <div class="results-row">
             <h4 class="category-title">🏟️ Championnat</h4>
             <div class="results-pair" id="league-pair">
@@ -24,6 +45,7 @@
                 <div class="results-list eleven-list"></div>
             </div>
         </div>
+
         <div class="results-row">
             <h4 class="category-title">🏆 Coupe</h4>
             <div class="results-pair" id="cup-pair">
@@ -31,6 +53,7 @@
                 <div class="results-list eleven-list"></div>
             </div>
         </div>
+
         <div class="results-row">
             <h4 class="category-title">⚽ Amicaux</h4>
             <div class="results-pair" id="friendly-pair">
@@ -39,10 +62,31 @@
             </div>
         </div>
     </main>
+
     <footer class="footer">
         <p>© Rojiblanca FC</p>
     </footer>
+
     <script src="js/displayResults.js"></script>
+    <script>
+        (function () {
+            const btn = document.querySelector(".hamburger");
+            const nav = document.querySelector(".nav-left");
+            if (!btn || !nav) return;
+            btn.addEventListener('click', () => {
+                nav.classList.toggle('open-mobile');
+                btn.classList.toggle('open');
+            });
+            nav.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', () => {
+                    if (nav.classList.contains('open-mobile')) {
+                        nav.classList.remove('open-mobile');
+                        btn.classList.remove('open');
+                    }
+                });
+            });
+        })();
+    </script>
 </body>
 
 </html>
