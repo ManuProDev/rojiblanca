@@ -4,48 +4,48 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <script>
-      function toggleMenu() {
-          document.querySelector(".nav-left").classList.toggle("open");
-      }
+    function toggleMenu() {
+      document.querySelector(".nav-left").classList.toggle("open");
+    }
   </script>
   <title>Statistiques — Rojiblanca FC</title>
   <link rel="stylesheet" href="css/style.css">
-  <!-- Chart.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body class="stats-page">
 
 <header class="header">
-    <div class="header-left">
-  
-      <div class="logo">
-        <img src="images/logo.png" alt="Rojiblanca FC">
-        <span>Rojiblanca FC</span>
-      </div>
-  
-      <!-- HAMBURGER -->
-      <div class="hamburger" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-      </div>
-  
-      <!-- MENU DESKTOP / MOBILE -->
-      <nav class="nav-left">
-        <a href="index.html">Accueil</a>
-        <a href="team.html">Équipe</a>
-        <a href="results.html">Résultats</a>
-        <a href="stats.html" class="active">Statistiques</a>
-      </nav>
-  
+  <div class="header-left">
+
+    <div class="logo">
+      <img src="images/logo.png" alt="Rojiblanca FC">
+      <span>Rojiblanca FC</span>
     </div>
-  </header>
+
+    <!-- HAMBURGER -->
+    <div id="hamburger-btn" class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- MENU DESKTOP / MOBILE -->
+    <nav id="main-nav" class="nav-left">
+      <a href="index.html">Accueil</a>
+      <a href="team.html">Équipe</a>
+      <a href="results.html">Résultats</a>
+      <a href="stats.html" class="active">Statistiques</a>
+    </nav>
+
+  </div>
+</header>
 
 <main class="main-content">
 
   <!-- HEADER/TITLE -->
   <section style="width:100%;max-width:1200px;margin:0 auto;padding:10px 20px;">
     <h2 class="results-title">Statistiques</h2>
+
     <!-- FILTERS -->
     <div class="stats-filters">
       <div class="filter-group">
@@ -56,7 +56,7 @@
           <option value="Rojiblanca 11">Rojiblanca 11</option>
         </select>
       </div>
-    
+
       <div class="filter-group">
         <label>Matchs :</label>
         <select id="matchTypeFilter">
@@ -108,26 +108,22 @@
   <p>© Rojiblanca FC</p>
 </footer>
 
+<!-- MENU MOBILE : sécurisé -->
 <script>
   (function () {
     const btn = document.getElementById('hamburger-btn');
     const nav = document.getElementById('main-nav');
-
-    // sécurité : si éléments manquent, on ne fait rien
-    if (!btn || !nav) return;
+    if (!btn || !nav) return; // sécurité
 
     btn.addEventListener('click', () => {
-      nav.classList.toggle('open-mobile');   // pour afficher le menu vertical
-      btn.classList.toggle('open');          // animation du bouton
+      nav.classList.toggle('open-mobile');
+      btn.classList.toggle('open');
     });
 
-    // fermer le menu quand on clique sur un lien (pratique mobile)
     nav.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
-        if (nav.classList.contains('open-mobile')) {
-          nav.classList.remove('open-mobile');
-          btn.classList.remove('open');
-        }
+        nav.classList.remove('open-mobile');
+        btn.classList.remove('open');
       });
     });
   })();
