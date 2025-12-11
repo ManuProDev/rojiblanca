@@ -71,9 +71,9 @@
 
   /* compacte la section hero elle-même */
   body:not(.team-page):not(.results-page):not(.stats-page):not(.player-page) .hero {
-      margin-bottom: 18px !important; /* moins d'espace sous le hero */
+      margin-bottom: 20px !important; /* moins d'espace sous le hero */
       padding-top: 6px !important;
-      padding-bottom: 6px !important;
+      padding-bottom: 20px !important;
   }
 
   /* correct selector: on a un h2 dans index.html */
