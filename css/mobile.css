@@ -1,134 +1,55 @@
-/* mobile.css
-   -> règles exclusivement pour mobile
-   -> n'écrase pas le desktop si chargé après style.css
-*/
-
+/* --- MOBILE ONLY --- */
 @media (max-width: 768px) {
 
-  /* header : espace plus important, logo légèrement réduit */
-  .header {
-    padding: 18px 16px !important;
-    height: auto !important;
-  }
-
-  .header-left {
-    gap: 18px !important;
-    align-items: center !important;
-  }
-
-  .logo img {
-    height: 52px; /* plus visible sur mobile */
-  }
-
-  .logo span {
-    font-size: 20px !important;
-  }
-
-  /* --- Hamburger button : visible uniquement en mobile --- */
+  /* Header desktop caché, menu hamburger visible */
   .hamburger {
-    display: inline-flex;
+    display: inline-flex !important;
     flex-direction: column;
     justify-content: center;
     gap: 5px;
     background: transparent;
     border: none;
     padding: 6px;
-    margin-right: 6px;
     cursor: pointer;
     z-index: 1200;
   }
 
   .hamburger span {
-    display: block;
     width: 26px;
     height: 3px;
     background: #9b1c1c;
     border-radius: 3px;
-    transition: transform .25s ease, opacity .2s ease;
   }
 
-  .hamburger.open span:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
-  }
-
-  .hamburger.open span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .hamburger.open span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
-  }
-
-  /* --- Nav left : on cache le menu horizontal et on affichera vertical via .open-mobile --- */
+  /* Menu desktop caché */
   .nav-left {
-    display: none !important;               /* desktop menu caché en mobile */
+    display: none !important;
   }
 
+  /* Menu mobile visible */
   .nav-left.open-mobile {
     display: flex !important;
-    position: absolute;
-    top: calc(100% + 8px);                  /* juste sous le header */
-    right: 12px;
-    left: 12px;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
     background: #fff;
-    padding: 12px;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
-    z-index: 1100;
+    padding: 14px;
+    border-radius: 12px;
+    position: absolute;
+    top: 80px;
+    left: 12px;
+    right: 12px;
+    z-index: 1500;
   }
 
-  .nav-left.open-mobile a {
-    color: #9b1c1c !important;
-    font-weight: 700;
-    padding: 8px 12px;
-    text-align: center;
-    display: block;
-    border-bottom: 1px solid rgba(0,0,0,0.06);
-  }
-
-  .nav-left.open-mobile a:last-child {
-    border-bottom: none;
-  }
-
-  /* --- Hero : ajustements mobiles --- */
-  .hero {
-    padding: 36px 12px 24px 12px;
-    margin-bottom: 12px;
-  }
-
-  .hero h2 {
-    font-size: 32px !important;
-    line-height: 1.05 !important;
-  }
-
-  .hero p {
-    font-size: 16px !important;
-  }
-
-  /* --- Cards : force une carte par ligne, centrées --- */
+  /* Cartes en colonne */
   .cards {
-    display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    gap: 20px !important;
-    padding: 6px 12px 60px 12px;
-    width: 100%;
-  }
-
-  .card {
-    width: 96% !important;
-    max-width: 420px !important;
-    padding: 26px !important;
-    border-radius: 14px !important;
-  }
-
-  /* ensure footer not overlapping content */
-  main.main-content {
-    padding-bottom: 120px !important;
   }
 }
 
-/* Safety: hide hamburger on desktop (in case) */
-.hamburger { display: none; }
+/* --- DESKTOP FIX (réparation cartes + hamburger) --- */
+@media (min-width: 769px) {
+  .hamburger { display: none !important; }
+  .cards { flex-direction: row !important; }
+}
