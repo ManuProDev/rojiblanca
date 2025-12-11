@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <script>
+      function toggleMenu() {
+          document.querySelector(".nav-left").classList.toggle("open");
+      }
+  </script>
   <title>Rojiblanca FC - Accueil</title>
 
   <link rel="stylesheet" href="css/style.css">
@@ -11,29 +16,30 @@
 </head>
 <body>
 
-  <!-- HEADER (structure compatible avec style.css) -->
   <header class="header">
     <div class="header-left">
+  
       <div class="logo">
         <img src="images/logo.png" alt="Rojiblanca FC">
         <span>Rojiblanca FC</span>
       </div>
-
-      <!-- Menu desktop (inchangé) -->
-      <nav class="nav-left" id="main-nav">
-        <a href="index.html" class="active">Accueil</a>
+  
+      <!-- HAMBURGER -->
+      <div class="hamburger" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+      </div>
+  
+      <!-- MENU DESKTOP / MOBILE -->
+      <nav class="nav-left">
+        <a href="index.html">Accueil</a>
         <a href="team.html">Équipe</a>
         <a href="results.html">Résultats</a>
         <a href="stats.html">Statistiques</a>
       </nav>
+  
     </div>
-
-    <!-- Hamburger (visible uniquement sur mobile grâce à css/mobile.css) -->
-    <button class="hamburger" id="hamburger-btn" aria-label="Ouvrir le menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
   </header>
 
   <main class="main-content">
