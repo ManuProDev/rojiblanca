@@ -14,15 +14,23 @@
         }
     </script>
     <style>
-        /* Mobile : déplacer le podium sous les graphiques */
+        /* MOBILE FIX : podium sous les graphiques et ajustement largeur */
         @media (max-width: 768px) {
-            .charts-panel, .podium-panel {
-                grid-column: 1 / -1 !important;
-            }
-            .charts-panel {
+            .charts-podium-container {
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
+            }
+            .charts-panel, .podium-panel {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            .charts-panel > div {
+                flex-direction: column !important;
+            }
+            canvas {
+                max-width: 100% !important;
+                height: auto !important;
             }
         }
     </style>
