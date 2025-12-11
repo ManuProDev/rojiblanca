@@ -1,103 +1,48 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <script>
-    function toggleMenu() {
-      document.querySelector(".nav-left").classList.toggle("open");
-    }
-  </script>
-  <title>Résultats — Rojiblanca FC</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <title>Résultats</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body class="results-page">
-
-<header class="header">
-  <div class="header-left">
-
-    <!-- LOGO -->
-    <div class="logo">
-      <img src="images/logo.png" alt="Rojiblanca FC">
-      <span>Rojiblanca FC</span>
-    </div>
-
-    <!-- HAMBURGER -->
-    <div id="hamburger-btn" class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-
-    <!-- MENU DESKTOP / MOBILE -->
-    <nav id="main-nav" class="nav-left">
-      <a href="index.html">Accueil</a>
-      <a href="team.html">Équipe</a>
-      <a href="results.html">Résultats</a>
-      <a href="stats.html">Statistiques</a>
-    </nav>
-
-  </div>
-</header>
-
-<main class="main-content results-container">
-  <h2 class="results-title">Résultats</h2>
-
-  <div class="results-row">
-    <h4 class="category-title">🏟️ Championnat</h4>
-    <div class="results-pair" id="league-pair">
-      <div class="results-list seven-list"></div>
-      <div class="results-list eleven-list"></div>
-    </div>
-  </div>
-
-  <div class="results-row">
-    <h4 class="category-title">🏆 Coupe</h4>
-    <div class="results-pair" id="cup-pair">
-      <div class="results-list seven-list"></div>
-      <div class="results-list eleven-list"></div>
-    </div>
-  </div>
-
-  <div class="results-row">
-    <h4 class="category-title">⚽ Amicaux</h4>
-    <div class="results-pair" id="friendly-pair">
-      <div class="results-list seven-list"></div>
-      <div class="results-list eleven-list"></div>
-    </div>
-  </div>
-</main>
-
-<footer class="footer">
-  <p>© Rojiblanca FC</p>
-</footer>
-
-<script>
-(function() {
-  const btn = document.getElementById('hamburger-btn');
-  const nav = document.getElementById('main-nav');
-
-  if (!btn || !nav) return; // sécurité si jamais le header n'existe pas
-
-  // ouvrir/fermer le menu mobile
-  btn.addEventListener('click', () => {
-    nav.classList.toggle('open-mobile');
-    btn.classList.toggle('open');
-  });
-
-  // fermer le menu quand on clique sur un lien
-  nav.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      if (nav.classList.contains('open-mobile')) {
-        nav.classList.remove('open-mobile');
-        btn.classList.remove('open');
-      }
-    });
-  });
-})();
-</script>
-
-
-<script src="js/displayResults.js"></script>
+    <header class="header">
+        <div class="header-left">
+            <div class="logo"> <img src="images/logo.png" alt="Rojiblanca FC"> <span>Rojiblanca FC</span> </div>
+            <nav class="nav-left"> <a href="index.html">Accueil</a> <a href="team.html">Équipe</a> <a
+                    href="results.html" class="active">Résultats</a> <a href="stats.html">Statistiques</a> </nav>
+        </div>
+    </header>
+    <main class="main-content results-container">
+        <h2 class="results-title">Résultats</h2>
+        <div class="results-row">
+            <h4 class="category-title">🏟️ Championnat</h4>
+            <div class="results-pair" id="league-pair">
+                <div class="results-list seven-list"></div>
+                <div class="results-list eleven-list"></div>
+            </div>
+        </div>
+        <div class="results-row">
+            <h4 class="category-title">🏆 Coupe</h4>
+            <div class="results-pair" id="cup-pair">
+                <div class="results-list seven-list"></div>
+                <div class="results-list eleven-list"></div>
+            </div>
+        </div>
+        <div class="results-row">
+            <h4 class="category-title">⚽ Amicaux</h4>
+            <div class="results-pair" id="friendly-pair">
+                <div class="results-list seven-list"></div>
+                <div class="results-list eleven-list"></div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>© Rojiblanca FC</p>
+    </footer>
+    <script src="js/displayResults.js"></script>
 </body>
+
 </html>
