@@ -12,6 +12,19 @@
             document.querySelector(".nav-left").classList.toggle("open");
         }
     </script>
+    <style>
+        /* Mobile : forcer 1 seule colonne dans results-pair */
+        @media (max-width: 768px) {
+            .results-pair {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 16px !important;
+            }
+            .results-list {
+                width: 100% !important;
+            }
+        }
+    </style>
 </head>
 
 <body class="results-page">
