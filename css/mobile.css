@@ -57,13 +57,13 @@
       flex-direction: column;
       gap: 12px !important; /* espace uniforme entre chaque match */
       width: 100% !important;
-      margin: 0 !important; /* supprimer toute marge résiduelle */
+      margin: 0 !important; 
       padding: 0 !important;
   }
 
   .match-card {
       width: 100% !important;
-      margin: 0 !important; /* ne plus ajouter de marge en bas */
+      margin-bottom: 12px !important; /* uniformiser l’espace entre les matchs */
   }
 
   .results-row {
