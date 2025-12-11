@@ -1,66 +1,114 @@
-/* ======================================= */
-/*       STYLES SPÉCIAUX POUR MOBILE       */
-/* ======================================= */
-
+/* ⚠️ Mobile only */
 @media (max-width: 768px) {
 
-  /* ===== HEADER ===== */
+    /* --- Header --- */
+    header {
+        padding: 15px 0;
+    }
 
-  .header {
-    padding: 15px 20px; 
-    height: auto;
-  }
+    .header-container {
+        width: 92%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-  .header-left {
-    flex-direction: column;
-    justify-content: center;
-    gap: 12px;
-    width: 100%;
-  }
+    .logo-area {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 
-  /* LOGO centré */
-  .logo {
-    justify-content: center;
-  }
+    .logo {
+        width: 55px;
+        height: auto;
+    }
 
-  /* MENU EN COLONNE */
-  .nav-left {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 18px;
-    order: 2;
-  }
+    .club-name span {
+        display: block;
+        font-size: 1.3rem;
+        font-weight: 700;
+        line-height: 1.1;
+    }
 
-  .nav-left a {
-    font-size: 15px;
-    padding: 4px 0;
-  }
+    /* --- Hamburger button --- */
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+    }
 
-  /* ===== CARDS ===== */
-  .cards {
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 25px !important;
-  }
+    .hamburger span {
+        width: 28px;
+        height: 3px;
+        background: #8b0000;
+        border-radius: 3px;
+        transition: 0.3s;
+    }
 
-  .card {
-    width: 92% !important;
-    max-width: 350px !important;
-  }
+    /* --- Nav links hidden on mobile --- */
+    nav {
+        position: absolute;
+        top: 85px;
+        left: 0;
+        width: 100%;
+    }
 
-  /* ===== HERO ===== */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: white;
+        padding: 15px 0;
+        gap: 10px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
 
-  .hero h2 {
-    font-size: 30px !important;
-  }
+    .nav-links.open {
+        display: flex;
+    }
 
-  .hero p {
-    font-size: 16px !important;
-  }
+    .nav-links a {
+        font-size: 1.2rem;
+        padding: 10px 0;
+    }
 
-  main.main-content {
-    padding-bottom: 120px !important;
-  }
+    /* --- Hero --- */
+    .hero h1 {
+        font-size: 2.4rem;
+        line-height: 1.2;
+        margin-top: 20px;
+        padding: 0 10px;
+    }
 
+    .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 40px;
+    }
+
+    /* --- Cards in column --- */
+    .cards {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 92%;
+        margin: auto;
+    }
+
+    .card {
+        width: 100%;
+        padding: 25px;
+        border-radius: 15px;
+    }
+
+    .card h3 {
+        font-size: 1.6rem;
+    }
+
+    footer {
+        margin-top: 40px;
+        padding: 25px 0;
+    }
 }
