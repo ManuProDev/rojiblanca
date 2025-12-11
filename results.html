@@ -13,14 +13,17 @@
         }
     </script>
     <style>
-        /* Mobile : forcer 1 seule colonne dans results-pair */
+        /* MOBILE FIX : 1 colonne et cartes plus étroites */
         @media (max-width: 768px) {
             .results-pair {
-                display: flex !important;
                 flex-direction: column !important;
                 gap: 16px !important;
             }
             .results-list {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            .match-card {
                 width: 100% !important;
             }
         }
