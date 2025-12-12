@@ -123,14 +123,15 @@
     /* --- PAGE ÉQUIPE MOBILE --- */
     body.team-page .players-grid {
         display: grid !important;
-        grid-template-columns: 10% 37% 6% 37% 10%; /* marge gauche, carte 1, espace, carte 2, marge droite */
+        grid-template-columns: 1fr 1fr; /* 2 colonnes égales */
+        gap: 8px; /* espace entre les cartes */
+        padding: 0 5%; /* marge à gauche et à droite de l’écran */
         width: 100%;
-        gap: 0; /* pas de gap supplémentaire, tout est géré par les colonnes */
         box-sizing: border-box;
     }
 
     body.team-page .player-card {
-        width: 100% !important; /* remplit entièrement sa colonne */
+        width: 100% !important; /* remplit complètement sa colonne */
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
@@ -138,14 +139,14 @@
         align-items: center;
         padding: 8px !important;
         text-align: center;
-        overflow: visible;
+        overflow: visible; /* texte long visible */
     }
 
     body.team-page .player-card h4 {
-        font-size: 0.95rem !important;
+        font-size: 0.95rem !important; /* réduit légèrement si nécessaire */
         margin-bottom: 4px !important;
         text-align: center;
-        white-space: normal;
+        white-space: normal; /* plusieurs lignes si nécessaire */
         word-break: break-word;
     }
 
