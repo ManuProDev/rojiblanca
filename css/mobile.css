@@ -22,7 +22,7 @@
       gap: 5px;
       width: 32px;
       cursor: pointer;
-      margin: 0; /* supprime décalage */
+      margin: 0;
       z-index: 2000;
   }
 
@@ -65,7 +65,7 @@
   .cards {
       flex-direction: column !important;
       align-items: center !important;
-      gap: 18px !important; /* petit espace entre les cartes */
+      gap: 18px !important;
   }
 
   .empty-card {
@@ -74,37 +74,37 @@
 
   /* --- PAGE D'ACCUEIL MOBILE --- */
   body.home-page {
-      overflow-y: hidden; /* supprime scroll inutile */
+      overflow-y: hidden;
   }
 
   body.home-page main.main-content {
-      padding-top: 35px !important; /* un peu d’espace au-dessus du titre */
-      padding-bottom: 0 !important; /* plus de padding en bas */
+      padding-top: 35px !important;
+      padding-bottom: 0 !important;
   }
 
   body.home-page .hero {
-      margin-bottom: 12px !important; /* espace entre titre et sous-titre */
+      margin-bottom: 12px !important;
       padding-top: 0 !important;
       padding-bottom: 0 !important;
   }
 
   body.home-page .hero h2 {
       font-size: 28px !important;
-      margin-top: 12px !important; /* espace au-dessus du titre */
+      margin-top: 12px !important;
       margin-bottom: 6px !important;
   }
 
   body.home-page .hero p {
       font-size: 16px !important;
       margin-top: 0 !important;
-      margin-bottom: 30px !important; /* espace entre sous-titre et cartes */
+      margin-bottom: 30px !important;
   }
 
   body.home-page .card {
       width: 90% !important;
       max-width: 270px !important;
       padding: 18px !important;
-      height: auto !important; /* réduit la hauteur */
+      height: auto !important;
   }
 
   body.home-page .card h3 {
@@ -120,16 +120,16 @@
   /* --- PAGE ÉQUIPE MOBILE --- */
   body.team-page .players-grid {
       display: grid !important;
-      grid-template-columns: repeat(2, 1fr); /* 2 cartes par ligne */
-      gap: 12px !important; /* espace entre les cartes */
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px !important;
       padding: 0 12px !important;
   }
 
   body.team-page .player-card {
-      width: 100% !important;  /* même largeur pour toutes les cartes */
-      height: 180px !important; /* même hauteur pour toutes les cartes */
-      padding: 12px !important; 
-      box-sizing: border-box; 
+      width: 100% !important;          /* même largeur pour toutes les cartes */
+      height: 160px !important;        /* même hauteur pour toutes les cartes */
+      padding: 12px !important;
+      box-sizing: border-box;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -137,12 +137,15 @@
   }
 
   body.team-page .player-card h4 {
-      font-size: 1rem !important; /* réduit légèrement les noms pour tenir dans la carte */
+      font-size: 0.95rem !important;    /* réduit légèrement les noms pour uniformité */
       margin-bottom: 4px !important;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
   }
 
   body.team-page .player-card p {
-      font-size: 1.8rem !important; /* légèrement réduit */
+      font-size: 1.8rem !important;
       margin: 0;
   }
 
