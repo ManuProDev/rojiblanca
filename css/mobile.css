@@ -60,12 +60,74 @@
         font-size: 12px !important;
     }
 
+    /* --- PAGE D'ACCUEIL MOBILE (HOME-PAGE) --- */
+    body.home-page {
+        overflow-y: hidden;
+    }
+
+    body.home-page main.main-content {
+        padding-top: 35px !important;
+        padding-bottom: 0 !important;
+    }
+
+    body.home-page .hero {
+        margin-bottom: 12px !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    body.home-page .hero h2 {
+        font-size: 28px !important;
+        margin-top: 12px !important;
+        margin-bottom: 6px !important;
+    }
+
+    body.home-page .hero p {
+        font-size: 16px !important;
+        margin-top: 0 !important;
+        margin-bottom: 30px !important;
+    }
+
+    body.home-page .card {
+        width: 90% !important;
+        max-width: 270px !important;
+        padding: 18px !important;
+        height: auto !important;
+    }
+
+    body.home-page .card h3 {
+        font-size: 22px !important;
+        margin-bottom: 8px !important;
+    }
+
+    body.home-page .card p {
+        font-size: 14px !important;
+        line-height: 1.4 !important;
+    }
+
+    /* --- CARDS EN COLONNE --- */
+    .cards {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 18px !important;
+    }
+
+    .empty-card {
+        display: none !important;
+    }
+
+    /* --- MENU ACTIVE --- */
+    .nav-left a.active {
+        color: #9b1c1c !important;
+        text-decoration: none !important;
+    }
+
     /* --- PAGE ÉQUIPE MOBILE --- */
     body.team-page .players-grid {
         display: grid !important;
         grid-template-columns: 1fr 1fr; /* deux colonnes égales */
         gap: 0 !important; /* pas d’espace entre les cartes */
-        padding: 0 !important; /* pas de padding pour toucher les bords de l’écran */
+        padding: 0 !important; /* touche les bords de l’écran */
         width: 100vw; /* prend toute la largeur de l’écran */
         box-sizing: border-box;
     }
@@ -79,14 +141,14 @@
         align-items: center;
         padding: 8px !important;
         text-align: center;
-        overflow: visible;
+        overflow: visible; /* permet au texte long de s’afficher */
     }
 
     body.team-page .player-card h4 {
-        font-size: 0.95rem !important; /* légèrement réduit pour les noms longs */
+        font-size: 0.95rem !important; /* réduit légèrement si besoin */
         margin-bottom: 4px !important;
         text-align: center;
-        white-space: normal; /* autorise le retour à la ligne si besoin */
+        white-space: normal; /* texte sur plusieurs lignes si nécessaire */
         word-break: break-word; /* coupe les mots trop longs */
     }
 
@@ -95,11 +157,5 @@
         margin: 0;
         width: 100%;
         text-align: center;
-    }
-
-    /* --- MENU ACTIVE --- */
-    .nav-left a.active {
-        color: #9b1c1c !important;
-        text-decoration: none !important;
     }
 }
