@@ -74,7 +74,7 @@
   .cards {
       flex-direction: column !important;
       align-items: center !important;
-      gap: 18px !important; /* petit espace entre les cartes */
+      gap: 20px !important; /* petit espace entre les cartes */
   }
 
   .empty-card {
@@ -104,15 +104,15 @@
   }
 
   body.home-page .hero p {
-      font-size: 30px !important;
+      font-size: 16px !important;
       margin-top: 0 !important;
-      margin-bottom: 20px !important; /* espace entre sous-titre et cartes */
+      margin-bottom: 30px !important; /* espace entre sous-titre et cartes */
   }
 
   body.home-page .card {
       width: 90% !important;
       max-width: 270px !important;
-      padding: 20px !important;
+      padding: 18px !important;
       height: auto !important; /* réduit la hauteur */
   }
 
