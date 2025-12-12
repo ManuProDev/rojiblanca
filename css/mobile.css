@@ -1,116 +1,123 @@
-/* --- MOBILE ONLY --- */
+/* =========================================================
+   MOBILE.CSS
+   Surcharges mobiles uniquement
+   Aucune règle desktop
+========================================================= */
+
 @media (max-width: 768px) {
 
-    /* --- HEADER / HAMBURGER --- */
-    .header {
-        height: 64px !important;
-        padding: 12px 20px !important;
+    /* =====================================================
+       GLOBAL MOBILE
+    ===================================================== */
+
+    main.main-content {
+        padding-top: 100px;
+        padding-bottom: 140px;
     }
 
-    .header-left {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        padding: 0 20px;
-        box-sizing: border-box;
+    .hero h2 {
+        font-size: 30px;
     }
 
-    .hamburger {
-        display: flex !important;
-        flex-direction: column;
-        gap: 5px;
-        width: 32px;
-        cursor: pointer;
-        margin: 0;
-        z-index: 2000;
-    }
-
-    .hamburger span {
-        height: 3px;
-        width: 100%;
-        background: #9b1c1c;
-        border-radius: 3px;
-    }
-
-    .nav-left {
-        display: none !important;
-    }
-
-    .nav-left.open,
-    .nav-left.open-mobile {
-        display: flex !important;
-        flex-direction: column;
-        position: absolute;
-        top: 64px;
-        width: 100% !important;
-        left: 0;
-        right: 0;
-        padding: 14px;
-        gap: 10px;
-        background: #ffffffee;
-        text-align: center;
-        z-index: 1500;
-    }
-
-    /* --- FOOTER --- */
-    .footer {
-        height: 30px !important;
-        font-size: 12px !important;
-    }
-
-    /* --- PAGE ACCUEIL (INCHANGÉE) --- */
-    .cards {
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 18px !important;
-    }
-
-    body.home-page .card {
-        width: 90% !important;
-        max-width: 270px !important;
-    }
-
-    .empty-card {
-        display: none !important;
+    .hero p {
+        font-size: 16px;
     }
 
     /* =====================================================
-       PAGE ÉQUIPE — VERSION ULTRA SIMPLE
+       CARDS ACCUEIL (inchangé, juste responsive)
     ===================================================== */
 
+    .cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .card {
+        width: 90%;
+        max-width: 360px;
+    }
+
+    /* =====================================================
+       PAGE ÉQUIPE — CORRECTION DÉFINITIVE
+       2 cartes / ligne
+       50% exact chacune
+       aucune carte parasite
+    ===================================================== */
+
+    body.team-page .player-section {
+        padding: 0;
+        margin: 40px 0;
+    }
+
     body.team-page .players-grid {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        width: 100% !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        gap: 0 !important;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        gap: 0;
     }
 
     body.team-page .player-card {
-        width: 50% !important;        /* 🔥 50% EXACT */
-        max-width: 50% !important;
-        box-sizing: border-box !important;
-        padding: 12px !important;
-        margin: 0 !important;
-        height: auto !important;
+        width: 50%;
+        max-width: 50%;
+        min-width: 50%;
+        margin: 0;
+        padding: 20px;
+        box-sizing: border-box;
+        border-radius: 0;
     }
 
+    /* Typo ajustée pour noms longs */
     body.team-page .player-card h4 {
-        font-size: 1rem !important;
-        white-space: normal !important;
-        word-break: break-word !important;
+        font-size: 1rem;
+        line-height: 1.2;
+        word-break: break-word;
     }
 
     body.team-page .player-card p {
-        font-size: 2.2rem !important;
-        margin: 0 !important;
+        font-size: 2.2rem;
     }
 
-    /* --- MENU ACTIVE --- */
-    .nav-left a.active {
-        color: #9b1c1c !important;
-        text-decoration: none !important;
+    /* =====================================================
+       PAGE RÉSULTATS (mobile existant, conservé)
+    ===================================================== */
+
+    .results-columns {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .results-column {
+        width: 90%;
+        min-width: unset;
+    }
+
+    .results-pair {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* =====================================================
+       STATS PAGE
+    ===================================================== */
+
+    .stats-filters {
+        padding: 0 16px;
+        gap: 16px;
+    }
+
+    .stats-summary {
+        padding: 0 16px;
+    }
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    .footer {
+        font-size: 13px;
     }
 }
