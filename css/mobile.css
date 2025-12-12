@@ -125,7 +125,8 @@
     }
 
     body.team-page .player-card {
-        width: 120% !important; /* prend 100% de la largeur de sa colonne */
+        width: 100% !important; /* remplit 100% de sa colonne */
+        min-width: 0; /* permet au texte long de ne pas casser la grille */
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
@@ -133,17 +134,17 @@
         align-items: center;
         padding: 8px !important;
         text-align: center;
-        overflow: hidden;
+        overflow: hidden; /* évite que le texte dépasse horizontalement */
     }
 
     body.team-page .player-card h4 {
-        font-size: 0.9rem !important;
+        font-size: 0.85rem !important; /* réduit légèrement les noms longs */
         margin-bottom: 2px !important;
         width: 100%;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
         text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; /* tronque le texte si nécessaire */
     }
 
     body.team-page .player-card p {
