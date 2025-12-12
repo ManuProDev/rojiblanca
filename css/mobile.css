@@ -37,19 +37,20 @@
       display: none !important;
   }
 
+  /* Menu hamburger pleine largeur, plus arrondi */
   .nav-left.open,
   .nav-left.open-mobile {
       display: flex !important;
       flex-direction: column;
       position: absolute;
       top: 64px;
-      width: calc(100% - 24px); /* réduit avec padding sur les côtés */
-      left: 12px;
-      right: 12px;
-      padding: 14px;
+      left: 0;
+      right: 0;
+      width: 100% !important;
+      padding: 14px 0;
       gap: 10px;
       background: #ffffffee;
-      border-radius: 12px;
+      border-radius: 0 !important;
       text-align: center;
       z-index: 1500;
   }
@@ -125,25 +126,30 @@
   }
 
   body.team-page .player-card {
-      width: 100% !important; /* limite la largeur pour ne pas dépasser */
-      max-width: 100% !important; /* s’assure que ça reste dans le grid */
-      height: auto !important; /* réduit la hauteur */
-      padding: 12px !important; /* padding réduit */
+      width: 100% !important;  /* même largeur pour toutes les cartes */
+      height: 180px !important; /* même hauteur pour toutes les cartes */
+      padding: 12px !important; 
+      box-sizing: border-box; 
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
   }
 
   body.team-page .player-card h4 {
-      font-size: 1.1rem !important;
+      font-size: 1rem !important; /* réduit légèrement les noms pour tenir dans la carte */
       margin-bottom: 4px !important;
   }
 
   body.team-page .player-card p {
-      font-size: 2rem !important; /* réduit légèrement les stats */
+      font-size: 1.8rem !important; /* légèrement réduit */
+      margin: 0;
   }
 
   /* --- SOULIGNAGE PAGE ACTIVE --- */
   .nav-left a.active {
       color: #9b1c1c !important;
-      text-decoration: none !important; /* supprime le doublon */
+      text-decoration: none !important; /* supprime doublon */
   }
 }
 
