@@ -70,13 +70,13 @@
 
   body.home-page .hero h2 {
       font-size: 28px !important;
-      margin-bottom: 12px !important;
+      margin-bottom: 8px !important;  /* réduit l'espace sous le titre */
   }
 
   body.home-page .hero p {
       font-size: 16px !important;
       margin-top: 0 !important;
-      margin-bottom: 8px !important;
+      margin-bottom: 8px !important; /* réduit l'espace avant les cartes */
   }
 
   /* --- PAGE D'ACCUEIL : CARTES --- */
