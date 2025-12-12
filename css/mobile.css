@@ -74,6 +74,10 @@
   body.home-page main.main-content {
       padding-top: 40px !important; /* un peu d’espace au-dessus du titre */
       padding-bottom: 20px !important;
+      min-height: calc(100vh - 64px - 30px) !important; /* hauteur restante entre header et footer */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
   }
 
   body.home-page .hero {
@@ -95,7 +99,8 @@
   }
 
   body.home-page .cards {
-      gap: 18px !important; /* petit espace entre les cartes */
+      gap: 12px !important; /* petit espace entre les cartes */
+      margin-bottom: 0 !important; /* supprime l'espace sous la dernière carte */
   }
 
   body.home-page .card {
@@ -114,7 +119,6 @@
       font-size: 14px !important;
       line-height: 1.4 !important;
   }
-
 }
 
 /* --- DESKTOP FIX (réparation cartes + hamburger) --- */
