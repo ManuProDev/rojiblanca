@@ -118,28 +118,26 @@
 
     /* --- PAGE ÉQUIPE MOBILE --- */
     body.team-page .players-grid {
-        display: flex;
-        justify-content: space-between; /* espace exact entre les cartes */
-        padding: 0 10%; /* marge gauche et droite */
-        gap: 6%; /* espace entre cartes */
-        flex-wrap: wrap; /* permet plusieurs lignes */
+        display: grid !important;
+        grid-template-columns: 10% 1fr 6% 1fr 10%; /* marges et colonnes pour les cartes */
+        gap: 0;
+        padding: 0;
     }
 
     body.team-page .player-card {
-        width: 37%; /* largeur exacte de chaque carte */
-        height: auto; /* hauteur adaptative selon le contenu */
+        width: 100%; /* remplit 100% de sa colonne */
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 8px !important;
+        padding: 8px;
         text-align: center;
         overflow: hidden;
     }
 
     body.team-page .player-card h4 {
-        font-size: 0.85rem !important; /* légèrement réduit pour noms longs */
+        font-size: 0.85rem !important; /* légèrement réduit pour les noms longs */
         margin-bottom: 4px !important;
         width: 100%;
         overflow: hidden;
