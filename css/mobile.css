@@ -3,16 +3,16 @@
 
   /* --- HEADER / HAMBURGER --- */
   .header {
-      height: 64px !important; /* ~20% plus petit */
+      height: 64px !important;
       padding: 12px 20px !important;
   }
 
   .header-left {
       display: flex;
-      justify-content: space-between; /* logo à gauche, hamburger à droite */
+      justify-content: space-between;
       align-items: center;
       width: 100%;
-      padding: 0 20px; /* même espace à gauche et à droite */
+      padding: 0 20px;
       box-sizing: border-box;
   }
 
@@ -22,7 +22,7 @@
       gap: 5px;
       width: 32px;
       cursor: pointer;
-      margin: 0; /* supprime décalage */
+      margin: 0;
       z-index: 2000;
   }
 
@@ -33,7 +33,7 @@
       border-radius: 3px;
   }
 
-  /* --- MENU MOBILE IDENTIQUE POUR TOUTES LES PAGES --- */
+  /* --- MENU MOBILE UNIFIÉ --- */
   .nav-left {
       display: none !important;
   }
@@ -43,40 +43,43 @@
       display: flex !important;
       flex-direction: column;
       position: absolute;
-      top: 64px; /* juste en dessous du header */
+      top: 64px;
       left: 0;
       right: 0;
-      width: auto;
+      width: 100%;
       padding: 20px 0;
-      background: #ffffffee; /* semi-transparent comme la page d'accueil */
+      background: #ffffffee; /* semi-transparent */
       text-align: center;
       gap: 16px;
-      border-radius: 0; /* aucune bordure arrondie */
-  }
-
-  .nav-left.open-mobile {
-      left: 12px;
-      right: 12px;
-      padding: 14px;
-      border-radius: 12px; /* version flottante */
       z-index: 1500;
   }
 
+  /* Liens du menu */
   .nav-left a {
       display: inline-block;
       text-decoration: none;
       font-weight: 700;
       color: #222;
       padding: 6px 0;
-      transition: 0.25s ease;
       position: relative;
-    }
-
-  .nav-left a.active {
-      color: #9b1c1c;
+      transition: 0.25s ease;
   }
 
-  .nav-left a.active::after,
+  /* Soulignage de la page active */
+  .nav-left a.active::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #9b1c1c;
+      border-radius: 2px;
+      transform: scaleX(1);
+      transform-origin: left;
+      transition: 0.3s ease;
+  }
+
   .nav-left a::after {
       content: "";
       position: absolute;
@@ -97,7 +100,7 @@
 
   /* --- FOOTER --- */
   .footer {
-      height: 30px !important; /* ~50% plus petit */
+      height: 30px !important;
       font-size: 12px !important;
   }
 
@@ -105,7 +108,7 @@
   .cards {
       flex-direction: column !important;
       align-items: center !important;
-      gap: 20px !important; /* petit espace entre les cartes */
+      gap: 20px !important;
   }
 
   .empty-card {
@@ -118,33 +121,33 @@
   }
 
   body.home-page main.main-content {
-      padding-top: 35px !important; /* un peu d’espace au-dessus du titre */
-      padding-bottom: 0 !important; /* plus de padding en bas pour éviter scroll */
+      padding-top: 35px !important;
+      padding-bottom: 0 !important;
   }
 
   body.home-page .hero {
-      margin-bottom: 12px !important; /* espace entre titre et sous-titre */
+      margin-bottom: 12px !important;
       padding-top: 0 !important;
       padding-bottom: 0 !important;
   }
 
   body.home-page .hero h2 {
       font-size: 28px !important;
-      margin-top: 12px !important; /* espace au-dessus du titre */
+      margin-top: 12px !important;
       margin-bottom: 6px !important;
   }
 
   body.home-page .hero p {
       font-size: 16px !important;
       margin-top: 0 !important;
-      margin-bottom: 30px !important; /* espace entre sous-titre et cartes */
+      margin-bottom: 30px !important;
   }
 
   body.home-page .card {
       width: 90% !important;
       max-width: 270px !important;
       padding: 18px !important;
-      height: auto !important; /* réduit la hauteur */
+      height: auto !important;
   }
 
   body.home-page .card h3 {
@@ -158,7 +161,7 @@
   }
 }
 
-/* --- DESKTOP FIX (réparation cartes + hamburger) --- */
+/* --- DESKTOP FIX --- */
 @media (min-width: 769px) {
   .hamburger { display: none !important; }
   .cards { flex-direction: row !important; }
