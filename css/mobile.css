@@ -1,4 +1,6 @@
-/* --- MOBILE ONLY --- */
+/* =========================================================
+   MOBILE ONLY
+========================================================= */
 @media (max-width: 768px) {
 
     /* --- HEADER / HAMBURGER --- */
@@ -60,7 +62,18 @@
         font-size: 12px !important;
     }
 
-    /* --- PAGE D'ACCUEIL MOBILE (HOME-PAGE) --- */
+    /* --- CARDS (ACCUEIL) --- */
+    .cards {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 18px !important;
+    }
+
+    .empty-card {
+        display: none !important;
+    }
+
+    /* --- PAGE D'ACCUEIL MOBILE --- */
     body.home-page {
         overflow-y: hidden;
     }
@@ -105,55 +118,47 @@
         line-height: 1.4 !important;
     }
 
-    .cards {
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 18px !important;
-    }
+    /* =====================================================
+       PAGE ÉQUIPE — SEULE CORRECTION ICI
+    ===================================================== */
 
-    .empty-card {
-        display: none !important;
-    }
-
-    .nav-left a.active {
-        color: #9b1c1c !important;
-        text-decoration: none !important;
-    }
-
-    /* --- PAGE ÉQUIPE MOBILE --- */
     body.team-page .players-grid {
         display: grid !important;
-        grid-template-columns: 1fr 1fr; /* 2 colonnes égales */
-        gap: 8px; /* espace entre les cartes */
-        padding: 0 5%; /* marge à gauche et à droite de l’écran */
-        width: 100%;
-        box-sizing: border-box;
+        grid-template-columns: 1fr 1fr !important; /* 2 cartes seulement */
+        gap: 12px !important;
+        padding-left: 5% !important;
+        padding-right: 5% !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+
+        /* neutralise le flex desktop */
+        justify-content: initial !important;
     }
 
     body.team-page .player-card {
-        width: 100% !important; /* remplit complètement sa colonne */
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 8px !important;
-        text-align: center;
-        overflow: visible; /* texte long visible */
+        width: 100% !important;      /* 🔑 correction clé */
+        max-width: none !important;
+        height: auto !important;
+        padding: 16px !important;
+        box-sizing: border-box !important;
     }
 
     body.team-page .player-card h4 {
-        font-size: 0.95rem !important; /* réduit légèrement si nécessaire */
+        font-size: 1rem !important;
+        line-height: 1.2 !important;
+        white-space: normal !important;
+        word-break: break-word !important;
         margin-bottom: 4px !important;
-        text-align: center;
-        white-space: normal; /* plusieurs lignes si nécessaire */
-        word-break: break-word;
     }
 
     body.team-page .player-card p {
-        font-size: 1.6rem !important;
-        margin: 0;
-        width: 100%;
-        text-align: center;
+        font-size: 2.2rem !important;
+        margin: 0 !important;
+    }
+
+    /* --- MENU ACTIVE --- */
+    .nav-left a.active {
+        color: #9b1c1c !important;
+        text-decoration: none !important;
     }
 }
