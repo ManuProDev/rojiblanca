@@ -91,11 +91,11 @@
   body.home-page .hero p {
       font-size: 16px !important;
       margin-top: 0 !important;
-      margin-bottom: 14px !important; /* espace entre sous-titre et cartes */
+      margin-bottom: 24px !important; /* espace entre sous-titre et cartes */
   }
 
   body.home-page .cards {
-      gap: 8px !important; /* petit espace entre les cartes */
+      gap: 18px !important; /* petit espace entre les cartes */
   }
 
   body.home-page .card {
