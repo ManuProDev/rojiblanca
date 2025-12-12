@@ -114,8 +114,8 @@
   }
 
   body.team-page .player-card {
-      width: 100%;           /* occupe toute la colonne */
-      height: 110px !important; /* hauteur réduite */
+      width: 100%;            /* occupe toute la colonne */
+      height: 110px !important; /* hauteur fixe */
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -126,7 +126,7 @@
   }
 
   body.team-page .player-card h4 {
-      font-size: 0.9rem !important;
+      font-size: 0.95rem !important; /* réduit si nécessaire */
       margin-bottom: 2px !important;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -139,15 +139,17 @@
       margin: 0;
   }
 
-  /* --- SOULIGNAGE PAGE ACTIVE --- */
-  /* Supprime soulignage superflu pour les autres liens */
+  /* --- SOULIGNAGE MENU --- */
+  /* supprimer tous les soulignages non désirés */
+  .nav-left a {
+      text-decoration: none !important;
+  }
+
+  /* seul le lien actif reste souligné */
   .nav-left a.active {
       color: #9b1c1c !important;
       text-decoration: underline !important;
       text-underline-offset: 3px;
-  }
-  .nav-left a:not(.active) {
-      text-decoration: none !important;
   }
 }
 
