@@ -1,7 +1,7 @@
 /* --- MOBILE ONLY --- */
 @media (max-width: 768px) {
 
-  /* Header desktop caché, menu hamburger visible */
+  /* --- HEADER / HAMBURGER --- */
   .hamburger {
         display: flex !important;
         flex-direction: column;
@@ -51,64 +51,46 @@
     z-index: 1500;
   }
 
-  /* Cartes en colonne (toutes pages) */
+  /* Cartes en colonne */
   .cards {
     flex-direction: column !important;
     align-items: center !important;
+    gap: 16px !important; /* réduit l'espace entre cartes */
   }
 
-  /* Empêche les cartes vides sur mobile */
   .empty-card {
         display: none !important;
+    }
+
+  /* --- HERO / PAGE D'ACCUEIL --- */
+  body.home-page .hero {
+      padding-top: 12px !important;
+      padding-bottom: 12px !important;
   }
 
+  body.home-page .hero h2 {
+      font-size: 28px !important;
+      margin-bottom: 12px !important;
+  }
 
-  /* ------------------------------------------------------------- */
-  /* ----- PAGE D’ACCUEIL : FIX TOTAL DES ESPACES ----- */
-  /* ------------------------------------------------------------- */
-
-  /* On force le main à ne plus créer de gros espaces */
-  body.home-page main.main-content {
-      padding-top: 10px !important;
-      padding-bottom: 10px !important;
+  body.home-page .hero p {
+      font-size: 16px !important;
       margin-top: 0 !important;
-      margin-bottom: 0 !important;
+      margin-bottom: 8px !important;
   }
 
-  /* On élimine toutes les marges/paddings autour du bloc */
-  body.home-page section {
-      margin: 0 !important;
-      padding: 0 !important;
+  /* Cartes plus petites sur mobile pour page accueil */
+  body.home-page .cards .card {
+      width: 85% !important;
+      max-width: 300px !important;
+      padding: 20px !important;
+      margin-bottom: 16px !important;
   }
 
-  /* Réduction drastique des marges des titres et paragraphes */
-  body.home-page h1,
-  body.home-page h2,
-  body.home-page p {
-      margin-top: 10px !important;
-      margin-bottom: 10px !important;
-      padding: 0 !important;
-  }
-
-  /* Taille réduite des cartes */
-  body.home-page .card {
-      transform: scale(0.9);
-      width: 90% !important;
-      margin-top: 10px !important;
-      margin-bottom: 10px !important;
-  }
-
-  /* Suppression de l’espace sous la dernière carte */
-  body.home-page .cards {
-      margin-bottom: 0 !important;
-      padding-bottom: 0 !important;
-  }
-
-  /* Supprime tout espace résiduel entre les colonnes/cartes */
-  body.home-page .cards > *:last-child {
-      margin-bottom: 0 !important;
-  }
 }
 
 /* --- DESKTOP FIX (réparation cartes + hamburger) --- */
-@media
+@media (min-width: 769px) {
+  .hamburger { display: none !important; }
+  .cards { flex-direction: row !important; }
+}
