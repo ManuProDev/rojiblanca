@@ -49,7 +49,7 @@
       padding: 14px;
       gap: 10px;
       background: #ffffffee;
-      border-radius: 0;
+      border-radius: 0; /* plus d'arrondi */
       text-align: center;
       z-index: 1500;
   }
@@ -109,24 +109,25 @@
   body.team-page .players-grid {
       display: grid !important;
       grid-template-columns: repeat(2, 1fr); /* 2 cartes par ligne */
-      gap: 12px !important; /* espace entre cartes */
-      padding: 0 10px !important; /* marges gauche et droite */
+      gap: 10px !important; /* espace entre cartes */
+      padding: 0 10px !important;
   }
 
   body.team-page .player-card {
-      height: 140px !important; /* même hauteur pour toutes */
+      width: 100%;           /* occupe toute la colonne */
+      height: 110px !important; /* hauteur réduite */
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 8px !important;
+      padding: 6px !important;
       box-sizing: border-box;
       text-align: center;
   }
 
   body.team-page .player-card h4 {
-      font-size: 0.95rem !important;
-      margin-bottom: 4px !important;
+      font-size: 0.9rem !important;
+      margin-bottom: 2px !important;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -134,15 +135,19 @@
   }
 
   body.team-page .player-card p {
-      font-size: 1.8rem !important;
+      font-size: 1.6rem !important;
       margin: 0;
   }
 
   /* --- SOULIGNAGE PAGE ACTIVE --- */
+  /* Supprime soulignage superflu pour les autres liens */
   .nav-left a.active {
       color: #9b1c1c !important;
       text-decoration: underline !important;
       text-underline-offset: 3px;
+  }
+  .nav-left a:not(.active) {
+      text-decoration: none !important;
   }
 }
 
