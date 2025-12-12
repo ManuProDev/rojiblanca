@@ -126,8 +126,8 @@
     body.team-page .players-grid {
         display: grid !important;
         grid-template-columns: 1fr 1fr; /* deux colonnes égales */
-        gap: 5%; /* espace entre les deux cartes */
-        padding: 0 5%; /* marge gauche et droite de l'écran */
+        gap: 8px; /* petit espace entre les cartes */
+        padding: 0 4px; /* petites marges gauche et droite de l'écran */
         width: 100%; /* prend toute la largeur disponible */
         box-sizing: border-box;
     }
