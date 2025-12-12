@@ -122,11 +122,12 @@
         grid-template-columns: repeat(2, 1fr); /* deux colonnes identiques */
         gap: 12px !important;
         padding: 0 12px !important;
-        grid-auto-rows: auto; /* pour que toutes les cartes d'une ligne aient la même hauteur */
+        grid-auto-rows: 150px; /* toutes les cartes ont la même hauteur */
     }
 
     body.team-page .player-card {
         width: 100% !important; /* prend toute la largeur de la colonne */
+        height: 100%; /* hauteur identique pour toutes */
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
@@ -138,8 +139,8 @@
     }
 
     body.team-page .player-card h4 {
-        font-size: 0.9rem !important;
-        margin-bottom: 2px !important;
+        font-size: 0.85rem !important; /* légèrement réduit */
+        margin-bottom: 4px !important;
         width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
