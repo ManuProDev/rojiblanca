@@ -118,16 +118,16 @@
 
     /* --- PAGE ÉQUIPE MOBILE --- */
     body.team-page .players-grid {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr); /* deux colonnes identiques */
-        gap: 12px !important;
-        padding: 0 12px !important;
-        grid-auto-rows: 150px; /* toutes les cartes ont la même hauteur */
+        display: flex;
+        justify-content: space-between; /* espace exact entre les cartes */
+        padding: 0 10%; /* marge gauche et droite */
+        gap: 6%; /* espace entre cartes */
+        flex-wrap: wrap; /* permet plusieurs lignes */
     }
 
     body.team-page .player-card {
-        width: 100% !important; /* prend toute la largeur de la colonne */
-        height: 100%; /* hauteur identique pour toutes */
+        width: 37%; /* largeur exacte de chaque carte */
+        height: auto; /* hauteur adaptative selon le contenu */
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
@@ -139,12 +139,13 @@
     }
 
     body.team-page .player-card h4 {
-        font-size: 0.85rem !important; /* légèrement réduit */
+        font-size: 0.85rem !important; /* légèrement réduit pour noms longs */
         margin-bottom: 4px !important;
         width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        text-align: center;
     }
 
     body.team-page .player-card p {
