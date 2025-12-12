@@ -3,16 +3,16 @@
 
   /* --- HEADER / HAMBURGER --- */
   .header {
-      height: 64px !important;
+      height: 64px !important; /* ~20% plus petit */
       padding: 12px 20px !important;
   }
 
   .header-left {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-between; /* logo à gauche, hamburger à droite */
       align-items: center;
       width: 100%;
-      padding: 0 20px;
+      padding: 0 20px; /* même espace à gauche et à droite */
       box-sizing: border-box;
   }
 
@@ -22,7 +22,7 @@
       gap: 5px;
       width: 32px;
       cursor: pointer;
-      margin: 0;
+      margin: 0; /* supprime décalage */
       z-index: 2000;
   }
 
@@ -37,63 +37,73 @@
       display: none !important;
   }
 
-  /* Menu hamburger pleine largeur, plus arrondi */
   .nav-left.open,
   .nav-left.open-mobile {
       display: flex !important;
       flex-direction: column;
       position: absolute;
       top: 64px;
+      width: 100% !important;  /* prend toute la largeur de l’écran */
       left: 0;
       right: 0;
-      width: 100% !important;
-      padding: 14px 0;
+      padding: 14px;
       gap: 10px;
-      background: #ffffffee;
-      border-radius: 0 !important;
+      background: #ffffffee; /* semi-transparent */
+      border-radius: 0;       /* plus d’arrondis */
       text-align: center;
       z-index: 1500;
   }
 
   /* --- FOOTER --- */
   .footer {
-      height: 30px !important;
+      height: 30px !important; /* ~50% plus petit */
       font-size: 12px !important;
+  }
+
+  /* --- CARDS EN COLONNE --- */
+  .cards {
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 20px !important; /* petit espace entre les cartes */
+  }
+
+  .empty-card {
+      display: none !important;
   }
 
   /* --- PAGE D'ACCUEIL MOBILE --- */
   body.home-page {
-      overflow-y: hidden;
+      overflow-y: hidden; /* supprime scroll inutile */
   }
 
   body.home-page main.main-content {
-      padding-top: 35px !important;
-      padding-bottom: 0 !important;
+      padding-top: 35px !important; /* un peu d’espace au-dessus du titre */
+      padding-bottom: 0 !important; /* plus de padding en bas */
   }
 
   body.home-page .hero {
-      margin-bottom: 12px !important;
+      margin-bottom: 12px !important; /* espace entre titre et sous-titre */
       padding-top: 0 !important;
       padding-bottom: 0 !important;
   }
 
   body.home-page .hero h2 {
       font-size: 28px !important;
-      margin-top: 12px !important;
+      margin-top: 12px !important; /* espace au-dessus du titre */
       margin-bottom: 6px !important;
   }
 
   body.home-page .hero p {
       font-size: 16px !important;
       margin-top: 0 !important;
-      margin-bottom: 30px !important;
+      margin-bottom: 30px !important; /* espace entre sous-titre et cartes */
   }
 
   body.home-page .card {
       width: 90% !important;
       max-width: 270px !important;
       padding: 18px !important;
-      height: auto !important;
+      height: auto !important; /* réduit la hauteur */
   }
 
   body.home-page .card h3 {
@@ -111,23 +121,24 @@
       display: flex !important;
       flex-wrap: wrap !important;
       justify-content: space-between !important;
-      padding: 0 10% !important; /* marge gauche et droite de 10% */
-      gap: 6% !important;        /* espace entre les cartes */
+      padding: 0 10% !important;  /* marges gauche et droite */
+      gap: 6% !important;         /* espace entre les cartes */
   }
 
   body.team-page .player-card {
-      width: 37% !important;      /* largeur fixe identique pour toutes les cartes */
-      height: 140px !important;   /* hauteur réduite */
-      padding: 8px !important;    /* padding interne réduit */
+      flex: 0 0 37% !important;  /* largeur de chaque carte */
+      height: 140px !important;  /* hauteur uniforme réduite */
+      padding: 8px !important;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
       text-align: center;
       box-sizing: border-box;
   }
 
   body.team-page .player-card h4 {
-      font-size: 0.9rem !important;  /* réduit les noms si nécessaire */
+      font-size: 0.9rem !important;
       margin-bottom: 4px !important;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -142,7 +153,8 @@
   /* --- SOULIGNAGE PAGE ACTIVE --- */
   .nav-left a.active {
       color: #9b1c1c !important;
-      text-decoration: none !important; /* supprime doublon */
+      text-decoration: underline !important;
+      text-underline-offset: 3px;
   }
 }
 
