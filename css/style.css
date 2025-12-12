@@ -280,8 +280,7 @@ main.main-content {
     content: "";
     width: 70px;
     height: 4px;
-    background: #fff;
-    /* blanc demandé */
+    background: #fff;  /* blanc demandé */
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -304,8 +303,7 @@ main.main-content {
     width: 230px;
     height: 180px;
     backdrop-filter: blur(12px);
-    background: rgba(255, 255, 255, 0.12);
-    /* même niveau que accueil */
+    background: rgba(255, 255, 255, 0.12); /* même niveau que accueil */
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.25);
     padding: 20px;
@@ -320,8 +318,8 @@ main.main-content {
 
 .player-card:hover {
     transform: translateY(-10px) scale(1.03);
-    background: rgba(255, 255, 255, 0.20);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    background: rgba(255,255,255,0.20);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
 }
 
 .player-card h4 {
@@ -392,6 +390,7 @@ main.main-content {
 }
 
 /* ===== PAGE RÉSULTATS ===== */
+
 .results-title {
     font-size: 40px;
     font-weight: 800;
@@ -468,7 +467,6 @@ main.main-content {
     display: flex;
     flex-direction: column;
 }
-
 .empty-card {
     opacity: 0;
     pointer-events: none;
@@ -486,12 +484,12 @@ main.main-content {
     justify-content: space-between;
     align-items: center;
     transition: 0.25s ease;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
 .match-card:hover {
     transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255,255,255,0.25);
 }
 
 .match-teams {
@@ -525,7 +523,6 @@ main.main-content {
         flex-direction: column;
         align-items: center;
     }
-
     .results-column {
         width: 90%;
     }
@@ -533,163 +530,137 @@ main.main-content {
 
 /* ===== STATS PAGE ADDITIONS ===== */
 .stats-summary .stat-card {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 18px;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    min-height: 110px;
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 18px;
+  border-radius: 12px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  min-height:110px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
 }
 
 .stat-card .kpi {
-    font-size: 28px;
-    font-weight: 800;
-    color: #fff;
+  font-size:28px;
+  font-weight:800;
+  color:#fff;
 }
 
 .stat-card .label {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.85);
+  font-size:13px;
+  color: rgba(255,255,255,0.85);
 }
 
 /* podium */
 .podium-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:10px;
+  border-radius:10px;
+  background: rgba(0,0,0,0.25);
+  border:1px solid rgba(255,255,255,0.05);
 }
-
 .podium-item .place {
-    width: 56px;
-    height: 56px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    font-size: 18px;
-    color: #111;
+  width:56px;
+  height:56px;
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  font-size:18px;
+  color:#111;
 }
+.podium-1 { background: linear-gradient(180deg,#ffd86b,#ffb84d); }
+.podium-2 { background: linear-gradient(180deg,#e6e6e6,#cfcfcf); }
+.podium-3 { background: linear-gradient(180deg,#d6a17a,#c58656); }
 
-.podium-1 {
-    background: linear-gradient(180deg, #ffd86b, #ffb84d);
-}
-
-.podium-2 {
-    background: linear-gradient(180deg, #e6e6e6, #cfcfcf);
-}
-
-.podium-3 {
-    background: linear-gradient(180deg, #d6a17a, #c58656);
-}
-
-.podium-item .meta {
-    flex: 1;
-    color: #fff;
-    font-weight: 700;
-}
-
-.podium-item .score {
-    font-size: 18px;
-    font-weight: 900;
-    color: #fff;
-}
+.podium-item .meta { flex:1; color:#fff; font-weight:700; }
+.podium-item .score { font-size:18px; font-weight:900; color:#fff; }
 
 /* player stat cards (clickable) */
 .player-stat-card {
-    background: rgba(255, 255, 255, 0.06);
-    border-radius: 12px;
-    padding: 12px;
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    cursor: pointer;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    transition: transform .18s ease, box-shadow .18s ease;
+  background: rgba(255,255,255,0.06);
+  border-radius:12px;
+  padding:12px;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  cursor:pointer;
+  border:1px solid rgba(255,255,255,0.06);
+  transition:transform .18s ease,box-shadow .18s ease;
 }
-
 .player-stat-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
+  transform: translateY(-6px);
+  box-shadow: 0 18px 36px rgba(0,0,0,0.28);
 }
 
 /* avatar circle (initials) */
 .player-avatar {
-    width: 64px;
-    height: 64px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
-    color: #fff;
-    flex-shrink: 0;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+  width:64px;
+  height:64px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  color:#fff;
+  flex-shrink:0;
+  border:1px solid rgba(255,255,255,0.06);
 }
 
 /* small meta */
-.player-stat-card .meta-small {
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 700;
-}
-
-.player-stat-card .meta-sub {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 13px;
-}
+.player-stat-card .meta-small { color: rgba(255,255,255,0.9); font-weight:700; }
+.player-stat-card .meta-sub { color: rgba(255,255,255,0.7); font-size:13px; }
 
 /* ensure main content has enough bottom padding on stats page */
 body.results-page main.main-content,
-body.stats-page main.main-content {
-    padding-bottom: 160px;
-    padding-top: 80px;
+body.stats-page main.main-content{
+  padding-bottom: 160px;
+  padding-top: 80px;
 }
 
 /* === FILTERS === */
+
 .stats-filters {
-    width: 100%;
-    max-width: 1200px;
-    margin: 10px auto 20px;
-    padding: 0 20px;
-    display: flex;
-    gap: 24px;
-    align-items: center;
-    flex-wrap: wrap;
+  width:100%;
+  max-width:1200px;
+  margin:10px auto 20px;
+  padding:0 20px;
+  display:flex;
+  gap:24px;
+  align-items:center;
+  flex-wrap:wrap;
 }
 
 .filter-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
 }
 
 .filter-group label {
-    font-size: 14px;
-    font-weight: 700;
-    color: #fff;
+  font-size:14px;
+  font-weight:700;
+  color:#fff;
 }
 
 .stats-filters select {
-    padding: 8px 12px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: #fff;
-    font-size: 14px;
-    cursor: pointer;
+  padding:8px 12px;
+  border-radius:8px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.15);
+  color:#fff;
+  font-size:14px;
+  cursor:pointer;
+}
+.stats-filters select:hover {
+  background:rgba(255,255,255,0.12);
 }
 
-.stats-filters select:hover {
-    background: rgba(255, 255, 255, 0.12);
-}
 
 /* ========================================================= FOOTER ========================================================= */
 .footer {
