@@ -72,30 +72,30 @@
 
   /* --- PAGE D'ACCUEIL MOBILE --- */
   body.home-page main.main-content {
-      padding-top: 20px !important;
+      padding-top: 30px !important; /* un peu d’espace au-dessus du titre */
       padding-bottom: 20px !important;
   }
 
   body.home-page .hero {
-      margin-bottom: 10px !important;
+      margin-bottom: 12px !important; /* espace entre titre et sous-titre */
       padding-top: 0 !important;
       padding-bottom: 0 !important;
   }
 
   body.home-page .hero h2 {
       font-size: 28px !important;
-      margin-top: 0 !important;
+      margin-top: 12px !important; /* espace au-dessus du titre */
       margin-bottom: 6px !important;
   }
 
   body.home-page .hero p {
       font-size: 16px !important;
       margin-top: 0 !important;
-      margin-bottom: 10px !important;
+      margin-bottom: 14px !important; /* espace entre sous-titre et cartes */
   }
 
   body.home-page .cards {
-      gap: 10px !important;
+      gap: 8px !important; /* petit espace entre les cartes */
   }
 
   body.home-page .card {
@@ -106,12 +106,12 @@
   }
 
   body.home-page .card h3 {
-      font-size: 22px !important; /* légèrement plus petit */
+      font-size: 22px !important;
       margin-bottom: 8px !important;
   }
 
   body.home-page .card p {
-      font-size: 14px !important; /* légèrement plus petit */
+      font-size: 14px !important;
       line-height: 1.4 !important;
   }
 
