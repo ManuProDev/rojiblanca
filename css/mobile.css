@@ -72,7 +72,7 @@
 
   /* --- PAGE D'ACCUEIL MOBILE --- */
   body.home-page main.main-content {
-      padding-top: 30px !important; /* un peu d’espace au-dessus du titre */
+      padding-top: 40px !important; /* un peu d’espace au-dessus du titre */
       padding-bottom: 20px !important;
   }
 
@@ -91,7 +91,7 @@
   body.home-page .hero p {
       font-size: 16px !important;
       margin-top: 0 !important;
-      margin-bottom: 24px !important; /* espace entre sous-titre et cartes */
+      margin-bottom: 40px !important; /* espace entre sous-titre et cartes */
   }
 
   body.home-page .cards {
