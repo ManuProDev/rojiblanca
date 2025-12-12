@@ -61,42 +61,54 @@
         display: none !important;
     }
 
-  /* === Compactage du hero sur MOBILE, uniquement pour la page d'accueil ===
-     On cible les pages qui n'ont PAS de classes "team-page", "results-page", "stats-page", "player-page"
-     (ta page d'accueil n'a pas de classe sur <body>, donc ce sélecteur est sûr). */
-  body:not(.team-page):not(.results-page):not(.stats-page):not(.player-page) main.main-content {
-      padding-top: 48px !important;    /* réduit l'espace au dessus du hero */
-      padding-bottom: 60px !important; /* réduit l'espace global bas sur mobile */
+  /* --- Réduction espaces du hero (mobile seulement) --- */
+  .hero {
+      padding-top: 10px !important;
+      padding-bottom: 10px !important;
+      margin-bottom: 40px !important;
   }
 
-  /* compacte la section hero elle-même */
-  body:not(.team-page):not(.results-page):not(.stats-page):not(.player-page) .hero {
-      margin-bottom: 20px !important; /* moins d'espace sous le hero */
-      padding-top: 6px !important;
-      padding-bottom: 20px !important;
+  .hero h2 {
+      margin-top: 0 !important;
+      margin-bottom: 8px !important;
+      font-size: 30px !important;
   }
 
-  /* correct selector: on a un h2 dans index.html */
-  body:not(.team-page):not(.results-page):not(.stats-page):not(.player-page) .hero h2 {
-      margin: 0 0 8px 0 !important;
-      font-size: 28px !important;      /* optionnel : texte légèrement plus petit sur mobile */
-      line-height: 1.08 !important;
+  .hero p {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      font-size: 16px !important;
   }
 
-  body:not(.team-page):not(.results-page):not(.stats-page):not(.player-page) .hero p {
+  /* --- Réduction taille des cartes (uniquement sur la Home Page) --- */
+  .home-page .cards {
+      gap: 14px !important;
+      padding-inline: 8px !important;
+  }
+
+  .home-page .card {
+      width: 86% !important;
+      max-width: 310px !important;
+      padding: 20px !important;
+      border-radius: 14px !important;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.18) !important;
+      transform: scale(0.95);
+  }
+
+  .home-page .card h3 {
+      font-size: 22px !important;
+      margin-bottom: 10px !important;
+  }
+
+  .home-page .card p {
+      font-size: 14px !important;
+      line-height: 1.35 !important;
       margin: 0 !important;
-      font-size: 15px !important;
   }
+}
 
-    /* --- Réduction taille des cartes sur mobile (page d'accueil) --- */
-  body:not(.team-page):not(.results-page):not(.stats-page):not(.player-page) .card {
-      transform: scale(0.85);
-      width: 88% !important;
-      max-width: 330px !important;
-  }
-
-  body:not(.team-page):not(.results-page):not(.stats-page):not(.player-page) .cards {
-      gap: 16px !important; /* réduit un peu l'espace entre les cartes */
-  }
-
+/* --- DESKTOP FIX (réparation cartes + hamburger) --- */
+@media (min-width: 769px) {
+  .hamburger { display: none !important; }
+  .cards { flex-direction: row !important; }
 }
