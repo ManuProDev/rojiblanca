@@ -2,12 +2,27 @@
 @media (max-width: 768px) {
 
   /* --- HEADER / HAMBURGER --- */
+  .header {
+      height: 64px !important; /* ~20% plus petit */
+      padding: 12px 20px !important;
+  }
+
+  .header-left {
+      display: flex;
+      justify-content: space-between; /* logo à gauche, hamburger à droite */
+      align-items: center;
+      width: 100%;
+      padding: 0 20px; /* même espace à gauche et à droite */
+      box-sizing: border-box;
+  }
+
   .hamburger {
       display: flex !important;
       flex-direction: column;
       gap: 5px;
       width: 32px;
       cursor: pointer;
+      margin: 0; /* supprime décalage */
       z-index: 2000;
   }
 
@@ -26,7 +41,7 @@
       display: flex !important;
       flex-direction: column;
       position: absolute;
-      top: 64px; /* réduit avec le header */
+      top: 64px;
       left: 0;
       width: 100%;
       padding: 20px 0;
@@ -43,18 +58,13 @@
       padding: 14px;
       border-radius: 12px;
       position: absolute;
-      top: 64px; /* réduit avec le header */
+      top: 64px;
       left: 12px;
       right: 12px;
       z-index: 1500;
   }
 
-  /* --- HEADER / FOOTER RÉDUITS --- */
-  .header {
-      height: 64px !important; /* ~20% plus petit */
-      padding: 12px 20px !important;
-  }
-
+  /* --- FOOTER --- */
   .footer {
       height: 30px !important; /* ~50% plus petit */
       font-size: 12px !important;
@@ -64,6 +74,7 @@
   .cards {
       flex-direction: column !important;
       align-items: center !important;
+      gap: 18px !important; /* petit espace entre les cartes */
   }
 
   .empty-card {
@@ -71,13 +82,13 @@
   }
 
   /* --- PAGE D'ACCUEIL MOBILE --- */
+  body.home-page {
+      overflow-y: hidden; /* supprime scroll inutile */
+  }
+
   body.home-page main.main-content {
-      padding-top: 40px !important; /* un peu d’espace au-dessus du titre */
-      padding-bottom: 20px !important;
-      min-height: calc(100vh - 64px - 30px) !important; /* hauteur restante entre header et footer */
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
+      padding-top: 20px !important; /* un peu d’espace au-dessus du titre */
+      padding-bottom: 0 !important; /* plus de padding en bas pour éviter scroll */
   }
 
   body.home-page .hero {
@@ -95,12 +106,7 @@
   body.home-page .hero p {
       font-size: 16px !important;
       margin-top: 0 !important;
-      margin-bottom: 40px !important; /* espace entre sous-titre et cartes */
-  }
-
-  body.home-page .cards {
-      gap: 12px !important; /* petit espace entre les cartes */
-      margin-bottom: 0 !important; /* supprime l'espace sous la dernière carte */
+      margin-bottom: 20px !important; /* espace entre sous-titre et cartes */
   }
 
   body.home-page .card {
