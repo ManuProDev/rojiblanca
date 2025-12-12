@@ -3,16 +3,16 @@
 
   /* --- HEADER / HAMBURGER --- */
   .header {
-      height: 64px !important; /* ~20% plus petit */
+      height: 64px !important;
       padding: 12px 20px !important;
   }
 
   .header-left {
       display: flex;
-      justify-content: space-between; /* logo à gauche, hamburger à droite */
+      justify-content: space-between;
       align-items: center;
       width: 100%;
-      padding: 0 20px; /* même espace à gauche et à droite */
+      padding: 0 20px;
       box-sizing: border-box;
   }
 
@@ -55,21 +55,10 @@
       z-index: 1500;
   }
 
-  /* --- HEADER / FOOTER RÉDUITS --- */
+  /* --- FOOTER --- */
   .footer {
-      height: 30px !important; /* ~50% plus petit */
+      height: 30px !important;
       font-size: 12px !important;
-  }
-
-  /* --- CARDS EN COLONNE --- */
-  .cards {
-      flex-direction: column !important;
-      align-items: center !important;
-      gap: 18px !important;
-  }
-
-  .empty-card {
-      display: none !important;
   }
 
   /* --- PAGE D'ACCUEIL MOBILE --- */
@@ -119,25 +108,26 @@
 
   /* --- PAGE ÉQUIPE MOBILE --- */
   body.team-page .players-grid {
-      display: grid !important;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px !important;
-      padding: 0 12px !important;
+      display: flex !important;
+      flex-wrap: wrap !important;
+      justify-content: space-between !important;
+      padding: 0 10% !important; /* marge gauche et droite de 10% */
+      gap: 6% !important;        /* espace entre les cartes */
   }
 
   body.team-page .player-card {
-      width: 100% !important;          /* même largeur pour toutes les cartes */
-      height: 160px !important;        /* même hauteur pour toutes les cartes */
-      padding: 12px !important;
-      box-sizing: border-box;
+      width: 37% !important;      /* largeur fixe identique pour toutes les cartes */
+      height: 140px !important;   /* hauteur réduite */
+      padding: 8px !important;    /* padding interne réduit */
       display: flex;
       flex-direction: column;
       justify-content: center;
       text-align: center;
+      box-sizing: border-box;
   }
 
   body.team-page .player-card h4 {
-      font-size: 0.95rem !important;    /* réduit légèrement les noms pour uniformité */
+      font-size: 0.9rem !important;  /* réduit les noms si nécessaire */
       margin-bottom: 4px !important;
       overflow: hidden;
       text-overflow: ellipsis;
