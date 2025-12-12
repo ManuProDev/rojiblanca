@@ -33,35 +33,66 @@
       border-radius: 3px;
   }
 
+  /* --- MENU MOBILE IDENTIQUE POUR TOUTES LES PAGES --- */
   .nav-left {
       display: none !important;
   }
 
-  .nav-left.open {
-      display: flex !important;
-      flex-direction: column;
-      position: absolute;
-      top: 64px;
-      left: 0;
-      width: 100%;
-      padding: 20px 0;
-      background: #ffffffee;
-      text-align: center;
-      gap: 16px;
-  }
-
+  .nav-left.open,
   .nav-left.open-mobile {
       display: flex !important;
       flex-direction: column;
-      gap: 10px;
-      background: #fff;
-      padding: 14px;
-      border-radius: 12px;
       position: absolute;
-      top: 64px;
+      top: 64px; /* juste en dessous du header */
+      left: 0;
+      right: 0;
+      width: auto;
+      padding: 20px 0;
+      background: #ffffffee; /* semi-transparent comme la page d'accueil */
+      text-align: center;
+      gap: 16px;
+      border-radius: 0; /* aucune bordure arrondie */
+  }
+
+  .nav-left.open-mobile {
       left: 12px;
       right: 12px;
+      padding: 14px;
+      border-radius: 12px; /* version flottante */
       z-index: 1500;
+  }
+
+  .nav-left a {
+      display: inline-block;
+      text-decoration: none;
+      font-weight: 700;
+      color: #222;
+      padding: 6px 0;
+      transition: 0.25s ease;
+      position: relative;
+    }
+
+  .nav-left a.active {
+      color: #9b1c1c;
+  }
+
+  .nav-left a.active::after,
+  .nav-left a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #9b1c1c;
+      border-radius: 2px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: 0.3s ease;
+  }
+
+  .nav-left a:hover::after {
+      transform: scaleX(1);
   }
 
   /* --- FOOTER --- */
