@@ -105,7 +105,6 @@
         line-height: 1.4 !important;
     }
 
-    /* --- CARDS EN COLONNE --- */
     .cards {
         flex-direction: column !important;
         align-items: center !important;
@@ -116,7 +115,6 @@
         display: none !important;
     }
 
-    /* --- MENU ACTIVE --- */
     .nav-left a.active {
         color: #9b1c1c !important;
         text-decoration: none !important;
@@ -125,15 +123,14 @@
     /* --- PAGE ÉQUIPE MOBILE --- */
     body.team-page .players-grid {
         display: grid !important;
-        grid-template-columns: 1fr 1fr; /* deux colonnes égales */
-        gap: 4px; /* petit espace entre les deux cartes */
-        padding: 0 2%; /* rapproche les cartes des bords de l'écran */
-        width: 100%; /* prend toute la largeur disponible */
+        grid-template-columns: 10% 37% 6% 37% 10%; /* marge gauche, carte 1, espace, carte 2, marge droite */
+        width: 100%;
+        gap: 0; /* pas de gap supplémentaire, tout est géré par les colonnes */
         box-sizing: border-box;
     }
 
     body.team-page .player-card {
-        width: 100% !important; /* remplit 100% de sa colonne */
+        width: 100% !important; /* remplit entièrement sa colonne */
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
@@ -141,15 +138,15 @@
         align-items: center;
         padding: 8px !important;
         text-align: center;
-        overflow: visible; /* permet au texte long de s’afficher */
+        overflow: visible;
     }
 
     body.team-page .player-card h4 {
-        font-size: 0.95rem !important; /* légèrement réduit si nécessaire */
+        font-size: 0.95rem !important;
         margin-bottom: 4px !important;
         text-align: center;
-        white-space: normal; /* texte sur plusieurs lignes si nécessaire */
-        word-break: break-word; /* coupe les mots trop longs */
+        white-space: normal;
+        word-break: break-word;
     }
 
     body.team-page .player-card p {
