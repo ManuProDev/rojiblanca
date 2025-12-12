@@ -125,7 +125,7 @@
     }
 
     body.team-page .player-card {
-        width: 100% !important; /* prend 100% de la largeur de sa colonne */
+        width: 120% !important; /* prend 100% de la largeur de sa colonne */
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
