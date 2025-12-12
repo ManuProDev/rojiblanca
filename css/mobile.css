@@ -51,59 +51,45 @@
     z-index: 1500;
   }
 
-  /* Cartes en colonne */
+  /* Cartes en colonne (TOUTES les pages) */
   .cards {
     flex-direction: column !important;
     align-items: center !important;
   }
 
+  /* Empêche les cartes vides d'apparaître dans les tableaux mobile */
   .empty-card {
         display: none !important;
-    }
-
-  /* --- Réduction espaces du hero (mobile seulement) --- */
-  .hero {
-      padding-top: 10px !important;
-      padding-bottom: 10px !important;
-      margin-bottom: 40px !important;
   }
 
-  .hero h2 {
-      margin-top: 0 !important;
-      margin-bottom: 8px !important;
-      font-size: 30px !important;
+
+  /* ------------------------------------------------------------- */
+  /* --- PAGE D’ACCUEIL UNIQUEMENT (réduction espaces + cartes) -- */
+  /* ------------------------------------------------------------- */
+
+  /* Réduction des espaces au-dessus et en dessous du titre */
+  body.home-page .main-content {
+      padding-top: 20px !important;
+      padding-bottom: 20px !important;
   }
 
-  .hero p {
+  /* Supprime les marges automatiques autour du bloc principal */
+  body.home-page section {
       margin-top: 0 !important;
       margin-bottom: 0 !important;
-      font-size: 16px !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
   }
 
-  /* --- Réduction taille des cartes (uniquement sur la Home Page) --- */
-  .home-page .cards {
-      gap: 14px !important;
-      padding-inline: 8px !important;
+  /* Réduction de la taille des cartes sur la page d’accueil */
+  body.home-page .card {
+      transform: scale(0.9);
+      width: 90% !important;
   }
 
-  .home-page .card {
-      width: 86% !important;
-      max-width: 310px !important;
-      padding: 20px !important;
-      border-radius: 14px !important;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.18) !important;
-      transform: scale(0.95);
-  }
-
-  .home-page .card h3 {
-      font-size: 22px !important;
-      margin-bottom: 10px !important;
-  }
-
-  .home-page .card p {
-      font-size: 14px !important;
-      line-height: 1.35 !important;
-      margin: 0 !important;
+  /* Supprime l’espace sous la dernière carte */
+  body.home-page .cards {
+      margin-bottom: 0 !important;
   }
 }
 
