@@ -51,50 +51,64 @@
     z-index: 1500;
   }
 
-  /* Cartes en colonne (TOUTES les pages) */
+  /* Cartes en colonne (toutes pages) */
   .cards {
     flex-direction: column !important;
     align-items: center !important;
   }
 
-  /* Empêche les cartes vides d'apparaître dans les tableaux mobile */
+  /* Empêche les cartes vides sur mobile */
   .empty-card {
         display: none !important;
   }
 
 
   /* ------------------------------------------------------------- */
-  /* --- PAGE D’ACCUEIL UNIQUEMENT (réduction espaces + cartes) -- */
+  /* ----- PAGE D’ACCUEIL : FIX TOTAL DES ESPACES ----- */
   /* ------------------------------------------------------------- */
 
-  /* Réduction des espaces au-dessus et en dessous du titre */
-  body.home-page .main-content {
-      padding-top: 20px !important;
-      padding-bottom: 20px !important;
-  }
-
-  /* Supprime les marges automatiques autour du bloc principal */
-  body.home-page section {
+  /* On force le main à ne plus créer de gros espaces */
+  body.home-page main.main-content {
+      padding-top: 10px !important;
+      padding-bottom: 10px !important;
       margin-top: 0 !important;
       margin-bottom: 0 !important;
-      padding-top: 0 !important;
-      padding-bottom: 0 !important;
   }
 
-  /* Réduction de la taille des cartes sur la page d’accueil */
+  /* On élimine toutes les marges/paddings autour du bloc */
+  body.home-page section {
+      margin: 0 !important;
+      padding: 0 !important;
+  }
+
+  /* Réduction drastique des marges des titres et paragraphes */
+  body.home-page h1,
+  body.home-page h2,
+  body.home-page p {
+      margin-top: 10px !important;
+      margin-bottom: 10px !important;
+      padding: 0 !important;
+  }
+
+  /* Taille réduite des cartes */
   body.home-page .card {
       transform: scale(0.9);
       width: 90% !important;
+      margin-top: 10px !important;
+      margin-bottom: 10px !important;
   }
 
-  /* Supprime l’espace sous la dernière carte */
+  /* Suppression de l’espace sous la dernière carte */
   body.home-page .cards {
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+  }
+
+  /* Supprime tout espace résiduel entre les colonnes/cartes */
+  body.home-page .cards > *:last-child {
       margin-bottom: 0 !important;
   }
 }
 
 /* --- DESKTOP FIX (réparation cartes + hamburger) --- */
-@media (min-width: 769px) {
-  .hamburger { display: none !important; }
-  .cards { flex-direction: row !important; }
-}
+@media
