@@ -3,121 +3,94 @@
 
   /* --- HEADER / HAMBURGER --- */
   .hamburger {
-        display: flex !important;
-        flex-direction: column;
-        gap: 5px;
-        width: 32px;
-        cursor: pointer;
-        z-index: 2000;
-    }
+      display: flex !important;
+      flex-direction: column;
+      gap: 5px;
+      width: 32px;
+      cursor: pointer;
+      z-index: 2000;
+  }
 
   .hamburger span {
-        height: 3px;
-        width: 100%;
-        background: #9b1c1c;
-        border-radius: 3px;
-    }
+      height: 3px;
+      width: 100%;
+      background: #9b1c1c;
+      border-radius: 3px;
+  }
 
-  /* Menu desktop caché */
   .nav-left {
-        display: none !important;
-    }
+      display: none !important;
+  }
 
   .nav-left.open {
-        display: flex !important;
-        flex-direction: column;
-        position: absolute;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        padding: 20px 0;
-        background: #ffffffee;
-        text-align: center;
-        gap: 16px;
-    }
+      display: flex !important;
+      flex-direction: column;
+      position: absolute;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      padding: 20px 0;
+      background: #ffffffee;
+      text-align: center;
+      gap: 16px;
+  }
 
-  /* Menu mobile visible */
   .nav-left.open-mobile {
-    display: flex !important;
-    flex-direction: column;
-    gap: 10px;
-    background: #fff;
-    padding: 14px;
-    border-radius: 12px;
-    position: absolute;
-    top: 80px;
-    left: 12px;
-    right: 12px;
-    z-index: 1500;
+      display: flex !important;
+      flex-direction: column;
+      gap: 10px;
+      background: #fff;
+      padding: 14px;
+      border-radius: 12px;
+      position: absolute;
+      top: 80px;
+      left: 12px;
+      right: 12px;
+      z-index: 1500;
   }
 
   /* --- CARDS EN COLONNE --- */
   .cards {
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 16px !important; /* réduit l'espace entre cartes */
+      flex-direction: column !important;
+      align-items: center !important;
   }
 
   .empty-card {
-        display: none !important;
-    }
+      display: none !important;
+  }
 
-  /* --- PAGE D'ACCUEIL : HERO --- */
+  /* --- PAGE D'ACCUEIL MOBILE --- */
+  body.home-page main.main-content {
+      padding-top: 20px !important;
+      padding-bottom: 20px !important;
+  }
+
   body.home-page .hero {
-      padding-top: 12px !important;
-      padding-bottom: 12px !important;
+      margin-bottom: 10px !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
   }
 
   body.home-page .hero h2 {
       font-size: 28px !important;
-      margin-bottom: 8px !important;  /* réduit l'espace sous le titre */
+      margin-top: 0 !important;
+      margin-bottom: 6px !important;
   }
 
   body.home-page .hero p {
       font-size: 16px !important;
       margin-top: 0 !important;
-      margin-bottom: 8px !important; /* réduit l'espace avant les cartes */
+      margin-bottom: 10px !important;
   }
 
-  /* --- PAGE D'ACCUEIL : CARTES --- */
-  body.home-page .cards .card {
-      width: 85% !important;
-      max-width: 300px !important;
-      padding: 20px !important;
-      margin-bottom: 16px !important;
+  body.home-page .cards {
+      gap: 12px !important;
   }
 
-  /* --- RESULTATS PAGE --- */
-  body.results-page .results-columns {
-      flex-direction: column !important;
-      align-items: center !important;
-      gap: 16px !important;
-  }
-
-  body.results-page .results-column {
+  body.home-page .card {
       width: 90% !important;
-  }
-
-  body.results-page .results-row {
-      margin-bottom: 40px !important;
-  }
-
-  /* --- STATS PAGE --- */
-  body.stats-page .stat-card {
-      padding: 16px !important;
-      min-height: 100px !important;
-  }
-
-  /* --- HERO / TITRES --- */
-  h1, h2, h3 {
-      margin-top: 0 !important;
-      margin-bottom: 0.5em !important;
-  }
-
-  /* Ajustement général des sections pour réduire espaces */
-  main.main-content {
-      padding-top: 12px !important;
-      padding-bottom: 12px !important;
+      max-width: 280px !important;
+      padding: 20px !important;
   }
 
 }
