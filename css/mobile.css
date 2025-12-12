@@ -126,9 +126,9 @@
     body.team-page .players-grid {
         display: grid !important;
         grid-template-columns: 1fr 1fr; /* deux colonnes égales */
-        gap: 0 !important; /* pas d’espace entre les cartes */
-        padding: 0 !important; /* touche les bords de l’écran */
-        width: 100vw; /* prend toute la largeur de l’écran */
+        gap: 5%; /* espace entre les deux cartes */
+        padding: 0 5%; /* marge gauche et droite de l'écran */
+        width: 100%; /* prend toute la largeur disponible */
         box-sizing: border-box;
     }
 
@@ -145,7 +145,7 @@
     }
 
     body.team-page .player-card h4 {
-        font-size: 0.95rem !important; /* réduit légèrement si besoin */
+        font-size: 0.95rem !important; /* légèrement réduit si nécessaire */
         margin-bottom: 4px !important;
         text-align: center;
         white-space: normal; /* texte sur plusieurs lignes si nécessaire */
