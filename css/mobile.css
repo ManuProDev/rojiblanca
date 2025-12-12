@@ -3,16 +3,16 @@
 
   /* --- HEADER / HAMBURGER --- */
   .header {
-      height: 64px !important;
+      height: 64px !important; /* ~20% plus petit */
       padding: 12px 20px !important;
   }
 
   .header-left {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-between; /* logo à gauche, hamburger à droite */
       align-items: center;
       width: 100%;
-      padding: 0 20px;
+      padding: 0 20px; /* même espace à gauche et à droite */
       box-sizing: border-box;
   }
 
@@ -22,7 +22,7 @@
       gap: 5px;
       width: 32px;
       cursor: pointer;
-      margin: 0;
+      margin: 0; /* supprime décalage */
       z-index: 2000;
   }
 
@@ -37,66 +37,118 @@
       display: none !important;
   }
 
-  /* Menu hamburger prend toute la largeur avec padding latéral */
   .nav-left.open,
   .nav-left.open-mobile {
       display: flex !important;
       flex-direction: column;
       position: absolute;
       top: 64px;
-      left: 0;
-      right: 0;
-      padding: 20px 12px !important;
-      gap: 12px;
+      width: calc(100% - 24px); /* réduit avec padding sur les côtés */
+      left: 12px;
+      right: 12px;
+      padding: 14px;
+      gap: 10px;
       background: #ffffffee;
       border-radius: 12px;
       text-align: center;
       z-index: 1500;
-      width: 100% !important;
-      box-sizing: border-box;
   }
 
-  .nav-left a.active {
-      color: #9b1c1c !important;
-      text-decoration: none !important; /* supprime le soulignage doublon */
-  }
-
-  /* --- FOOTER --- */
+  /* --- HEADER / FOOTER RÉDUITS --- */
   .footer {
-      height: 30px !important;
+      height: 30px !important; /* ~50% plus petit */
       font-size: 12px !important;
+  }
+
+  /* --- CARDS EN COLONNE --- */
+  .cards {
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 18px !important; /* petit espace entre les cartes */
+  }
+
+  .empty-card {
+      display: none !important;
+  }
+
+  /* --- PAGE D'ACCUEIL MOBILE --- */
+  body.home-page {
+      overflow-y: hidden; /* supprime scroll inutile */
+  }
+
+  body.home-page main.main-content {
+      padding-top: 35px !important; /* un peu d’espace au-dessus du titre */
+      padding-bottom: 0 !important; /* plus de padding en bas */
+  }
+
+  body.home-page .hero {
+      margin-bottom: 12px !important; /* espace entre titre et sous-titre */
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+  }
+
+  body.home-page .hero h2 {
+      font-size: 28px !important;
+      margin-top: 12px !important; /* espace au-dessus du titre */
+      margin-bottom: 6px !important;
+  }
+
+  body.home-page .hero p {
+      font-size: 16px !important;
+      margin-top: 0 !important;
+      margin-bottom: 30px !important; /* espace entre sous-titre et cartes */
+  }
+
+  body.home-page .card {
+      width: 90% !important;
+      max-width: 270px !important;
+      padding: 18px !important;
+      height: auto !important; /* réduit la hauteur */
+  }
+
+  body.home-page .card h3 {
+      font-size: 22px !important;
+      margin-bottom: 8px !important;
+  }
+
+  body.home-page .card p {
+      font-size: 14px !important;
+      line-height: 1.4 !important;
   }
 
   /* --- PAGE ÉQUIPE MOBILE --- */
   body.team-page .players-grid {
       display: grid !important;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px !important;
+      grid-template-columns: repeat(2, 1fr); /* 2 cartes par ligne */
+      gap: 12px !important; /* espace entre les cartes */
       padding: 0 12px !important;
   }
 
   body.team-page .player-card {
-      width: 100% !important;
-      height: 160px !important; /* toutes les cartes ont la même hauteur */
-      padding: 12px !important;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
+      width: 100% !important; /* limite la largeur pour ne pas dépasser */
+      max-width: 100% !important; /* s’assure que ça reste dans le grid */
+      height: auto !important; /* réduit la hauteur */
+      padding: 12px !important; /* padding réduit */
   }
 
   body.team-page .player-card h4 {
-      font-size: 1rem !important; /* réduit pour s'adapter */
+      font-size: 1.1rem !important;
       margin-bottom: 4px !important;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
   }
 
   body.team-page .player-card p {
-      font-size: 1.8rem !important;
-      font-weight: 900;
-      margin: 0;
+      font-size: 2rem !important; /* réduit légèrement les stats */
   }
+
+  /* --- SOULIGNAGE PAGE ACTIVE --- */
+  .nav-left a.active {
+      color: #9b1c1c !important;
+      text-decoration: none !important; /* supprime le doublon */
+  }
+}
+
+/* --- DESKTOP FIX (réparation cartes + hamburger) --- */
+@media (min-width: 769px) {
+  .hamburger { display: none !important; }
+  .cards { flex-direction: row !important; }
 }
