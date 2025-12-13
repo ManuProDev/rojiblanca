@@ -1,4 +1,4 @@
-/* stats.js — version améliorée avec filtres dynamiques */
+/* stats.js — stats filtrées dynamiquement */
 
 async function loadJsonRobust(path) {
   const res = await fetch(path);
@@ -44,6 +44,7 @@ async function initStats() {
   updateStats();
 }
 
+// --- filtre les matchs selon les filtres ---
 function filterMatches() {
   const team = document.getElementById("teamFilter").value;
   const type = document.getElementById("matchTypeFilter").value;
@@ -64,21 +65,26 @@ function filterMatches() {
   });
 }
 
+// --- filtre les buts selon les matchs filtrés ---
+function filterGoals(filteredMatches) {
+  const matchIds = new Set(filteredMatches.map(m => m.id));
+  return goals.filter(g => matchIds.has(g.matchId));
+}
+
 function updateStats() {
   const teamChoice = document.getElementById("teamFilter").value;
   const clubPrefix = teamChoice === "all" ? "Rojiblanca" : teamChoice;
 
-  const ms = filterMatches().filter(m =>
-    m.team1.includes("Rojiblanca") || m.team2.includes("Rojiblanca")
-  );
+  const filteredMatches = filterMatches();
+  const filteredGoals = filterGoals(filteredMatches);
 
-  ms.sort((a, b) => b.id - a.id);
+  filteredMatches.sort((a, b) => b.id - a.id);
 
-  const played = ms.length;
+  const played = filteredMatches.length;
   let wins = 0, draws = 0, losses = 0;
   let gf = 0, ga = 0;
 
-  for (const m of ms) {
+  for (const m of filteredMatches) {
     const o = computeOutcome(m, clubPrefix);
     if (o === "win") wins++;
     else if (o === "loss") losses++;
@@ -103,8 +109,8 @@ function updateStats() {
   `;
 
   updateCharts(wins, draws, losses, gf, ga);
-  updatePodium();
-  updatePlayers();
+  updatePodium(filteredGoals);
+  updatePlayers(filteredGoals);
 }
 
 function updateCharts(w, d, l, gf, ga) {
@@ -147,14 +153,14 @@ function updateCharts(w, d, l, gf, ga) {
   });
 }
 
-function updatePodium() {
+function updatePodium(filteredGoals) {
   const stats = {};
 
   for (const p of players) {
     stats[p.name] = { name: p.name, number: p.number, goals: 0, assists: 0 };
   }
 
-  for (const g of goals) {
+  for (const g of filteredGoals) {
     if (g.goal && stats[g.goal]) stats[g.goal].goals++;
     if (g.assist && stats[g.assist]) stats[g.assist].assists++;
   }
@@ -167,7 +173,6 @@ function updatePodium() {
   pod.innerHTML = "";
 
   const medals = ["podium-1", "podium-2", "podium-3"];
-
   arr.forEach((p, i) => {
     pod.innerHTML += `
       <div class="podium-item">
@@ -178,7 +183,7 @@ function updatePodium() {
   });
 }
 
-function updatePlayers() {
+function updatePlayers(filteredGoals) {
   const grid = document.getElementById("players-stats-grid");
   const stats = {};
 
@@ -186,7 +191,7 @@ function updatePlayers() {
     stats[p.name] = { name: p.name, id: p.id, number: p.number, goals: 0, assists: 0 };
   }
 
-  for (const g of goals) {
+  for (const g of filteredGoals) {
     if (g.goal && stats[g.goal]) stats[g.goal].goals++;
     if (g.assist && stats[g.assist]) stats[g.assist].assists++;
   }
@@ -201,6 +206,7 @@ function updatePlayers() {
         <div style="flex:1">
           <div class="meta-small">${p.name} <span>#${p.number}</span></div>
           <div class="meta-sub">Buts : ${p.goals} • Passes : ${p.assists}</div>
+          <div style="opacity:0.8">Moyenne par match: ${p.goals + p.assists > 0 ? ((p.goals + p.assists)/filteredGoals.length).toFixed(2) : "0.00"}</div>
         </div>
         <div style="font-weight:900;color:#fff">${p.goals + p.assists}</div>
       </div>`;
