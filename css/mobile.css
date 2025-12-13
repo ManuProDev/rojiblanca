@@ -71,8 +71,7 @@
     }
 
     /* =========================================================
-       PAGE D’ACCUEIL (HOME) — RESTAURÉE À L’IDENTIQUE
-       (copie exacte de ta version d’origine)
+       PAGE D’ACCUEIL (HOME) — INCHANGÉE
     ========================================================= */
 
     body.home-page {
@@ -86,8 +85,6 @@
 
     body.home-page .hero {
         margin-bottom: 20px !important;
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
     }
 
     body.home-page .hero h2 {
@@ -98,7 +95,6 @@
 
     body.home-page .hero p {
         font-size: 16px !important;
-        margin-top: 0 !important;
         margin-bottom: 30px !important;
     }
 
@@ -130,21 +126,18 @@
     }
 
     /* =========================================================
-       PAGE ÉQUIPE — AJUSTEMENTS MOBILE UNIQUEMENT
+       PAGE ÉQUIPE — INCHANGÉE
     ========================================================= */
 
-    /* 🔽 RÉDUCTION RÉELLE header → premier titre */
     body.team-page main.main-content {
-        padding-top: 10px !important; /* plus petit que 80px */
-        padding-bottom: 60px !important; /* moins d’espace avant footer */
+        padding-top: 10px !important;
+        padding-bottom: 60px !important;
     }
 
-    /* Sections */
     body.team-page .team-section {
         margin-top: 32px !important;
     }
 
-    /* Titres (Gardiens, Défenseurs…) */
     body.team-page .team-section h3 {
         font-size: 1.35rem !important;
         margin-bottom: 30px !important;
@@ -155,10 +148,6 @@
         height: 3px;
         bottom: -8px;
     }
-
-    /* =========================================================
-       PAGE ÉQUIPE — CARTES (INTOUCHÉES)
-    ========================================================= */
 
     body.team-page .players-grid {
         display: grid !important;
@@ -188,9 +177,6 @@
 
     body.team-page .player-card h4 {
         font-size: 0.95rem !important;
-        line-height: 1.1;
-        margin-bottom: 2px;
-        width: 100%;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -198,7 +184,59 @@
 
     body.team-page .player-card p {
         font-size: 1.6rem !important;
-        margin: 0;
-        line-height: 1;
+    }
+
+    /* =========================================================
+       PAGE RÉSULTATS — AJUSTEMENTS MOBILE
+    ========================================================= */
+
+    /* 🔽 Réduction header → titre */
+    body.results-page main.main-content {
+        padding-top: 20px !important;
+        padding-bottom: 50px !important;
+    }
+
+    /* Titre principal */
+    body.results-page .results-title {
+        font-size: 28px !important;
+        margin-bottom: 30px !important;
+    }
+
+    body.results-page .results-title::after {
+        width: 50px;
+        height: 3px;
+        bottom: -8px;
+    }
+
+    /* Catégories (Championnat, Coupe…) */
+    body.results-page .category-title {
+        font-size: 20px !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* Espacement global des blocs */
+    body.results-page .results-row {
+        margin-bottom: 40px !important;
+    }
+
+    /* Listes empilées */
+    body.results-page .results-pair {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 14px !important;
+        padding: 0 12px;
+        box-sizing: border-box;
+    }
+
+    body.results-page .results-list {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Cartes matchs : respiration latérale */
+    body.results-page .match-card {
+        width: 100% !important;
+        padding: 18px 16px !important;
+        border-radius: 14px;
     }
 }
