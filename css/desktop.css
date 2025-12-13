@@ -1,0 +1,66 @@
+/* =========================================================
+   DESKTOP ONLY – STATS PAGE LAYOUT
+   ========================================================= */
+
+@media (min-width: 769px) {
+
+  /* ===== CONTENEUR GLOBAL DES VISUELS ===== */
+  body.stats-page .stats-visuals {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1300px;
+    margin: 40px auto 60px;
+    padding: 0 20px;
+  }
+
+  /* ===== BLOCS (graph / podium) ===== */
+  body.stats-page .stats-visuals > * {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 14px 32px rgba(0,0,0,0.25);
+  }
+
+  /* ===== GRAPHIQUES ===== */
+  body.stats-page .stats-chart {
+    flex: 0 0 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  body.stats-page .stats-chart canvas {
+    width: 220px !important;
+    height: 220px !important;
+  }
+
+  /* ===== PODIUM ===== */
+  body.stats-page .stats-podium {
+    flex: 0 0 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  body.stats-page .podium-item {
+    padding: 10px 14px;
+  }
+
+  body.stats-page .podium-item .place {
+    width: 46px;
+    height: 46px;
+    font-size: 16px;
+  }
+
+  body.stats-page .podium-item .score {
+    font-size: 16px;
+  }
+
+  body.stats-page .podium-item .meta {
+    font-size: 14px;
+  }
+
+}
