@@ -204,8 +204,8 @@
     }
 
     body.results-page .results-title {
-        font-size: 1.25rem !important;
-        margin-bottom: 30px !important; /* ajusté selon ton dernier retour */
+        font-size: 1.5rem !important; /* remis comme avant */
+        margin-bottom: 20px !important; /* remis comme avant */
     }
 
     body.results-page .results-pair {
@@ -239,7 +239,7 @@
     }
 
     body.results-page .match-card .match-score {
-        font-size: 1.2rem !important; /* plus grand que précédemment */
+        font-size: 1.2rem !important;
         font-weight: 700;
         text-align: right;
         margin-left: 12px;
