@@ -341,7 +341,7 @@
 
     /* Réduction espace entre dernière carte et footer */
     body.stats-page main.main-content {
-       padding-top: 12px !important;
+       padding-top: 30px !important;
        padding-bottom: 20px !important;
     }
 }
