@@ -273,28 +273,34 @@
         margin-bottom: 6px;
         font-weight: 600;
         color: #fff; /* clair */
-        text-shadow: 0 1px 2px rgba(0,0,0,0.3); /* plus lisible */
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
     }
 
-    /* Select — apparence de filtre plus marquée */
+    /* Select — style “bouton” */
     .stats-filters .filter-group select {
         width: 100% !important;
-        padding: 12px 14px !important; /* plus de hauteur */
-        font-size: 1rem !important; /* texte plus grand */
-        border-radius: 12px; /* arrondi plus doux */
-        border: 1px solid rgba(255, 255, 255, 0.4); /* léger contraste */
-        background: rgba(255, 255, 255, 0.08); /* légèrement plus visible */
-        color: #fff; /* texte clair */
-        appearance: none; /* supprime style natif */
-        box-shadow: 0 2px 4px rgba(0,0,0,0.25); /* effet bouton */
-        cursor: pointer; /* indique l’interaction */
+        padding: 12px 16px !important;
+        font-size: 1rem !important;
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.4);
+        background: rgba(255,255,255,0.08);
+        color: #fff;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        cursor: pointer;
+        position: relative;
+        background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        background-size: 12px 12px;
         transition: background 0.2s ease;
     }
 
-    /* Effet au survol / focus */
+    /* Hover / focus */
     .stats-filters .filter-group select:focus,
     .stats-filters .filter-group select:hover {
-        background: rgba(255, 255, 255, 0.12);
+        background: rgba(255,255,255,0.12);
         border-color: #fff;
         outline: none;
     }
