@@ -53,7 +53,7 @@ async function initPlayerPage() {
   updatePage();
 }
 
-// filtre les matchs selon présence et filtres
+// filtre les matchs selon présence et filtres (INCHANGÉ)
 function filterMatchesForPlayer() {
   const teamFilter = document.getElementById("teamFilter").value;
   const typeFilter = document.getElementById("matchTypeFilter").value;
@@ -73,7 +73,6 @@ function filterMatchesForPlayer() {
   });
 }
 
-// calcule victoires/nuls/défaites sur les matchs joués
 function countWDL(ms) {
   let w = 0, d = 0, l = 0;
   for (const m of ms) {
@@ -86,57 +85,94 @@ function countWDL(ms) {
   return { w, d, l };
 }
 
-// calcule buts/passes sur tous les matchs, indépendamment de la présence
+/* ============================================================
+   ✅ MODIFICATION 1 : buts / passes filtrés
+   ============================================================ */
 function countGoalsAssists() {
-  let goalsCount = 0, assistsCount = 0;
+  const filteredMatches = filterMatchesForPlayer();
+  const matchIds = new Set(filteredMatches.map(m => m.id));
+
+  let goalsCount = 0;
+  let assistsCount = 0;
+
   for (const g of goals) {
+    if (!matchIds.has(g.matchId)) continue;
     if (g.goal === currentPlayer.name) goalsCount++;
     if (g.assist === currentPlayer.name) assistsCount++;
   }
+
   return { goalsCount, assistsCount };
 }
 
-// calcule les rangs sur tous les matchs
+/* ============================================================
+   ✅ MODIFICATION 2 : rangs cohérents et filtrés
+   ============================================================ */
 function computeRanks() {
+  const teamFilter = document.getElementById("teamFilter").value;
+  const typeFilter = document.getElementById("matchTypeFilter").value;
+
+  const filteredMatches = matches.filter(m => {
+    const teamMatch = teamFilter === "all" || m.team1 === teamFilter || m.team2 === teamFilter;
+    const typeMatch =
+      typeFilter === "all" ||
+      (typeFilter === "official" && (m.type === "League" || m.type === "Cup")) ||
+      (typeFilter === "league" && m.type === "League") ||
+      (typeFilter === "cup" && m.type === "Cup") ||
+      (typeFilter === "friendly" && m.type === "Friendly");
+    return teamMatch && typeMatch;
+  });
+
+  const matchIds = new Set(filteredMatches.map(m => m.id));
+
   const stats = {};
-  for (const p of players) stats[p.name] = { goals: 0, assists: 0, total: 0 };
+  for (const p of players) {
+    stats[p.name] = { name: p.name, goals: 0, assists: 0, total: 0 };
+  }
+
   for (const g of goals) {
+    if (!matchIds.has(g.matchId)) continue;
     if (g.goal && stats[g.goal]) stats[g.goal].goals++;
     if (g.assist && stats[g.assist]) stats[g.assist].assists++;
   }
-  for (const name in stats) stats[name].total = stats[name].goals + stats[name].assists;
+
+  for (const s of Object.values(stats)) {
+    s.total = s.goals + s.assists;
+  }
 
   function rank(array, key1, key2) {
     const sorted = [...array].sort((a, b) => b[key1] - a[key1] || b[key2] - a[key2]);
     const ranks = {};
     let rankValue = 1;
+
     for (let i = 0; i < sorted.length; i++) {
-      if (i > 0 && (sorted[i][key1] !== sorted[i - 1][key1] || sorted[i][key2] !== sorted[i - 1][key2])) rankValue = i + 1;
+      if (
+        i > 0 &&
+        (sorted[i][key1] !== sorted[i - 1][key1] ||
+         sorted[i][key2] !== sorted[i - 1][key2])
+      ) {
+        rankValue = i + 1;
+      }
       ranks[sorted[i].name] = rankValue;
     }
     return ranks;
   }
 
-  const named = Object.keys(stats).map(name => ({ name, ...stats[name] }));
-  const goalsRanks = rank(named, "goals", "assists");
-  const assistsRanks = rank(named, "assists", "goals");
-  const totalRanks = rank(named, "total", "goals");
+  const named = Object.values(stats);
 
   return {
-    gRank: goalsRanks[currentPlayer.name] || "-",
-    aRank: assistsRanks[currentPlayer.name] || "-",
-    tRank: totalRanks[currentPlayer.name] || "-"
+    gRank: rank(named, "goals", "assists")[currentPlayer.name] || "-",
+    aRank: rank(named, "assists", "goals")[currentPlayer.name] || "-",
+    tRank: rank(named, "total", "goals")[currentPlayer.name] || "-"
   };
 }
 
 function updatePage() {
   const ms = filterMatchesForPlayer();
-  const matchesPlayed = ms.length; // uniquement les matchs où présent
+  const matchesPlayed = ms.length;
   const wdl = countWDL(ms);
-  const { goalsCount, assistsCount } = countGoalsAssists(); // tous les matchs
-  const ranks = computeRanks(); // tous les matchs
+  const { goalsCount, assistsCount } = countGoalsAssists();
+  const ranks = computeRanks();
 
-  // Résumé (victoires/nuls/défaites)
   const summary = document.getElementById("player-summary");
   summary.innerHTML = `
     <div class="stat-card"><div class="kpi">${matchesPlayed}</div><div class="label">Matchs joués</div></div>
@@ -145,7 +181,6 @@ function updatePage() {
     <div class="stat-card"><div class="kpi">${wdl.l} (${matchesPlayed ? Math.round(wdl.l/matchesPlayed*100) : 0}%)</div><div class="label">Défaites</div></div>
   `;
 
-  // Rangs (toujours sur tous les matchs)
   const ranksEl = document.getElementById("ranks");
   ranksEl.innerHTML = `
     <div style="display:flex;justify-content:space-between;"><div>Rang buteurs</div><div style="font-weight:900">${ranks.gRank}</div></div>
@@ -153,7 +188,6 @@ function updatePage() {
     <div style="display:flex;justify-content:space-between;"><div>Rang (Buts+Passes)</div><div style="font-weight:900">${ranks.tRank}</div></div>
   `;
 
-  // Détails des performances (buts/passes/totaux)
   const grid = document.getElementById("player-stats-grid");
   grid.innerHTML = `
     <div class="player-stat-card">
@@ -173,12 +207,14 @@ function updatePage() {
     </div>
   `;
 
-  // Graphique victoires/nuls/défaites
   const ctx = document.getElementById("pieWDL").getContext("2d");
   if (pieChart) pieChart.destroy();
   pieChart = new Chart(ctx, {
     type: "doughnut",
-    data: { labels: ["Victoires","Nuls","Défaites"], datasets:[{ data:[wdl.w, wdl.d, wdl.l], backgroundColor:["#00ff8c","#ffd966","#ff6b6b"] }] },
+    data: {
+      labels: ["Victoires","Nuls","Défaites"],
+      datasets: [{ data:[wdl.w, wdl.d, wdl.l], backgroundColor:["#00ff8c","#ffd966","#ff6b6b"] }]
+    },
     options: { plugins: { legend: { labels: { color: "#fff" } } } }
   });
 }
