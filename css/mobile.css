@@ -360,22 +360,27 @@
     }
 
    .charts-podium-container {
-        margin-top: 10px !important;       /* réduit espace au-dessus */
-        margin-bottom: 10px !important;    /* réduit espace en dessous */
-        gap: 12px !important;              /* réduit espace entre graphiques et podium */
-        padding: 0 !important;             /* supprime padding inline */
+        flex-direction: column !important;
+        gap: 12px !important;
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+        padding: 0 10px !important; /* réduit les bords gauche/droite */
     }
 
-    .charts-panel {
-        margin: 0 !important;
-    }
-
+    .charts-panel,
     .podium-panel {
-        margin: 0 !important;
-        padding: 8px !important;           /* réduit padding interne */
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important; /* pour éviter overflow */
+    }
+
+    .charts-panel canvas {
+        height: 180px !important; /* réduit la hauteur des graphiques */
+        width: 100% !important;
     }
 
     .podium-panel > div {
-        padding: 8px !important;           /* réduit padding de la carte */
+        padding: 8px !important;     /* réduit le padding interne */
+        font-size: 0.9rem !important; /* réduit un peu la taille du texte si besoin */
     }
 }
