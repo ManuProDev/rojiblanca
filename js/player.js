@@ -1,4 +1,4 @@
-/* player.js — stats détaillées avec filtres appliqués aux calculs */
+/* player.js — version corrigée des rangs */
 
 async function loadJsonRobust(path) {
   const res = await fetch(path);
@@ -74,9 +74,9 @@ function filterMatchesForPlayer() {
 }
 
 // calcule victoires/nuls/défaites sur les matchs joués
-function countWDL(filteredMatches) {
+function countWDL(ms) {
   let w = 0, d = 0, l = 0;
-  for (const m of filteredMatches) {
+  for (const m of ms) {
     const clubPrefix = m.team1.includes("Rojiblanca") ? m.team1 : m.team2;
     const res = computeOutcome(m, clubPrefix);
     if (res === "win") w++;
@@ -86,42 +86,47 @@ function countWDL(filteredMatches) {
   return { w, d, l };
 }
 
-// calcule buts/passes sur matchs filtrés
-function countGoalsAssists(filteredMatches) {
-  const filteredMatchIds = new Set(filteredMatches.map(m => m.id));
+// calcule buts/passes sur tous les matchs, indépendamment de la présence
+function countGoalsAssists() {
   let goalsCount = 0, assistsCount = 0;
   for (const g of goals) {
-    if (!filteredMatchIds.has(g.matchId)) continue;
     if (g.goal === currentPlayer.name) goalsCount++;
     if (g.assist === currentPlayer.name) assistsCount++;
   }
   return { goalsCount, assistsCount };
 }
 
-// calcule les rangs sur matchs filtrés
-function computeRanks(filteredMatches) {
-  const filteredMatchIds = new Set(filteredMatches.map(m => m.id));
+// calcule les rangs sur tous les matchs
+function computeRanks() {
   const stats = {};
   for (const p of players) stats[p.name] = { goals: 0, assists: 0, total: 0 };
+
   for (const g of goals) {
-    if (!filteredMatchIds.has(g.matchId)) continue;
     if (g.goal && stats[g.goal]) stats[g.goal].goals++;
     if (g.assist && stats[g.assist]) stats[g.assist].assists++;
   }
+
   for (const name in stats) stats[name].total = stats[name].goals + stats[name].assists;
 
   function rank(array, key1, key2) {
+    // Tri décroissant par key1 puis key2
     const sorted = [...array].sort((a, b) => b[key1] - a[key1] || b[key2] - a[key2]);
     const ranks = {};
     let rankValue = 1;
     for (let i = 0; i < sorted.length; i++) {
-      if (i > 0 && (sorted[i][key1] !== sorted[i - 1][key1] || sorted[i][key2] !== sorted[i - 1][key2])) rankValue = i + 1;
+      if (i > 0) {
+        // Nouveau rang uniquement si stats différentes exactement
+        if (sorted[i][key1] !== sorted[i - 1][key1] || sorted[i][key2] !== sorted[i - 1][key2]) {
+          rankValue = i + 1;
+        }
+      }
       ranks[sorted[i].name] = rankValue;
     }
     return ranks;
   }
 
   const named = Object.keys(stats).map(name => ({ name, ...stats[name] }));
+
   const goalsRanks = rank(named, "goals", "assists");
   const assistsRanks = rank(named, "assists", "goals");
   const totalRanks = rank(named, "total", "goals");
@@ -134,13 +139,13 @@ function computeRanks(filteredMatches) {
 }
 
 function updatePage() {
-  const filteredMatches = filterMatchesForPlayer();
-  const matchesPlayed = filteredMatches.length;
-  const wdl = countWDL(filteredMatches);
-  const { goalsCount, assistsCount } = countGoalsAssists(filteredMatches);
-  const ranks = computeRanks(filteredMatches);
+  const ms = filterMatchesForPlayer();
+  const matchesPlayed = ms.length; // uniquement les matchs où présent
+  const wdl = countWDL(ms);
+  const { goalsCount, assistsCount } = countGoalsAssists(); // tous les matchs
+  const ranks = computeRanks(); // tous les matchs
 
-  // Résumé
+  // Résumé (victoires/nuls/défaites)
   const summary = document.getElementById("player-summary");
   summary.innerHTML = `
     <div class="stat-card"><div class="kpi">${matchesPlayed}</div><div class="label">Matchs joués</div></div>
@@ -149,7 +154,7 @@ function updatePage() {
     <div class="stat-card"><div class="kpi">${wdl.l} (${matchesPlayed ? Math.round(wdl.l/matchesPlayed*100) : 0}%)</div><div class="label">Défaites</div></div>
   `;
 
-  // Rangs
+  // Rangs (toujours sur tous les matchs)
   const ranksEl = document.getElementById("ranks");
   ranksEl.innerHTML = `
     <div style="display:flex;justify-content:space-between;"><div>Rang buteurs</div><div style="font-weight:900">${ranks.gRank}</div></div>
@@ -157,7 +162,7 @@ function updatePage() {
     <div style="display:flex;justify-content:space-between;"><div>Rang (Buts+Passes)</div><div style="font-weight:900">${ranks.tRank}</div></div>
   `;
 
-  // Détails performances
+  // Détails des performances (buts/passes/totaux)
   const grid = document.getElementById("player-stats-grid");
   grid.innerHTML = `
     <div class="player-stat-card">
