@@ -249,42 +249,41 @@
    /* =========================================================
       PAGES STATS ET PLAYER — MOBILE ONLY
    ========================================================= */
-   @media (max-width: 768px) {
    
-       /* Conteneur des filtres sur une ligne */
-       .stats-filters {
-           display: flex !important;
-           flex-direction: row !important;
-           gap: 12px !important;
-           justify-content: space-between;
-           margin-bottom: 20px;
-           padding: 0 16px;
-       }
-   
-       /* Chaque groupe de filtre prend 50% */
-       .stats-filters .filter-group {
-           flex: 1 1 48%;
-           display: flex;
-           flex-direction: column;
-       }
-   
-       /* Label des filtres */
-       .stats-filters .filter-group label {
-           font-size: 1rem !important; /* agrandi */
-           margin-bottom: 6px;
-           font-weight: 600;
-           color: #fff; /* ou couleur existante si différente */
-       }
-   
-       /* Select — largeur complète, texte plus grand */
-       .stats-filters .filter-group select {
-           width: 100% !important;
-           padding: 10px 12px !important; /* augmente la hauteur du bouton */
-           font-size: 1rem !important; /* texte plus grand */
-           border-radius: 8px;
-           border: 1px solid #ccc; /* ou couleur existante */
-           background: #fff;
-           color: #000;
-       }
-   }
+    /* Conteneur des filtres sur une ligne */
+    .stats-filters {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 12px !important;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        padding: 0 16px;
+    }
+
+    /* Chaque groupe de filtre prend 50% */
+    .stats-filters .filter-group {
+        flex: 1 1 48%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Label des filtres */
+    .stats-filters .filter-group label {
+        font-size: 1rem !important; /* agrandi */
+        margin-bottom: 6px;
+        font-weight: 600;
+        color: #fff; /* reste ton ton clair de la page */
+    }
+
+    /* Select — largeur complète, texte plus grand */
+    .stats-filters .filter-group select {
+        width: 100% !important;
+        padding: 10px 12px !important; /* augmente la hauteur du bouton */
+        font-size: 1rem !important; /* texte plus grand */
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.3); /* couleur ton page */
+        background: rgba(255, 255, 255, 0.05); /* conserve le ton de la page */
+        color: #fff; /* texte clair */
+        appearance: none; /* optionnel pour enlever le style par défaut */
+    }
 }
