@@ -135,7 +135,7 @@
 
     /* 🔽 RÉDUCTION RÉELLE header → premier titre */
     body.team-page main.main-content {
-        padding-top: 40px !important; /* plus petit que 80px */
+        padding-top: 20px !important; /* plus petit que 80px */
         padding-bottom: 60px !important; /* moins d’espace avant footer */
     }
 
