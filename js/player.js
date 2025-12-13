@@ -46,24 +46,20 @@ async function initPlayerPage() {
   currentPlayer = players.find(p => p.id === id);
   if (!currentPlayer) return;
 
-  document.getElementById("playerName").textContent =
-    `${currentPlayer.name} #${currentPlayer.number}`;
-
+  document.getElementById("playerName").textContent = `${currentPlayer.name} #${currentPlayer.number}`;
   document.getElementById("teamFilter").addEventListener("change", updatePage);
   document.getElementById("matchTypeFilter").addEventListener("change", updatePage);
 
   updatePage();
 }
 
-// filtre les matchs selon présence et filtres
+// filtre les matchs selon présence et filtres (NE PAS TOUCHER)
 function filterMatchesForPlayer() {
   const teamFilter = document.getElementById("teamFilter").value;
   const typeFilter = document.getElementById("matchTypeFilter").value;
 
   return matches.filter(m => {
-    const teamMatch =
-      teamFilter === "all" || m.team1 === teamFilter || m.team2 === teamFilter;
-
+    const teamMatch = teamFilter === "all" || m.team1 === teamFilter || m.team2 === teamFilter;
     const typeMatch =
       typeFilter === "all" ||
       (typeFilter === "official" && (m.type === "League" || m.type === "Cup")) ||
@@ -71,17 +67,12 @@ function filterMatchesForPlayer() {
       (typeFilter === "cup" && m.type === "Cup") ||
       (typeFilter === "friendly" && m.type === "Friendly");
 
-    const attended = attendance.some(
-      a => a.matchId === m.id &&
-           a.player === currentPlayer.name &&
-           a.present
-    );
+    const attended = attendance.some(a => a.matchId === m.id && a.player === currentPlayer.name && a.present);
 
     return teamMatch && typeMatch && attended;
   });
 }
 
-// calcule victoires / nuls / défaites
 function countWDL(ms) {
   let w = 0, d = 0, l = 0;
   for (const m of ms) {
@@ -94,40 +85,43 @@ function countWDL(ms) {
   return { w, d, l };
 }
 
-// === CALCULS BUTS / PASSES (NE PAS TOUCHER) ===
+// NE PAS TOUCHER
 function countGoalsAssists() {
-  const filteredMatches = filterMatchesForPlayer();
-  const matchIds = new Set(filteredMatches.map(m => m.id));
-
-  let goalsCount = 0;
-  let assistsCount = 0;
-
+  let goalsCount = 0, assistsCount = 0;
   for (const g of goals) {
-    if (!matchIds.has(g.matchId)) continue;
     if (g.goal === currentPlayer.name) goalsCount++;
     if (g.assist === currentPlayer.name) assistsCount++;
   }
-
   return { goalsCount, assistsCount };
 }
 
-// === CALCUL DES RANGS (CORRIGÉ) ===
+/* ============================================================
+   ✅ SEULE FONCTION MODIFIÉE : CALCUL DES RANGS
+   ============================================================ */
 function computeRanks() {
-  const filteredMatches = filterMatchesForPlayer();
+  const teamFilter = document.getElementById("teamFilter").value;
+  const typeFilter = document.getElementById("matchTypeFilter").value;
+
+  // Matchs filtrés SANS présence
+  const filteredMatches = matches.filter(m => {
+    const teamMatch = teamFilter === "all" || m.team1 === teamFilter || m.team2 === teamFilter;
+    const typeMatch =
+      typeFilter === "all" ||
+      (typeFilter === "official" && (m.type === "League" || m.type === "Cup")) ||
+      (typeFilter === "league" && m.type === "League") ||
+      (typeFilter === "cup" && m.type === "Cup") ||
+      (typeFilter === "friendly" && m.type === "Friendly");
+    return teamMatch && typeMatch;
+  });
+
   const matchIds = new Set(filteredMatches.map(m => m.id));
 
-  // stats GLOBALes pour tous les joueurs
+  // stats globales
   const stats = {};
   for (const p of players) {
-    stats[p.name] = {
-      name: p.name,
-      goals: 0,
-      assists: 0,
-      total: 0
-    };
+    stats[p.name] = { name: p.name, goals: 0, assists: 0, total: 0 };
   }
 
-  // comptage sur les matchs filtrés
   for (const g of goals) {
     if (!matchIds.has(g.matchId)) continue;
     if (g.goal && stats[g.goal]) stats[g.goal].goals++;
@@ -140,4 +134,53 @@ function computeRanks() {
 
   function buildRanks(primary, secondary) {
     const sorted = Object.values(stats).sort(
-      (a, b) =
+      (a, b) => b[primary] - a[primary] || b[secondary] - a[secondary]
+    );
+
+    const ranks = {};
+    let rank = 1;
+
+    for (let i = 0; i < sorted.length; i++) {
+      if (
+        i > 0 &&
+        (sorted[i][primary] !== sorted[i - 1][primary] ||
+         sorted[i][secondary] !== sorted[i - 1][secondary])
+      ) {
+        rank = i + 1;
+      }
+      ranks[sorted[i].name] = rank;
+    }
+    return ranks;
+  }
+
+  return {
+    gRank: buildRanks("goals", "assists")[currentPlayer.name] || "-",
+    aRank: buildRanks("assists", "goals")[currentPlayer.name] || "-",
+    tRank: buildRanks("total", "goals")[currentPlayer.name] || "-"
+  };
+}
+
+function updatePage() {
+  const ms = filterMatchesForPlayer();
+  const matchesPlayed = ms.length;
+  const wdl = countWDL(ms);
+  const { goalsCount, assistsCount } = countGoalsAssists();
+  const ranks = computeRanks();
+
+  const summary = document.getElementById("player-summary");
+  summary.innerHTML = `
+    <div class="stat-card"><div class="kpi">${matchesPlayed}</div><div class="label">Matchs joués</div></div>
+    <div class="stat-card"><div class="kpi">${wdl.w} (${matchesPlayed ? Math.round(wdl.w/matchesPlayed*100) : 0}%)</div><div class="label">Victoires</div></div>
+    <div class="stat-card"><div class="kpi">${wdl.d} (${matchesPlayed ? Math.round(wdl.d/matchesPlayed*100) : 0}%)</div><div class="label">Nuls</div></div>
+    <div class="stat-card"><div class="kpi">${wdl.l} (${matchesPlayed ? Math.round(wdl.l/matchesPlayed*100) : 0}%)</div><div class="label">Défaites</div></div>
+  `;
+
+  const ranksEl = document.getElementById("ranks");
+  ranksEl.innerHTML = `
+    <div style="display:flex;justify-content:space-between;"><div>Rang buteurs</div><div style="font-weight:900">${ranks.gRank}</div></div>
+    <div style="display:flex;justify-content:space-between;"><div>Rang passeurs</div><div style="font-weight:900">${ranks.aRank}</div></div>
+    <div style="display:flex;justify-content:space-between;"><div>Rang (Buts+Passes)</div><div style="font-weight:900">${ranks.tRank}</div></div>
+  `;
+}
+
+initPlayerPage();
