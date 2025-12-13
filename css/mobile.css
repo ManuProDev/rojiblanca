@@ -147,7 +147,7 @@
     /* Titres (Gardiens, Défenseurs…) */
     body.team-page .team-section h3 {
         font-size: 1.35rem !important;
-        margin-bottom: 18px !important;
+        margin-bottom: 30px !important;
     }
 
     body.team-page .team-section h3::after {
