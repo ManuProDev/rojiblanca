@@ -71,209 +71,72 @@
     }
 
     /* =========================================================
-       PAGE D’ACCUEIL (HOME) — INCHANGÉE
+       STATS / PLAYER PAGE — FILTRES
     ========================================================= */
 
-    body.home-page {
-        overflow-y: hidden;
+    /* Mettre les filtres sur une ligne et même largeur */
+    body.stats-page .stats-filters,
+    body.stats-page .stats-filters .filter-group {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        gap: 12px !important;
+        width: 100% !important;
+        box-sizing: border-box;
     }
 
-    body.home-page main.main-content {
-        padding-top: 40px !important;
-        padding-bottom: 0 !important;
+    body.stats-page .stats-filters .filter-group {
+        flex: 1 1 0 !important;
+        min-width: 100px;
     }
 
-    body.home-page .hero {
-        margin-bottom: 20px !important;
-    }
-
-    body.home-page .hero h2 {
-        font-size: 28px !important;
-        margin-top: 12px !important;
-        margin-bottom: 6px !important;
-    }
-
-    body.home-page .hero p {
+    body.stats-page .stats-filters select {
+        width: 100% !important;
+        padding: 10px 12px !important;
         font-size: 16px !important;
-        margin-bottom: 30px !important;
-    }
-
-    body.home-page .card {
-        width: 90% !important;
-        max-width: 270px !important;
-        padding: 18px !important;
-        height: auto !important;
-    }
-
-    body.home-page .card h3 {
-        font-size: 22px !important;
-        margin-bottom: 8px !important;
-    }
-
-    body.home-page .card p {
-        font-size: 14px !important;
-        line-height: 1.4 !important;
-    }
-
-    body.home-page .cards {
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 18px !important;
-    }
-
-    .empty-card {
-        display: none !important;
+        border-radius: 8px !important;
+        background: rgba(255,255,255,0.08) !important;
+        border: 1px solid rgba(255,255,255,0.15) !important;
+        cursor: pointer;
     }
 
     /* =========================================================
-       PAGE ÉQUIPE — INCHANGÉE
+       CHARTS / PODIUM
     ========================================================= */
 
-    body.team-page main.main-content {
-        padding-top: 10px !important;
-        padding-bottom: 60px !important;
-    }
-
-    body.team-page .team-section {
-        margin-top: 32px !important;
-    }
-
-    body.team-page .team-section h3 {
-        font-size: 1.35rem !important;
-        margin-bottom: 30px !important;
-    }
-
-    body.team-page .team-section h3::after {
-        width: 46px;
-        height: 3px;
-        bottom: -8px;
-    }
-
-    body.team-page .players-grid {
-        display: grid !important;
-        grid-template-columns: repeat(2, calc((100vw - 32px) / 2));
-        gap: 8px;
-        width: 100vw;
-        padding: 0 16px;
-        margin: 0;
-        box-sizing: border-box;
-        justify-content: center;
-    }
-
-    body.team-page .player-card {
-        width: 100% !important;
-        height: 80px;
-        padding: 10px 8px !important;
+    .charts-podium-container {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        overflow: hidden;
+        gap: 20px;
     }
 
-    body.team-page .player-card h4 {
-        font-size: 0.95rem !important;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    body.team-page .player-card p {
-        font-size: 1.6rem !important;
-    }
-
-    /* =========================================================
-       PAGE RÉSULTATS — MOBILE UNIQUEMENT
-    ========================================================= */
-
-    body.results-page main.main-content {
-        padding-top: 40px !important;
-        padding-bottom: 50px !important;
-    }
-
-    /* Titre principal */
-    body.results-page .results-title {
-        font-size: 28px !important;
-        margin-bottom: 30px !important;
-    }
-
-    body.results-page .results-title::after {
-        width: 50px;
-        height: 3px;
-        bottom: -8px;
-    }
-
-    /* Catégories */
-    body.results-page .category-title {
-        font-size: 20px !important;
-        margin-bottom: 20px !important;
-    }
-
-    body.results-page .results-row {
-        margin-bottom: 40px !important;
-    }
-
-    body.results-page .results-pair {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 14px !important;
-        padding: 0 12px;
-        box-sizing: border-box;
-    }
-
-    body.results-page .results-list {
+    .charts-panel,
+    .podium-panel {
         width: 100% !important;
         max-width: 100% !important;
     }
 
+    .charts-panel > div {
+        flex-direction: column !important;
+    }
+
+    canvas {
+        width: 100% !important;
+        height: auto !important;
+    }
+
     /* =========================================================
-      PAGE RÉSULTATS — CARTES (AJUSTEMENT TEXTE)
-   ========================================================= */
-   
-   body.results-page .match-card {
-       display: flex;
-       justify-content: space-between;
-       align-items: center;
-       gap: 10px;
-       width: 100% !important;
-       padding: 16px 14px !important;
-       border-radius: 14px;
-   }
-   
-   /* Noms des équipes */
-   body.results-page .match-card .match-teams {
-       font-size: 0.9rem !important;
-       white-space: nowrap;
-       overflow: hidden;
-       text-overflow: ellipsis;
-       text-align: left;
-       flex: 1;                 /* prend l’espace dispo */
-   }
-   
-   /* Score */
-   body.results-page .match-card .match-score {
-       font-size: 1.2rem !important;
-       font-weight: 600;
-       text-align: right;
-       white-space: nowrap;
-       flex-shrink: 0;          /* ne se compresse jamais */
-   }
-   /* =========================================================
-      STATS PAGE — FILTRES MOBILE
-   ========================================================= */
-   body.stats-page .stats-filters {
-       flex-direction: row !important;  /* mettre les filtres sur une seule ligne */
-       flex-wrap: nowrap !important;    /* pas de retour à la ligne */
-       justify-content: flex-start !important; /* aligner à gauche */
-       gap: 12px !important;            /* espacement entre les filtres */
-       width: 100% !important;
-       box-sizing: border-box;
-       padding: 0 8px !important;      /* petites marges à gauche/droite */
-   }
-   
-   body.stats-page .stats-filters .filter-group {
-       flex: 1 1 auto !important;       /* chaque filtre prend une largeur équivalente si possible */
-       min-width: 100px;                /* éviter qu’ils soient trop petits */
-   }
+       AUTRES AJUSTEMENTS MOBILE
+    ========================================================= */
+
+    body.stats-page .stats-summary,
+    body.stats-page #player-summary {
+        padding: 0 20px !important;
+        gap: 18px !important;
+    }
+
+    body.stats-page #players-stats-grid {
+        gap: 16px !important;
+    }
+
 }
