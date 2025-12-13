@@ -361,26 +361,27 @@
 
    .charts-podium-container {
         flex-direction: column !important;
-        gap: 12px !important;
+        gap: 16px !important;
         margin-top: 10px !important;
         margin-bottom: 10px !important;
-        padding: 0 10px !important; /* réduit les bords gauche/droite */
+        padding: 0 12px !important; /* espace des côtés */
     }
 
     .charts-panel,
     .podium-panel {
         width: 100% !important;
         max-width: 100% !important;
-        min-width: 0 !important; /* pour éviter overflow */
+        box-sizing: border-box; /* s'assure que padding ne déborde pas */
     }
 
     .charts-panel canvas {
-        height: 180px !important; /* réduit la hauteur des graphiques */
-        width: 100% !important;
+        width: 100% !important;  /* pleine largeur du conteneur */
+        height: auto !important;  /* laisse Chart.js gérer la hauteur */
+        max-height: 260px;        /* optionnel : limite la hauteur si besoin */
     }
 
     .podium-panel > div {
-        padding: 8px !important;     /* réduit le padding interne */
-        font-size: 0.9rem !important; /* réduit un peu la taille du texte si besoin */
+        padding: 12px !important;      /* réduit légèrement le padding interne */
+        border-radius: 10px !important;
     }
 }
