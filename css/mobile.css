@@ -272,18 +272,30 @@
         font-size: 1rem !important; /* agrandi */
         margin-bottom: 6px;
         font-weight: 600;
-        color: #fff; /* reste ton ton clair de la page */
+        color: #fff; /* clair */
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3); /* plus lisible */
     }
 
-    /* Select — largeur complète, texte plus grand */
+    /* Select — apparence de filtre plus marquée */
     .stats-filters .filter-group select {
         width: 100% !important;
-        padding: 10px 12px !important; /* augmente la hauteur du bouton */
+        padding: 12px 14px !important; /* plus de hauteur */
         font-size: 1rem !important; /* texte plus grand */
-        border-radius: 8px;
-        border: 1px solid rgba(255, 255, 255, 0.3); /* couleur ton page */
-        background: rgba(255, 255, 255, 0.05); /* conserve le ton de la page */
+        border-radius: 12px; /* arrondi plus doux */
+        border: 1px solid rgba(255, 255, 255, 0.4); /* léger contraste */
+        background: rgba(255, 255, 255, 0.08); /* légèrement plus visible */
         color: #fff; /* texte clair */
-        appearance: none; /* optionnel pour enlever le style par défaut */
+        appearance: none; /* supprime style natif */
+        box-shadow: 0 2px 4px rgba(0,0,0,0.25); /* effet bouton */
+        cursor: pointer; /* indique l’interaction */
+        transition: background 0.2s ease;
+    }
+
+    /* Effet au survol / focus */
+    .stats-filters .filter-group select:focus,
+    .stats-filters .filter-group select:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: #fff;
+        outline: none;
     }
 }
