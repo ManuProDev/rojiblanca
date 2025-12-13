@@ -269,7 +269,7 @@
 
     /* Label des filtres */
     .stats-filters .filter-group label {
-        font-size: 1rem !important; 
+        font-size: 0.95rem !important; 
         margin-bottom: 6px;
         font-weight: 600;
         color: #fff;
@@ -280,7 +280,7 @@
     .stats-filters .filter-group select {
         width: 100% !important;
         padding: 12px 16px !important;
-        font-size: 1rem !important;
+        font-size: 0.95rem !important;
         border-radius: 12px;
         border: 1px solid rgba(255,255,255,0.4);
         background: rgba(255,255,255,0.08);
@@ -318,12 +318,13 @@
         margin: 0 auto !important;
     }
 
-    /* Réduction hauteur des cartes de statistiques */
+    /* Réduction hauteur et police des cartes de statistiques */
     body.stats-page .stats-summary .stat-card,
     body.stats-page #player-summary .stat-card {
         padding: 8px !important;
         min-height: auto !important;
         height: auto !important;
+        font-size: 0.95rem !important; /* réduit texte principal dans la carte */
     }
 
     /* Cartes personnelles restent 1 par ligne */
@@ -342,7 +343,7 @@
 
     /* Titre principal */
     body.stats-page .stats-title {
-        font-size: 1.5rem !important;
+        font-size: 1.6rem !important; /* réduit taille du titre */
         margin-top: 10px !important;       /* réduit l’espace avec le header */
         margin-bottom: 24px !important;    /* espace augmenté avec les filtres */
     }
