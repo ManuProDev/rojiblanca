@@ -65,64 +65,72 @@
     }
 
     /* =========================================================
-       PAGE ÉQUIPE — 2 CARTES PAR LIGNE / LARGEUR PIXEL
+       PAGE ÉQUIPE — AJUSTEMENTS MOBILE
     ========================================================= */
 
-    /*
-      Grille 2 colonnes :
-      largeur = écran
-      colonnes = calculées en pixels
-    */
+    /* Réduction espace header → contenu */
+    body.team-page main.main-content {
+        padding-top: 80px !important; /* avant : ~120px */
+        padding-bottom: 70px !important; /* réduit espace avant footer */
+    }
+
+    /* Sections équipe : marges verticales réduites */
+    body.team-page .team-section {
+        margin-top: 40px !important;
+    }
+
+    /* Titres de sections (Gardiens, Défenseurs…) */
+    body.team-page .team-section h3 {
+        font-size: 1.4rem !important; /* avant : 2rem */
+        margin-bottom: 20px !important;
+    }
+
+    body.team-page .team-section h3::after {
+        width: 50px;
+        height: 3px;
+        bottom: -8px;
+    }
+
+    /* =========================================================
+       PAGE ÉQUIPE — CARTES (NE PAS TOUCHER)
+    ========================================================= */
 
     body.team-page .players-grid {
         display: grid !important;
-
-        /* 2 colonnes STRICTES */
         grid-template-columns: repeat(2, calc((100vw - 32px) / 2));
-
         gap: 8px;
-
         width: 100vw;
         padding: 0 16px;
         margin: 0;
-
         box-sizing: border-box;
         justify-content: center;
     }
 
-    /* Cartes joueurs : remplissent EXACTEMENT leur colonne */
     body.team-page .player-card {
         width: 100% !important;
         min-width: 100%;
         max-width: 100%;
-
         height: 80px;
-
         padding: 10px 8px !important;
         box-sizing: border-box;
-
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
         text-align: center;
         overflow: hidden;
     }
 
-    /* Nom joueur : ne modifie jamais la largeur */
     body.team-page .player-card h4 {
         font-size: 0.95rem !important;
         line-height: 1.1;
         margin-bottom: 2px;
-
         width: 100%;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }
 
-    /* Numéro */
     body.team-page .player-card p {
         font-size: 1.6rem !important;
         margin: 0;
