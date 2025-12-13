@@ -53,7 +53,7 @@ async function initPlayerPage() {
   updatePage();
 }
 
-// filtre les matchs selon présence et filtres (NE PAS TOUCHER)
+// filtre les matchs selon présence et filtres
 function filterMatchesForPlayer() {
   const teamFilter = document.getElementById("teamFilter").value;
   const typeFilter = document.getElementById("matchTypeFilter").value;
@@ -96,13 +96,13 @@ function countGoalsAssists() {
 }
 
 /* ============================================================
-   ✅ SEULE FONCTION MODIFIÉE : CALCUL DES RANGS
+   ✅ SEULE MODIFICATION : computeRanks()
    ============================================================ */
 function computeRanks() {
   const teamFilter = document.getElementById("teamFilter").value;
   const typeFilter = document.getElementById("matchTypeFilter").value;
 
-  // Matchs filtrés SANS présence
+  // matchs filtrés (SANS présence)
   const filteredMatches = matches.filter(m => {
     const teamMatch = teamFilter === "all" || m.team1 === teamFilter || m.team2 === teamFilter;
     const typeMatch =
@@ -116,7 +116,6 @@ function computeRanks() {
 
   const matchIds = new Set(filteredMatches.map(m => m.id));
 
-  // stats globales
   const stats = {};
   for (const p of players) {
     stats[p.name] = { name: p.name, goals: 0, assists: 0, total: 0 };
@@ -132,31 +131,29 @@ function computeRanks() {
     s.total = s.goals + s.assists;
   }
 
-  function buildRanks(primary, secondary) {
-    const sorted = Object.values(stats).sort(
-      (a, b) => b[primary] - a[primary] || b[secondary] - a[secondary]
-    );
-
+  function rank(array, key1, key2) {
+    const sorted = [...array].sort((a, b) => b[key1] - a[key1] || b[key2] - a[key2]);
     const ranks = {};
-    let rank = 1;
+    let rankValue = 1;
 
     for (let i = 0; i < sorted.length; i++) {
       if (
         i > 0 &&
-        (sorted[i][primary] !== sorted[i - 1][primary] ||
-         sorted[i][secondary] !== sorted[i - 1][secondary])
+        (sorted[i][key1] !== sorted[i - 1][key1] ||
+         sorted[i][key2] !== sorted[i - 1][key2])
       ) {
-        rank = i + 1;
+        rankValue = i + 1;
       }
-      ranks[sorted[i].name] = rank;
+      ranks[sorted[i].name] = rankValue;
     }
     return ranks;
   }
 
+  const named = Object.values(stats);
   return {
-    gRank: buildRanks("goals", "assists")[currentPlayer.name] || "-",
-    aRank: buildRanks("assists", "goals")[currentPlayer.name] || "-",
-    tRank: buildRanks("total", "goals")[currentPlayer.name] || "-"
+    gRank: rank(named, "goals", "assists")[currentPlayer.name] || "-",
+    aRank: rank(named, "assists", "goals")[currentPlayer.name] || "-",
+    tRank: rank(named, "total", "goals")[currentPlayer.name] || "-"
   };
 }
 
