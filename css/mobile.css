@@ -240,7 +240,7 @@
     /* Noms des équipes / texte principal */
     body.results-page .match-card h4,
     body.results-page .match-card .team-name {
-        font-size: 0.85rem !important;
+        font-size: 0.75rem !important;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
