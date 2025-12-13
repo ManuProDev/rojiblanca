@@ -1,4 +1,4 @@
-/* stats.js — stats filtrées dynamiquement */
+/* stats.js — version corrigée avec filtres pris en compte pour tous les calculs */
 
 async function loadJsonRobust(path) {
   const res = await fetch(path);
@@ -44,7 +44,6 @@ async function initStats() {
   updateStats();
 }
 
-// --- filtre les matchs selon les filtres ---
 function filterMatches() {
   const team = document.getElementById("teamFilter").value;
   const type = document.getElementById("matchTypeFilter").value;
@@ -65,18 +64,13 @@ function filterMatches() {
   });
 }
 
-// --- filtre les buts selon les matchs filtrés ---
-function filterGoals(filteredMatches) {
-  const matchIds = new Set(filteredMatches.map(m => m.id));
-  return goals.filter(g => matchIds.has(g.matchId));
-}
-
 function updateStats() {
   const teamChoice = document.getElementById("teamFilter").value;
   const clubPrefix = teamChoice === "all" ? "Rojiblanca" : teamChoice;
 
-  const filteredMatches = filterMatches();
-  const filteredGoals = filterGoals(filteredMatches);
+  const filteredMatches = filterMatches().filter(m =>
+    m.team1.includes("Rojiblanca") || m.team2.includes("Rojiblanca")
+  );
 
   filteredMatches.sort((a, b) => b.id - a.id);
 
@@ -97,6 +91,7 @@ function updateStats() {
 
   const diff = gf - ga;
 
+  // Statistiques générales
   const summary = document.querySelector(".stats-summary");
   summary.innerHTML = `
     <div class="stat-card"><div class="kpi">${played}</div><div class="label">Matchs joués</div></div>
@@ -109,8 +104,8 @@ function updateStats() {
   `;
 
   updateCharts(wins, draws, losses, gf, ga);
-  updatePodium(filteredGoals);
-  updatePlayers(filteredGoals);
+  updatePodium(filteredMatches);
+  updatePlayers(filteredMatches);
 }
 
 function updateCharts(w, d, l, gf, ga) {
@@ -153,14 +148,16 @@ function updateCharts(w, d, l, gf, ga) {
   });
 }
 
-function updatePodium(filteredGoals) {
+function updatePodium(filteredMatches) {
   const stats = {};
 
-  for (const p of players) {
-    stats[p.name] = { name: p.name, number: p.number, goals: 0, assists: 0 };
-  }
+  for (const p of players) stats[p.name] = { name: p.name, number: p.number, goals: 0, assists: 0 };
 
-  for (const g of filteredGoals) {
+  // Filtrer les buts et passes uniquement pour les matchs filtrés
+  const filteredMatchIds = new Set(filteredMatches.map(m => m.id));
+
+  for (const g of goals) {
+    if (!filteredMatchIds.has(g.matchId)) continue;
     if (g.goal && stats[g.goal]) stats[g.goal].goals++;
     if (g.assist && stats[g.assist]) stats[g.assist].assists++;
   }
@@ -173,6 +170,7 @@ function updatePodium(filteredGoals) {
   pod.innerHTML = "";
 
   const medals = ["podium-1", "podium-2", "podium-3"];
+
   arr.forEach((p, i) => {
     pod.innerHTML += `
       <div class="podium-item">
@@ -183,15 +181,16 @@ function updatePodium(filteredGoals) {
   });
 }
 
-function updatePlayers(filteredGoals) {
+function updatePlayers(filteredMatches) {
   const grid = document.getElementById("players-stats-grid");
   const stats = {};
 
-  for (const p of players) {
-    stats[p.name] = { name: p.name, id: p.id, number: p.number, goals: 0, assists: 0 };
-  }
+  for (const p of players) stats[p.name] = { name: p.name, id: p.id, number: p.number, goals: 0, assists: 0 };
 
-  for (const g of filteredGoals) {
+  const filteredMatchIds = new Set(filteredMatches.map(m => m.id));
+
+  for (const g of goals) {
+    if (!filteredMatchIds.has(g.matchId)) continue;
     if (g.goal && stats[g.goal]) stats[g.goal].goals++;
     if (g.assist && stats[g.assist]) stats[g.assist].assists++;
   }
@@ -200,15 +199,18 @@ function updatePlayers(filteredGoals) {
 
   Object.values(stats).forEach(p => {
     const initials = p.name.split(" ").map(x => x[0]).join("").slice(0, 2).toUpperCase();
+    const total = p.goals + p.assists;
+    const matchesPlayed = filteredMatches.length;
+    const avg = matchesPlayed ? (total / matchesPlayed).toFixed(2) : "0.00";
+
     grid.innerHTML += `
       <div class="player-stat-card" onclick="window.location='player.html?id=${p.id}'">
         <div class="player-avatar">${initials}</div>
         <div style="flex:1">
           <div class="meta-small">${p.name} <span>#${p.number}</span></div>
           <div class="meta-sub">Buts : ${p.goals} • Passes : ${p.assists}</div>
-          <div style="opacity:0.8">Moyenne par match: ${p.goals + p.assists > 0 ? ((p.goals + p.assists)/filteredGoals.length).toFixed(2) : "0.00"}</div>
         </div>
-        <div style="font-weight:900;color:#fff">${p.goals + p.assists}</div>
+        <div style="font-weight:900;color:#fff">${total} <div style="font-size:12px;opacity:0.8">Moyenne: ${avg}</div></div>
       </div>`;
   });
 }
