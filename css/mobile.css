@@ -349,13 +349,13 @@
     /* Titre principal réduit */
     body.stats-page .results-title {
         font-size: 2rem !important; /* réduit taille du titre */
-        margin-top: 10px !important;       /* espace réduit avec le header */
-        margin-bottom: 40px !important;    /* espace avec filtres */
+        margin-top: 2px !important;       /* espace réduit avec le header */
+        margin-bottom: 35px !important;    /* espace avec filtres */
     }
 
     /* Réduction espace entre dernière carte et footer */
     body.stats-page main.main-content {
        padding-top: 30px !important;
-       padding-bottom: 10px !important;
+       padding-bottom: 2px !important;
     }
 }
