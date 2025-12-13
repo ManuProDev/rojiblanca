@@ -1,48 +1,62 @@
 /* =========================================================
-   DESKTOP ONLY – FORCE 3 BLOCS SUR UNE SEULE LIGNE
-   (SANS TOUCHER AU HTML)
+   DESKTOP ONLY – 3 BLOCS SUR UNE LIGNE
    ========================================================= */
 
 @media (min-width: 769px) {
 
-  /* =====================================================
-     1️⃣ PARENT COMMUN : INTERDIRE LE RETOUR À LA LIGNE
-     ===================================================== */
-
-  body.stats-page .player-section {
-    white-space: nowrap;
-    text-align: center;
+  /* Conteneur parent : on force l'affichage horizontal */
+  body.stats-page main.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: nowrap; /* empêche le retour à la ligne */
+    flex-direction: row;
+    flex-shrink: 0;
   }
 
-  /* =====================================================
-     2️⃣ GRAPHIQUES : INLINE-BLOCK
-     ===================================================== */
-
-  body.stats-page canvas {
-    display: inline-block !important;
-    vertical-align: top;
-    margin: 0 20px;
+  /* Chaque bloc : graphiques + podium */
+  body.stats-page main.main-content > canvas,
+  body.stats-page main.main-content > .podium-wrapper {
+    flex: 0 0 300px; /* largeur fixe */
+    height: 300px;   /* hauteur fixe pour "carré" */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 14px 32px rgba(0,0,0,0.25);
   }
 
-  /* =====================================================
-     3️⃣ PODIUM : INLINE-BLOCK
-     ===================================================== */
-
-  body.stats-page .podium-item {
-    display: inline-block;
-    vertical-align: top;
-    white-space: normal; /* réactive le texte interne */
-    margin: 0 20px;
+  /* Canvas à l'intérieur des blocs */
+  body.stats-page main.main-content > canvas {
+    width: 220px !important;
+    height: 220px !important;
   }
 
-  /* =====================================================
-     4️⃣ SÉCURITÉ : EMPÊCHER TOUT CONFLIT FLEX / GRID
-     ===================================================== */
+  /* Podium à l'intérieur de son bloc */
+  body.stats-page main.main-content > .podium-wrapper .podium-item {
+    margin-bottom: 12px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+  }
 
-  body.stats-page .player-section *,
-  body.stats-page .player-section *::before,
-  body.stats-page .player-section *::after {
-    flex: none !important;
+  body.stats-page main.main-content > .podium-wrapper .podium-item .place {
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+  }
+
+  body.stats-page main.main-content > .podium-wrapper .podium-item .meta {
+    font-size: 14px;
+  }
+
+  body.stats-page main.main-content > .podium-wrapper .podium-item .score {
+    font-size: 16px;
   }
 
 }
