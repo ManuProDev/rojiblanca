@@ -1,3 +1,5 @@
+// player.js
+
 // Fonction pour compter les buts et passes en prenant en compte les matchs filtrés
 function countGoalsAssists(filteredMatches) {
   const matchIds = new Set(filteredMatches.map(m => m.id));
@@ -60,3 +62,8 @@ function computeRanks(filteredMatches) {
     tRank: totalRanks[currentPlayer.name] || "-"
   };
 }
+
+// Exemple d'utilisation (intégré dans la mise à jour de la page)
+// const filteredMatches = getFilteredMatches(); // fonction qui récupère les matchs filtrés
+// const { goalsCount, assistsCount } = countGoalsAssists(filteredMatches);
+// const { gRank, aRank, tRank } = computeRanks(filteredMatches);
