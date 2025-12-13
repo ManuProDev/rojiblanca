@@ -1,62 +1,63 @@
 /* =========================================================
    DESKTOP ONLY – STATS PAGE
-   3 BLOCS (2 GRAPH + PODIUM) SUR UNE SEULE LIGNE
+   3 BLOCS SUR UNE LIGNE, TAILLE RÉDUITE
    ========================================================= */
 
 @media (min-width: 769px) {
 
-  /* 1️⃣ Conteneur parent */
+  /* Conteneur parent : ligne horizontale */
   body.stats-page .charts-panel {
     display: flex;
-    flex-direction: row;   /* ligne */
+    flex-direction: row;
     justify-content: center;
     align-items: flex-start;
-    gap: 40px;
-    flex-wrap: nowrap;     /* empêche retour à la ligne */
+    gap: 30px;          /* un peu moins d’espace que précédemment */
+    flex-wrap: nowrap;
   }
 
-  /* 2️⃣ Chaque bloc (canvas ou podium) */
+  /* Chaque bloc (graph + podium) */
   body.stats-page .charts-panel > div {
-    flex: 0 0 300px;       /* largeur fixe */
-    height: 300px;         /* hauteur fixe → bloc carré */
+    flex: 0 0 220px;    /* largeur fixe réduite */
+    height: 220px;      /* hauteur → carré */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background: rgba(255,255,255,0.06);
-    border-radius: 16px;
+    border-radius: 14px;
     border: 1px solid rgba(255,255,255,0.12);
-    box-shadow: 0 14px 32px rgba(0,0,0,0.25);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+    padding: 10px;
   }
 
-  /* 3️⃣ Graphiques à l'intérieur des blocs */
+  /* Canvas à l’intérieur des blocs */
   body.stats-page .charts-panel > div canvas {
-    width: 220px !important;
-    height: 220px !important;
+    width: 180px !important;
+    height: 180px !important;
   }
 
-  /* 4️⃣ Podium à l'intérieur de son bloc */
+  /* Podium items */
   body.stats-page .charts-panel > div .podium-item {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    margin-bottom: 12px;
+    padding: 6px;
+    margin-bottom: 8px;
   }
 
   body.stats-page .charts-panel > div .podium-item .place {
-    width: 44px;
-    height: 44px;
-    font-size: 16px;
-  }
-
-  body.stats-page .charts-panel > div .podium-item .meta {
+    width: 36px;
+    height: 36px;
     font-size: 14px;
   }
 
+  body.stats-page .charts-panel > div .podium-item .meta {
+    font-size: 12px;
+  }
+
   body.stats-page .charts-panel > div .podium-item .score {
-    font-size: 16px;
+    font-size: 14px;
   }
 
 }
