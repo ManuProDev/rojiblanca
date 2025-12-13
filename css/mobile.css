@@ -1,7 +1,10 @@
 /* --- MOBILE ONLY --- */
 @media (max-width: 768px) {
 
-    /* --- HEADER / HAMBURGER --- */
+    /* =========================================================
+       HEADER / HAMBURGER
+    ========================================================= */
+
     .header {
         height: 64px !important;
         padding: 12px 20px !important;
@@ -43,24 +46,34 @@
         flex-direction: column;
         position: absolute;
         top: 64px;
-        width: 100% !important;
         left: 0;
         right: 0;
+        width: 100%;
         padding: 14px;
         gap: 10px;
         background: #ffffffee;
-        border-radius: 0 !important;
         text-align: center;
         z-index: 1500;
     }
 
-    /* --- FOOTER --- */
+    .nav-left a.active {
+        color: #9b1c1c !important;
+        text-decoration: none !important;
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
     .footer {
         height: 30px !important;
         font-size: 12px !important;
     }
 
-    /* --- PAGE D'ACCUEIL MOBILE (HOME-PAGE) --- */
+    /* =========================================================
+       PAGE ACCUEIL (HOME)
+    ========================================================= */
+
     body.home-page {
         overflow-y: hidden;
     }
@@ -72,20 +85,22 @@
 
     body.home-page .hero {
         margin-bottom: 12px !important;
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
     }
 
     body.home-page .hero h2 {
         font-size: 28px !important;
-        margin-top: 12px !important;
-        margin-bottom: 6px !important;
+        margin: 12px 0 6px !important;
     }
 
     body.home-page .hero p {
         font-size: 16px !important;
-        margin-top: 0 !important;
         margin-bottom: 30px !important;
+    }
+
+    body.home-page .cards {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 18px !important;
     }
 
     body.home-page .card {
@@ -105,51 +120,52 @@
         line-height: 1.4 !important;
     }
 
-    /* --- CARDS EN COLONNE --- */
-    .cards {
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 18px !important;
-    }
-
     .empty-card {
         display: none !important;
     }
 
-    /* --- MENU ACTIVE --- */
-    .nav-left a.active {
-        color: #9b1c1c !important;
-        text-decoration: none !important;
-    }
+    /* =========================================================
+       PAGE ÉQUIPE — CORRECTION LARGEUR CARTES
+    ========================================================= */
 
-    /* --- PAGE ÉQUIPE MOBILE --- */
+    /* Grille pleine largeur, colonnes STRICTEMENT égales */
     body.team-page .players-grid {
         display: grid !important;
-        grid-template-columns: 1fr 1fr; /* deux colonnes égales */
-        gap: 8px; /* petit espace entre les cartes */
-        padding: 0 4px; /* petites marges gauche et droite de l'écran */
-        width: 100%; /* prend toute la largeur disponible */
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        padding: 0 8px;
+        width: 100%;
+        max-width: 100%;
         box-sizing: border-box;
     }
 
+    /* Cartes joueurs : largeur verrouillée */
     body.team-page .player-card {
-        width: 100% !important; /* remplit 100% de sa colonne */
+        width: 100% !important;
+        max-width: 100%;
+        min-width: 0; /* empêche le texte d'élargir la carte */
         box-sizing: border-box;
+
+        padding: 10px !important;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 8px !important;
+
         text-align: center;
-        overflow: visible; /* permet au texte long de s’afficher */
+        overflow: hidden;
     }
 
+    /* Nom joueur : ne casse plus le layout */
     body.team-page .player-card h4 {
-        font-size: 0.95rem !important; /* légèrement réduit si nécessaire */
+        font-size: 0.95rem !important;
         margin-bottom: 4px !important;
+        max-width: 100%;
         text-align: center;
-        white-space: normal; /* texte sur plusieurs lignes si nécessaire */
-        word-break: break-word; /* coupe les mots trop longs */
+
+        white-space: normal;
+        word-break: break-word;
+        overflow-wrap: break-word;
     }
 
     body.team-page .player-card p {
@@ -157,5 +173,15 @@
         margin: 0;
         width: 100%;
         text-align: center;
+    }
+
+    /* =========================================================
+       TRÈS PETITS ÉCRANS (optionnel mais propre)
+    ========================================================= */
+
+    @media (max-width: 360px) {
+        body.team-page .players-grid {
+            grid-template-columns: 1fr;
+        }
     }
 }
