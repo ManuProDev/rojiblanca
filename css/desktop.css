@@ -1,61 +1,61 @@
 /* =========================================================
-   DESKTOP ONLY – 3 BLOCS SUR UNE LIGNE
+   DESKTOP ONLY – STATS PAGE
+   3 BLOCS (2 GRAPH + PODIUM) SUR UNE SEULE LIGNE
    ========================================================= */
 
 @media (min-width: 769px) {
 
-  /* Conteneur parent : on force l'affichage horizontal */
-  body.stats-page main.main-content {
+  /* 1️⃣ Conteneur parent */
+  body.stats-page .charts-panel {
     display: flex;
+    flex-direction: row;   /* ligne */
     justify-content: center;
     align-items: flex-start;
     gap: 40px;
-    flex-wrap: nowrap; /* empêche le retour à la ligne */
-    flex-direction: row;
-    flex-shrink: 0;
+    flex-wrap: nowrap;     /* empêche retour à la ligne */
   }
 
-  /* Chaque bloc : graphiques + podium */
-  body.stats-page main.main-content > canvas,
-  body.stats-page main.main-content > .podium-wrapper {
-    flex: 0 0 300px; /* largeur fixe */
-    height: 300px;   /* hauteur fixe pour "carré" */
+  /* 2️⃣ Chaque bloc (canvas ou podium) */
+  body.stats-page .charts-panel > div {
+    flex: 0 0 300px;       /* largeur fixe */
+    height: 300px;         /* hauteur fixe → bloc carré */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(255,255,255,0.06);
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255,255,255,0.12);
     box-shadow: 0 14px 32px rgba(0,0,0,0.25);
   }
 
-  /* Canvas à l'intérieur des blocs */
-  body.stats-page main.main-content > canvas {
+  /* 3️⃣ Graphiques à l'intérieur des blocs */
+  body.stats-page .charts-panel > div canvas {
     width: 220px !important;
     height: 220px !important;
   }
 
-  /* Podium à l'intérieur de son bloc */
-  body.stats-page main.main-content > .podium-wrapper .podium-item {
-    margin-bottom: 12px;
+  /* 4️⃣ Podium à l'intérieur de son bloc */
+  body.stats-page .charts-panel > div .podium-item {
     width: 100%;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     padding: 10px;
+    margin-bottom: 12px;
   }
 
-  body.stats-page main.main-content > .podium-wrapper .podium-item .place {
+  body.stats-page .charts-panel > div .podium-item .place {
     width: 44px;
     height: 44px;
     font-size: 16px;
   }
 
-  body.stats-page main.main-content > .podium-wrapper .podium-item .meta {
+  body.stats-page .charts-panel > div .podium-item .meta {
     font-size: 14px;
   }
 
-  body.stats-page main.main-content > .podium-wrapper .podium-item .score {
+  body.stats-page .charts-panel > div .podium-item .score {
     font-size: 16px;
   }
 
