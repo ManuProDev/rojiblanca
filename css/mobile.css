@@ -65,37 +65,42 @@
     }
 
     /* =========================================================
-       PAGE ÉQUIPE — SOLUTION PIXEL-PARFAITE
+       PAGE ÉQUIPE — 2 CARTES PAR LIGNE / LARGEUR PIXEL
     ========================================================= */
 
     /*
-      On abandonne grid/flex :
-      → une seule colonne
-      → largeur FIXE en pixels basée sur l'écran
+      Grille 2 colonnes :
+      largeur = écran
+      colonnes = calculées en pixels
     */
 
     body.team-page .players-grid {
-        display: flex !important;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
+        display: grid !important;
+
+        /* 2 colonnes STRICTES */
+        grid-template-columns: repeat(2, calc((100vw - 32px) / 2));
+
+        gap: 8px;
 
         width: 100vw;
-        padding: 0;
+        padding: 0 16px;
         margin: 0;
+
         box-sizing: border-box;
+        justify-content: center;
     }
 
-    /* Cartes joueurs : largeur verrouillée en pixels */
+    /* Cartes joueurs : remplissent EXACTEMENT leur colonne */
     body.team-page .player-card {
-        width: calc(100vw - 24px) !important; /* 12px de marge de chaque côté */
-        max-width: calc(100vw - 24px);
-        min-width: calc(100vw - 24px);
+        width: 100% !important;
+        min-width: 100%;
+        max-width: 100%;
 
-        height: 80px; /* hauteur uniforme */
-        padding: 10px 12px !important;
+        height: 80px;
 
+        padding: 10px 8px !important;
         box-sizing: border-box;
+
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -105,9 +110,9 @@
         overflow: hidden;
     }
 
-    /* Nom joueur : ne modifie JAMAIS la largeur */
+    /* Nom joueur : ne modifie jamais la largeur */
     body.team-page .player-card h4 {
-        font-size: 1rem !important;
+        font-size: 0.95rem !important;
         line-height: 1.1;
         margin-bottom: 2px;
 
@@ -119,7 +124,7 @@
 
     /* Numéro */
     body.team-page .player-card p {
-        font-size: 1.8rem !important;
+        font-size: 1.6rem !important;
         margin: 0;
         line-height: 1;
     }
