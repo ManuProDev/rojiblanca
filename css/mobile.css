@@ -259,4 +259,21 @@
        white-space: nowrap;
        flex-shrink: 0;          /* ne se compresse jamais */
    }
+   /* =========================================================
+      STATS PAGE — FILTRES MOBILE
+   ========================================================= */
+   body.stats-page .stats-filters {
+       flex-direction: row !important;  /* mettre les filtres sur une seule ligne */
+       flex-wrap: nowrap !important;    /* pas de retour à la ligne */
+       justify-content: flex-start !important; /* aligner à gauche */
+       gap: 12px !important;            /* espacement entre les filtres */
+       width: 100% !important;
+       box-sizing: border-box;
+       padding: 0 8px !important;      /* petites marges à gauche/droite */
+   }
+   
+   body.stats-page .stats-filters .filter-group {
+       flex: 1 1 auto !important;       /* chaque filtre prend une largeur équivalente si possible */
+       min-width: 100px;                /* éviter qu’ils soient trop petits */
+   }
 }
