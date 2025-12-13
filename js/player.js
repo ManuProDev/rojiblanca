@@ -46,7 +46,9 @@ async function initPlayerPage() {
   currentPlayer = players.find(p => p.id === id);
   if (!currentPlayer) return;
 
-  document.getElementById("playerName").textContent = `${currentPlayer.name} #${currentPlayer.number}`;
+  document.getElementById("playerName").textContent =
+    `${currentPlayer.name} #${currentPlayer.number}`;
+
   document.getElementById("teamFilter").addEventListener("change", updatePage);
   document.getElementById("matchTypeFilter").addEventListener("change", updatePage);
 
@@ -59,7 +61,9 @@ function filterMatchesForPlayer() {
   const typeFilter = document.getElementById("matchTypeFilter").value;
 
   return matches.filter(m => {
-    const teamMatch = teamFilter === "all" || m.team1 === teamFilter || m.team2 === teamFilter;
+    const teamMatch =
+      teamFilter === "all" || m.team1 === teamFilter || m.team2 === teamFilter;
+
     const typeMatch =
       typeFilter === "all" ||
       (typeFilter === "official" && (m.type === "League" || m.type === "Cup")) ||
@@ -68,14 +72,16 @@ function filterMatchesForPlayer() {
       (typeFilter === "friendly" && m.type === "Friendly");
 
     const attended = attendance.some(
-      a => a.matchId === m.id && a.player === currentPlayer.name && a.present
+      a => a.matchId === m.id &&
+           a.player === currentPlayer.name &&
+           a.present
     );
 
     return teamMatch && typeMatch && attended;
   });
 }
 
-// calcule victoires/nuls/défaites sur les matchs joués
+// calcule victoires / nuls / défaites
 function countWDL(ms) {
   let w = 0, d = 0, l = 0;
   for (const m of ms) {
@@ -88,11 +94,7 @@ function countWDL(ms) {
   return { w, d, l };
 }
 
-/* =======================
-   CALCULS CORRIGÉS
-   ======================= */
-
-// buts / passes SELON filtres
+// === CALCULS BUTS / PASSES (NE PAS TOUCHER) ===
 function countGoalsAssists() {
   const filteredMatches = filterMatchesForPlayer();
   const matchIds = new Set(filteredMatches.map(m => m.id));
@@ -109,12 +111,12 @@ function countGoalsAssists() {
   return { goalsCount, assistsCount };
 }
 
-// rangs SELON filtres (égalité stricte uniquement)
+// === CALCUL DES RANGS (CORRIGÉ) ===
 function computeRanks() {
   const filteredMatches = filterMatchesForPlayer();
   const matchIds = new Set(filteredMatches.map(m => m.id));
 
-  // 1. Stats globales pour TOUS les joueurs
+  // stats GLOBALes pour tous les joueurs
   const stats = {};
   for (const p of players) {
     stats[p.name] = {
@@ -125,7 +127,7 @@ function computeRanks() {
     };
   }
 
-  // 2. Comptage buts / passes sur les matchs filtrés
+  // comptage sur les matchs filtrés
   for (const g of goals) {
     if (!matchIds.has(g.matchId)) continue;
     if (g.goal && stats[g.goal]) stats[g.goal].goals++;
@@ -136,129 +138,6 @@ function computeRanks() {
     s.total = s.goals + s.assists;
   }
 
-  // 3. Fonction de classement STRICT (égalité uniquement si stats identiques)
-  function buildRanks(keyPrimary, keySecondary) {
+  function buildRanks(primary, secondary) {
     const sorted = Object.values(stats).sort(
-      (a, b) =>
-        b[keyPrimary] - a[keyPrimary] ||
-        b[keySecondary] - a[keySecondary]
-    );
-
-    const ranks = {};
-    let currentRank = 1;
-
-    for (let i = 0; i < sorted.length; i++) {
-      if (
-        i > 0 &&
-        (
-          sorted[i][keyPrimary] !== sorted[i - 1][keyPrimary] ||
-          sorted[i][keySecondary] !== sorted[i - 1][keySecondary]
-        )
-      ) {
-        currentRank = i + 1;
-      }
-      ranks[sorted[i].name] = currentRank;
-    }
-
-    return ranks;
-  }
-
-  // 4. Classements globaux
-  const goalsRanks   = buildRanks("goals", "assists");
-  const assistsRanks = buildRanks("assists", "goals");
-  const totalRanks   = buildRanks("total", "goals");
-
-  // 5. On renvoie UNIQUEMENT le rang du joueur courant
-  return {
-    gRank: goalsRanks[currentPlayer.name] ?? "-",
-    aRank: assistsRanks[currentPlayer.name] ?? "-",
-    tRank: totalRanks[currentPlayer.name] ?? "-"
-  };
-}
-
-  function rank(array, key1, key2) {
-    const sorted = [...array].sort(
-      (a, b) => b[key1] - a[key1] || b[key2] - a[key2]
-    );
-
-    const ranks = {};
-    let rankValue = 1;
-
-    for (let i = 0; i < sorted.length; i++) {
-      if (
-        i > 0 &&
-        (sorted[i][key1] !== sorted[i - 1][key1] ||
-         sorted[i][key2] !== sorted[i - 1][key2])
-      ) {
-        rankValue = i + 1;
-      }
-      ranks[sorted[i].name] = rankValue;
-    }
-    return ranks;
-  }
-
-  const named = Object.keys(stats).map(name => ({ name, ...stats[name] }));
-
-  return {
-    gRank: rank(named, "goals", "assists")[currentPlayer.name] || "-",
-    aRank: rank(named, "assists", "goals")[currentPlayer.name] || "-",
-    tRank: rank(named, "total", "goals")[currentPlayer.name] || "-"
-  };
-}
-
-/* ======================= */
-
-function updatePage() {
-  const ms = filterMatchesForPlayer();
-  const matchesPlayed = ms.length;
-  const wdl = countWDL(ms);
-  const { goalsCount, assistsCount } = countGoalsAssists();
-  const ranks = computeRanks();
-
-  const summary = document.getElementById("player-summary");
-  summary.innerHTML = `
-    <div class="stat-card"><div class="kpi">${matchesPlayed}</div><div class="label">Matchs joués</div></div>
-    <div class="stat-card"><div class="kpi">${wdl.w} (${matchesPlayed ? Math.round(wdl.w/matchesPlayed*100) : 0}%)</div><div class="label">Victoires</div></div>
-    <div class="stat-card"><div class="kpi">${wdl.d} (${matchesPlayed ? Math.round(wdl.d/matchesPlayed*100) : 0}%)</div><div class="label">Nuls</div></div>
-    <div class="stat-card"><div class="kpi">${wdl.l} (${matchesPlayed ? Math.round(wdl.l/matchesPlayed*100) : 0}%)</div><div class="label">Défaites</div></div>
-  `;
-
-  const ranksEl = document.getElementById("ranks");
-  ranksEl.innerHTML = `
-    <div style="display:flex;justify-content:space-between;"><div>Rang buteurs</div><div style="font-weight:900">${ranks.gRank}</div></div>
-    <div style="display:flex;justify-content:space-between;"><div>Rang passeurs</div><div style="font-weight:900">${ranks.aRank}</div></div>
-    <div style="display:flex;justify-content:space-between;"><div>Rang (Buts+Passes)</div><div style="font-weight:900">${ranks.tRank}</div></div>
-  `;
-
-  const grid = document.getElementById("player-stats-grid");
-  grid.innerHTML = `
-    <div class="player-stat-card">
-      <div style="font-weight:800">Buts</div>
-      <div style="font-size:28px;font-weight:900">${goalsCount}</div>
-      <div style="opacity:0.8">Moyenne par match: ${matchesPlayed ? (goalsCount/matchesPlayed).toFixed(2) : "0.00"}</div>
-    </div>
-    <div class="player-stat-card">
-      <div style="font-weight:800">Passes</div>
-      <div style="font-size:28px;font-weight:900">${assistsCount}</div>
-      <div style="opacity:0.8">Moyenne par match: ${matchesPlayed ? (assistsCount/matchesPlayed).toFixed(2) : "0.00"}</div>
-    </div>
-    <div class="player-stat-card">
-      <div style="font-weight:800">Buts + Passes</div>
-      <div style="font-size:28px;font-weight:900">${goalsCount + assistsCount}</div>
-      <div style="opacity:0.8">Total combiné</div>
-    </div>
-  `;
-
-  const ctx = document.getElementById("pieWDL").getContext("2d");
-  if (pieChart) pieChart.destroy();
-  pieChart = new Chart(ctx, {
-    type: "doughnut",
-    data: {
-      labels: ["Victoires","Nuls","Défaites"],
-      datasets:[{ data:[wdl.w, wdl.d, wdl.l], backgroundColor:["#00ff8c","#ffd966","#ff6b6b"] }]
-    },
-    options: { plugins: { legend: { labels: { color: "#fff" } } } }
-  });
-}
-
-initPlayerPage();
+      (a, b) =
