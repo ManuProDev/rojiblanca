@@ -1,63 +1,61 @@
 /* =========================================================
    DESKTOP ONLY – STATS PAGE
-   3 BLOCS SUR UNE LIGNE, TAILLE RÉDUITE
+   BLOCS TRÈS PETITS, ALIGNÉS SUR UNE LIGNE
    ========================================================= */
 
 @media (min-width: 769px) {
 
-  /* Conteneur parent : ligne horizontale */
+  /* Conteneur */
   body.stats-page .charts-panel {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
-    gap: 30px;          /* un peu moins d’espace que précédemment */
+    gap: 20px;
     flex-wrap: nowrap;
   }
 
-  /* Chaque bloc (graph + podium) */
+  /* Chaque bloc (graph / graph / podium) */
   body.stats-page .charts-panel > div {
-    flex: 0 0 220px;    /* largeur fixe réduite */
-    height: 220px;      /* hauteur → carré */
+    flex: 0 0 140px;   /* 👈 TRÈS PETIT */
+    height: 140px;     /* 👈 CARRÉ */
+    padding: 6px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     background: rgba(255,255,255,0.06);
-    border-radius: 14px;
+    border-radius: 10px;
     border: 1px solid rgba(255,255,255,0.12);
-    box-shadow: 0 12px 28px rgba(0,0,0,0.22);
-    padding: 10px;
   }
 
-  /* Canvas à l’intérieur des blocs */
+  /* Graphiques */
   body.stats-page .charts-panel > div canvas {
-    width: 180px !important;
-    height: 180px !important;
+    width: 110px !important;
+    height: 110px !important;
   }
 
-  /* Podium items */
+  /* Podium */
   body.stats-page .charts-panel > div .podium-item {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6px;
-    margin-bottom: 8px;
+    padding: 4px 6px;
+    margin-bottom: 4px;
   }
 
   body.stats-page .charts-panel > div .podium-item .place {
-    width: 36px;
-    height: 36px;
-    font-size: 14px;
+    width: 26px;
+    height: 26px;
+    font-size: 11px;
   }
 
   body.stats-page .charts-panel > div .podium-item .meta {
-    font-size: 12px;
+    font-size: 10px;
   }
 
   body.stats-page .charts-panel > div .podium-item .score {
-    font-size: 14px;
+    font-size: 11px;
   }
 
 }
