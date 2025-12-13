@@ -306,14 +306,22 @@
     }
 
     /* =========================================================
-       STATS / PLAYER — GRILLE DE CARTES 2 PAR 2
+       STATS / PLAYER — GRILLE DE CARTES 2 PAR 2 (uniquement globales)
     ========================================================= */
 
     body.stats-page .stats-summary,
-    body.stats-page #player-summary,
-    body.stats-page #players-stats-grid {
+    body.stats-page #player-summary {
         display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+        padding: 0 16px !important;
+        margin: 0 auto !important;
+    }
+
+    /* Cartes personnelles restent 1 par ligne */
+    body.stats-page #players-stats-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
         gap: 12px !important;
         padding: 0 16px !important;
         margin: 0 auto !important;
