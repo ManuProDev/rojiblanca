@@ -342,7 +342,7 @@
 
     /* Titre principal */
     body.stats-page .stats-title {
-        font-size: 2rem !important;
+        font-size: 1.5rem !important;
         margin-top: 10px !important;       /* réduit l’espace avec le header */
         margin-bottom: 24px !important;    /* espace augmenté avec les filtres */
     }
