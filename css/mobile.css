@@ -359,17 +359,23 @@
        padding-bottom: 2px !important;
     }
 
-   .charts-panel {
-        margin-top: 20px;    /* espace au-dessus des graphiques */
-        margin-bottom: 20px; /* espace en dessous des graphiques */
-        padding: 10px;       /* léger espace intérieur */
-        box-sizing: border-box;
+   .charts-podium-container {
+        margin-top: 10px !important;       /* réduit espace au-dessus */
+        margin-bottom: 10px !important;    /* réduit espace en dessous */
+        gap: 12px !important;              /* réduit espace entre graphiques et podium */
+        padding: 0 !important;             /* supprime padding inline */
     }
-   
-   .podium-panel {
-        margin-top: 2px !important; 
-        margin-bottom: 2px !important;
-        padding: 10px;
-        box-sizing: border-box;
+
+    .charts-panel {
+        margin: 0 !important;
+    }
+
+    .podium-panel {
+        margin: 0 !important;
+        padding: 8px !important;           /* réduit padding interne */
+    }
+
+    .podium-panel > div {
+        padding: 8px !important;           /* réduit padding de la carte */
     }
 }
