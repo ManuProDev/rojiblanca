@@ -4,25 +4,43 @@
 
 @media (min-width: 769px) {
 
-  /* ===== CONTENEUR AUTOMATIQUE DES VISUELS ===== */
-  body.stats-page #player-stats,
-  body.stats-page .player-section .stats-content {
+  /* =====================================================
+     1️⃣ CONTENEUR COMMUN (2 GRAPHIQUES + PODIUM)
+     ===================================================== */
+
+  body.stats-page .player-section:has(canvas):has(.podium-item) {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 40px;
+
     max-width: 1300px;
-    margin: 40px auto 60px;
+    margin: 50px auto 70px;
+    padding: 0 20px;
   }
 
-  /* ===== BLOCS GÉNÉRIQUES ===== */
-  body.stats-page canvas,
-  body.stats-page .podium-item {
+  /* =====================================================
+     2️⃣ BLOCS VISUELS → TOUS CARRÉS
+     ===================================================== */
+
+  body.stats-page .player-section:has(canvas):has(.podium-item) > * {
+    flex: 0 0 300px;
+    height: 300px;
+
     background: rgba(255,255,255,0.06);
-    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 18px;
+    box-shadow: 0 18px 36px rgba(0,0,0,0.25);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  /* ===== GRAPHIQUES ===== */
+  /* =====================================================
+     3️⃣ GRAPHIQUES (CHART.JS)
+     ===================================================== */
+
   body.stats-page canvas {
     width: 220px !important;
     height: 220px !important;
@@ -30,27 +48,34 @@
     max-height: 220px;
   }
 
-  body.stats-page canvas:first-of-type {
-    margin-right: 10px;
-  }
+  /* =====================================================
+     4️⃣ PODIUM (RÉDUCTION LARGEUR + ALIGNEMENT)
+     ===================================================== */
 
-  /* ===== PODIUM ===== */
   body.stats-page .podium-item {
+    width: 100%;
     padding: 10px 14px;
   }
 
   body.stats-page .podium-item .place {
-    width: 46px;
-    height: 46px;
+    width: 44px;
+    height: 44px;
     font-size: 16px;
+  }
+
+  body.stats-page .podium-item .meta {
+    font-size: 14px;
   }
 
   body.stats-page .podium-item .score {
     font-size: 16px;
   }
 
-  body.stats-page .podium-item .meta {
-    font-size: 14px;
+  /* Centrage vertical du contenu podium */
+  body.stats-page .player-section:has(.podium-item) > div {
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
   }
 
 }
