@@ -243,7 +243,7 @@
    
    /* Noms des équipes */
    body.results-page .match-card .match-teams {
-       font-size: 0.8rem !important;
+       font-size: 0.9rem !important;
        white-space: nowrap;
        overflow: hidden;
        text-overflow: ellipsis;
