@@ -1,4 +1,6 @@
-/* --- MOBILE ONLY --- */
+/* =========================================================
+   MOBILE ONLY
+========================================================= */
 @media (max-width: 768px) {
 
     /* =========================================================
@@ -7,7 +9,7 @@
 
     .header {
         height: 64px !important;
-        padding: 12px 20px !important;
+        padding: 12px 16px !important;
     }
 
     .header-left {
@@ -15,7 +17,6 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        padding: 0 20px;
         box-sizing: border-box;
     }
 
@@ -25,7 +26,6 @@
         gap: 5px;
         width: 32px;
         cursor: pointer;
-        margin: 0;
         z-index: 2000;
     }
 
@@ -47,18 +47,12 @@
         position: absolute;
         top: 64px;
         left: 0;
-        right: 0;
-        width: 100%;
+        width: 100vw;
         padding: 14px;
         gap: 10px;
         background: #ffffffee;
         text-align: center;
         z-index: 1500;
-    }
-
-    .nav-left a.active {
-        color: #9b1c1c !important;
-        text-decoration: none !important;
     }
 
     /* =========================================================
@@ -71,82 +65,37 @@
     }
 
     /* =========================================================
-       PAGE ACCUEIL (HOME)
+       PAGE ÉQUIPE — SOLUTION PIXEL-PARFAITE
     ========================================================= */
 
-    body.home-page {
-        overflow-y: hidden;
-    }
+    /*
+      On abandonne grid/flex :
+      → une seule colonne
+      → largeur FIXE en pixels basée sur l'écran
+    */
 
-    body.home-page main.main-content {
-        padding-top: 35px !important;
-        padding-bottom: 0 !important;
-    }
-
-    body.home-page .hero {
-        margin-bottom: 12px !important;
-    }
-
-    body.home-page .hero h2 {
-        font-size: 28px !important;
-        margin: 12px 0 6px !important;
-    }
-
-    body.home-page .hero p {
-        font-size: 16px !important;
-        margin-bottom: 30px !important;
-    }
-
-    body.home-page .cards {
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 18px !important;
-    }
-
-    body.home-page .card {
-        width: 90% !important;
-        max-width: 270px !important;
-        padding: 18px !important;
-        height: auto !important;
-    }
-
-    body.home-page .card h3 {
-        font-size: 22px !important;
-        margin-bottom: 8px !important;
-    }
-
-    body.home-page .card p {
-        font-size: 14px !important;
-        line-height: 1.4 !important;
-    }
-
-    .empty-card {
-        display: none !important;
-    }
-
-    /* =========================================================
-       PAGE ÉQUIPE — CORRECTION LARGEUR CARTES
-    ========================================================= */
-
-    /* Grille pleine largeur, colonnes STRICTEMENT égales */
     body.team-page .players-grid {
-        display: grid !important;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
         gap: 10px;
-        padding: 0 8px;
-        width: 100%;
-        max-width: 100%;
+
+        width: 100vw;
+        padding: 0;
+        margin: 0;
         box-sizing: border-box;
     }
 
-    /* Cartes joueurs : largeur verrouillée */
+    /* Cartes joueurs : largeur verrouillée en pixels */
     body.team-page .player-card {
-        width: 100% !important;
-        max-width: 100%;
-        min-width: 0; /* empêche le texte d'élargir la carte */
-        box-sizing: border-box;
+        width: calc(100vw - 24px) !important; /* 12px de marge de chaque côté */
+        max-width: calc(100vw - 24px);
+        min-width: calc(100vw - 24px);
 
-        padding: 10px !important;
+        height: 80px; /* hauteur uniforme */
+        padding: 10px 12px !important;
+
+        box-sizing: border-box;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -156,32 +105,22 @@
         overflow: hidden;
     }
 
-    /* Nom joueur : ne casse plus le layout */
+    /* Nom joueur : ne modifie JAMAIS la largeur */
     body.team-page .player-card h4 {
-        font-size: 0.95rem !important;
-        margin-bottom: 4px !important;
-        max-width: 100%;
-        text-align: center;
+        font-size: 1rem !important;
+        line-height: 1.1;
+        margin-bottom: 2px;
 
-        white-space: normal;
-        word-break: break-word;
-        overflow-wrap: break-word;
-    }
-
-    body.team-page .player-card p {
-        font-size: 1.6rem !important;
-        margin: 0;
         width: 100%;
-        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
-    /* =========================================================
-       TRÈS PETITS ÉCRANS (optionnel mais propre)
-    ========================================================= */
-
-    @media (max-width: 360px) {
-        body.team-page .players-grid {
-            grid-template-columns: 1fr;
-        }
+    /* Numéro */
+    body.team-page .player-card p {
+        font-size: 1.8rem !important;
+        margin: 0;
+        line-height: 1;
     }
 }
