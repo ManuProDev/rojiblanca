@@ -132,18 +132,15 @@
        PAGE ÉQUIPE — AJUSTEMENTS MOBILE UNIQUEMENT
     ========================================================= */
 
-    /* 🔽 RÉDUCTION RÉELLE header → premier titre */
     body.team-page main.main-content {
-        padding-top: 10px !important; /* plus petit que 80px */
-        padding-bottom: 60px !important; /* moins d’espace avant footer */
+        padding-top: 10px !important;
+        padding-bottom: 60px !important;
     }
 
-    /* Sections */
     body.team-page .team-section {
         margin-top: 32px !important;
     }
 
-    /* Titres (Gardiens, Défenseurs…) */
     body.team-page .team-section h3 {
         font-size: 1.35rem !important;
         margin-bottom: 30px !important;
@@ -154,10 +151,6 @@
         height: 3px;
         bottom: -8px;
     }
-
-    /* =========================================================
-       PAGE ÉQUIPE — CARTES (INTOUCHÉES)
-    ========================================================= */
 
     body.team-page .players-grid {
         display: grid !important;
@@ -202,17 +195,17 @@
     }
 
     /* =========================================================
-       PAGE RESULTS — AJUSTEMENTS MOBILE UNIQUEMENT
+       PAGE RÉSULTATS — AJUSTEMENTS MOBILE UNIQUEMENT
     ========================================================= */
 
     body.results-page main.main-content {
-        padding-top: 30px !important;
+        padding-top: 40px !important;
         padding-bottom: 60px !important;
     }
 
     body.results-page .results-title {
         font-size: 1.25rem !important;
-        margin-bottom: 20px !important;
+        margin-bottom: 30px !important; /* ajusté selon ton dernier retour */
     }
 
     body.results-page .results-pair {
@@ -246,7 +239,7 @@
     }
 
     body.results-page .match-card .match-score {
-        font-size: 1rem !important;
+        font-size: 1.2rem !important; /* plus grand que précédemment */
         font-weight: 700;
         text-align: right;
         margin-left: 12px;
