@@ -9,7 +9,7 @@
 
     .header {
         height: 64px !important;
-        padding: 12px 16px !important;
+        padding: 12px 20px !important;
     }
 
     .header-left {
@@ -17,6 +17,7 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
+        padding: 0 20px;
         box-sizing: border-box;
     }
 
@@ -55,6 +56,11 @@
         z-index: 1500;
     }
 
+    .nav-left a.active {
+        color: #9b1c1c !important;
+        text-decoration: none !important;
+    }
+
     /* =========================================================
        FOOTER
     ========================================================= */
@@ -65,34 +71,93 @@
     }
 
     /* =========================================================
-       PAGE ÉQUIPE — AJUSTEMENTS MOBILE
+       PAGE D’ACCUEIL (HOME) — RESTAURÉE À L’IDENTIQUE
+       (copie exacte de ta version d’origine)
     ========================================================= */
 
-    /* Réduction espace header → contenu */
+    body.home-page {
+        overflow-y: hidden;
+    }
+
+    body.home-page main.main-content {
+        padding-top: 35px !important;
+        padding-bottom: 0 !important;
+    }
+
+    body.home-page .hero {
+        margin-bottom: 12px !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    body.home-page .hero h2 {
+        font-size: 28px !important;
+        margin-top: 12px !important;
+        margin-bottom: 6px !important;
+    }
+
+    body.home-page .hero p {
+        font-size: 16px !important;
+        margin-top: 0 !important;
+        margin-bottom: 30px !important;
+    }
+
+    body.home-page .card {
+        width: 90% !important;
+        max-width: 270px !important;
+        padding: 18px !important;
+        height: auto !important;
+    }
+
+    body.home-page .card h3 {
+        font-size: 22px !important;
+        margin-bottom: 8px !important;
+    }
+
+    body.home-page .card p {
+        font-size: 14px !important;
+        line-height: 1.4 !important;
+    }
+
+    body.home-page .cards {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 18px !important;
+    }
+
+    .empty-card {
+        display: none !important;
+    }
+
+    /* =========================================================
+       PAGE ÉQUIPE — AJUSTEMENTS MOBILE UNIQUEMENT
+    ========================================================= */
+
+    /* 🔽 RÉDUCTION RÉELLE header → premier titre */
     body.team-page main.main-content {
-        padding-top: 80px !important; /* avant : ~120px */
-        padding-bottom: 70px !important; /* réduit espace avant footer */
+        padding-top: 68px !important; /* plus petit que 80px */
+        padding-bottom: 60px !important; /* moins d’espace avant footer */
     }
 
-    /* Sections équipe : marges verticales réduites */
+    /* Sections */
     body.team-page .team-section {
-        margin-top: 40px !important;
+        margin-top: 32px !important;
     }
 
-    /* Titres de sections (Gardiens, Défenseurs…) */
+    /* Titres (Gardiens, Défenseurs…) */
     body.team-page .team-section h3 {
-        font-size: 1.4rem !important; /* avant : 2rem */
-        margin-bottom: 20px !important;
+        font-size: 1.35rem !important;
+        margin-bottom: 18px !important;
     }
 
     body.team-page .team-section h3::after {
-        width: 50px;
+        width: 46px;
         height: 3px;
         bottom: -8px;
     }
 
     /* =========================================================
-       PAGE ÉQUIPE — CARTES (NE PAS TOUCHER)
+       PAGE ÉQUIPE — CARTES (INTOUCHÉES)
     ========================================================= */
 
     body.team-page .players-grid {
