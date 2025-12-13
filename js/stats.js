@@ -1,4 +1,4 @@
-/* stats.js — version corrigée avec filtres pris en compte pour tous les calculs */
+/* stats.js — version sans affichage des moyennes par match */
 
 async function loadJsonRobust(path) {
   const res = await fetch(path);
@@ -91,7 +91,6 @@ function updateStats() {
 
   const diff = gf - ga;
 
-  // Statistiques générales
   const summary = document.querySelector(".stats-summary");
   summary.innerHTML = `
     <div class="stat-card"><div class="kpi">${played}</div><div class="label">Matchs joués</div></div>
@@ -153,7 +152,6 @@ function updatePodium(filteredMatches) {
 
   for (const p of players) stats[p.name] = { name: p.name, number: p.number, goals: 0, assists: 0 };
 
-  // Filtrer les buts et passes uniquement pour les matchs filtrés
   const filteredMatchIds = new Set(filteredMatches.map(m => m.id));
 
   for (const g of goals) {
@@ -200,8 +198,6 @@ function updatePlayers(filteredMatches) {
   Object.values(stats).forEach(p => {
     const initials = p.name.split(" ").map(x => x[0]).join("").slice(0, 2).toUpperCase();
     const total = p.goals + p.assists;
-    const matchesPlayed = filteredMatches.length;
-    const avg = matchesPlayed ? (total / matchesPlayed).toFixed(2) : "0.00";
 
     grid.innerHTML += `
       <div class="player-stat-card" onclick="window.location='player.html?id=${p.id}'">
@@ -210,7 +206,7 @@ function updatePlayers(filteredMatches) {
           <div class="meta-small">${p.name} <span>#${p.number}</span></div>
           <div class="meta-sub">Buts : ${p.goals} • Passes : ${p.assists}</div>
         </div>
-        <div style="font-weight:900;color:#fff">${total} <div style="font-size:12px;opacity:0.8">Moyenne: ${avg}</div></div>
+        <div style="font-weight:900;color:#fff">${total}</div>
       </div>`;
   });
 }
