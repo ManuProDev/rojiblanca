@@ -114,20 +114,67 @@ function computeRanks() {
   const filteredMatches = filterMatchesForPlayer();
   const matchIds = new Set(filteredMatches.map(m => m.id));
 
+  // 1. Stats globales pour TOUS les joueurs
   const stats = {};
   for (const p of players) {
-    stats[p.name] = { goals: 0, assists: 0, total: 0 };
+    stats[p.name] = {
+      name: p.name,
+      goals: 0,
+      assists: 0,
+      total: 0
+    };
   }
 
+  // 2. Comptage buts / passes sur les matchs filtrés
   for (const g of goals) {
     if (!matchIds.has(g.matchId)) continue;
     if (g.goal && stats[g.goal]) stats[g.goal].goals++;
     if (g.assist && stats[g.assist]) stats[g.assist].assists++;
   }
 
-  for (const name in stats) {
-    stats[name].total = stats[name].goals + stats[name].assists;
+  for (const s of Object.values(stats)) {
+    s.total = s.goals + s.assists;
   }
+
+  // 3. Fonction de classement STRICT (égalité uniquement si stats identiques)
+  function buildRanks(keyPrimary, keySecondary) {
+    const sorted = Object.values(stats).sort(
+      (a, b) =>
+        b[keyPrimary] - a[keyPrimary] ||
+        b[keySecondary] - a[keySecondary]
+    );
+
+    const ranks = {};
+    let currentRank = 1;
+
+    for (let i = 0; i < sorted.length; i++) {
+      if (
+        i > 0 &&
+        (
+          sorted[i][keyPrimary] !== sorted[i - 1][keyPrimary] ||
+          sorted[i][keySecondary] !== sorted[i - 1][keySecondary]
+        )
+      ) {
+        currentRank = i + 1;
+      }
+      ranks[sorted[i].name] = currentRank;
+    }
+
+    return ranks;
+  }
+
+  // 4. Classements globaux
+  const goalsRanks   = buildRanks("goals", "assists");
+  const assistsRanks = buildRanks("assists", "goals");
+  const totalRanks   = buildRanks("total", "goals");
+
+  // 5. On renvoie UNIQUEMENT le rang du joueur courant
+  return {
+    gRank: goalsRanks[currentPlayer.name] ?? "-",
+    aRank: assistsRanks[currentPlayer.name] ?? "-",
+    tRank: totalRanks[currentPlayer.name] ?? "-"
+  };
+}
 
   function rank(array, key1, key2) {
     const sorted = [...array].sort(
