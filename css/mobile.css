@@ -365,4 +365,11 @@
         padding: 10px;       /* léger espace intérieur */
         box-sizing: border-box;
     }
+   
+   .podium-panel {
+        margin-top: 10px !important; 
+        margin-bottom: 10px !important;
+        padding: 10px;
+        box-sizing: border-box;
+    }
 }
