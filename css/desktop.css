@@ -99,7 +99,7 @@
     #pieWDL {
       width: 100% !important;  /* Prendre toute la largeur du conteneur */
       height: auto !important;  /* Laisser la hauteur automatique pour maintenir les proportions */
-      max-width: 600px !important; /* Limiter la largeur à 600px pour éviter d'être trop large */
+      max-width: 450px !important; /* Limiter la largeur à 450px pour une taille plus réduite */
       aspect-ratio: 1;  /* Garder un ratio carré pour le graphique (facultatif si c'est un graphique circulaire) */
     }
   }
