@@ -1,5 +1,5 @@
 /* =========================================================
-   DESKTOP ONLY – STATISTIQUES PAGE (CARRÉS À ÉGALITÉ, SANS FONDS)
+   DESKTOP ONLY – STATISTIQUES PAGE (CARRÉS À ÉGALITÉ)
    ========================================================= */
 
 @media (min-width: 769px) {
@@ -20,7 +20,6 @@
   body.stats-page .podium-panel {
     flex: 1 !important; /* Chaque bloc prend environ un tiers de l'espace */
     min-width: 320px !important;
-    height: 300px !important; /* Hauteur fixée pour les blocs */
     background: none !important; /* Enlever le fond */
     border: none !important; /* Enlever la bordure */
     display: flex !important;
@@ -33,17 +32,21 @@
 
   /* 🔥 CANVAS (Graphiques dans les blocs) */
   body.stats-page canvas {
-    width: 100% !important; /* Le graphique prend 100% de la largeur du conteneur */
-    height: 100% !important; /* Le graphique prend 100% de la hauteur */
-    object-fit: contain !important; /* Garde le ratio sans déformation */
+    width: 90% !important; /* Ajuste la taille du graphique */
+    height: 90% !important; /* Ajuste la taille du graphique */
+    object-fit: contain !important; /* Garde le ratio sans déformer */
   }
 
-  /* 🔥 PODIUM PANEL */
+  /* 🔥 PODIUM PANEL (ajustement largeur et hauteur) */
   body.stats-page .podium-panel {
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
     padding: 8px !important;
+    width: 100% !important;
+    height: 250px !important; /* Réduire la hauteur du podium */
+    max-width: 320px !important; /* Augmenter la largeur du podium */
+    margin-bottom: 20px !important; /* Ajouter une marge en bas */
   }
 
   /* 🔥 ITEM PODIUM */
@@ -70,5 +73,4 @@
   body.stats-page .charts-podium-container {
     background: transparent !important; /* Enlever les fonds de section */
   }
-
 }
