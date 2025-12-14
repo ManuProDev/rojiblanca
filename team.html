@@ -1,84 +1,84 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Équipe — Rojiblanca FC</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/mobile.css">
-    <link rel="stylesheet" href="css/desktop.css">
-    <script>
-        function toggleMenu() {
-            document.querySelector(".nav-left").classList.toggle("open");
-        }
-    </script>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Équipe — Rojiblanca FC</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/mobile.css">
+        <link rel="stylesheet" href="css/desktop.css">
+        <script>
+            function toggleMenu() {
+                document.querySelector(".nav-left").classList.toggle("open");
+            }
+        </script>
+    </head>
 
-<body class="team-page">
-    <header class="header">
-        <div class="header-left">
-            <div class="logo">
-                <img src="images/logo.png" alt="Rojiblanca FC">
-                <span>Rojiblanca FC</span>
+    <body class="team-page">
+        <header class="header">
+            <div class="header-left">
+                <div class="logo">
+                    <img src="images/logo.png" alt="Rojiblanca FC">
+                    <span>Rojiblanca FC</span>
+                </div>
+                <div class="hamburger" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <nav class="nav-left">
+                    <a href="index.html">Accueil</a>
+                    <a href="team.html" class="active">Équipe</a>
+                    <a href="results.html">Résultats</a>
+                    <a href="stats.html">Statistiques</a>
+                </nav>
             </div>
-            <div class="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <nav class="nav-left">
-                <a href="index.html">Accueil</a>
-                <a href="team.html" class="active">Équipe</a>
-                <a href="results.html">Résultats</a>
-                <a href="stats.html">Statistiques</a>
-            </nav>
-        </div>
-    </header>
-
-    <main class="main-content">
-        <section class="team-section">
-            <h3>Gardiens</h3>
-            <div id="goals" class="players-grid"></div>
-        </section>
-        <section class="team-section">
-            <h3>Défenseurs</h3>
-            <div id="defenders" class="players-grid"></div>
-        </section>
-        <section class="team-section">
-            <h3>Milieux</h3>
-            <div id="midfielders" class="players-grid"></div>
-        </section>
-        <section class="team-section">
-            <h3>Attaquants</h3>
-            <div id="strikers" class="players-grid"></div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <p>© Rojiblanca FC</p>
-    </footer>
-
-    <script src="js/displayPlayers.js"></script>
-    <script>
-        (function () {
-            const btn = document.querySelector(".hamburger");
-            const nav = document.querySelector(".nav-left");
-            if (!btn || !nav) return;
-            btn.addEventListener('click', () => {
-                nav.classList.toggle('open-mobile');
-                btn.classList.toggle('open');
-            });
-            nav.querySelectorAll('a').forEach(a => {
-                a.addEventListener('click', () => {
-                    if (nav.classList.contains('open-mobile')) {
-                        nav.classList.remove('open-mobile');
-                        btn.classList.remove('open');
-                    }
+        </header>
+    
+        <main class="main-content">
+            <section class="team-section">
+                <h3>Gardiens</h3>
+                <div id="goals" class="players-grid"></div>
+            </section>
+            <section class="team-section">
+                <h3>Défenseurs</h3>
+                <div id="defenders" class="players-grid"></div>
+            </section>
+            <section class="team-section">
+                <h3>Milieux</h3>
+                <div id="midfielders" class="players-grid"></div>
+            </section>
+            <section class="team-section">
+                <h3>Attaquants</h3>
+                <div id="strikers" class="players-grid"></div>
+            </section>
+        </main>
+    
+        <footer class="footer">
+            <p>© Rojiblanca FC</p>
+        </footer>
+    
+        <script src="js/displayPlayers.js"></script>
+        <script>
+            (function () {
+                const btn = document.querySelector(".hamburger");
+                const nav = document.querySelector(".nav-left");
+                if (!btn || !nav) return;
+                btn.addEventListener('click', () => {
+                    nav.classList.toggle('open-mobile');
+                    btn.classList.toggle('open');
                 });
-            });
-        })();
-    </script>
-</body>
+                nav.querySelectorAll('a').forEach(a => {
+                    a.addEventListener('click', () => {
+                        if (nav.classList.contains('open-mobile')) {
+                            nav.classList.remove('open-mobile');
+                            btn.classList.remove('open');
+                        }
+                    });
+                });
+            })();
+        </script>
+    </body>
 
 </html>
