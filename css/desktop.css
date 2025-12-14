@@ -3,12 +3,11 @@
    ========================================================= */
 
 @media (min-width: 769px) {
-
   /* 🔥 CONTENEUR PRINCIPAL */
   body.stats-page .charts-podium-container {
     display: flex !important;
-    justify-content: space-between !important; /* Espacement égal entre les éléments */
-    align-items: stretch !important; /* Assure que les éléments ont la même hauteur */
+    justify-content: space-between !important;
+    align-items: stretch !important;
     gap: 20px !important;
     width: 100% !important;
     max-width: 1200px !important;
@@ -20,8 +19,7 @@
   body.stats-page .podium-panel {
     flex: 1 !important; /* Assure que chaque bloc prend un tiers de l'espace */
     min-width: 320px !important; /* Largeur minimale pour chaque bloc */
-    max-width: 33.33% !important; /* Chaque bloc occupe environ un tiers de la largeur */
-    height: 300px !important; /* Fixe la hauteur de chaque bloc pour qu'ils soient carrés */
+    height: 300px !important; /* Hauteur fixe pour rendre chaque bloc carré */
     background: rgba(255,255,255,0.06);
     border-radius: 10px;
     border: 1px solid rgba(255,255,255,0.1);
@@ -62,5 +60,4 @@
   body.stats-page .podium-panel .score {
     font-size: 12px !important;
   }
-
 }
