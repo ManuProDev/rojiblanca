@@ -92,4 +92,13 @@
     background-position: right 12px center !important;
     background-size: 12px 12px !important;
   }
+
+  /* =========================== AJUSTER LA TAILLE DU GRAPHIQUE POUR LES ÉCRANS D'ORDINATEUR =========================== */
+  /* Appliquer les modifications uniquement pour les écrans plus larges */
+  @media (min-width: 769px) {
+    #pieWDL {
+      width: 80% !important;  /* Réduire la largeur du graphique à 80% de son conteneur */
+      height: 200px !important; /* Ajuster la hauteur à 200px */
+    }
+  }
 }
