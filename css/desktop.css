@@ -98,8 +98,9 @@
 
   /* Première colonne : graphique */
   body.player-page .charts-panel {
-    flex: 1 1 50% !important; /* 50% de la largeur */
+    flex: 1 1 50% !important; /* Limiter à 50% de la largeur */
     min-width: 320px !important;
+    max-width: 600px !important; /* Ne pas dépasser 600px */
   }
 
   /* Deuxième colonne : Classements du joueur et Détails des performances */
@@ -108,7 +109,7 @@
     min-width: 320px !important;
   }
 
-  /* Déplacer la section "Détails des performances" sous "Classements du joueur" */
+  /* Section "Classements du joueur" et "Détails des performances" l'une sous l'autre */
   body.player-page .player-details-container {
     display: flex !important;
     flex-direction: column !important;
