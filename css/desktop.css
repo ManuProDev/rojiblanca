@@ -93,52 +93,55 @@
     background-size: 12px 12px !important;
   }
 
-  /* =========================== AJUSTER LA TAILLE DU GRAPHIQUE SUR PLAYER PAGE =========================== */
-  .charts-podium-container {
+  /* ========================================================= PLAYER PAGE ONLY (player.html) ========================================================= */
+
+  /* Appliquer uniquement sur la page player.html */
+  body.player-page .charts-podium-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 24px;
+    justify-content: space-between;
     max-width: 1200px;
     margin: 10px auto;
   }
 
-  .charts-panel {
+  /* La section graphique (player.html) avec un maximum de largeur de 600px */
+  body.player-page .charts-panel {
     flex: 1;
     min-width: 320px;
   }
 
-  /* Déplacer les détails des performances à droite sous le podium sur player.html */
-  body.stats-page .charts-podium-container {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    gap: 20px !important;
+  body.player-page #pieWDL {
+    width: 100% !important;
+    max-width: 600px !important;
+    aspect-ratio: 1 !important;  /* Conserver le ratio carré */
+    height: auto !important;
   }
 
-  .player-details-container {
+  /* Déplacer les détails des performances à droite sous le podium sur player.html */
+  body.player-page .charts-podium-container {
+    flex-direction: row !important;
+    gap: 24px !important;
+  }
+
+  /* Style de la section des détails des performances (player.html) */
+  body.player-page .player-details-container {
     display: flex !important;
     flex-direction: column !important;
     width: 48% !important;
   }
 
-  /* Détails des performances déplacés à droite sous le podium */
-  .player-details-container h3 {
+  /* Section "Détails des performances" */
+  body.player-page .player-details-container h3 {
     font-size: 20px !important;
     margin-bottom: 18px !important;
     text-transform: uppercase !important;
   }
 
-  .player-details-container .player-stats-grid {
+  /* Grille des performances (player.html) */
+  body.player-page .player-details-container .player-stats-grid {
     display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
     gap: 18px !important;
-  }
-
-  #pieWDL {
-    max-width: 600px !important;  /* Réduire la taille du graphique pour player.html */
-    aspect-ratio: 1 !important;  /* Garder un ratio carré */
-    height: auto !important;  /* Adapter la hauteur automatiquement */
-    width: 100% !important;
   }
 }
