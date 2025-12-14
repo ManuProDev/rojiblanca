@@ -84,18 +84,18 @@
 
   /* Appliquer uniquement sur la page player.html */
   body.player-page .charts-podium-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 10px auto;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 24px !important;
+    justify-content: space-between !important;
+    max-width: 1200px !important;
+    margin: 10px auto !important;
   }
 
   /* La section graphique (player.html) avec une taille réduite (graphique plus petit) */
   body.player-page .charts-panel {
-    flex: 1;
-    min-width: 320px;
+    flex: 1 1 60% !important;
+    min-width: 320px !important;
   }
 
   body.player-page #pieWDL {
@@ -113,24 +113,24 @@
 
   /* Nouvelle disposition des performances et détails sous les classements */
   body.player-page .podium-panel {
-    flex: 1 1 45%;
-    min-width: 320px;
+    flex: 1 1 35% !important;
+    min-width: 320px !important;
   }
 
   body.player-page .player-details-container {
-    flex: 1 1 45%;
-    min-width: 320px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    justify-content: flex-start;
+    flex: 1 1 45% !important;
+    min-width: 320px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+    justify-content: flex-start !important;
   }
 
   /* Grille des cartes de performances */
   body.player-page .player-details-container .player-stats-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* Mettre les cartes en colonne */
-    gap: 20px;
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+    gap: 20px !important;
   }
 
   /* Section "Détails des performances" */
@@ -148,7 +148,50 @@
   /* =========================== ÉVITER LA DERNIÈRE CARTE PLUS PETITE =========================== */
   body.player-page .player-stats-grid .stat-card:last-child {
     min-height: 150px !important; /* S'assurer que la dernière carte a la même taille */
-    flex: 1 1 100%;
+    flex: 1 1 100% !important;
     height: auto !important;
+  }
+
+  /* Amélioration de l'apparence des cartes */
+  body.player-page .player-stat-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 16px !important;
+    background-color: #fff !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  body.player-page .player-stat-card .stat-title {
+    font-weight: bold !important;
+    font-size: 16px !important;
+    color: #333 !important;
+  }
+
+  body.player-page .player-stat-card .stat-value {
+    font-size: 18px !important;
+    margin-top: 8px !important;
+    color: #0066cc !important;
+  }
+
+  /* Ajout d'un peu d'ombre et de bordures pour les sections */
+  body.player-page .charts-panel,
+  body.player-page .podium-panel {
+    background-color: #fff !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  /* Section du graphique */
+  body.player-page .charts-panel {
+    padding: 20px !important;
+    min-height: 400px !important;
+  }
+
+  /* Section des classements du joueur */
+  body.player-page .podium-panel {
+    padding: 20px !important;
+    min-height: 400px !important;
   }
 }
