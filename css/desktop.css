@@ -1,61 +1,94 @@
 /* =========================================================
    DESKTOP ONLY – STATS PAGE
-   BLOCS TRÈS PETITS, ALIGNÉS SUR UNE LIGNE
+   FORCE 3 BLOCS PETITS SUR UNE SEULE LIGNE
    ========================================================= */
 
 @media (min-width: 769px) {
 
-  /* Conteneur */
+  /* ===============================
+     CONTENEUR DES GRAPHIQUES
+     =============================== */
+
   body.stats-page .charts-panel {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 20px;
-    flex-wrap: nowrap;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
   }
 
-  /* Chaque bloc (graph / graph / podium) */
+  /* ===============================
+     BLOCS (GRAPH / GRAPH / PODIUM)
+     =============================== */
+
   body.stats-page .charts-panel > div {
-    flex: 0 0 140px;   /* 👈 TRÈS PETIT */
-    height: 140px;     /* 👈 CARRÉ */
-    padding: 6px;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 120px !important;
+    min-width: 120px !important;
+    max-width: 120px !important;
 
-    background: rgba(255,255,255,0.06);
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.12);
+    height: 120px !important;
+    min-height: 120px !important;
+    max-height: 120px !important;
+
+    padding: 4px !important;
+    margin: 0 !important;
+
+    background: rgba(255,255,255,0.06) !important;
+    border-radius: 8px !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+    box-shadow: none !important;
   }
 
-  /* Graphiques */
+  /* ===============================
+     CANVAS (CHART.JS)
+     =============================== */
+
   body.stats-page .charts-panel > div canvas {
-    width: 110px !important;
-    height: 110px !important;
+    display: block !important;
+
+    width: 90px !important;
+    height: 90px !important;
+
+    max-width: 90px !important;
+    max-height: 90px !important;
+
+    margin: 0 auto !important;
   }
 
-  /* Podium */
+  /* ===============================
+     PODIUM
+     =============================== */
+
   body.stats-page .charts-panel > div .podium-item {
-    width: 100%;
-    padding: 4px 6px;
-    margin-bottom: 4px;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    width: 100% !important;
+    padding: 2px 4px !important;
+    margin: 2px 0 !important;
   }
 
   body.stats-page .charts-panel > div .podium-item .place {
-    width: 26px;
-    height: 26px;
-    font-size: 11px;
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 10px !important;
   }
 
   body.stats-page .charts-panel > div .podium-item .meta {
-    font-size: 10px;
+    font-size: 9px !important;
+    line-height: 1.1 !important;
   }
 
   body.stats-page .charts-panel > div .podium-item .score {
-    font-size: 11px;
+    font-size: 10px !important;
   }
 
 }
