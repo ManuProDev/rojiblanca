@@ -7,13 +7,21 @@
   }
 
   body.team-page main.main-content {
-    padding-bottom: 40px !important; /* Réduit l'espace en bas de la page */
-    padding-top: 10px !important;    /* Réduit l'espace en haut de la page */
+    padding-bottom: 100px !important; /* Réduit l'espace en bas de la page */
+    padding-top: 2px !important;    /* Réduit l'espace en haut de la page */
   }
 
   body.results-page main.main-content {
     padding-bottom: 40px !important; /* Réduit l'espace en bas de la page */
     padding-top: 40px !important;    /* Réduit l'espace en haut de la page */
+  }
+
+  body.team-page .stat-card:last-child {
+    margin-bottom: 100px !important; /* Réduit la marge sous la dernière carte */
+  }
+
+  body.results-page .stat-card:last-child {
+    margin-bottom: 10px !important; /* Réduit la marge sous la dernière carte */
   }
 
   /* Ajuster les marges de la dernière carte si nécessaire */
