@@ -1,5 +1,5 @@
 /* =========================================================
-   DESKTOP ONLY – STATISTIQUES PAGE (CARRÉS À ÉGALITÉ)
+   DESKTOP ONLY – STATISTIQUES PAGE (CARRÉS À ÉGALITÉ, AJUSTEMENTS)
    ========================================================= */
 
 @media (min-width: 769px) {
@@ -7,8 +7,8 @@
   /* 🔥 CONTENEUR PRINCIPAL */
   body.stats-page .charts-podium-container {
     display: flex !important;
-    justify-content: space-between !important;
-    align-items: stretch !important;
+    justify-content: space-between !important; /* Espacement égal entre les éléments */
+    align-items: stretch !important; /* Assure que les éléments ont la même hauteur */
     gap: 20px !important;
     width: 100% !important;
     max-width: 1200px !important;
@@ -20,6 +20,7 @@
   body.stats-page .podium-panel {
     flex: 1 !important; /* Chaque bloc prend environ un tiers de l'espace */
     min-width: 320px !important;
+    height: 300px !important; /* Hauteur fixée pour les blocs */
     background: none !important; /* Enlever le fond */
     border: none !important; /* Enlever la bordure */
     display: flex !important;
@@ -45,7 +46,7 @@
     padding: 8px !important;
     width: 100% !important;
     height: 250px !important; /* Réduire la hauteur du podium */
-    max-width: 320px !important; /* Augmenter la largeur du podium */
+    max-width: 330px !important; /* Augmenter la largeur du podium */
     margin-bottom: 20px !important; /* Ajouter une marge en bas */
   }
 
@@ -69,7 +70,7 @@
     margin-top: 20px !important;
   }
 
-  /* 🔥 RENDRE LES FONDS TRANSPARENTS */
+  /* 🔥 AJOUTER UNE MARGE ENTRE LES GRAPHIQUES ET LE PODIUM */
   body.stats-page .charts-podium-container {
     background: transparent !important; /* Enlever les fonds de section */
   }
