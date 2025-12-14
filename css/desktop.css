@@ -83,10 +83,10 @@
   /* ========================================================= PLAYER PAGE ONLY (player.html) ========================================================= */
   /* Appliquer uniquement sur la page player.html */
   body.player-page .charts-podium-container {
-    display: flex;
+    display: flex !important;
     gap: 24px !important;
     max-width: 1200px !important;
-    margin: 10px auto;
+    margin: 10px auto !important;
   }
 
   /* Nouvelle disposition : deux colonnes avec le graphique à gauche et les détails à droite */
@@ -99,16 +99,21 @@
   body.player-page .player-details-container {
     flex: 1 1 65% !important; /* Utilise 65% pour la section droite (classements + détails) */
     min-width: 320px !important;
-    display: flex;
+    display: flex !important;
     flex-direction: column !important;
     gap: 24px !important;
     justify-content: flex-start !important;
   }
 
-  /* Grille des cartes de performances (mettre les cartes les unes sous les autres) */
+  /* Section des classements du joueur */
+  body.player-page .player-details-container .charts-podium-container {
+    order: 1 !important; /* Garde les classements en premier dans la colonne droite */
+  }
+
+  /* Section "Détails des performances" : mise en forme des cartes en colonne */
   body.player-page .player-details-container .player-stats-grid {
     display: grid !important;
-    grid-template-columns: 1fr !important; /* Les cartes sur une seule colonne */
+    grid-template-columns: 1fr !important; /* Met les cartes en une seule colonne */
     gap: 20px !important; /* Espacement entre les cartes */
   }
 
