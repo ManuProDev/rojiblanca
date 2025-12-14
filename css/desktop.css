@@ -1,16 +1,22 @@
 /* ========================================================= DESKTOP ONLY – AJUSTEMENTS POUR LE DESIGN DES FILTRES ========================================================= */
 @media (min-width: 769px) {
   /* Réduire la marge en bas de la page entre la dernière carte et le footer */
-  body.team-page main.main-content,
-  body.results-page main.main-content,
   body.stats-page main.main-content {
     padding-bottom: 10px !important; /* Réduit l'espace en bas de la page */
     padding-top: 40px !important;    /* Réduit l'espace en haut de la page */
   }
 
+  body.team-page main.main-content {
+    padding-bottom: 40px !important; /* Réduit l'espace en bas de la page */
+    padding-top: 10px !important;    /* Réduit l'espace en haut de la page */
+  }
+
+  body.results-page main.main-content {
+    padding-bottom: 40px !important; /* Réduit l'espace en bas de la page */
+    padding-top: 40px !important;    /* Réduit l'espace en haut de la page */
+  }
+
   /* Ajuster les marges de la dernière carte si nécessaire */
-  body.team-page .stat-card:last-child,
-  body.results-page .stat-card:last-child,
   body.stats-page .stat-card:last-child {
     margin-bottom: 10px !important; /* Réduit la marge sous la dernière carte */
   }
