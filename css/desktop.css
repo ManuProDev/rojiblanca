@@ -105,7 +105,7 @@
     margin: 10px auto;
   }
 
-  /* La section graphique (player.html) avec un maximum de largeur de 600px */
+  /* La section graphique (player.html) avec une taille réduite (graphique plus petit) */
   body.player-page .charts-panel {
     flex: 1;
     min-width: 320px;
@@ -113,8 +113,8 @@
 
   body.player-page #pieWDL {
     width: 100% !important;
-    max-width: 600px !important;
-    aspect-ratio: 1 !important;  /* Conserver le ratio carré */
+    max-width: 400px !important;  /* Taille réduite à 400px */
+    aspect-ratio: 1 !important;   /* Conserver le ratio carré */
     height: auto !important;
   }
 
