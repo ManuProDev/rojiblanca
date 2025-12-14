@@ -111,7 +111,7 @@
     flex: 1 1 100% !important;
     min-width: 320px !important;
     margin-top: 100px !important; /* Ajout de la marge pour descendre la section */
-    margin-bottom: 50px !important;
+    margin-bottom: 100px !important;
   }
 
   /* Section "Détails des performances" */
