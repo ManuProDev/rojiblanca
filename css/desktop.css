@@ -9,57 +9,51 @@
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-between !important; /* Assure un espacement égal */
-    align-items: stretch !important;  /* S'assure que tous les blocs occupent la même hauteur */
+    align-items: stretch !important; /* Les blocs prennent la même hauteur */
     gap: 20px !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
   }
 
   /* 🔥 3 BLOC GRAPHIQUES + PODIUM */
   body.stats-page .charts-panel,
   body.stats-page .podium-panel {
-    flex: 1 1 30% !important; /* Chaque bloc prend environ 1/3 de l'espace */
-    max-width: 33.3% !important; /* Bloque la largeur à 33.3% */
-    min-width: 250px !important; /* Peut ajuster cette valeur si besoin */
-    height: 0;
-    padding-top: 100% !important; /* Cette propriété crée le ratio carré */
-    position: relative !important; /* Nécessaire pour positionner les éléments enfants */
+    flex: 1 1 32% !important; /* Chaque bloc prend environ 1/3 de l'espace */
+    max-width: 33.3% !important; /* Fixe la largeur à 33.3% */
+    height: 300px !important; /* Fixe la hauteur pour chaque bloc */
     background: rgba(255,255,255,0.06);
     border-radius: 10px;
     border: 1px solid rgba(255,255,255,0.1);
-  }
-
-  /* 🔥 CHARTS PANEL → GRAPHIQUES */
-  body.stats-page .charts-panel {
-    display: flex !important;
-    flex-direction: column !important; /* Stack les canvas */
-    gap: 10px !important;
-    justify-content: center !important;
-    align-items: center !important;
-    padding: 8px !important;
-  }
-
-  /* 🔥 CANVAS (s'assurer que le canvas s'adapte à la taille du parent) */
-  body.stats-page canvas {
-    position: absolute !important;
-    top: 0;
-    left: 0;
-    width: 100% !important; /* 100% de la largeur du parent */
-    height: 100% !important; /* 100% de la hauteur du parent */
-    object-fit: cover !important; /* Garder le ratio sans déformer */
-  }
-
-  /* 🔥 PODIUM PANEL (réduit pour la vue de bureau, peut ajuster la taille des éléments internes) */
-  body.stats-page .podium-panel {
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
+    align-items: center !important;
+    padding: 10px !important;
+    position: relative !important;
+  }
+
+  /* 🔥 CANVAS (Graphiques dans les blocs) */
+  body.stats-page canvas {
+    width: 100% !important; /* Prend 100% de la largeur du parent */
+    height: 100% !important; /* Prend 100% de la hauteur du parent */
+    object-fit: contain !important; /* Garde le ratio sans déformer */
+  }
+
+  /* 🔥 PANEL DU PODIUM */
+  body.stats-page .podium-panel {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
     padding: 8px !important;
   }
 
-  /* 🔥 PODIUM ITEMS */
+  /* 🔥 ITEM PODIUM */
   body.stats-page .podium-panel .podium-item {
     margin-bottom: 12px !important;
   }
 
+  /* 🔥 PODIUM TEXTES */
   body.stats-page .podium-panel .place {
     font-size: 14px !important;
   }
