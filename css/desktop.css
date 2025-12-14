@@ -104,21 +104,20 @@
   }
 
   /* Deuxième colonne : Classements du joueur et Détails des performances */
-  body.player-page .podium-panel {
+  body.player-page .player-details-container {
     flex: 1 1 50% !important; /* 50% de la largeur */
+    display: flex !important;
+    flex-direction: column !important; /* Organiser en colonne */
+    gap: 24px !important;
+  }
+
+  /* Section des classements du joueur */
+  body.player-page .podium-panel {
+    flex: 1 1 100% !important; /* 100% de la largeur disponible dans la colonne */
     min-width: 320px !important;
   }
 
-  /* Section "Classements du joueur" et "Détails des performances" l'une sous l'autre */
-  body.player-page .player-details-container {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 24px !important;
-    justify-content: flex-start !important;
-    margin-top: 24px !important; /* Ajouter un peu d'espace entre les sections */
-  }
-
-  /* Mettre les cartes en colonne */
+  /* Section "Détails des performances" : mettre les cartes en colonne */
   body.player-page .player-details-container .player-stats-grid {
     display: grid !important;
     grid-template-columns: 1fr !important; /* Les cartes en colonne */
