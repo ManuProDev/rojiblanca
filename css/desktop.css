@@ -91,9 +91,9 @@
     margin: 10px auto !important;
   }
 
-  /* Créer deux colonnes */
+  /* Créer deux colonnes : */
   body.player-page .charts-podium-container {
-    flex-direction: row !important;
+    flex-direction: row !important; /* Colonnes côte à côte */
   }
 
   /* Première colonne : graphique */
@@ -113,7 +113,7 @@
 
   /* Section des classements du joueur */
   body.player-page .podium-panel {
-    flex: 1 1 100% !important; /* 100% de la largeur disponible dans la colonne */
+    flex: 1 1 100% !important; /* 100% de la largeur dans la colonne */
     min-width: 320px !important;
   }
 
