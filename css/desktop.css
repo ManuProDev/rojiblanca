@@ -1,6 +1,6 @@
 /* =========================================================
    DESKTOP ONLY – AJUSTEMENTS POUR LE DESIGN DES FILTRES
-   ========================================================= */
+========================================================= */
 
 @media (min-width: 769px) {
 
@@ -22,7 +22,7 @@
      =========================== */
   
   .stats-filters .filter-group:first-child {
-    flex: 1 1 20%;  /* Largeur réduite à 20% pour le premier filtre */
+    flex: 1 1 15%;  /* Largeur réduite à 15% pour le premier filtre */
   }
 
   /* ===========================
@@ -30,7 +30,7 @@
      =========================== */
   
   .stats-filters .filter-group:nth-child(2) {
-    flex: 1 1 20%;  /* Largeur réduite à 20% pour le deuxième filtre */
+    flex: 1 1 15%;  /* Largeur réduite à 15% pour le deuxième filtre */
     order: -1;  /* Déplace le deuxième filtre à gauche, juste après le premier */
   }
 
