@@ -85,43 +85,42 @@
   /* Appliquer uniquement sur la page player.html */
   body.player-page .charts-podium-container {
     display: flex !important;
-    flex-wrap: wrap !important;
     gap: 24px !important;
     justify-content: space-between !important;
     max-width: 1200px !important;
     margin: 10px auto !important;
   }
 
-  /* Nouvelle disposition pour garder le graphique et les classements du joueur à leur place */
+  /* Créer deux colonnes */
   body.player-page .charts-podium-container {
     flex-direction: row !important;
-    gap: 24px !important;
   }
 
-  /* Laisser la section graphique et classements du joueur dans leur place actuelle */
+  /* Première colonne : graphique */
   body.player-page .charts-panel {
-    flex: 1 1 45% !important;
+    flex: 1 1 50% !important; /* 50% de la largeur */
     min-width: 320px !important;
   }
 
+  /* Deuxième colonne : Classements du joueur et Détails des performances */
   body.player-page .podium-panel {
-    flex: 1 1 45% !important;
+    flex: 1 1 50% !important; /* 50% de la largeur */
     min-width: 320px !important;
   }
 
-  /* Déplacer "Détails des performances" sous "Classements du joueur" */
+  /* Déplacer la section "Détails des performances" sous "Classements du joueur" */
   body.player-page .player-details-container {
     display: flex !important;
     flex-direction: column !important;
     gap: 24px !important;
     justify-content: flex-start !important;
-    order: 2 !important;  /* Placer après la section des classements */
+    margin-top: 24px !important; /* Ajouter un peu d'espace entre les sections */
   }
 
-  /* Grille des cartes de performances (changer les cartes en colonne) */
+  /* Mettre les cartes en colonne */
   body.player-page .player-details-container .player-stats-grid {
     display: grid !important;
-    grid-template-columns: 1fr !important; /* Mettre les cartes en colonne */
+    grid-template-columns: 1fr !important; /* Les cartes en colonne */
     gap: 20px !important;
   }
 
