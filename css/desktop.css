@@ -156,4 +156,11 @@
   body.player-page .player-stats-grid .stat-card {
     margin-bottom: 18px !important;
   }
+
+  /* =========================== ÉVITER LA DERNIÈRE CARTE PLUS PETITE =========================== */
+  body.player-page .player-stats-grid .stat-card:last-child {
+    min-height: 150px !important; /* S'assurer que la dernière carte a la même taille */
+    flex: 1 1 100%;
+    height: auto !important;
+  }
 }
