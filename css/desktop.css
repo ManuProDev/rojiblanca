@@ -3,11 +3,12 @@
    ========================================================= */
 
 @media (min-width: 769px) {
+
   /* 🔥 CONTENEUR PRINCIPAL */
   body.stats-page .charts-podium-container {
     display: flex !important;
-    justify-content: space-between !important;
-    align-items: stretch !important;
+    justify-content: space-between !important; /* Espacement égal entre les éléments */
+    align-items: stretch !important; /* Assure que les éléments ont la même hauteur */
     gap: 20px !important;
     width: 100% !important;
     max-width: 1200px !important;
@@ -33,12 +34,12 @@
 
   /* 🔥 CANVAS (Graphiques dans les blocs) */
   body.stats-page canvas {
-    width: 100% !important; /* Prend 100% de la largeur du parent */
-    height: 100% !important; /* Prend 100% de la hauteur du parent */
+    width: 90% !important; /* Ajuste la taille du graphique */
+    height: 90% !important; /* Ajuste la taille du graphique */
     object-fit: contain !important; /* Garde le ratio sans déformer */
   }
 
-  /* 🔥 PANEL DU PODIUM */
+  /* 🔥 PODIUM PANEL */
   body.stats-page .podium-panel {
     display: flex !important;
     flex-direction: column !important;
