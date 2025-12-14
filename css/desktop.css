@@ -92,4 +92,53 @@
     background-position: right 12px center !important;
     background-size: 12px 12px !important;
   }
+
+  /* =========================== AJUSTER LA TAILLE DU GRAPHIQUE SUR PLAYER PAGE =========================== */
+  .charts-podium-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 10px auto;
+  }
+
+  .charts-panel {
+    flex: 1;
+    min-width: 320px;
+  }
+
+  /* Déplacer les détails des performances à droite sous le podium sur player.html */
+  body.stats-page .charts-podium-container {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    gap: 20px !important;
+  }
+
+  .player-details-container {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 48% !important;
+  }
+
+  /* Détails des performances déplacés à droite sous le podium */
+  .player-details-container h3 {
+    font-size: 20px !important;
+    margin-bottom: 18px !important;
+    text-transform: uppercase !important;
+  }
+
+  .player-details-container .player-stats-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+    gap: 18px !important;
+  }
+
+  #pieWDL {
+    max-width: 600px !important;  /* Réduire la taille du graphique pour player.html */
+    aspect-ratio: 1 !important;  /* Garder un ratio carré */
+    height: auto !important;  /* Adapter la hauteur automatiquement */
+    width: 100% !important;
+  }
 }
