@@ -1,5 +1,5 @@
 /* =========================================================
-   DESKTOP ONLY – STATS PAGE (OVERRIDE INLINE STYLES)
+   DESKTOP ONLY – STATISTIQUES PAGE (CARRÉS À ÉGALITÉ)
    ========================================================= */
 
 @media (min-width: 769px) {
@@ -8,62 +8,65 @@
   body.stats-page .charts-podium-container {
     display: flex !important;
     flex-direction: row !important;
-    flex-wrap: nowrap !important;     /* empêche retour à la ligne */
-    justify-content: center !important;
-    align-items: flex-start !important;
+    justify-content: space-between !important; /* Assure un espacement égal */
+    align-items: stretch !important;  /* S'assure que tous les blocs occupent la même hauteur */
     gap: 20px !important;
   }
 
-  /* 🔥 BLOCS : graphiques + podium */
+  /* 🔥 3 BLOC GRAPHIQUES + PODIUM */
   body.stats-page .charts-panel,
   body.stats-page .podium-panel {
-    flex: 0 0 180px !important;       /* TAILLE RÉDUITE */
-    min-width: 180px !important;      /* écrase min-width inline */
-    max-width: 180px !important;
-
+    flex: 1 1 30% !important; /* Chaque bloc prend environ 1/3 de l'espace */
+    max-width: 33.3% !important; /* Bloque la largeur à 33.3% */
+    min-width: 250px !important; /* Peut ajuster cette valeur si besoin */
+    height: 0;
+    padding-top: 100% !important; /* Cette propriété crée le ratio carré */
+    position: relative !important; /* Nécessaire pour positionner les éléments enfants */
     background: rgba(255,255,255,0.06);
     border-radius: 10px;
-    padding: 8px !important;
+    border: 1px solid rgba(255,255,255,0.1);
   }
 
-  /* 🔥 CHARTS PANEL → GRAPHIQUES SUR LA MÊME LIGNE */
+  /* 🔥 CHARTS PANEL → GRAPHIQUES */
   body.stats-page .charts-panel {
     display: flex !important;
-    flex-direction: row !important;   /* 👈 CLÉ */
+    flex-direction: column !important; /* Stack les canvas */
     gap: 10px !important;
     justify-content: center !important;
     align-items: center !important;
-  }
-
-  /* 🔥 CANVAS */
-  body.stats-page canvas {
-    width: 80px !important;
-    height: 80px !important;
-    max-width: 80px !important;
-    max-height: 80px !important;
-  }
-
-  /* 🔥 PODIUM */
-  body.stats-page .podium-panel > div {
     padding: 8px !important;
   }
 
-  body.stats-page .podium-item {
-    padding: 4px 6px !important;
-    margin: 4px 0 !important;
+  /* 🔥 CANVAS (s'assurer que le canvas s'adapte à la taille du parent) */
+  body.stats-page canvas {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100% !important; /* 100% de la largeur du parent */
+    height: 100% !important; /* 100% de la hauteur du parent */
+    object-fit: cover !important; /* Garder le ratio sans déformer */
   }
 
-  body.stats-page .podium-item .place {
-    width: 22px !important;
-    height: 22px !important;
-    font-size: 10px !important;
+  /* 🔥 PODIUM PANEL (réduit pour la vue de bureau, peut ajuster la taille des éléments internes) */
+  body.stats-page .podium-panel {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    padding: 8px !important;
   }
 
-  body.stats-page .podium-item .meta {
-    font-size: 10px !important;
+  /* 🔥 PODIUM ITEMS */
+  body.stats-page .podium-panel .podium-item {
+    margin-bottom: 12px !important;
   }
 
-  body.stats-page .podium-item .score {
-    font-size: 11px !important;
+  body.stats-page .podium-panel .place {
+    font-size: 14px !important;
   }
+
+  body.stats-page .podium-panel .meta,
+  body.stats-page .podium-panel .score {
+    font-size: 12px !important;
+  }
+
 }
