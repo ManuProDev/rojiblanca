@@ -4,7 +4,7 @@
 
 @media (min-width: 769px) {
 
-  /* 🔥 CONTENEUR PRINCIPAL - UTILISATION DE GRID */
+  /* 🔥 CONTENEUR PRINCIPAL - UTILISATION DE FLEX */
   body.stats-page .charts-podium-container {
     display: flex !important;
     justify-content: space-between !important;
@@ -31,22 +31,23 @@
     max-height: 100% !important; /* Limiter la hauteur des graphiques */
   }
 
-  /* 🔥 PODIUM */
+  /* 🔥 PODIUM - FORCER L'AUGMENTATION DE LA LARGEUR */
   body.stats-page .podium-panel {
     display: flex !important;
     flex-direction: column !important;
-    justify-content: space-between !important;
+    justify-content: center !important;
     align-items: center !important;
     padding: 16px !important;
-    height: 300px !important; /* Hauteur fixe du podium */
+    height: 300px !important; /* Fixer la hauteur du podium */
     background: none !important; /* Enlever le fond du podium */
     border: none !important; /* Enlever les bordures */
-    flex: 1 1 auto; /* Ajuster la taille par rapport aux autres éléments */
+    flex: 1 1 340px !important; /* Forcer la largeur à 340px */
+    width: 340px !important; /* Ajouter une largeur fixe pour augmenter la taille */
+    max-width: 340px !important; /* Fixer la largeur à 340px */
   }
 
-  /* 🔥 ADAPTER LA LARGEUR DU PODIUM */
+  /* 🔥 AJOUTER UNE MARGE EN BAS DU PODIUM */
   body.stats-page .podium-panel {
-    width: 340px !important; /* Augmenter la largeur du podium */
-    margin-bottom: 40px !important; /* Ajouter une marge en bas */
+    margin-bottom: 40px !important; /* Ajouter une marge en bas du podium */
   }
 }
