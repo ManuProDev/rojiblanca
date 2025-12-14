@@ -16,19 +16,6 @@
     padding-top: 50px !important;    /* Réduit l'espace en haut de la page */
   }
 
-  body.team-page .stat-card:last-child {
-    margin-bottom: 100px !important; /* Réduit la marge sous la dernière carte */
-  }
-
-  body.results-page .stat-card:last-child {
-    margin-bottom: 10px !important; /* Réduit la marge sous la dernière carte */
-  }
-
-  /* Ajuster les marges de la dernière carte si nécessaire */
-  body.stats-page .stat-card:last-child {
-    margin-bottom: 10px !important; /* Réduit la marge sous la dernière carte */
-  }
-
   /* =========================== STYLES GÉNÉRAUX DES FILTRES =========================== */
   .stats-filters {
     display: flex !important;
