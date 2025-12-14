@@ -15,6 +15,11 @@
      padding-top: 40px !important; /* Réduit l'espace en bas de la page */
    }
 
+   body.team-page main.main-content {
+     padding-bottom: 10px !important; /* Réduit l'espace en bas de la page */
+     padding-top: 40px !important; /* Réduit l'espace en bas de la page */
+   }
+
    /* Ajuster les marges de la dernière carte si nécessaire */
    body.stats-page .stat-card:last-child,
    body.stats-page .player-stat-card:last-child {
