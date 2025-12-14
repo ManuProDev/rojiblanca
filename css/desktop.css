@@ -125,6 +125,11 @@
     gap: 24px;
   }
 
+  /* Déplacement de la section Détails des performances sous les classements et à droite du graphique */
+  body.player-page .player-details-container {
+    order: 1; /* Mettre cette section après les classements */
+  }
+
   /* Grille des cartes de performances */
   body.player-page .player-details-container .player-stats-grid {
     display: grid;
