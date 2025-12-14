@@ -1,5 +1,5 @@
 /* =========================================================
-   DESKTOP ONLY – STATISTIQUES PAGE (CARRÉS À ÉGALITÉ)
+   DESKTOP ONLY – STATISTIQUES PAGE (CARRÉS À ÉGALITÉ, SANS FONDS)
    ========================================================= */
 
 @media (min-width: 769px) {
@@ -7,8 +7,8 @@
   /* 🔥 CONTENEUR PRINCIPAL */
   body.stats-page .charts-podium-container {
     display: flex !important;
-    justify-content: space-between !important; /* Espacement égal entre les éléments */
-    align-items: stretch !important; /* Assure que les éléments ont la même hauteur */
+    justify-content: space-between !important;
+    align-items: stretch !important;
     gap: 20px !important;
     width: 100% !important;
     max-width: 1200px !important;
@@ -18,25 +18,24 @@
   /* 🔥 3 BLOC GRAPHIQUES + PODIUM (MÉTHODE FLEX) */
   body.stats-page .charts-panel,
   body.stats-page .podium-panel {
-    flex: 1 !important; /* Assure que chaque bloc prend un tiers de l'espace */
-    min-width: 320px !important; /* Largeur minimale pour chaque bloc */
-    height: 300px !important; /* Hauteur fixe pour rendre chaque bloc carré */
-    background: rgba(255,255,255,0.06);
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.1);
+    flex: 1 !important; /* Chaque bloc prend environ un tiers de l'espace */
+    min-width: 320px !important;
+    height: 300px !important; /* Hauteur fixée pour les blocs */
+    background: none !important; /* Enlever le fond */
+    border: none !important; /* Enlever la bordure */
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
     align-items: center !important;
-    padding: 10px !important;
+    padding: 0 !important; /* Supprimer les padding inutiles */
     position: relative !important;
   }
 
   /* 🔥 CANVAS (Graphiques dans les blocs) */
   body.stats-page canvas {
-    width: 90% !important; /* Ajuste la taille du graphique */
-    height: 90% !important; /* Ajuste la taille du graphique */
-    object-fit: contain !important; /* Garde le ratio sans déformer */
+    width: 100% !important; /* Le graphique prend 100% de la largeur du conteneur */
+    height: 100% !important; /* Le graphique prend 100% de la hauteur */
+    object-fit: contain !important; /* Garde le ratio sans déformation */
   }
 
   /* 🔥 PODIUM PANEL */
@@ -61,4 +60,15 @@
   body.stats-page .podium-panel .score {
     font-size: 12px !important;
   }
+
+  /* 🔥 LÉGENDES DU GRAPHIQUE (aligne correctement sur une seule ligne) */
+  body.stats-page .charts-panel canvas + canvas {
+    margin-top: 20px !important;
+  }
+
+  /* 🔥 RENDRE LES FONDS TRANSPARENTS */
+  body.stats-page .charts-podium-container {
+    background: transparent !important; /* Enlever les fonds de section */
+  }
+
 }
