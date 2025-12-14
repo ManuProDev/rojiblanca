@@ -18,20 +18,20 @@
   }
 
   /* ===========================
-     STYLES POUR LE PREMIER FILTRE
+     STYLES POUR LE PREMIER FILTRE (CHOIX DE L'ÉQUIPE)
      =========================== */
   
-  .stats-filters .filter-group:first-child {
+  .stats-filters .filter-group:nth-child(1) {
     flex: 1 1 15%;  /* Largeur réduite à 15% pour le premier filtre */
   }
 
   /* ===========================
-     STYLES POUR LE DEUXIÈME FILTRE
+     STYLES POUR LE DEUXIÈME FILTRE (CHOIX DES MATCHS)
      =========================== */
   
   .stats-filters .filter-group:nth-child(2) {
     flex: 1 1 15%;  /* Largeur réduite à 15% pour le deuxième filtre */
-    order: -1;  /* Déplace le deuxième filtre à gauche, juste après le premier */
+    order: 1;  /* Déplace le deuxième filtre à droite, après le premier */
   }
 
   /* ===========================
