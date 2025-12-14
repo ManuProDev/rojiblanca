@@ -3,7 +3,17 @@
 ========================================================= */
 
 @media (min-width: 769px) {
+   
+   /* Réduire la marge en bas de la page entre la dernière carte et le footer */
+   body.stats-page main.main-content {
+     padding-bottom: 10px !important; /* Réduit l'espace en bas de la page */
+   }
 
+   /* Ajuster les marges de la dernière carte si nécessaire */
+   body.stats-page .stat-card:last-child,
+   body.stats-page .player-stat-card:last-child {
+     margin-bottom: 10px !important; /* Réduit la marge sous la dernière carte */
+   }
   /* ===========================
      STYLES GÉNÉRAUX DES FILTRES
      =========================== */
