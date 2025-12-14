@@ -7,6 +7,7 @@
    /* Réduire la marge en bas de la page entre la dernière carte et le footer */
    body.stats-page main.main-content {
      padding-bottom: 10px !important; /* Réduit l'espace en bas de la page */
+     padding-top: 10px !important; /* Réduit l'espace en bas de la page */
    }
 
    /* Ajuster les marges de la dernière carte si nécessaire */
