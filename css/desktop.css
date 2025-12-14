@@ -118,17 +118,31 @@
     height: auto !important;
   }
 
-  /* Déplacer les détails des performances à droite sous le podium sur player.html */
+  /* Section des classements du joueur et détails des performances à droite du graphique (player.html) */
   body.player-page .charts-podium-container {
     flex-direction: row !important;
     gap: 24px !important;
   }
 
-  /* Style de la section des détails des performances (player.html) */
+  /* Nouvelle disposition des performances et détails sous les classements */
+  body.player-page .podium-panel {
+    flex: 1 1 45%;
+    min-width: 320px;
+  }
+
   body.player-page .player-details-container {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 48% !important;
+    flex: 1 1 45%;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* Grille des cartes de performances */
+  body.player-page .player-details-container .player-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mettre les cartes en colonne */
+    gap: 20px;
   }
 
   /* Section "Détails des performances" */
@@ -138,10 +152,8 @@
     text-transform: uppercase !important;
   }
 
-  /* Grille des performances (player.html) */
-  body.player-page .player-details-container .player-stats-grid {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
-    gap: 18px !important;
+  /* =========================== CHANGER L'ORDRE DES CARTES POUR LA SECTION DÉTAILS =========================== */
+  body.player-page .player-stats-grid .stat-card {
+    margin-bottom: 18px !important;
   }
 }
