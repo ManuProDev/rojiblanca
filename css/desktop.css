@@ -1,24 +1,35 @@
 /* =========================================================
-   DESKTOP ONLY – AJUSTEMENTS POUR LE DESIGN DES FILTRES
+   DESKTOP ONLY – AJUSTEMENTS GLOBAUX POUR LES PAGES (results, team, player)
 ========================================================= */
 
 @media (min-width: 769px) {
-   
-   /* Réduire la marge en bas de la page entre la dernière carte et le footer */
-   body.stats-page main.main-content {
-     padding-bottom: 10px !important; /* Réduit l'espace en bas de la page */
-     padding-top: 40px !important; /* Réduit l'espace en bas de la page */
-   }
 
-   /* Ajuster les marges de la dernière carte si nécessaire */
-   body.stats-page .stat-card:last-child,
-   body.stats-page .player-stat-card:last-child {
-     margin-bottom: 10px !important; /* Réduit la marge sous la dernière carte */
-   }
-  /* ===========================
-     STYLES GÉNÉRAUX DES FILTRES
-     =========================== */
-  
+  /* =========================================================
+     AJUSTER LA MARGE EN HAUT POUR TOUTES LES PAGES
+  ========================================================= */
+  /* Appliquer un padding-top global sur toutes les pages */
+  body.main-content {
+    padding-top: 40px !important; /* Réduit l'espace en haut de la page pour rapprocher le titre du header */
+  }
+
+  /* =========================================================
+     AJUSTER LA MARGE EN BAS ENTRE LE DERNIER ÉLÉMENT ET LE FOOTER
+  ========================================================= */
+  body.main-content {
+    padding-bottom: 10px !important; /* Réduit l'espace en bas de la page */
+  }
+
+  /* Ajuster les marges des cartes ou autres éléments de contenu sur chaque page */
+  body .stat-card:last-child,
+  body .player-stat-card:last-child,
+  body .match-card:last-child,
+  body .team-card:last-child {
+    margin-bottom: 10px !important; /* Réduit la marge sous la dernière carte ou élément */
+  }
+
+  /* =========================================================
+     STYLES DES FILTRES (APPLIQUÉ À TOUTES LES PAGES)
+  ========================================================= */
   .stats-filters {
     display: flex !important;
     flex-direction: row !important;
@@ -30,16 +41,14 @@
 
   /* ===========================
      STYLES POUR LE PREMIER FILTRE (CHOIX DE L'ÉQUIPE)
-     =========================== */
-  
+  =========================== */
   .stats-filters .filter-group:nth-child(1) {
     flex: 1 1 15%;  /* Largeur réduite à 15% pour le premier filtre */
   }
 
   /* ===========================
      STYLES POUR LE DEUXIÈME FILTRE (CHOIX DES MATCHS)
-     =========================== */
-  
+  =========================== */
   .stats-filters .filter-group:nth-child(2) {
     flex: 1 1 15%;  /* Largeur réduite à 15% pour le deuxième filtre */
     order: 1;  /* Déplace le deuxième filtre à droite, après le premier */
@@ -47,8 +56,7 @@
 
   /* ===========================
      STYLES DES LABELS DES FILTRES
-     =========================== */
-  
+  =========================== */
   .stats-filters .filter-group label {
     font-size: 0.95rem !important;
     margin-bottom: 6px !important;
@@ -59,8 +67,7 @@
 
   /* ===========================
      STYLES DES SELECTS
-     =========================== */
-  
+  =========================== */
   .stats-filters .filter-group select {
     width: 100% !important;
     padding: 12px 16px !important;
@@ -93,5 +100,4 @@
     background-position: right 12px center !important;
     background-size: 12px 12px !important;
   }
-
 }
