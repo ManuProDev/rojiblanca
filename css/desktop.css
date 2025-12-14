@@ -92,34 +92,4 @@
     background-position: right 12px center !important;
     background-size: 12px 12px !important;
   }
-
-  /* =========================== AJUSTER LA TAILLE DU GRAPHIQUE =========================== */
-  /* Cibler uniquement les grands écrans */
-  .charts-panel {
-    display: flex !important;
-    justify-content: center;
-  }
-
-  #pieWDL {
-    width: 100% !important;  /* Prendre toute la largeur du conteneur */
-    height: auto !important;  /* Laisser la hauteur automatique pour maintenir les proportions */
-    max-width: 600px !important; /* Réduire la largeur maximale à 600px */
-    aspect-ratio: 1 !important;  /* Garder un ratio carré pour le graphique */
-  }
-
-  /* =========================== STYLES POUR LES CONTAINER DE GRAPHES ET LE PODIUM =========================== */
-  .charts-podium-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 24px;
-    max-width: 1200px;
-    margin: 10px auto;
-  }
-
-  /* Gérer l'affichage de l'aside (podium-panel) */
-  .podium-panel {
-    flex: 1;
-    max-width: 320px;
-  }
 }
