@@ -24,6 +24,8 @@
     justify-content: flex-start !important; /* Aligner à gauche */
     margin-bottom: 20px !important;
     padding: 0 16px !important;
+    background-color: #333 !important; /* Ajout d'un fond sombre pour que les filtres soient visibles */
+    border-radius: 8px !important;
   }
 
   /* =========================== STYLES POUR LE PREMIER FILTRE (CHOIX DE L'ÉQUIPE) =========================== */
@@ -42,7 +44,7 @@
     font-size: 0.95rem !important;
     margin-bottom: 6px !important;
     font-weight: 600 !important;
-    color: #fff !important;
+    color: #fff !important; /* Texte en blanc */
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
   }
 
@@ -74,10 +76,6 @@
     background: rgba(255, 255, 255, 0.12) !important;
     border-color: #fff !important;
     outline: none !important;
-    background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") !important;
-    background-repeat: no-repeat !important;
-    background-position: right 12px center !important;
-    background-size: 12px 12px !important;
   }
 
   /* ========================================================= PLAYER PAGE ONLY (player.html) ========================================================= */
@@ -90,12 +88,17 @@
     justify-content: space-between !important;
     max-width: 1200px !important;
     margin: 10px auto !important;
+    background-color: #f4f4f4 !important; /* Fond pour contraster les éléments */
   }
 
   /* La section graphique (player.html) avec une taille réduite (graphique plus petit) */
   body.player-page .charts-panel {
     flex: 1 1 60% !important;
     min-width: 320px !important;
+    background-color: #fff !important;
+    padding: 20px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
   }
 
   body.player-page #pieWDL {
@@ -115,6 +118,10 @@
   body.player-page .podium-panel {
     flex: 1 1 35% !important;
     min-width: 320px !important;
+    background-color: #fff !important;
+    padding: 20px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
   }
 
   body.player-page .player-details-container {
@@ -138,6 +145,7 @@
     font-size: 20px !important;
     margin-bottom: 18px !important;
     text-transform: uppercase !important;
+    color: #333 !important; /* Texte en gris foncé */
   }
 
   /* =========================== CHANGER L'ORDRE DES CARTES POUR LA SECTION DÉTAILS =========================== */
@@ -181,17 +189,5 @@
     background-color: #fff !important;
     border-radius: 8px !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
-  }
-
-  /* Section du graphique */
-  body.player-page .charts-panel {
-    padding: 20px !important;
-    min-height: 400px !important;
-  }
-
-  /* Section des classements du joueur */
-  body.player-page .podium-panel {
-    padding: 20px !important;
-    min-height: 400px !important;
   }
 }
