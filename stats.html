@@ -93,12 +93,19 @@
         </section>
 
         <section class="charts-podium-container"
-            style="width:100%;max-width:1200px;margin:10px auto 40px;padding:0 20px; display:flex; flex-wrap:wrap; gap:24px;">
-            <div class="charts-panel" style="flex:1; min-width:320px;">
+            style="width:100%;max-width:1200px;margin:10px auto 40px;padding:0 20px; display:flex; justify-content: space-between; gap:24px;">
+            <!-- Premier graphique : Pie Chart -->
+            <div class="charts-panel" style="flex:1; min-width:320px; height:300px;">
                 <canvas id="pieWDL" height="260"></canvas>
+            </div>
+            
+            <!-- Deuxième graphique : Bar Chart -->
+            <div class="charts-panel" style="flex:1; min-width:320px; height:300px;">
                 <canvas id="barGoals" height="260" style="margin-top:20px;"></canvas>
             </div>
-            <aside class="podium-panel" style="flex:1; min-width:320px;">
+            
+            <!-- Podium -->
+            <aside class="podium-panel" style="flex:1; min-width:320px; height:300px;">
                 <div style="background:rgba(255,255,255,0.06);backdrop-filter:blur(8px);border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,0.08);">
                     <h3 style="margin-bottom:8px;text-align:center;font-weight:800;">Podium (Buts + Passes)</h3>
                     <div id="podium" style="display:flex;flex-direction:column;gap:12px;"></div>
