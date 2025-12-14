@@ -92,47 +92,33 @@
     margin: 10px auto !important;
   }
 
-  /* Nouvelle disposition pour déplacer "Détails des performances" sous "Classements du joueur" */
+  /* Nouvelle disposition pour garder le graphique et les classements du joueur à leur place */
   body.player-page .charts-podium-container {
-    flex-direction: column !important;
-  }
-
-  body.player-page .charts-podium-container .podium-panel {
-    order: 1 !important;  /* Placer la section "Classements du joueur" en premier */
-  }
-
-  body.player-page .charts-podium-container .player-details-container {
-    order: 2 !important;  /* Placer la section "Détails des performances" après "Classements du joueur" */
-  }
-
-  /* La section graphique (player.html) avec une taille réduite (graphique plus petit) */
-  body.player-page .charts-panel {
-    flex: 1 !important;
-    min-width: 320px !important;
-  }
-
-  /* Section des classements du joueur et détails des performances à droite du graphique (player.html) */
-  body.player-page .charts-podium-container {
-    flex-direction: column !important;
+    flex-direction: row !important;
     gap: 24px !important;
   }
 
-  /* Nouvelle disposition des performances et détails sous les classements */
+  /* Laisser la section graphique et classements du joueur dans leur place actuelle */
+  body.player-page .charts-panel {
+    flex: 1 1 45% !important;
+    min-width: 320px !important;
+  }
+
   body.player-page .podium-panel {
     flex: 1 1 45% !important;
     min-width: 320px !important;
   }
 
+  /* Déplacer "Détails des performances" sous "Classements du joueur" */
   body.player-page .player-details-container {
-    flex: 1 1 45% !important;
-    min-width: 320px !important;
     display: flex !important;
     flex-direction: column !important;
     gap: 24px !important;
     justify-content: flex-start !important;
+    order: 2 !important;  /* Placer après la section des classements */
   }
 
-  /* Grille des cartes de performances */
+  /* Grille des cartes de performances (changer les cartes en colonne) */
   body.player-page .player-details-container .player-stats-grid {
     display: grid !important;
     grid-template-columns: 1fr !important; /* Mettre les cartes en colonne */
