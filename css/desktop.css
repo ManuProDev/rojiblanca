@@ -6,9 +6,9 @@
 
   /* 🔥 CONTENEUR PRINCIPAL - UTILISATION DE GRID */
   body.stats-page .charts-podium-container {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr 1fr !important; /* 3 colonnes égales */
-    grid-gap: 20px !important; /* Espacement entre les éléments */
+    display: flex !important;
+    justify-content: space-between !important;
+    gap: 24px !important;
     width: 100% !important;
     max-width: 1200px !important;
     margin: 0 auto !important;
@@ -37,16 +37,16 @@
     flex-direction: column !important;
     justify-content: space-between !important;
     align-items: center !important;
-    padding: 8px !important;
+    padding: 16px !important;
     height: 300px !important; /* Hauteur fixe du podium */
-    width: 100% !important; /* Prendre toute la largeur */
     background: none !important; /* Enlever le fond du podium */
     border: none !important; /* Enlever les bordures */
+    flex: 1 1 auto; /* Ajuster la taille par rapport aux autres éléments */
   }
 
   /* 🔥 ADAPTER LA LARGEUR DU PODIUM */
   body.stats-page .podium-panel {
-    max-width: 380px !important; /* Augmenter la largeur du podium */
+    width: 340px !important; /* Augmenter la largeur du podium */
     margin-bottom: 40px !important; /* Ajouter une marge en bas */
   }
 }
