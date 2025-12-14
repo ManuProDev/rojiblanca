@@ -11,10 +11,27 @@
   .stats-filters {
     display: flex !important;
     flex-direction: row !important;
-    gap: 12px !important;
-    justify-content: space-between !important;
+    gap: 20px !important;  /* Augmenter l'espace entre les filtres */
+    justify-content: flex-start !important; /* Aligner à gauche */
     margin-bottom: 20px !important;
     padding: 0 16px !important;
+  }
+
+  /* ===========================
+     STYLES POUR LE PREMIER FILTRE
+     =========================== */
+  
+  .stats-filters .filter-group:first-child {
+    flex: 1 1 48%;  /* Largeur ajustée à 48% pour le premier filtre */
+  }
+
+  /* ===========================
+     STYLES POUR LE DEUXIÈME FILTRE
+     =========================== */
+  
+  .stats-filters .filter-group:nth-child(2) {
+    flex: 1 1 48%;  /* Largeur ajustée à 48% pour le deuxième filtre */
+    order: -1;  /* Déplace le deuxième filtre à gauche, juste après le premier */
   }
 
   /* ===========================
