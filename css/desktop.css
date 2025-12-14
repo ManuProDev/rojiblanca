@@ -95,6 +95,7 @@
     flex: 1 1 30% !important; /* Graphique limité à 30% de la largeur */
     min-width: 320px !important;
     max-width: 400px !important; /* Limité à 400px */
+    margin: 0 auto !important; /* Centré horizontalement */
   }
 
   /* Deuxième colonne : Classements et Détails des performances */
