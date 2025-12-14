@@ -40,13 +40,13 @@
     padding: 8px !important;
     height: 300px !important; /* Hauteur fixe du podium */
     width: 100% !important; /* Prendre toute la largeur */
-    background: none !important; /* Enlever les fonds */
+    background: none !important; /* Enlever le fond du podium */
     border: none !important; /* Enlever les bordures */
   }
 
   /* 🔥 ADAPTER LA LARGEUR DU PODIUM */
   body.stats-page .podium-panel {
-    max-width: 330px !important; /* Réduire la largeur du podium pour l'ajuster */
-    margin-bottom: 20px !important; /* Ajouter une marge en bas */
+    max-width: 380px !important; /* Augmenter la largeur du podium */
+    margin-bottom: 40px !important; /* Ajouter une marge en bas */
   }
 }
