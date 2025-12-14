@@ -97,8 +97,10 @@
   /* Appliquer les modifications uniquement pour les écrans plus larges */
   @media (min-width: 769px) {
     #pieWDL {
-      width: 80% !important;  /* Réduire la largeur du graphique à 80% de son conteneur */
-      height: 200px !important; /* Ajuster la hauteur à 200px */
+      width: 100% !important;  /* Prendre toute la largeur du conteneur */
+      height: auto !important;  /* Laisser la hauteur automatique pour maintenir les proportions */
+      max-width: 600px !important; /* Limiter la largeur à 600px pour éviter d'être trop large */
+      aspect-ratio: 1;  /* Garder un ratio carré pour le graphique (facultatif si c'est un graphique circulaire) */
     }
   }
 }
