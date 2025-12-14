@@ -13,7 +13,7 @@
 
   body.results-page main.main-content {
     padding-bottom: 40px !important; /* Réduit l'espace en bas de la page */
-    padding-top: 60px !important;    /* Réduit l'espace en haut de la page */
+    padding-top: 50px !important;    /* Réduit l'espace en haut de la page */
   }
 
   body.team-page .stat-card:last-child {
