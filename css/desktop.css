@@ -31,7 +31,7 @@
     max-height: 100% !important; /* Limiter la hauteur des graphiques */
   }
 
-  /* 🔥 PODIUM - FORCER L'AUGMENTATION DE LA LARGEUR */
+  /* 🔥 PODIUM - LARGEUR FIXE ET RETRAIT DU FOND */
   body.stats-page .podium-panel {
     display: flex !important;
     flex-direction: column !important;
@@ -39,11 +39,10 @@
     align-items: center !important;
     padding: 16px !important;
     height: 300px !important; /* Fixer la hauteur du podium */
-    background: none !important; /* Enlever le fond du podium */
+    background: transparent !important; /* Enlever le fond du podium */
     border: none !important; /* Enlever les bordures */
-    flex: 1 1 340px !important; /* Forcer la largeur à 340px */
-    width: 340px !important; /* Ajouter une largeur fixe pour augmenter la taille */
-    max-width: 340px !important; /* Fixer la largeur à 340px */
+    width: 340px !important; /* Fixer une largeur de 340px */
+    max-width: 340px !important; /* S'assurer que la largeur ne dépasse pas 340px */
   }
 
   /* 🔥 AJOUTER UNE MARGE EN BAS DU PODIUM */
