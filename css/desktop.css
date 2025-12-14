@@ -1,52 +1,120 @@
 /* =========================================================
-   DESKTOP ONLY – STATISTIQUES PAGE (CARRÉS À ÉGALITÉ, AJUSTEMENTS)
+   DESKTOP ONLY – AJUSTEMENTS POUR LES FILTRES
    ========================================================= */
 
 @media (min-width: 769px) {
 
-  /* 🔥 CONTENEUR PRINCIPAL - UTILISATION DE FLEX */
-  body.stats-page .charts-podium-container {
+  /* ===========================
+     STYLES GÉNÉRAUX DES FILTRES
+     =========================== */
+  
+  .stats-filters {
     display: flex !important;
+    flex-direction: row !important;
+    gap: 12px !important;
     justify-content: space-between !important;
-    gap: 24px !important;
+    margin-bottom: 20px !important;
+    padding: 0 16px !important;
+  }
+
+  /* Chaque groupe de filtre prend 50% de la largeur */
+  .stats-filters .filter-group {
+    flex: 1 1 48% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* ===========================
+     STYLES DES LABELS DES FILTRES
+     =========================== */
+  
+  .stats-filters .filter-group label {
+    font-size: 0.95rem !important;
+    margin-bottom: 6px !important;
+    font-weight: 600 !important;
+    color: #fff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  /* ===========================
+     STYLES DES SELECTS
+     =========================== */
+  
+  .stats-filters .filter-group select {
     width: 100% !important;
-    max-width: 1200px !important;
+    padding: 12px 16px !important;
+    font-size: 0.95rem !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #fff !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    cursor: pointer !important;
+    position: relative !important;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 12px center !important;
+    background-size: 12px 12px !important;
+    transition: background 0.2s ease !important;
+  }
+
+  /* Flèche visible même au focus / hover / active */
+  .stats-filters .filter-group select:focus,
+  .stats-filters .filter-group select:hover,
+  .stats-filters .filter-group select:active {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border-color: #fff !important;
+    outline: none !important;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 12px center !important;
+    background-size: 12px 12px !important;
+  }
+  
+  /* ===========================
+     Ajustements spécifiques pour les pages stats et player
+     =========================== */
+  
+  body.stats-page .stats-summary,
+  body.stats-page #player-summary {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    padding: 0 16px !important;
     margin: 0 auto !important;
   }
 
-  /* 🔥 GRAPHIQUES */
-  body.stats-page .charts-panel {
+  body.stats-page .stat-card,
+  body.stats-page .player-stat-card {
+    width: 100% !important;
+    padding: 8px !important;
+    font-size: 0.85rem !important; /* texte réduit pour une meilleure lisibilité */
+    height: auto !important;
+  }
+
+  /* ===========================
+     Ajustement pour les filtres dans le conteneur des stats
+     =========================== */
+
+  body.stats-page .filters-container {
+    padding: 0 16px !important;
+    margin-bottom: 20px !important;
     display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    height: 300px !important; /* Fixer la hauteur des graphiques */
-    background: none !important; /* Enlever les fonds */
-    border: none !important; /* Enlever les bordures */
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
   }
 
-  /* 🔥 CANVAS (Graphiques dans les blocs) */
-  body.stats-page canvas {
-    width: 100% !important; /* Remplir la largeur */
-    height: auto !important; /* Protéger le ratio */
-    max-height: 100% !important; /* Limiter la hauteur des graphiques */
+  /* Les groupes de filtres doivent prendre une largeur égale */
+  body.stats-page .filter-group {
+    width: 48% !important;
   }
 
-  /* 🔥 PODIUM - LARGEUR FIXE ET RETRAIT DU FOND */
-  body.stats-page .podium-panel {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-    padding: 16px !important;
-    height: 300px !important; /* Fixer la hauteur du podium */
-    background: transparent !important; /* Enlever le fond du podium */
-    border: none !important; /* Enlever les bordures */
-    width: 340px !important; /* Fixer une largeur de 340px */
-    max-width: 340px !important; /* S'assurer que la largeur ne dépasse pas 340px */
-  }
-
-  /* 🔥 AJOUTER UNE MARGE EN BAS DU PODIUM */
-  body.stats-page .podium-panel {
-    margin-bottom: 40px !important; /* Ajouter une marge en bas du podium */
+  /* Appliquer les mêmes styles de select et label pour les filtres sur desktop */
+  body.stats-page .filter-group select,
+  body.stats-page .filter-group label {
+    width: 100% !important;
   }
 }
