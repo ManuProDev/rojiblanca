@@ -2,39 +2,39 @@
 @media (min-width: 769px) {
   /* Réduire la marge en bas de la page entre la dernière carte et le footer */
   body.stats-page main.main-content {
-    padding-bottom: 10px !important;
-    padding-top: 40px !important;
+    padding-bottom: 10px !important; /* Réduit l'espace en bas de la page */
+    padding-top: 40px !important;    /* Réduit l'espace en haut de la page */
   }
 
   body.team-page main.main-content {
-    padding-bottom: 100px !important;
-    padding-top: 0px !important;
+    padding-bottom: 100px !important; /* Réduit l'espace en bas de la page */
+    padding-top: 0px !important;    /* Réduit l'espace en haut de la page */
   }
 
   body.results-page main.main-content {
-    padding-bottom: 40px !important;
-    padding-top: 50px !important;
+    padding-bottom: 40px !important; /* Réduit l'espace en bas de la page */
+    padding-top: 50px !important;    /* Réduit l'espace en haut de la page */
   }
 
   /* =========================== STYLES GÉNÉRAUX DES FILTRES =========================== */
   .stats-filters {
     display: flex !important;
     flex-direction: row !important;
-    gap: 20px !important;
-    justify-content: flex-start !important;
+    gap: 20px !important; /* Augmenter l'espace entre les filtres */
+    justify-content: flex-start !important; /* Aligner à gauche */
     margin-bottom: 20px !important;
     padding: 0 16px !important;
   }
 
   /* =========================== STYLES POUR LE PREMIER FILTRE (CHOIX DE L'ÉQUIPE) =========================== */
   .stats-filters .filter-group:nth-child(1) {
-    flex: 1 1 15%;
+    flex: 1 1 15%; /* Largeur réduite à 15% pour le premier filtre */
   }
 
   /* =========================== STYLES POUR LE DEUXIÈME FILTRE (CHOIX DES MATCHS) =========================== */
   .stats-filters .filter-group:nth-child(2) {
-    flex: 1 1 15%;
-    order: 1;
+    flex: 1 1 15%; /* Largeur réduite à 15% pour le deuxième filtre */
+    order: 1; /* Déplace le deuxième filtre à droite, après le premier */
   }
 
   /* =========================== STYLES DES LABELS DES FILTRES =========================== */
@@ -81,44 +81,38 @@
   }
 
   /* ========================================================= PLAYER PAGE ONLY (player.html) ========================================================= */
-
   /* Appliquer uniquement sur la page player.html */
   body.player-page .charts-podium-container {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important; /* Deux colonnes égales */
-    gap: 24px !important; /* Espace entre les colonnes */
-    margin: 10px auto !important;
-  }
-
-  /* Première colonne : Graphique */
-  body.player-page .charts-panel {
-    flex: 1 1 30% !important; /* Graphique limité à 30% de la largeur */
-    min-width: 320px !important;
-    max-width: 400px !important; /* Limité à 400px */
-  }
-
-  /* Deuxième colonne : Classements et Détails des performances */
-  body.player-page .player-details-container {
-    flex: 1 1 70% !important; /* La deuxième colonne prend 70% de la largeur */
-    display: flex !important;
-    flex-direction: column !important; /* Disposition en colonne */
+    display: flex;
     gap: 24px !important;
+    max-width: 1200px !important;
+    margin: 10px auto;
   }
 
-  /* Section des classements du joueur */
-  body.player-page .podium-panel {
-    flex: 1 1 100% !important;
+  /* Nouvelle disposition : deux colonnes avec le graphique à gauche et les détails à droite */
+  body.player-page .charts-panel {
+    flex: 1 1 30% !important; /* Limite la largeur du graphique à 30% */
     min-width: 320px !important;
+  }
+
+  /* Section des classements du joueur et détails des performances à droite du graphique */
+  body.player-page .player-details-container {
+    flex: 1 1 65% !important; /* Utilise 65% pour la section droite (classements + détails) */
+    min-width: 320px !important;
+    display: flex;
+    flex-direction: column !important;
+    gap: 24px !important;
+    justify-content: flex-start !important;
+  }
+
+  /* Grille des cartes de performances (mettre les cartes les unes sous les autres) */
+  body.player-page .player-details-container .player-stats-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important; /* Les cartes sur une seule colonne */
+    gap: 20px !important; /* Espacement entre les cartes */
   }
 
   /* Section "Détails des performances" */
-  body.player-page .player-details-container .player-stats-grid {
-    display: grid !important;
-    grid-template-columns: 1fr !important; /* Mettre les cartes en colonne */
-    gap: 20px !important;
-  }
-
-  /* Section "Détails des performances" : Titre */
   body.player-page .player-details-container h3 {
     font-size: 20px !important;
     margin-bottom: 18px !important;
@@ -132,8 +126,8 @@
 
   /* =========================== ÉVITER LA DERNIÈRE CARTE PLUS PETITE =========================== */
   body.player-page .player-stats-grid .stat-card:last-child {
-    min-height: 150px !important;
-    flex: 1 1 100% !important;
+    min-height: 150px !important; /* S'assurer que la dernière carte a la même taille */
+    flex: 1 1 100%;
     height: auto !important;
   }
 }
