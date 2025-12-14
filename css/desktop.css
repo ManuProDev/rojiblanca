@@ -1,35 +1,34 @@
 /* =========================================================
-   DESKTOP ONLY – AJUSTEMENTS GLOBAUX POUR LES PAGES (results, team, player)
+   DESKTOP ONLY – AJUSTEMENTS POUR LE DESIGN DES FILTRES
 ========================================================= */
 
 @media (min-width: 769px) {
 
   /* =========================================================
-     AJUSTER LA MARGE EN HAUT POUR TOUTES LES PAGES
+     AJUSTER LA MARGE EN HAUT ET EN BAS POUR LES PAGES
   ========================================================= */
-  /* Appliquer un padding-top global sur toutes les pages */
-  body.main-content {
+
+  /* Réduire la marge en bas de la page entre la dernière carte et le footer */
+  body.results-page main.main-content,
+  body.team-page main.main-content,
+  body.stats-page main.main-content {
+    padding-bottom: 10px !important; /* Réduit l'espace en bas de la page */
     padding-top: 40px !important; /* Réduit l'espace en haut de la page pour rapprocher le titre du header */
   }
 
-  /* =========================================================
-     AJUSTER LA MARGE EN BAS ENTRE LE DERNIER ÉLÉMENT ET LE FOOTER
-  ========================================================= */
-  body.main-content {
-    padding-bottom: 10px !important; /* Réduit l'espace en bas de la page */
+  /* Ajuster les marges de la dernière carte si nécessaire */
+  body.results-page .stat-card:last-child,
+  body.results-page .player-stat-card:last-child,
+  body.team-page .stat-card:last-child,
+  body.team-page .player-stat-card:last-child,
+  body.stats-page .stat-card:last-child,
+  body.stats-page .player-stat-card:last-child {
+    margin-bottom: 10px !important; /* Réduit la marge sous la dernière carte */
   }
 
-  /* Ajuster les marges des cartes ou autres éléments de contenu sur chaque page */
-  body .stat-card:last-child,
-  body .player-stat-card:last-child,
-  body .match-card:last-child,
-  body .team-card:last-child {
-    margin-bottom: 10px !important; /* Réduit la marge sous la dernière carte ou élément */
-  }
-
-  /* =========================================================
-     STYLES DES FILTRES (APPLIQUÉ À TOUTES LES PAGES)
-  ========================================================= */
+  /* ===========================
+     STYLES GÉNÉRAUX DES FILTRES
+  =========================== */
   .stats-filters {
     display: flex !important;
     flex-direction: row !important;
@@ -100,4 +99,5 @@
     background-position: right 12px center !important;
     background-size: 12px 12px !important;
   }
+
 }
