@@ -110,6 +110,7 @@
   body.player-page .podium-panel {
     flex: 1 1 100% !important;
     min-width: 320px !important;
+    margin-top: 50px !important; /* Ajout de la marge pour descendre la section */
   }
 
   /* Section "Détails des performances" */
