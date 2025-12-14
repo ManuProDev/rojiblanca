@@ -4,74 +4,49 @@
 
 @media (min-width: 769px) {
 
-  /* 🔥 CONTENEUR PRINCIPAL */
+  /* 🔥 CONTENEUR PRINCIPAL - UTILISATION DE GRID */
   body.stats-page .charts-podium-container {
-    display: flex !important;
-    justify-content: space-between !important; /* Espacement égal entre les éléments */
-    align-items: stretch !important; /* Assure que les éléments ont la même hauteur */
-    gap: 20px !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr !important; /* 3 colonnes égales */
+    grid-gap: 20px !important; /* Espacement entre les éléments */
     width: 100% !important;
     max-width: 1200px !important;
     margin: 0 auto !important;
   }
 
-  /* 🔥 3 BLOC GRAPHIQUES + PODIUM (MÉTHODE FLEX) */
-  body.stats-page .charts-panel,
-  body.stats-page .podium-panel {
-    flex: 1 !important; /* Chaque bloc prend environ un tiers de l'espace */
-    min-width: 320px !important;
-    height: 300px !important; /* Hauteur fixée pour les blocs */
-    background: none !important; /* Enlever le fond */
-    border: none !important; /* Enlever la bordure */
+  /* 🔥 GRAPHIQUES */
+  body.stats-page .charts-panel {
     display: flex !important;
-    flex-direction: column !important;
     justify-content: center !important;
     align-items: center !important;
-    padding: 0 !important; /* Supprimer les padding inutiles */
-    position: relative !important;
+    height: 300px !important; /* Fixer la hauteur des graphiques */
+    background: none !important; /* Enlever les fonds */
+    border: none !important; /* Enlever les bordures */
   }
 
   /* 🔥 CANVAS (Graphiques dans les blocs) */
   body.stats-page canvas {
-    width: 90% !important; /* Ajuste la taille du graphique */
-    height: 90% !important; /* Ajuste la taille du graphique */
-    object-fit: contain !important; /* Garde le ratio sans déformer */
+    width: 100% !important; /* Remplir la largeur */
+    height: auto !important; /* Protéger le ratio */
+    max-height: 100% !important; /* Limiter la hauteur des graphiques */
   }
 
-  /* 🔥 PODIUM PANEL (ajustement largeur et hauteur) */
+  /* 🔥 PODIUM */
   body.stats-page .podium-panel {
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
+    align-items: center !important;
     padding: 8px !important;
-    width: 100% !important;
-    height: 250px !important; /* Réduire la hauteur du podium */
-    max-width: 330px !important; /* Augmenter la largeur du podium */
+    height: 300px !important; /* Hauteur fixe du podium */
+    width: 100% !important; /* Prendre toute la largeur */
+    background: none !important; /* Enlever les fonds */
+    border: none !important; /* Enlever les bordures */
+  }
+
+  /* 🔥 ADAPTER LA LARGEUR DU PODIUM */
+  body.stats-page .podium-panel {
+    max-width: 330px !important; /* Réduire la largeur du podium pour l'ajuster */
     margin-bottom: 20px !important; /* Ajouter une marge en bas */
-  }
-
-  /* 🔥 ITEM PODIUM */
-  body.stats-page .podium-panel .podium-item {
-    margin-bottom: 12px !important;
-  }
-
-  /* 🔥 PODIUM TEXTES */
-  body.stats-page .podium-panel .place {
-    font-size: 14px !important;
-  }
-
-  body.stats-page .podium-panel .meta,
-  body.stats-page .podium-panel .score {
-    font-size: 12px !important;
-  }
-
-  /* 🔥 LÉGENDES DU GRAPHIQUE (aligne correctement sur une seule ligne) */
-  body.stats-page .charts-panel canvas + canvas {
-    margin-top: 20px !important;
-  }
-
-  /* 🔥 AJOUTER UNE MARGE ENTRE LES GRAPHIQUES ET LE PODIUM */
-  body.stats-page .charts-podium-container {
-    background: transparent !important; /* Enlever les fonds de section */
   }
 }
