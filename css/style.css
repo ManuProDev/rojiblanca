@@ -527,8 +527,8 @@ main.main-content {
 
 .ranking-section {
     text-align: center;   /* Centre le texte et le bouton dans cette section */
-    margin-top: 40px;     /* Ajoute un espace avant la section */
-    margin-bottom: 80px;
+    margin-top: 20px;     /* Ajoute un espace avant la section */
+    margin-bottom: 60px;
     justify-content: center; /* Centre verticalement */
     align-items: center; /* Centre horizontalement */
 }
