@@ -139,4 +139,8 @@
     flex: 1 1 100% !important;
     height: auto !important;
   }
+
+  .ranking-button {
+    width: 300px !important;
+  }
 }
