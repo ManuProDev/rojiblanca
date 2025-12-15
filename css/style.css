@@ -546,7 +546,7 @@ main.main-content {
 /* --- Style du bouton --- */
 .ranking-button {
     background: rgba(255, 255, 255, 0.15);
-    padding: 16px 36px;                /* Augmente la taille du bouton */
+    padding: 16px 48px;                /* Augmente la taille du bouton */
     border-radius: 16px;
     margin: 0;                          /* Retirer la marge */
     backdrop-filter: blur(10px);
