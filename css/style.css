@@ -557,6 +557,7 @@ main.main-content {
     display: block;                     /* Le bouton est un bloc pour qu'il prenne toute la largeur disponible */
     width: auto;                        /* Largeur ajustée au contenu */
     color: white;
+    height: 50px;
     text-decoration: none;
 }
 
