@@ -543,6 +543,11 @@ main.main-content {
 .ranking-button:hover {
     transform: translateY(-5px);
     background: rgba(255,255,255,0.25);
+    color: white;
+}
+
+.ranking-button:visited {
+    color: white; /* Garder le texte en blanc même après le clic */
 }
 
 a.ranking-button {
