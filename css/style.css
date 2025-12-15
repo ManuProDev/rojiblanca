@@ -525,22 +525,22 @@ main.main-content {
     color: #fff;
 }
 
-/* Le conteneur spécifique du bouton */
+/* --- Conteneur spécifique du bouton --- */
 .ranking-button-container {
-    display: flex;               /* Utilise Flexbox pour organiser le contenu */
-    justify-content: center;     /* Centre horizontalement */
-    align-items: center;         /* Centre verticalement */
-    width: 100%;                 /* Le conteneur prend toute la largeur */
-    height: 100%;                /* Le conteneur prend toute la hauteur disponible de son parent */
-    margin-top: 40px;            /* Un peu de marge pour espacer du titre */
+    display: flex !important;                     /* Utilise Flexbox pour aligner les éléments */
+    justify-content: center !important;           /* Centre horizontalement */
+    align-items: center !important;               /* Centre verticalement */
+    width: 100% !important;                       /* Le conteneur prend toute la largeur disponible */
+    margin-top: 40px !important;                  /* Un peu d'espace au-dessus du bouton */
+    height: 100% !important;                      /* Assure que le conteneur prenne la hauteur du parent */
 }
 
-/* Style du bouton */
+/* --- Style du bouton --- */
 .ranking-button {
     background: rgba(255, 255, 255, 0.15);
-    padding: 40px 36px;          /* Ajuste le padding pour un plus grand bouton */
+    padding: 40px 36px;                /* Augmente la taille du bouton */
     border-radius: 16px;
-    margin: 0;                   /* Retire toute marge */
+    margin: 0;                          /* Retirer la marge */
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.25);
     transition: 0.25s ease;
@@ -548,22 +548,19 @@ main.main-content {
     font-size: 18px;
     font-weight: 700;
     text-align: center;
-    display: block;              /* Le bouton est un bloc pour qu'il prenne toute la largeur disponible */
-    width: auto;                 /* Largeur ajustée au contenu */
+    display: block;                     /* Le bouton est un bloc pour qu'il prenne toute la largeur disponible */
+    width: auto;                        /* Largeur ajustée au contenu */
     color: white;
     text-decoration: none;
 }
 
-/* Eviter que le texte devienne violet après le clic */
 .ranking-button:visited {
     color: white;
 }
 
-/* Effet au survol */
 .ranking-button:hover {
     background: rgba(255, 255, 255, 0.3);
     cursor: pointer;
-    color: white;
 }
 
 a.ranking-button {
