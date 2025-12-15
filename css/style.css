@@ -525,6 +525,14 @@ main.main-content {
     color: #fff;
 }
 
+.ranking-button-container {
+    display: flex;
+    justify-content: center; /* Centre le bouton horizontalement */
+    align-items: center; /* Centre le bouton verticalement */
+    width: 100%; /* S'assure que le conteneur prend toute la largeur */
+    margin-top: 40px; /* Un peu de marge pour l'espacement */
+}
+
 .ranking-button {
     background: rgba(255, 255, 255, 0.15);
     padding: 40px 36px; /* Augmente l'espacement interne (plus de padding) */
