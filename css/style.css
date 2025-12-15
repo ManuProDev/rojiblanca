@@ -530,6 +530,7 @@ main.main-content {
     padding: 26px 24px;
     border-radius: 16px;
     margin-bottom: 14px;
+    margin-left: 100px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.25);
     display: flex;
@@ -542,6 +543,10 @@ main.main-content {
 .ranking-button:hover {
     transform: translateY(-5px);
     background: rgba(255,255,255,0.25);
+}
+
+a.ranking-button {
+    text-decoration: none; /* Enlève le soulignement du lien */
 }
 
 /* RESPONSIVE */
