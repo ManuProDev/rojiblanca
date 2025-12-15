@@ -43,6 +43,14 @@ body.results-page main.main-content {
     padding-bottom: 40px;
 }
 
+a.logo-link {
+    text-decoration: none; /* Enlève le soulignement du lien */
+}
+
+a.logo-link:hover {
+    opacity: 0.8; /* Optionnel : effet visuel lors du survol */
+}
+
 /* ========================================================= SCROLL PROGRESS BAR ========================================================= */
 .scroll-progress {
     position: fixed;
