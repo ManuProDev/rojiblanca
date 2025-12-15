@@ -143,5 +143,6 @@
   .ranking-button {
     width: 300px !important;
     height: 50px !important;
+    text-align: center !important;
   }
 }
