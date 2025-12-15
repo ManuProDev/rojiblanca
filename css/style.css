@@ -534,8 +534,8 @@ main.main-content {
     border: 1px solid rgba(255, 255, 255, 0.25);
     transition: 0.25s ease;
     box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    font-size: 28px; /* Augmente la taille du texte */
-    font-weight: 900;
+    font-size: 18px; /* Augmente la taille du texte */
+    font-weight: 700;
     text-align: center;
     display: block;
     width: fit-content; /* Largeur du bouton ajustée au contenu, mais peut être augmenté si besoin */
