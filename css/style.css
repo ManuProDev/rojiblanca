@@ -526,13 +526,14 @@ main.main-content {
 }
 
 /* --- Conteneur spécifique du bouton --- */
+/* --- Conteneur du bouton : pour centrer à 100% --- */
 .ranking-button-container {
-    display: flex !important;                     /* Utilise Flexbox pour aligner les éléments */
-    justify-content: center !important;           /* Centre horizontalement */
-    align-items: center !important;               /* Centre verticalement */
-    width: 100% !important;                       /* Le conteneur prend toute la largeur disponible */
-    margin-top: 40px !important;                  /* Un peu d'espace au-dessus du bouton */
-    height: 100% !important;                      /* Assure que le conteneur prenne la hauteur du parent */
+    display: flex;                     /* Utilise Flexbox pour organiser le contenu */
+    justify-content: center;           /* Centre horizontalement */
+    align-items: center;               /* Centre verticalement */
+    width: 100%;                       /* Le conteneur prend toute la largeur disponible */
+    height: 100%;                      /* Le conteneur prend toute la hauteur de son parent */
+    margin-top: 40px;                  /* Un peu d'espace au-dessus du bouton */
 }
 
 /* --- Style du bouton --- */
@@ -554,6 +555,7 @@ main.main-content {
     text-decoration: none;
 }
 
+/* Eviter que le texte devienne violet après le clic */
 .ranking-button:visited {
     color: white;
 }
