@@ -529,27 +529,28 @@ main.main-content {
     background: rgba(255, 255, 255, 0.15);
     padding: 26px 24px;
     border-radius: 16px;
-    margin-bottom: 14px;
-    margin: 0 auto;
+    margin: 0 auto 14px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.25);
-    display: block;
-    justify-content: space-between;
-    align-items: center;
     transition: 0.25s ease;
     box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 22px;
+    font-weight: 900;
+    text-align: center;
+    display: block;
+    width: fit-content;
+    color: white; /* Texte en blanc */
+    text-decoration: none; /* Enlever le soulignement par défaut des liens */
 }
 
 .ranking-button:hover {
-    transform: translateY(-5px);
-    background: rgba(255,255,255,0.25);
-    color: white;
+    background: rgba(255, 255, 255, 0.3); /* Changer la couleur de fond au survol */
+    cursor: pointer; /* Changer le curseur en main pour l'interaction */
+    color: white; /* Garder le texte en blanc au survol */
 }
 
 .ranking-button:visited {
-    color: white; /* Garder le texte en blanc même après le clic */
+    color: white; /* Garder la couleur blanche pour les liens visités */
 }
 
 a.ranking-button {
