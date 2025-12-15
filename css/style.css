@@ -525,8 +525,12 @@ main.main-content {
     color: #fff;
 }
 
+.ranking-section {
+    text-align: center;   /* Centre le texte et le bouton dans cette section */
+    margin-top: 40px;     /* Ajoute un espace avant la section */
+}
+
 /* --- Conteneur spécifique du bouton --- */
-/* --- Conteneur du bouton : pour centrer à 100% --- */
 .ranking-button-container {
     display: flex;                     /* Utilise Flexbox pour organiser le contenu */
     justify-content: center;           /* Centre horizontalement */
