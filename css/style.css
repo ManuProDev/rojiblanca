@@ -527,20 +527,20 @@ main.main-content {
 
 .ranking-button {
     background: rgba(255, 255, 255, 0.15);
-    padding: 26px 24px;
+    padding: 40px 36px; /* Augmente l'espacement interne (plus de padding) */
     border-radius: 16px;
     margin: 0 auto 14px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.25);
     transition: 0.25s ease;
     box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    font-size: 22px;
+    font-size: 28px; /* Augmente la taille du texte */
     font-weight: 900;
     text-align: center;
     display: block;
-    width: fit-content;
-    color: white; /* Texte en blanc */
-    text-decoration: none; /* Enlever le soulignement par défaut des liens */
+    width: fit-content; /* Largeur du bouton ajustée au contenu, mais peut être augmenté si besoin */
+    color: white;
+    text-decoration: none;
 }
 
 .ranking-button:hover {
