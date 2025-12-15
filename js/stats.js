@@ -99,7 +99,7 @@ function updateStats() {
     <div class="stat-card"><div class="kpi">${losses} (${played ? Math.round(losses/played*100) : 0}%)</div><div class="label">Défaites</div></div>
     <div class="stat-card"><div class="kpi">${gf}</div><div class="label">Buts marqués</div></div>
     <div class="stat-card"><div class="kpi">${ga}</div><div class="label">Buts encaissés</div></div>
-    <div class="stat-card"><div class="kpi">${diff}</div><div class="label">Différence</div></div>
+    <div class="stat-card"><div class="kpi">${diff}</div><div class="label">Différence de buts</div></div>
   `;
 
   updateCharts(wins, draws, losses, gf, ga);
