@@ -541,6 +541,7 @@ main.main-content {
     width: 100%;                       /* Le conteneur prend toute la largeur disponible */
     height: 100%;                      /* Le conteneur prend toute la hauteur de son parent */
     margin-top: 40px;                  /* Un peu d'espace au-dessus du bouton */
+    gap: 10px;
 }
 
 /* --- Style du bouton --- */
