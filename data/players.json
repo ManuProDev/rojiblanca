@@ -1,6 +1,6 @@
 [
   { "id": 1, "name": "Alexandre Mdg", "number": 1, "position": "goal" },
-  { "id": 2, "name": "Hugo Prd", "number": 2, "position": "goal" },
+  { "id": 2, "name": "Hugo Prd", "number": 16, "position": "goal" },
   { "id": 3, "name": "Sami Prk", "number": 10, "position": "defender" },
   { "id": 4, "name": "Yvonnic Frn", "number": 1, "position": "defender" },
   { "id": 5, "name": "Manuel Prn", "number": 86, "position": "defender" },
