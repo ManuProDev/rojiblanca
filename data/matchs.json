@@ -214,5 +214,14 @@
     "result": "Win",
     "goals1": 5,
     "goals2": 1
+  },
+  {
+    "id": 25,
+    "team1": "Rojiblanca 7",
+    "team2": "Acolytes Marlusienne",
+    "type": "League",
+    "result": "Loss",
+    "goals1": 3,
+    "goals2": 7
   }
 ]
