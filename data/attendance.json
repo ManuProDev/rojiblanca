@@ -3358,5 +3358,145 @@
     "matchId": 24,
     "player": "Amir Blg",
     "present": false
-  }
+  },
+  {
+    "matchId": 25,
+    "player": "Alexandre Mdg",
+    "present": false
+  },
+  {
+    "matchId": 25,
+    "player": "Hugo Prd",
+    "present": true
+  },
+  {
+    "matchId": 25,
+    "player": "Sami Prk",
+    "present": true
+  },
+  {
+    "matchId": 25,
+    "player": "Yvonnic Frn",
+    "present": false
+  },
+  {
+    "matchId": 25,
+    "player": "Manuel Prn",
+    "present": true
+  },
+  {
+    "matchId": 25,
+    "player": "Octave Gvr",
+    "present": true
+  },
+  {
+    "matchId": 25,
+    "player": "Hugo Frq",
+    "present": true
+  },
+  {
+    "matchId": 25,
+    "player": "Augustin Gsm",
+    "present": true
+  },
+  {
+    "matchId": 25,
+    "player": "François Drr",
+    "present": false
+  },
+  {
+    "matchId": 25,
+    "player": "Pierre Hnr",
+    "present": false
+  },
+  {
+    "matchId": 25,
+    "player": "Marcus Drg",
+    "present": false
+  },
+  {
+    "matchId": 25,
+    "player": "Sophiane Mlh",
+    "present": false
+  },
+  {
+    "matchId": 25,
+    "player": "Alexis Mcl",
+    "present": false
+  },
+  {
+    "matchId": 25,
+    "player": "Hugo Lcm",
+    "present": false
+  },
+  {
+    "matchId": 25,
+    "player": "Bastien Lbc",
+    "present": true
+  },
+  {
+    "matchId": 25,
+    "player": "Hugo Prz",
+    "present": true
+  },
+  {
+    "matchId": 25,
+    "player": "Rayane Bsr",
+    "present": false
+  },
+  {
+    "matchId": 25,
+    "player": "Baptiste Dde",
+    "present": true
+  },
+  {
+    "matchId": 25,
+    "player": "Alix Rmd",
+    "present": false
+  },
+  {
+    "matchId": 25,
+    "player": "Léo Csg",
+    "present": false
+  },
+  {
+    "matchId": 25,
+    "player": "Naël Lts",
+    "present": false
+  },
+  {
+    "matchId": 25,
+    "player": "Paul Vcn",
+    "present": false
+  },
+  {
+    "matchId": 25,
+    "player": "Yacine Imn",
+    "present": false
+  },
+  {
+    "matchId": 25,
+    "player": "François-Xavier Nre",
+    "present": false
+  },
+  {
+    "matchId": 25,
+    "player": "Fransisco Bmd",
+    "present": false
+  },
+  {
+    "matchId": 25,
+    "player": "Matteo Knt",
+    "present": false
+  },
+  {
+    "matchId": 25,
+    "player": "Dani Grc",
+    "present": false
+  },
+  {
+    "matchId": 25,
+    "player": "Amir Blg",
+    "present": false
+  },
 ]
