@@ -85,5 +85,8 @@
   { "id": 84, "matchId": 24, "type": "League", "goal": "Hugo Lcm", "assist": "Alexis Mcl", "ag": false },
   { "id": 85, "matchId": 24, "type": "League", "goal": "Alexis Mcl", "assist": "Augustin Gsm", "ag": false },
   { "id": 86, "matchId": 24, "type": "League", "goal": "Alexis Mcl", "assist": "Octave Gvr", "ag": false },
-  { "id": 86, "matchId": 24, "type": "League", "goal": "Hugo Prz", "assist": "Solo", "ag": false }
+  { "id": 87, "matchId": 24, "type": "League", "goal": "Hugo Prz", "assist": "Solo", "ag": false },
+  { "id": 88, "matchId": 25, "type": "League", "goal": "Hugo Prz", "assist": "Bastien Lbc", "ag": false },
+  { "id": 89, "matchId": 25, "type": "League", "goal": "Hugo Prz", "assist": "Florian Ndx", "ag": false },
+  { "id": 90, "matchId": 25, "type": "League", "goal": "Sami Prk", "assist": "Hugo Prz", "ag": false }
 ]
