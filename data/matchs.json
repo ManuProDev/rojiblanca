@@ -223,5 +223,23 @@
     "result": "Loss",
     "goals1": 3,
     "goals2": 7
+  },
+  {
+    "id": 26,
+    "team1": "Rojiblanca 11",
+    "team2": "Les Anciens de Rosny",
+    "type": "League",
+    "result": "Loss",
+    "goals1": 3,
+    "goals2": 4
+  },
+  {
+    "id": 27,
+    "team1": "Rojiblanca 7",
+    "team2": "Deportivo Malakoff",
+    "type": "League",
+    "result": "Draw",
+    "goals1": 5,
+    "goals2": 5
   }
 ]
