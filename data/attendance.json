@@ -3623,5 +3623,295 @@
     "matchId": 25,
     "player": "Florian Ndx",
     "present": true
+  },
+  {
+    "matchId": 26,
+    "player": "Alexandre Mdg",
+    "present": true
+  },
+  {
+    "matchId": 26,
+    "player": "Hugo Prd",
+    "present": false
+  },
+  {
+    "matchId": 26,
+    "player": "Sami Prk",
+    "present": true
+  },
+  {
+    "matchId": 26,
+    "player": "Yvonnic Frn",
+    "present": true
+  },
+  {
+    "matchId": 26,
+    "player": "Manuel Prn",
+    "present": true
+  },
+  {
+    "matchId": 26,
+    "player": "Octave Gvr",
+    "present": true
+  },
+  {
+    "matchId": 26,
+    "player": "Hugo Frq",
+    "present": true
+  },
+  {
+    "matchId": 26,
+    "player": "Augustin Gsm",
+    "present": true
+  },
+  {
+    "matchId": 26,
+    "player": "François Drr",
+    "present": false
+  },
+  {
+    "matchId": 26,
+    "player": "Pierre Hnr",
+    "present": false
+  },
+  {
+    "matchId": 26,
+    "player": "Marcus Drg",
+    "present": false
+  },
+  {
+    "matchId": 26,
+    "player": "Sophiane Mlh",
+    "present": true
+  },
+  {
+    "matchId": 26,
+    "player": "Alexis Mcl",
+    "present": true
+  },
+  {
+    "matchId": 26,
+    "player": "Hugo Lcm",
+    "present": true
+  },
+  {
+    "matchId": 26,
+    "player": "Bastien Lbc",
+    "present": true
+  },
+  {
+    "matchId": 26,
+    "player": "Hugo Prz",
+    "present": true
+  },
+  {
+    "matchId": 26,
+    "player": "Rayane Bsr",
+    "present": false
+  },
+  {
+    "matchId": 26,
+    "player": "Baptiste Dde",
+    "present": false
+  },
+  {
+    "matchId": 26,
+    "player": "Alix Rmd",
+    "present": false
+  },
+  {
+    "matchId": 26,
+    "player": "Léo Csg",
+    "present": false
+  },
+  {
+    "matchId": 26,
+    "player": "Naël Lts",
+    "present": false
+  },
+  {
+    "matchId": 26,
+    "player": "Paul Vcn",
+    "present": false
+  },
+  {
+    "matchId": 26,
+    "player": "Yacine Imn",
+    "present": false
+  },
+  {
+    "matchId": 26,
+    "player": "François-Xavier Nre",
+    "present": false
+  },
+  {
+    "matchId": 26,
+    "player": "Fransisco Bmd",
+    "present": false
+  },
+  {
+    "matchId": 26,
+    "player": "Matteo Knt",
+    "present": false
+  },
+  {
+    "matchId": 26,
+    "player": "Dani Grc",
+    "present": true
+  },
+  {
+    "matchId": 26,
+    "player": "Amir Blg",
+    "present": false
+  },
+  {
+    "matchId": 26,
+    "player": "Florian Ndx",
+    "present": false
+  },
+  {
+    "matchId": 27,
+    "player": "Alexandre Mdg",
+    "present": false
+  },
+  {
+    "matchId": 27,
+    "player": "Hugo Prd",
+    "present": true
+  },
+  {
+    "matchId": 27,
+    "player": "Sami Prk",
+    "present": true
+  },
+  {
+    "matchId": 27,
+    "player": "Yvonnic Frn",
+    "present": true
+  },
+  {
+    "matchId": 27,
+    "player": "Manuel Prn",
+    "present": false
+  },
+  {
+    "matchId": 27,
+    "player": "Octave Gvr",
+    "present": false
+  },
+  {
+    "matchId": 27,
+    "player": "Hugo Frq",
+    "present": true
+  },
+  {
+    "matchId": 27,
+    "player": "Augustin Gsm",
+    "present": true
+  },
+  {
+    "matchId": 27,
+    "player": "François Drr",
+    "present": false
+  },
+  {
+    "matchId": 27,
+    "player": "Pierre Hnr",
+    "present": false
+  },
+  {
+    "matchId": 27,
+    "player": "Marcus Drg",
+    "present": false
+  },
+  {
+    "matchId": 27,
+    "player": "Sophiane Mlh",
+    "present": false
+  },
+  {
+    "matchId": 27,
+    "player": "Alexis Mcl",
+    "present": true
+  },
+  {
+    "matchId": 27,
+    "player": "Hugo Lcm",
+    "present": true
+  },
+  {
+    "matchId": 27,
+    "player": "Bastien Lbc",
+    "present": false
+  },
+  {
+    "matchId": 27,
+    "player": "Hugo Prz",
+    "present": true
+  },
+  {
+    "matchId": 27,
+    "player": "Rayane Bsr",
+    "present": false
+  },
+  {
+    "matchId": 27,
+    "player": "Baptiste Dde",
+    "present": false
+  },
+  {
+    "matchId": 27,
+    "player": "Alix Rmd",
+    "present": false
+  },
+  {
+    "matchId": 27,
+    "player": "Léo Csg",
+    "present": false
+  },
+  {
+    "matchId": 27,
+    "player": "Naël Lts",
+    "present": true
+  },
+  {
+    "matchId": 27,
+    "player": "Paul Vcn",
+    "present": false
+  },
+  {
+    "matchId": 27,
+    "player": "Yacine Imn",
+    "present": false
+  },
+  {
+    "matchId": 27,
+    "player": "François-Xavier Nre",
+    "present": false
+  },
+  {
+    "matchId": 27,
+    "player": "Fransisco Bmd",
+    "present": false
+  },
+  {
+    "matchId": 27,
+    "player": "Matteo Knt",
+    "present": false
+  },
+  {
+    "matchId": 27,
+    "player": "Dani Grc",
+    "present": false
+  },
+  {
+    "matchId": 27,
+    "player": "Amir Blg",
+    "present": false
+  },
+  {
+    "matchId": 27,
+    "player": "Florian Ndx",
+    "present": true
   }
 ]
