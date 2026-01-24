@@ -96,5 +96,5 @@
   { "id": 95, "matchId": 27, "type": "League", "goal": "Hugo Lcm", "assist": "Solo", "ag": false },
   { "id": 96, "matchId": 27, "type": "League", "goal": "Naël Lts", "assist": "Hugo Lcm", "ag": false },
   { "id": 97, "matchId": 27, "type": "League", "goal": "Augustin Gsm", "assist": "Solo", "ag": false },
-  { "id": 98, "matchId": 27, "type": "League", "goal": "Hugo Prz", "assist": "Hugo Frq", "ag": false },
+  { "id": 98, "matchId": 27, "type": "League", "goal": "Hugo Prz", "assist": "Hugo Frq", "ag": false }
 ]
