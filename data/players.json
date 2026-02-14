@@ -27,5 +27,7 @@
   { "id": 26, "name": "Matteo Knt", "number": 6, "position": "midfielder" },
   { "id": 27, "name": "Dani Grc", "number": 3, "position": "defender" },
   { "id": 28, "name": "Amir Blg", "number": 96, "position": "striker" },
-  { "id": 29, "name": "Florian Ndx", "number": 95, "position": "midfielder" }
+  { "id": 29, "name": "Florian Ndx", "number": 95, "position": "midfielder" },
+  { "id": 30, "name": "William Mcl", "number": 94, "position": "midfielder" },
+  { "id": 31, "name": "Enzo Mcl", "number": 91, "position": "striker" }
 ]
