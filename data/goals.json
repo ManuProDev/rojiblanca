@@ -99,5 +99,6 @@
   { "id": 98, "matchId": 27, "type": "League", "goal": "Hugo Prz", "assist": "Hugo Frq", "ag": false },
   { "id": 99, "matchId": 28, "type": "League", "goal": "Hugo Lcm", "assist": "Augustin Gsm", "ag": false },
   { "id": 100, "matchId": 28, "type": "League", "goal": "Hugo Lcm", "assist": "Florian Ndx", "ag": false },
-  { "id": 101, "matchId": 28, "type": "League", "goal": "Florian Ndx", "assist": "Florian Ndx", "ag": false }
+  { "id": 101, "matchId": 28, "type": "League", "goal": "Florian Ndx", "assist": "Alix Rmd", "ag": false },
+  { "id": 101, "matchId": 28, "type": "League", "goal": "Augustin Gsm", "assist": "Solo", "ag": false }
 ]
