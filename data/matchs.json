@@ -241,5 +241,32 @@
     "result": "Draw",
     "goals1": 5,
     "goals2": 5
+  },
+  {
+    "id": 28,
+    "team1": "Rojiblanca 7",
+    "team2": "Red Bull Leipnig",
+    "type": "League",
+    "result": "Loss",
+    "goals1": 4,
+    "goals2": 6
+  },
+  {
+    "id": 29,
+    "team1": "Rojiblanca 7",
+    "team2": "Wcr",
+    "type": "Cup",
+    "result": "Win",
+    "goals1": 3,
+    "goals2": 2
+  },
+  {
+    "id": 30,
+    "team1": "Rojiblanca 11",
+    "team2": "Club Defense Balard A",
+    "type": "Cup",
+    "result": "Loss",
+    "goals1": 1,
+    "goals2": 2
   }
 ]
