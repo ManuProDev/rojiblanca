@@ -102,7 +102,7 @@
   { "id": 101, "matchId": 28, "type": "League", "goal": "Florian Ndx", "assist": "Alix Rmd", "ag": false },
   { "id": 102, "matchId": 28, "type": "League", "goal": "Augustin Gsm", "assist": "Solo", "ag": false },
   { "id": 103, "matchId": 29, "type": "Cup", "goal": "Bastien Lbc", "assist": "Solo", "ag": false },
-  { "id": 104, "matchId": 29, "type": "Cup", "goal": "William Bdr", "assist": "Enzo khf", "ag": false },
+  { "id": 104, "matchId": 29, "type": "Cup", "goal": "William Bdr", "assist": "Enzo Khf", "ag": false },
   { "id": 105, "matchId": 29, "type": "Cup", "goal": "William Bdr", "assist": "Solo", "ag": false },
   { "id": 106, "matchId": 30, "type": "Cup", "goal": "Hugo Prz", "assist": "Hugo Frq", "ag": false },
   { "id": 107, "matchId": 31, "type": "League", "goal": "Hugo Prz", "assist": "Sami Prk", "ag": false },
