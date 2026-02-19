@@ -277,5 +277,14 @@
     "result": "Win",
     "goals1": 11,
     "goals2": 1
+  },
+  {
+    "id": 32,
+    "team1": "Rojiblanca 11",
+    "team2": "Club Defense Balard A",
+    "type": "League",
+    "result": "Loss",
+    "goals1": 0,
+    "goals2": 4
   }
 ]
