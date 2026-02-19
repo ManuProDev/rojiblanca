@@ -113,7 +113,7 @@
   { "id": 112, "matchId": 31, "type": "League", "goal": "Yvonnic Frn", "assist": "Hugo Prz", "ag": false },
   { "id": 113, "matchId": 31, "type": "League", "goal": "Yvonnic Frn", "assist": "Hugo Prz", "ag": false },
   { "id": 114, "matchId": 31, "type": "League", "goal": "Florian Ndx", "assist": "Bastien Lbc", "ag": false },
-  { "id": 115, "matchId": 31, "type": "League", "goal": "Hugo Frq", "assist": "Solo", "ag": false },
+  { "id": 115, "matchId": 31, "type": "League", "goal": "Hugo Frq", "assist": "Bastien Lbc", "ag": false },
   { "id": 116, "matchId": 31, "type": "League", "goal": "Bastien Lbc", "assist": "Manuel Prn", "ag": false },
   { "id": 117, "matchId": 31, "type": "League", "goal": "Sami Prk", "assist": "Solo", "ag": false }
 ]
