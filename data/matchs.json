@@ -286,5 +286,77 @@
     "result": "Loss",
     "goals1": 0,
     "goals2": 4
+  },
+  {
+    "id": 33,
+    "team1": "Rojiblanca 11",
+    "team2": "Spartak Retrograd",
+    "type": "League",
+    "result": "Loss",
+    "goals1": 4,
+    "goals2": 5
+  },
+  {
+    "id": 34,
+    "team1": "Rojiblanca 7",
+    "team2": "OGC Nietzche",
+    "type": "League",
+    "result": "Loss",
+    "goals1": 1,
+    "goals2": 4
+  },
+  {
+    "id": 35,
+    "team1": "Rojiblanca 7",
+    "team2": "Deportivo Malakoff",
+    "type": "League",
+    "result": "Loss",
+    "goals1": 4,
+    "goals2": 5
+  },
+  {
+    "id": 36,
+    "team1": "Rojiblanca 11",
+    "team2": "Les Anciens de Rosny",
+    "type": "League",
+    "result": "Win",
+    "goals1": 2,
+    "goals2": 1
+  },
+  {
+    "id": 37,
+    "team1": "Rojiblanca 7",
+    "team2": "AS Redlions Forever",
+    "type": "League",
+    "result": "Draw",
+    "goals1": 5,
+    "goals2": 5
+  },
+  {
+    "id": 38,
+    "team1": "Rojiblanca 11",
+    "team2": "Paris Arc En Ciel A",
+    "type": "League",
+    "result": "Win",
+    "goals1": 1,
+    "goals2": 0
+  },
+  {
+    "id": 39,
+    "team1": "Rojiblanca 7",
+    "team2": "TP Carthage",
+    "type": "League",
+    "result": "Win",
+    "goals1": 4,
+    "goals2": 3
+  },
+  {
+    "id": 40,
+    "team1": "Rojiblanca 11",
+    "team2": "Club Defense Balard A",
+    "type": "League",
+    "result": "Win",
+    "goals1": 1,
+    "goals2": 0
   }
 ]
