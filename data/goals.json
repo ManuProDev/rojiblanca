@@ -135,5 +135,7 @@
   { "id": 134, "matchId": 38, "type": "League", "goal": "Hugo Prz", "assist": "Paul Vcn", "ag": false },
   { "id": 135, "matchId": 39, "type": "League", "goal": "Rayane Bsr", "assist": "Alexis Mcl", "ag": false },
   { "id": 136, "matchId": 39, "type": "League", "goal": "Rayane Bsr", "assist": "Solo", "ag": false },
-  { "id": 137, "matchId": 39, "type": "League", "goal": "Alex", "assist": "François Drr", "ag": false }
+  { "id": 137, "matchId": 39, "type": "League", "goal": "Alexandre Mdg", "assist": "François Drr", "ag": false },
+  { "id": 138, "matchId": 39, "type": "League", "goal": "Alexis Mcl", "assist": "Solo", "ag": false },
+  { "id": 139, "matchId": 40, "type": "League", "goal": "Rayane Bsr", "assist": "Octave Gvr", "ag": false }
 ]
