@@ -29,5 +29,6 @@
   { "id": 28, "name": "Amir Blg", "number": 96, "position": "striker" },
   { "id": 29, "name": "Florian Ndx", "number": 95, "position": "midfielder" },
   { "id": 30, "name": "William Bdr", "number": 94, "position": "midfielder" },
-  { "id": 31, "name": "Enzo Khf", "number": 91, "position": "striker" }
+  { "id": 31, "name": "Enzo Khf", "number": 91, "position": "striker" },
+  { "id": 32, "name": "Marius Srs", "number": 11, "position": "midfielder" }
 ]
