@@ -358,5 +358,23 @@
     "result": "Win",
     "goals1": 1,
     "goals2": 0
+  },
+  {
+    "id": 41,
+    "team1": "Rojiblanca 7",
+    "team2": "Agatha Strongboly",
+    "type": "League",
+    "result": "Loss",
+    "goals1": 3,
+    "goals2": 7
+  },
+  {
+    "id": 42,
+    "team1": "Rojiblanca 11",
+    "team2": "Spartak Retrograd",
+    "type": "League",
+    "result": "Win",
+    "goals1": 1,
+    "goals2": 0
   }
 ]
