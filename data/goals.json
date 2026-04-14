@@ -144,5 +144,7 @@
   { "id": 143, "matchId": 42, "type": "League", "goal": "Yacine Imn", "assist": "Solo", "ag": false },
   { "id": 144, "matchId": 43, "type": "League", "goal": "Naël Lts", "assist": "Yacine Imn", "ag": false },
   { "id": 145, "matchId": 43, "type": "League", "goal": "Yacine Imn", "assist": "Rayane Bsr", "ag": false },
-  { "id": 146, "matchId": 43, "type": "League", "goal": "Yacine Imn", "assist": "Rayane Bsr", "ag": false }
+  { "id": 146, "matchId": 43, "type": "League", "goal": "Dani Grc", "assist": "Solo", "ag": false },
+  { "id": 147, "matchId": 43, "type": "League", "goal": "Rayane Bsr", "assist": "Dani Grc", "ag": false },
+  { "id": 148, "matchId": 43, "type": "League", "goal": "Yacine Imn", "assist": "Paul Vcn", "ag": false }
 ]
