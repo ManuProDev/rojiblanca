@@ -385,5 +385,23 @@
     "result": "Win",
     "goals1": 5,
     "goals2": 3
+  },
+  {
+    "id": 44,
+    "team1": "Rojiblanca 11",
+    "team2": "Verollot FC",
+    "type": "League",
+    "result": "Loss",
+    "goals1": 2,
+    "goals2": 3
+  },
+  {
+    "id": 45,
+    "team1": "Rojiblanca 7",
+    "team2": "Les Gars de la Ville",
+    "type": "Cup",
+    "result": "Win",
+    "goals1": 16,
+    "goals2": 4
   }
 ]
