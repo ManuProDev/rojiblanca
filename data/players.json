@@ -30,5 +30,7 @@
   { "id": 29, "name": "Florian Ndx", "number": 95, "position": "midfielder" },
   { "id": 30, "name": "William Bdr", "number": 94, "position": "midfielder" },
   { "id": 31, "name": "Enzo Khf", "number": 91, "position": "striker" },
-  { "id": 32, "name": "Marius Srs", "number": 11, "position": "midfielder" }
+  { "id": 32, "name": "Marius Srs", "number": 11, "position": "midfielder" },
+  { "id": 33, "name": "Arthur Hrt", "number": 90, "position": "defender" },
+  { "id": 34, "name": "Joffrey Vtg", "number": 89, "position": "striker" }
 ]
