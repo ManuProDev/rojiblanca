@@ -403,5 +403,50 @@
     "result": "Win",
     "goals1": 16,
     "goals2": 4
+  },
+  {
+    "id": 46,
+    "team1": "Rojiblanca 7",
+    "team2": "US Armada",
+    "type": "Cup",
+    "result": "Win",
+    "goals1": 5,
+    "goals2": 2
+  },
+  {
+    "id": 47,
+    "team1": "Rojiblanca 11",
+    "team2": "FC Grande Jugador",
+    "type": "League",
+    "result": "Loss",
+    "goals1": 0,
+    "goals2": 3
+  },
+  {
+    "id": 48,
+    "team1": "Rojiblanca 7",
+    "team2": "Agatha Strongboly",
+    "type": "Cup",
+    "result": "Loss",
+    "goals1": 1,
+    "goals2": 12
+  },
+  {
+    "id": 49,
+    "team1": "Rojiblanca 11",
+    "team2": "Verollot FC",
+    "type": "League",
+    "result": "Loss",
+    "goals1": 3,
+    "goals2": 4
+  },
+  {
+    "id": 50,
+    "team1": "Rojiblanca 7",
+    "team2": "AS Licusati",
+    "type": "Cup",
+    "result": "Win",
+    "goals1": 20,
+    "goals2": 0
   }
 ]
