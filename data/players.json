@@ -32,5 +32,6 @@
   { "id": 31, "name": "Enzo Khf", "number": 91, "position": "striker" },
   { "id": 32, "name": "Marius Srs", "number": 11, "position": "midfielder" },
   { "id": 33, "name": "Arthur Hrt", "number": 90, "position": "defender" },
-  { "id": 34, "name": "Joffrey Vtg", "number": 89, "position": "striker" }
+  { "id": 34, "name": "Joffrey Vtg", "number": 89, "position": "striker" },
+  { "id": 35, "name": "Adel Mln", "number": 87, "position": "striker" }
 ]
