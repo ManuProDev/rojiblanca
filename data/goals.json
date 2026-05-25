@@ -170,7 +170,7 @@
   { "id": 169, "matchId": 46, "type": "Cup", "goal": "Hugo Frq", "assist": "Naël Lts", "ag": false },
   { "id": 170, "matchId": 46, "type": "Cup", "goal": "Naël Lts", "assist": "Yacine Imn", "ag": false },
   { "id": 171, "matchId": 46, "type": "Cup", "goal": "Yacine Imn", "assist": "Sami Prk", "ag": false },
-  { "id": 172, "matchId": 48, "type": "Cup", "goal": "Sami Prk", "assist": "Solo", "ag": false },
+  { "id": 172, "matchId": 48, "type": "Cup", "goal": "Sami Prk", "assist": "Hugo Frq", "ag": false },
   { "id": 173, "matchId": 49, "type": "League", "goal": "Yacine Imn", "assist": "Solo", "ag": false },
   { "id": 174, "matchId": 49, "type": "League", "goal": "Hugo Prz", "assist": "Solo", "ag": false },
   { "id": 175, "matchId": 49, "type": "League", "goal": "Hugo Prz", "assist": "Hugo Frq", "ag": false },
